@@ -3,11 +3,12 @@ const Schema = mongoose.Schema
 
 const ImageSchema = new Schema({
     image:{
-        type:Array,
+        type:String,
         required: true
     },
     goodId:{
         type: mongoose.Schema.Types.ObjectId,
+        ref:'Category',
         required: true
     }
 })

@@ -1,0 +1,10 @@
+.wraper{
+    max-width: 80vw;
+    margin:0 auto;
+}
+
+.game_item{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
