@@ -26,7 +26,7 @@ export const Categories = () => {
 	return (
 		<div>
 			<ContentWrapper className={styles.goodsGrid}>
-				{Object.keys(categories).map((id) => {
+				{categories && Object.keys(categories).map((id) => {
 					let goo = goods.filter((item) => {
 						return item.category["_id"] == id;
 					});

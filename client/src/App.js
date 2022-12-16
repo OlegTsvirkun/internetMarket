@@ -4,6 +4,7 @@ import './App.css';
 import { Header } from "./components/Header";
 import { CategoryPage } from "./pages/CategoryPage";
 import { HomePage } from "./pages/HomePage";
+import { OrderPage } from "./pages/OrderPage/OrderPage";
 
 function App() {
   
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/cat/:category" element={<CategoryPage />} />
+          <Route exact path="/order" element={<OrderPage />} />
         </Routes>
       </Router>
     </div>

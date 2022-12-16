@@ -1,3 +1,29 @@
 .cartMenu{
     
 }
+.cartMenu {
+    position: absolute;
+    top: -50%;
+   right: 50%;
+    // border-radius: 15px;
+    background-color:whitesmoke;
+    border:1px solid rgba(71, 71, 71, 0.123);
+    width: 50vw;
+    padding: 10px, 20px;
+    z-index: 100;
+    transform: translate(50% , 50%);
+  &__gameList {
+    margin: 20px;
+    padding: 20px 0;
+  }
+ &__arrange {
+    margin: 20px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+  }
+&__totalPrice {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+}

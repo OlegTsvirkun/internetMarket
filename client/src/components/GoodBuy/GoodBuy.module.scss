@@ -1,0 +1,20 @@
+.goodBuy{
+    
+    margin: 0 0 0.2em;
+    padding: 0 2rem;
+    align-items: center;
+
+&__price {
+    margin-right: 2em;
+}
+&__button{
+    font-weight: 500;
+    font-size: 16px;
+    
+}
+&__buttonInCart{
+    background-color: orange;
+    font-weight: 500;
+    font-size: 16px;
+}
+}

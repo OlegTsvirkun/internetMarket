@@ -13,11 +13,12 @@ export const CategoryCard = ({ cat, id, image, goods }) => {
 				{Object.keys(goods).map((good) => {
 					return (
             <Link
+            key={goods[good]._id}
             to={`${cat}/${goods[good].articul}`}
             
             className={styles.goodsList__title}
             >
-						<li key={goods[good]._id}>
+						<li >
                 {goods[good].name}
 						</li>
   						</Link>

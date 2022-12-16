@@ -23,17 +23,17 @@ export const Header = ({}) => {
         <span className={styles.header__title}> MyApple Store</span>
   			
   			</Link>
-  			<Link to="/" className={styles.header__menu}>
+  			{/* <Link to="/" className={styles.header__menu}>
   				 <Button>MENU</Button>
-  			</Link>
+  			</Link> */}
   			<div className={styles.header__basket}>
-  				{
+  				{/* {
   					location.pathname !== "/order" && (
               <CartBlock/>
   						
-  					)
-  					// <svg className={styles.header__basket-icon} src = {basket}/>
-  				}
+  					) */}
+  					{/* // <svg className={styles.header__basket-icon} src = {basket}/> */}
+  				{/* } */}
   			</div>
 	</ContentWrapper>
 		</div>

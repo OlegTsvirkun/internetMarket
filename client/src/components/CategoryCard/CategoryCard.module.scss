@@ -9,6 +9,8 @@
         color:black;
     }
     &__name{
+        line-height: 1.2;
+
         margin: 20px 0;
         color:rgb(47, 181, 252);
         font-size: 22px;
@@ -16,10 +18,10 @@
         overflow: hidden;
         text-align: center;
         text-overflow: ellipsis;
+        height:1.2em
     }
     &__image{
         margin-bottom: 20px;
-
         max-width: 100%;
         height: auto;
         
@@ -33,8 +35,8 @@
     // border-top: none;
     // border-bottom: none;
     box-shadow:
-    -23px 0 3px -23px rgba(0, 0, 0, .5),
-    23px 0 3px -23px rgba(0, 0, 0, .5);
+    -2px 0px 2px -2px rgba(0, 0, 0, 0.5), 
+        2px 0px 2px -2px rgba(0, 0, 0, 0.5);
 
     filter: brightness(115%);
   
@@ -44,11 +46,12 @@
     width: fit-content;
     &__title {
         li{
+            line-height: 1.1;
             font-size: 18px;
             text-align: left;
             margin-bottom: 5px;
             overflow: hidden;
-            height:1em;
+            height:1.1em;
             
             text-overflow:ellipsis;
         }

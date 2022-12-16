@@ -3,42 +3,47 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { CartItem } from "../CartItem";
 import { Button } from "../Button";
-// import { calcTotalPrice } from "../func";
+import { calcTotalPrice, priceFormating } from "../../hooks";
 import styles from './CartMenu.module.scss';
 
-export const CartMenu = ({ basket, onClick, ref }) => {
-  // const isVisible = useSelector((state) => state.cart.isCartOpen)
+export const CartMenu = ({ cart, onClick, ref }) => {
+  const isVisible = useSelector((state) => state.cart.isCartOpen)
 
   return (
-    // isVisible && 
+    isVisible && 
     <div className={styles.cartMenu}>
 
-      <div className="basket-menu__game-list">
-        {/* {
-        basket.length > 0? 
-          basket.map((items) => (
+      <div className={styles.cartMenu__gameList}>
+        {
+        cart.length > 0? 
+          cart.map((items,index) => (
             <CartItem
+            index = {index+1}
               key={items.articul}
-              title={items.title}
+              name={items.name}
               price={items.price}
+              picture={items.picture}
+               
               articul={items.articul}
             />
           ))
-          : "Корзина пуста"} */}
+          : "Корзина пуста"}
       </div>
-      {/* {
-      basket.length > 0 ? 
+      {
+      cart.length > 0 ? 
       (
-        <div className="basket-menu__arrange">
-          <div className="basket-menu__total-price">
+        <div className={styles.cartMenu__arrange}>
+          <div className={styles.cartMenu__totalPrice}>
             <span>Итого:</span>
-            <span>{calcTotalPrice(basket)} &#8372;</span>
+            <span>
+              {priceFormating(calcTotalPrice(cart))}
+               &#8372;</span>
           </div>
-          <Button size="m" type="primary" onClick={onClick}>
+          <Button  onClick={onClick}>
             Оформить заказ
           </Button>
         </div>
-      ) : null} */}
+      ) : null}
     </div>
   );
 };

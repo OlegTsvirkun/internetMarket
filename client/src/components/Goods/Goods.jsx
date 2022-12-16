@@ -2,7 +2,8 @@
 
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { getCategory } from "../../store/categorySlice";
 import { getMain } from "../../store/mainSlice";
 // import { useSortGoods } from "../../hooks/useSortGoods";
 // import { paths } from "../../paths";
@@ -10,25 +11,21 @@ import { getMain } from "../../store/mainSlice";
 import { Button } from "../Button";
 import { CategoryCard } from "../CategoryCard/CategoryCard";
 import { ContentWrapper } from "../ContentWrapper";
+import { GoodCard } from "../GoodCard";
 // import { PlaneItem } from "../plane-item";
 // import { Spinner } from "../spinner";
 import styles from './Goods.module.scss';
 
-export const Goods = () => {
+export const Goods = ({category}) => {
+  // const navigate = useNavigate()
   const dispatch = useDispatch()
+  // const { goods, isLoading } = useSelector();
   useEffect(() => {
-   dispatch(getMain())
+    dispatch(getCategory(category))
   }, [dispatch]);
-  const { categories, goods, isLoading } = useSelector((state) => state.main);
+  const {goods, isLoading } = useSelector((state) => state.category);
   
-  console.log(categories);
-  // const { isDescSort, setIsDescSort, sortedGoods } = useSortGoods(
-  //   Goods || []
-  // );
 
-  // useEffect(() => {
-  //   dispatch(getGoods());
-  // }, [dispatch]);
 
   if (isLoading) return <div>Loaadiing...</div>;
 
@@ -36,10 +33,12 @@ export const Goods = () => {
     <div>
      
       <ContentWrapper className={styles.goodsGrid}>
-        {/* { categories.map(item=><CategoryCard cat ={item.category} catId = {item._id}  />)} */}
+        {Object.keys(goods).map(item=>{
+     return  <GoodCard 
+     key = {goods[item]['_id']} 
+     {...goods[item]}/>
 
-        {/* {sortedGoods &&
-          sortedGoods.map((plane) => <GoodsItem key={plane._id} {...plane} />)} */}
+        })} 
       </ContentWrapper>
     </div>
   );

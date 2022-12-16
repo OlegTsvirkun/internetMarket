@@ -1,44 +1,43 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import services from './services/service';
 
-export const getMain = createAsyncThunk('GET_MAIN', async (_, thunkAPI) => {
+export const getCategory = createAsyncThunk('GET_MAIN', async (category, thunkAPI) => {
   try {
-    return await services.getMain();
+    return await services.getCategory(category);
   } catch(error) {
      return thunkAPI.rejectWithValue(error.response.data)
   }
 });
 
-const mainSlice = createSlice({
-  name: 'main',
+const categorySlice = createSlice({
+  name: 'category',
   initialState:{
-    categories:{},
+    catName:'',
     goods:{},
-    images:{},
+    
     isError: false,
     isLoading: false,
     message:''
   },
   extraReducers:(builder)=>{
     builder
-    .addCase(getMain.pending,(state, action)=>{
+    .addCase(getCategory.pending,(state, action)=>{
       state.isLoading = true
     })
-    .addCase(getMain.fulfilled,(state, action)=>{
+    .addCase(getCategory.fulfilled,(state, action)=>{
       state.isLoading = false
-      state.categories = action.payload.category
+      state.catName = action.payload.category
       state.goods = action.payload.goods
-      state.images = action.payload.image
+      
     })
-    .addCase(getMain.rejected,(state, action)=>{
+    .addCase(getCategory.rejected,(state, action)=>{
       state.isLoading = false
       state.isError = true
       state.message = action.payload;
       state.goods = null
-      state.categories = null
-      state.images = null
+      state.catName = null
     })
   }
 }) 
 
-export default mainSlice.reducer
+export default categorySlice.reducer

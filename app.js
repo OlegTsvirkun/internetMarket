@@ -9,9 +9,9 @@ const Category = require('./models/category');
 const Good = require('./models/good');
 const Image = require('./models/image');
 const app = express()
-const bd = process.env.MONGO_URL
-mongoose.set('strictQuery', false)
-mongoose
+const bd = process.env.MONGO_URL_LOCAL
+mongoose.set('strictQuery', false)  
+mongoose 
   .connect(bd, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((res) => console.log('Connected to DB'))
   .then(() => {
@@ -68,10 +68,27 @@ app.get('/', async (req, res) => {
 
 })
 
-app.get('/cat', async (req,res)=>{
-console.log( req.query)
-  //  const goods = await 
-  // .catch (error=> {
-  //   console.log(error);
-  // })
+app.get('/cat/:id', async (req,res)=>{
+console.log( req.params.id)
+const catName = req.params.id
+const goods = await Good
+    .find()
+    .populate({
+      path: 'category',
+      match: {category:{$eq: catName},
+      
+    }
+    })
+    .exec()
+    .then(good => {  
+      
+      return good
+      .filter(item=> item.category)
+   
+  })
+  .catch((error) => { 
+    res.status(500).json({'Error:': error})
+  });
+  res.status(200).json({ goods})
+
 })

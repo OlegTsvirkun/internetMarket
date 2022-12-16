@@ -2,7 +2,9 @@ import React from "react";
 import { Button } from "../Button/Button";
 import { ContentWrapper } from "../ContentWrapper/ContentWrapper";
 import { SearchBar } from "../SearchBar/SearchBar";
+import {BiCategoryAlt} from 'react-icons/bi'
 import styles from "./SubHeader.module.scss";
+import { CartBlock } from "../CartBlock/CartBlock";
 
 export const SubHeader = ({ searchValue, setSearchValue }) => {
 	return (
@@ -10,18 +12,19 @@ export const SubHeader = ({ searchValue, setSearchValue }) => {
     <ContentWrapper className={styles.subHeader__container}>
 		
     <Button className ={ styles.subHeader__button }>
-      КАТАЛОГ ТОВАРОВ
+    <BiCategoryAlt size= '30'/> <span>КАТАЛОГ ТОВАРОВ</span>
     </Button>
-    <SearchBar  searchValue={searchValue} setSearchValue={setSearchValue} />
+    <SearchBar containerClassName={styles.searchBar} searchValue={searchValue} setSearchValue={setSearchValue} />
      
      
-          <Button
+         {location.pathname !=='/' && <Button
             className={styles.subHeader__sortButton}
             // onClick={() => setIsDescSort(!isDescSort)}
           >
-            Сортировать по цене 
+            Сорт
             {/* {`${isDescSort ? "+" : "-"}`} */}
-          </Button>
+          </Button>}
+          <CartBlock/>
         
       
   </ContentWrapper>
