@@ -8,13 +8,18 @@
     margin-right: 2em;
 }
 &__button{
-    font-weight: 500;
+    font-weight: 600;
     font-size: 16px;
+    letter-spacing: .8px;
+
     
 }
 &__buttonInCart{
+    line-height: 1;
     background-color: orange;
-    font-weight: 500;
+    // padding:0 2rem;
+    letter-spacing: .8px;
+    font-weight: 600;
     font-size: 16px;
 }
 }

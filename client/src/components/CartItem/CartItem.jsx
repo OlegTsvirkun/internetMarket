@@ -1,17 +1,30 @@
-
-
-
-import React from 'react'
-import { priceFormating } from '../../hooks';
-import { host } from '../../host';
+import React from 'react';
+import { CartTableItem } from '../CartTableItem';
 import styles from './CartItem.module.scss';
-export const CartItem = ({index, name, price, picture}) => {
+import { useSelector } from "react-redux";
+
+export const CartItem = ({}) =>{
+	const cart = useSelector((state) => state.cart.itemsInCart);
+
   return (
-    <div className={styles.cartItem}>
-      <div className={styles.cartItem__index} >{index}.</div>
-      <img src = {host+picture}className={styles.cartItem__image}/>
-      <span className={styles.cartItem__title}>{name}</span>
-      <span className={styles.cartItem__price}>{priceFormating(price)}  &#8372;</span>
-    </div>
-  )
-}
+    <table className={styles.cartItem}>
+    <thead >
+      <tr className={styles.cartTable}>
+          <th className={styles.cartTable__index}>No</th>
+          <th className={styles.cartTable__image}>Изображение</th>
+          <th className={styles.cartTable__title}>Наименование</th>
+          <th className={styles.cartTable__count}>Количество</th>
+          <th className={styles.cartTable__price}>Общая сумма</th>
+      </tr>
+    </thead>
+          {cart.map((item,index) => {
+            console.log(item);
+          return  <CartTableItem
+            key = {item._id}
+            index = {index+1}
+           item ={item}
+            />
+            })}
+            </table>
+)};
+

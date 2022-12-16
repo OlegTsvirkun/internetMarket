@@ -17,14 +17,15 @@ export const SubHeader = ({ searchValue, setSearchValue }) => {
     <SearchBar containerClassName={styles.searchBar} searchValue={searchValue} setSearchValue={setSearchValue} />
      
      
-         {location.pathname !=='/' && <Button
+         {location.pathname !=='/' ? <Button
             className={styles.subHeader__sortButton}
             // onClick={() => setIsDescSort(!isDescSort)}
           >
             Сорт
             {/* {`${isDescSort ? "+" : "-"}`} */}
-          </Button>}
+          </Button>: <div></div>}
           <CartBlock/>
+          
         
       
   </ContentWrapper>

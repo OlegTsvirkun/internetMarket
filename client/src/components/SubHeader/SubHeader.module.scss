@@ -3,12 +3,16 @@
     height: 60px;
     &__container{
         display: grid;
-        grid-template-columns: 2fr 4fr 1fr auto;
+        grid-template-columns: 2fr 4fr 1fr 1.75fr;
         align-content: center;
-
+        align-items: center;
+    }
+    &__button:hover {
+        background-color:rgb(79, 194, 255);
     }
     &__button {
         height: 60px;
+        width: 100%;
         font-size: 18px;
         letter-spacing: 1px;
         display: flex;
@@ -29,7 +33,9 @@
     &__sortButton:hover {
         background-color: rgb(74, 74, 74)
     }
+    
 }
 .searchBar{
 margin-left: 20px;
+position: initial;
 }

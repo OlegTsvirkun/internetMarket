@@ -4,49 +4,78 @@
     display: flex;
     align-items:center;
     
-    position: relative;
-    
+    height: 45px;
+    overflow: hidden;
     &__input::placeholder {
-font-size:16px;
+        font-size:16px;
+    }
+    &__input:hover{
+        background-color:rgb(252, 252, 252);
+        
     }
     &__input{
-        height: 50px;
-        flex: 1 1 80%;
+        // height: 45px;
+        // flex: 1 1 80%;
+        position: relative;
+        height: 100%;
     background-color:whitesmoke;
     padding: 3px 3px 3px 45px;
     font-size: 22px;
     line-height: 1;
     color:rgb(63, 63, 63);
+    transition: all .3s;
+
+    // position: relative;
 }
 
 &__iconClear.active:hover{
     scale: 1.2;
    
 }
+&__iconClear:hover{
+    scale:1.1;
+    // transform:translate(-100% , 0);
+
+}
 &__iconClear{
     cursor:pointer;
-    transform: translateX(-30px);
+    // position:absolute;
+    right:0;
+    transform: translateX(-110%);
+    // transform:translate(-100% , 0);
+    right: 0px;
+
     z-index:2;
-    right: 38px;
+    // right: 40px;
     transition: all .3s;
 }
+
 &__icon:hover{
     scale: 1.2;
 }
 &__icon{
     position: absolute;
-    top:50%;
-    transform:translateY(-50%);
+    // top:50%;
+    transform:translateX(25%);
     z-index:2;
-    left: 9px;
-    color:rgb(0, 0, 0);
+    // left: 9px;
+    color:rgb(40, 40, 40);
+    transition: all .3s;
     
    
 }
+&__button:hover{
+    background-color:rgb(255, 187, 0);
+    
+}
 &__button{
+    // position: static;
 background-color:orange;
-transform: translateX(-30px);
+transform: translateX(-35px);
+transition: all .3s;
+
 
 height:50px;
 }
+
 }

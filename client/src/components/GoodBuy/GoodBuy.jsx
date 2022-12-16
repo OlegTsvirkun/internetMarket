@@ -13,9 +13,14 @@ export const GoodBuy = ({ good }) => {
 
 	const handleButton = (event) => {
 		event.stopPropagation();
+		let count = 0
 		if (isItemImBasket) {
 			dispatch(removeFromCart(good.articul));
-		} else dispatch(setInCart(good));
+		} else {
+			count++
+			const goodInCart = JSON.parse(JSON.stringify(good)) 
+			goodInCart.count = count
+			dispatch(setInCart(goodInCart))};
 	};
 
 	return (
