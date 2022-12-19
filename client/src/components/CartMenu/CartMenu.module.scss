@@ -1,70 +1,40 @@
 .cartMenu {
     position: absolute;
     bottom: 50%;
-   right: 50%;
-    // border-radius: 15px;
-    background-color:whitesmoke;
-    border:1px solid rgba(71, 71, 71, 0.123);
-    width: 50vw;
+    right: 50%;
+    background-color: whitesmoke;
+    border: 1px solid rgba(71, 71, 71, 0.123);
+    width: 55vw;
     padding: 10px, 20px;
     z-index: 100;
-    transform: translate(50% , 50%);
-    &__topBar{
-        padding:7px 10px 3px 20px;
+    transform: translate(50%, 50%);
+    &__topBar {
+        padding: 7px 10px 3px 20px;
         display: flex;
         justify-content: space-between;
-        align-items:baseline;
+        align-items: baseline;
         font-size: 18px;
     }
-    &__close:hover{
-        color:rgba(71, 71, 71, 0.845);
+    &__close:hover {
+        color: rgba(71, 71, 71, 0.845);
     }
-    &__close{
-        color:rgb(38, 38, 38);
-
-text-align: right;
+    &__close {
+        color: rgb(38, 38, 38);
+        text-align: right;
     }
-  &__goodList {
-    margin: 20px;
-    padding: 20px 0;
-  }
- &__arrange {
-    margin: 20px;
-    padding: 20px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.4);
-  }
-&__totalPrice {
-    font-size: 20px;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-
-}
-
-.cartTable{
-    display: flex;
-    // justify-content: space-between;
-    align-items:baseline;
-    &__index {
-        flex: 0 0 2%;
+    &__goodList {
+        margin: 20px ;
+        padding: 20px 0;
     }
-    &__image {
-        flex: 0 0 8%;
-        width: 70px;
-        height: auto;
+    &__arrange {
+        margin: 20px;
+        padding: 20px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.4);
     }
-    &__title {
-        flex: 0 0 60%;
-        overflow: hidden;
-        height: 1.1em;
-        text-overflow: clip;
-        margin-left: 20px;
-        &__count {
-            flex: 0 0 15%;
-        }
-    }
-    &__price {
-        flex: 0 0 10%;
+    &__totalPrice {
+        font-size: 20px;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
     }
 }

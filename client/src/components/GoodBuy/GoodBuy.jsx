@@ -1,5 +1,5 @@
 import React from "react";
-import { setInCart, removeFromCart } from "../../store/cartSlice";
+import { setInCart, removeFromCart, setItemsGoods } from "../../store/cartSlice";
 import { Button } from "../Button";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./GoodBuy.module.scss";
@@ -7,20 +7,21 @@ import styles from "./GoodBuy.module.scss";
 export const GoodBuy = ({ good }) => {
 	const dispatch = useDispatch();
 	const cart = useSelector((state) => state.cart.itemsInCart);
-	const isItemImBasket = cart.some((item) => {
-		return item.articul === good.articul;
+	const isItemImBasket =Object.keys(cart).some((item) => {
+		return item === good.articul
 	});
 
 	const handleButton = (event) => {
 		event.stopPropagation();
-		let count = 0
+		let count = 0;
 		if (isItemImBasket) {
 			dispatch(removeFromCart(good.articul));
 		} else {
-			count++
-			const goodInCart = JSON.parse(JSON.stringify(good)) 
-			goodInCart.count = count
-			dispatch(setInCart(goodInCart))};
+			count++;
+		const obj = {}
+		obj[good.articul]= count
+			dispatch(setInCart({...obj}));
+		}
 	};
 
 	return (
@@ -30,7 +31,6 @@ export const GoodBuy = ({ good }) => {
         ${
 					isItemImBasket ? styles.goodBuy__buttonInCart : styles.goodBuy__button
 				}`}
-				// type={isItemImBasket ? "secondary" : "primary"}
 				onClick={handleButton}
 			>
 				{isItemImBasket ? "Убрать из корзины" : "В корзину"}

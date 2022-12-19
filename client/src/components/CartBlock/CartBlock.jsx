@@ -1,7 +1,7 @@
 import React, { useCallback, useRef } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { calcTotalPrice, priceFormating } from "../../hooks";
+import {  priceFormating } from "../../hooks";
 
 import { useNavigate } from "react-router";
 import { BsCart } from "react-icons/bs";
@@ -13,7 +13,9 @@ import { openCartMenu } from "../../store/cartSlice";
 
 export const CartBlock = () => {
 	const cart = useSelector((state) => state.cart.itemsInCart);
-	const totalPrice = calcTotalPrice(cart);
+	const {goods} = useSelector((state) => state.category);
+
+    const totalPrice = Object.keys(cart).reduce((acc,articul)=> acc+= goods[articul]['price']*cart[articul] , 0)
 	const navigate = useNavigate();
 	const isVisible = useSelector((state) => state.cart.isCartOpen);
 	const dispatch = useDispatch();
@@ -43,14 +45,14 @@ export const CartBlock = () => {
 					name="cart-block"
 					onClick={openMenu}
 				/>
-				<ItemsInCart count={cart.length} />
+				<ItemsInCart count={Object.keys(cart).length} />
 
 				<span className={styles.cartBlock__totalPrice}>
-					{totalPrice !== 0 ? priceFormating(totalPrice) : '0.00 '}
+					{totalPrice !== 0 ? priceFormating(totalPrice): '0.00 '}
 					&#8372;
 				</span>
 			</div>
-			{isVisible && <CartMenu cart={cart} onClick={handleClick} />}
+			{isVisible && <CartMenu totalPrice = {totalPrice} cart={cart} onClick={handleClick} />}
 		</div>
 	);
 };

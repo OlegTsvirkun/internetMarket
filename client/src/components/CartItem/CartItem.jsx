@@ -10,19 +10,21 @@ export const CartItem = ({}) =>{
     <table className={styles.cartItem}>
     <thead >
       <tr className={styles.cartTable}>
-          <th className={styles.cartTable__index}>No</th>
-          <th className={styles.cartTable__image}>Изображение</th>
-          <th className={styles.cartTable__title}>Наименование</th>
-          <th className={styles.cartTable__count}>Количество</th>
-          <th className={styles.cartTable__price}>Общая сумма</th>
+          <th >No</th>
+          <th >Изображение</th>
+          <th >Наименование</th>
+          <th >Количество</th>
+          <th >Общая сумма</th>
+          <th >Удалить товар</th>
       </tr>
     </thead>
-          {cart.map((item,index) => {
-            console.log(item);
+          {Object.keys(cart).map((articul,index) => {
           return  <CartTableItem
-            key = {item._id}
+            key = {articul}
             index = {index+1}
-           item ={item}
+            articul ={articul}
+            count = {cart[articul]}
+            cart = {cart}
             />
             })}
             </table>

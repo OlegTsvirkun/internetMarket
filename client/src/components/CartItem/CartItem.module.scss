@@ -1,7 +1,7 @@
 .cartItem {
     // display: flex;
     // justify-content: space-between;
-    align-items: baseline;
+    margin: 0 auto;
     &__index {
         flex: 0 0 2%;
     }
@@ -13,7 +13,7 @@
        
     }
     &__title {
-        flex: 0 0 60%;
+        flex: 0 0 55%;
         overflow: hidden;
         height: 1.1em;
         text-overflow: clip;
@@ -25,6 +25,10 @@
     }
     &__price {
         flex: 0 0 10%;
+    }
+    &__delete{
+        flex: 0 0 55%;
+
     }
     thead th{
     font-weight: 500;
