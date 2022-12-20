@@ -7,12 +7,13 @@ import { GoodBuy } from "../GoodBuy";
 import styles from "./GoodCard.module.scss";
 
 export const GoodCard = (good) => {
-	const { _id, articul, name, price,  picture,  } = good;
+	const { _id, articul, name, price,  picture, category } = good;
+  console.log(good.category.category);
 	const { isLoading } = useSelector((state) => state.category);
 	if (isLoading) return <div>Loading...</div>;
 	return (
 		<div className={styles.goodCard}>
-			<Link className={styles.goodCard__link} to={`/${_id}`}>
+			<Link className={styles.goodCard__link} to={`/${category.category}/${_id}`}>
 				<div className={styles.goodCard__imageContainer}>
 					{picture && (
 						<img

@@ -1,13 +1,13 @@
 .cartMenu {
     position: absolute;
-    bottom: 50%;
+    top: 50%;
     right: 50%;
     background-color: whitesmoke;
     border: 1px solid rgba(71, 71, 71, 0.123);
     width: 55vw;
     padding: 10px, 20px;
     z-index: 100;
-    transform: translate(50%, 50%);
+    transform: translate(50%, 10%);
     &__topBar {
         padding: 7px 10px 3px 20px;
         display: flex;
