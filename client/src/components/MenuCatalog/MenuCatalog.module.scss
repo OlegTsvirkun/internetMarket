@@ -1,0 +1,28 @@
+.menuCatalog{
+
+    &__list{
+        background-color:rgb(249, 249, 249) ;
+
+        
+    }
+    &__cat:hover{
+        background-color: rgb(235, 235, 235);
+    }
+    &__cat{
+        padding: 5px 20px;
+        display: flex;
+        justify-content: space-between;
+        // border-bottom: solid 1px rgb(219, 219, 219); 
+        color: rgb(71,71,71);
+        font-weight: 300;
+
+    }
+    &__item{
+    position: relative;
+
+    }
+}
+.menuGoods{
+    // position: absolute;
+
+}

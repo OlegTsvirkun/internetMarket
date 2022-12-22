@@ -1,0 +1,38 @@
+.menuGoods{
+    background-color:rgb(249, 249, 249) ;
+    width: 400px;
+    position: absolute;
+    top:0px;
+    left:300px;
+    z-index: 110;
+    color:black;
+    text-align: start;
+    font-size: 16px;
+    border:1px solid rgb(71,71,71);
+    border-top:none;
+    // border-inline;
+    &__item:hover{
+        background-color: rgb(235, 235, 235);
+
+    }
+    &__item{
+        padding:5px 20px;
+    color: rgb(71,71,71);
+    font-weight: 300;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    }
+}
+
+// &__list{
+//     background: rgb(219, 219, 219) ;
+    
+// }
+// &__cat:hover{
+//     background-color: rgb(202, 202, 202);
+// }
+.menuGoods:hover{
+
+}

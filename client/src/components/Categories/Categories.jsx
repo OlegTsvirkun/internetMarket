@@ -29,13 +29,13 @@ export const Categories = () => {
 			<ContentWrapper className={styles.goodsGrid}>
 				{isLoading? [... new Array(6)].map((item,i) => {return <div key ={i}  className="Skeleton"><SkeletonCat/></div>}):
 				categories && Object.keys(categories).map((id) => {
-					let goo = goods.filter((item) => {
+					let good = goods.filter((item) => {
 						return item.category["_id"] == id;
 					});
 					return (
 						<CategoryCard
 							key={id}
-							goods={goo}
+							goods={good}
 							cat={categories[id]}
 							catId={id}
 							image={images[id]}
