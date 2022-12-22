@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import services from './services/service';
 
-export const getCategory = createAsyncThunk('GET_MAIN', async (category, thunkAPI) => {
+export const getCategory = createAsyncThunk('GET_CATEGORY', async (category, thunkAPI) => {
   try {
     return await services.getCategory(category);
   } catch(error) {

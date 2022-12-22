@@ -17,9 +17,8 @@ import { GoodCard } from "../GoodCard";
 import styles from './Goods.module.scss';
 
 export const Goods = ({category}) => {
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
   const dispatch = useDispatch()
-  // const { goods, isLoading } = useSelector();
   useEffect(() => {
     dispatch(getCategory(category))
   }, [dispatch]);
@@ -32,6 +31,11 @@ export const Goods = ({category}) => {
   return (
     <div>
      
+     <ContentWrapper className = {styles.backButton}>
+        <Button  onClick={() => navigate(-1)} isBackButton={true}>
+  					Назад
+  				</Button>
+     </ContentWrapper>
       <ContentWrapper className={styles.goodsGrid}>
         {Object.keys(goods).map(item=>{
      return  <GoodCard 

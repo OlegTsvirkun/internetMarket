@@ -13,7 +13,7 @@ export const GoodCard = (good) => {
 	if (isLoading) return <div>Loading...</div>;
 	return (
 		<div className={styles.goodCard}>
-			<Link className={styles.goodCard__link} to={`/${category.category}/${_id}`}>
+			<Link className={styles.goodCard__link} to={`/good?id=${good._id}`}>
 				<div className={styles.goodCard__imageContainer}>
 					{picture && (
 						<img

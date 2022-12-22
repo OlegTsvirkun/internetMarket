@@ -1,7 +1,7 @@
 .categoryCard{
     padding: 0px 10px;
-    height: 400px;
-    display:flex;
+    max-height:400px;
+    display:flex; 
     flex-direction: column;
     transition: all .3s;
     &__name:visited{

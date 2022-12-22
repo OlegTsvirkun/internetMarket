@@ -13,7 +13,8 @@ export const CategoryPage = ({}) =>{
 
   return (
   <div className={styles.categoryPage}>
-    <SubHeader/>
+    {/* <SubHeader/> */}
+    
    <Goods category= {category}/>
   </div>
 )};

@@ -17,7 +17,7 @@ export const cartSlice = createSlice({
             // state.itemsInCart.push(action.payload);
         },
         incrementGood: (state, action) => {
-            state.itemsInCart[action.payload] ++
+            state.itemsInCart[action.payload].count ++
 
         //     state.itemsInCart = state.itemsInCart.filter((good) => {
         //         if (good.articul == action.payload) {
@@ -30,7 +30,7 @@ export const cartSlice = createSlice({
         },
         decrementGood: (state, action) => {
             
-                state.itemsInCart[action.payload] --
+                state.itemsInCart[action.payload].count --
 
         //     state.itemsInCart = state.itemsInCart.filter((good) => {
         //         if (good.articul == action.payload) {
@@ -49,10 +49,8 @@ export const cartSlice = createSlice({
 
         },
         removeFromCart: (state, action) => {
-            state.itemsInCart = Object.keys(state.itemsInCart).filter(
-                (articul) => articul !== action.payload
-                );
-         
+        state.itemsInCart  = action.payload
+    
            
         },
       

@@ -8,25 +8,27 @@ import { getMain } from "../../store/mainSlice";
 import { Button } from "../Button";
 import { CategoryCard } from "../CategoryCard/CategoryCard";
 import { ContentWrapper } from "../ContentWrapper";
+import SkeletonCat from "../SkeletonCat/SkeletonCat";
 // import { PlaneItem } from "../plane-item";
 // import { Spinner } from "../spinner";
 import styles from "./Categories.module.scss";
 
 export const Categories = () => {
 	const dispatch = useDispatch();
-	useEffect(() => {
-		dispatch(getMain());
-	}, [dispatch]);
 	const { categories, goods, images, isLoading } = useSelector(
 		(state) => state.main,
 	);
+	useEffect(() => {
+		dispatch(getMain());
+	}, [dispatch]);
 
-	if (isLoading) return <div>Loaadiing...</div>;
+	
 
 	return (
 		<div>
 			<ContentWrapper className={styles.goodsGrid}>
-				{categories && Object.keys(categories).map((id) => {
+				{isLoading? [... new Array(6)].map((item,i) => {return <div key ={i}  className="Skeleton"><SkeletonCat/></div>}):
+				categories && Object.keys(categories).map((id) => {
 					let goo = goods.filter((item) => {
 						return item.category["_id"] == id;
 					});

@@ -23,7 +23,8 @@ export const CartItem = ({}) =>{
             key = {articul}
             index = {index+1}
             articul ={articul}
-            count = {cart[articul]}
+            count = {cart[articul].count}
+            price ={cart[articul].price}
             cart = {cart}
             />
             })}

@@ -19,7 +19,9 @@ export const GoodBuy = ({ good }) => {
 		} else {
 			count++;
 		const obj = {}
-		obj[good.articul]= count
+		obj[good.articul] = {...good,'count':count , 'price': good.price}
+		// obj[good.articul]
+		console.log(obj);
 			dispatch(setInCart({...obj}));
 		}
 	};

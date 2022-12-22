@@ -5,7 +5,7 @@ import styles from "./CategoryCard.module.scss";
 export const CategoryCard = ({ cat, id, image, goods }) => {
 	return (
 		<div className={styles.categoryCard}>
-			<Link className={styles.cardItem} to={`cat/${cat} `}>
+			<Link className={styles.cardItem} to={`cat/${cat}`}>
 				<div className={styles.categoryCard__name}>{cat}</div>
 				{image && <img className={styles.categoryCard__image} src={image} alt={cat} />}
 			</Link>
@@ -14,7 +14,7 @@ export const CategoryCard = ({ cat, id, image, goods }) => {
 					return (
             <Link
             key={goods[good]._id}
-            to={`${cat}/${goods[good].articul}`}
+            to={`good?id=${goods[good]._id}`}
             
             className={styles.goodsList__title}
             >

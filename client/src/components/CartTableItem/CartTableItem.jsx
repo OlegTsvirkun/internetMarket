@@ -9,14 +9,24 @@ import { removeFromCart } from '../../store/cartSlice';
 import { CountChanger } from '../CountChanger/CountChanger';
 import styles from './CartTableItem.module.scss';
 
-export const CartTableItem = ({index,articul, count,cart}) => {
+export const CartTableItem = ({index,articul, count,price}) => {
   const dispatch = useDispatch();
-  const {goods} = useSelector((state) => state.category);
-  const price = goods[articul]['price']*count;
+  const goods = useSelector((state) => state.cart.itemsInCart);
+  // const price = goods[articul]['price']*count;
+  // console.log(goods[articul]);
 
   const name = goods[articul]['name']
   const picture = goods[articul]['picture']
-
+const handlerRemove = ()=>{
+  let obj = Object.keys(goods).reduce((acc,item) =>{
+    if (item !== articul){
+    acc[item]= goods[item]
+  }
+  return acc
+},{});
+// console.log(obj);
+dispatch(removeFromCart(obj))
+}
   return (
  
   <tbody className={styles.cartTable}>
@@ -26,9 +36,9 @@ export const CartTableItem = ({index,articul, count,cart}) => {
           <th>{name}</th>
           <th><CountChanger count = {count} articul = {articul} /> </th>
           <th>
-            {priceFormating(price)}
+            {priceFormating(price*count)}
              &#8372; </th> 
-             <th className={styles.removeGood}  onClick={()=>dispatch(removeFromCart(articul))}>&#10006;</th>
+             <th className={styles.removeGood}  onClick={handlerRemove}>&#10006;</th>
       </tr>
   </tbody>
 

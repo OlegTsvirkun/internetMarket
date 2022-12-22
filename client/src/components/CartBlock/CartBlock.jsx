@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {  priceFormating } from "../../hooks";
 
 import { useNavigate } from "react-router";
-import { BsCart } from "react-icons/bs";
+import { BsCart } from "react-icons/bs"; 
 
 import styles from "./CartBlock.module.scss";
 import { CartMenu } from "../CartMenu/";
@@ -13,9 +13,8 @@ import { openCartMenu } from "../../store/cartSlice";
 
 export const CartBlock = () => {
 	const cart = useSelector((state) => state.cart.itemsInCart);
-	const {goods} = useSelector((state) => state.category);
-
-    const totalPrice = Object.keys(cart).reduce((acc,articul)=> acc+= goods[articul]['price']*cart[articul] , 0)
+	// const {goods} = useSelector((state) => state.category);
+    const totalPrice = Object.keys(cart).reduce((acc,item)=> acc+= cart[item].price*cart[item].count , 0)
 	const navigate = useNavigate();
 	const isVisible = useSelector((state) => state.cart.isCartOpen);
 	const dispatch = useDispatch();
@@ -48,7 +47,7 @@ export const CartBlock = () => {
 				<ItemsInCart count={Object.keys(cart).length} />
 
 				<span className={styles.cartBlock__totalPrice}>
-					{totalPrice !== 0 ? priceFormating(totalPrice): '0.00 '}
+					{totalPrice!==0 ? priceFormating(totalPrice): '0.00 '}
 					&#8372;
 				</span>
 			</div>

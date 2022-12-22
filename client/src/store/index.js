@@ -4,10 +4,12 @@ import { configureStore } from "@reduxjs/toolkit";
 import mainReducer from './mainSlice'
 import categoryReducer from './categorySlice'
 import cartReducer from "./cartSlice";
+import goodReducer from "./goodSlice";
 export const store = configureStore(({
     reducer: {
         main: mainReducer,
         category: categoryReducer,
         cart: cartReducer,
+        good: goodReducer
     }
 }))
