@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from "react";
+import React, { useCallback, useRef,useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import {  priceFormating } from "../../hooks";
@@ -13,13 +13,22 @@ import { openCartMenu } from "../../store/cartSlice";
 
 export const CartBlock = () => {
 	const cart = useSelector((state) => state.cart.itemsInCart);
-	// const {goods} = useSelector((state) => state.category);
+	
     const totalPrice = Object.keys(cart).reduce((acc,item)=> acc+= cart[item].price*cart[item].count , 0)
 	const navigate = useNavigate();
 	const isVisible = useSelector((state) => state.cart.isCartOpen);
 	const dispatch = useDispatch();
 	const cartBlock = useRef();
+	const isCartMounted = useRef(false)
 
+	useEffect(() => {
+		if(isCartMounted.current){
+			let json = JSON.stringify(cart)
+			localStorage.setItem('cart', json)
+		}
+		isCartMounted.current = true;
+	
+	}, [cart]);
 	const handleClick = useCallback(() => {
 		dispatch(openCartMenu(false));
 		navigate("/order");

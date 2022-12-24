@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getCartFromLS } from "../utils/getCartFromLS";
 
 export const cartSlice = createSlice({
     name: "cart",
     initialState: {
         isCartOpen: false,
         // itemsInCart: [], 
-        itemsInCart: {},
+        itemsInCart: getCartFromLS() ,
     },
     reducers: {
         openCartMenu: (state, action) => {
