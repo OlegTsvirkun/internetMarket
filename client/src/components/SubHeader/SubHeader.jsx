@@ -18,7 +18,6 @@ export const SubHeader = ({ searchValue, setSearchValue }) => {
 	const { categories, goods } = main;
 	// console.log(goods);
 	const [isCatMenuOpen, setisCatMenuOpen] = useState(false);
-	const handleCat = () => {};
 
 	if (location.pathname == "/order") return <></>;
 	return (

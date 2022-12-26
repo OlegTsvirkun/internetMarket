@@ -1,3 +1,33 @@
 .orderPage{
-    
+    &__container{
+        display: flex;
+        flex-direction: column;
+        // align-items: center;
+        h1{
+            font-size: 24px;
+            font-weight: 600;
+            color:rgb(71, 71, 71);
+            text-transform:uppercase;
+            padding: 10px 0;
+        }
+        h3{
+            font-size: 21px;
+            padding: 10px 0;
+
+        
+        }
+    }
+    &__cart,&__form, &__totalPrice, &__checkout{
+margin-bottom: 20px;
+    }
+    &__form{
+
+    }
+    &__totalPrice{
+font-size: 22px;
+    }
+    &__checkout{
+        text-transform: uppercase;
+        width: 100%;
+    }
 }

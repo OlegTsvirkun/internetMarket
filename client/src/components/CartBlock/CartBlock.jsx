@@ -26,7 +26,7 @@ export const CartBlock = () => {
 			let json = JSON.stringify(cart)
 			localStorage.setItem('cart', json)
 		}
-		isCartMounted.current = true;
+		isCartMounted.current = true; 
 	
 	}, [cart]);
 	const handleClick = useCallback(() => {

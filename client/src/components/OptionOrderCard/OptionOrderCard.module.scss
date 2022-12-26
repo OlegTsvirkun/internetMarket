@@ -1,0 +1,58 @@
+.optionOrderCard{
+    input[type=radio]{
+// visibility: hidden;
+
+    }
+    position: relative;
+    width: 150px;
+    height: 180px;
+    border:1px solid #2FB5FC;
+    border-radius:10px;
+    display: flex;
+align-items: center;
+    &__container{
+        min-width: 150px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding: 0;
+
+        span{
+            position: absolute;
+            right: 8px;
+            top: 8px;
+            transform: translate(50%,-50%);
+            padding: 0;
+        }
+        h4{
+            text-align: center;
+            margin: 10px;
+        }
+    }
+    &__check.active{
+        // background-color:#ffffff;
+        color: #2FB5FC;
+    //    fill:rosybrown;
+    }
+    &__check{
+            background-color: rgb(255, 255, 255);
+        color:#2FB5FC;
+        // stroke-width: 0.2;
+    }
+    &__deliveryPrice {
+      
+width: 100%;
+            font-size: 14px;
+        p{
+            margin: 10px;
+            font-weight: 700;
+        }
+    }
+    &__icon{
+        margin:10px;
+    }
+}
+.optionOrderCard.active{
+    background:rgba(47, 180, 252, 0.103);
+}
+

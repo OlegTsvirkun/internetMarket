@@ -1,0 +1,10 @@
+.deliveryPost{
+    &__postN{
+        label:not(:first-child){
+            margin-left:10px;
+    
+            }
+            width:50px;
+    }
+    
+}

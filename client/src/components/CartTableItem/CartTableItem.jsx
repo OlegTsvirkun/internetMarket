@@ -12,8 +12,7 @@ import styles from './CartTableItem.module.scss';
 export const CartTableItem = ({index,articul, count,price}) => {
   const dispatch = useDispatch();
   const goods = useSelector((state) => state.cart.itemsInCart);
-  // const price = goods[articul]['price']*count;
-  // console.log(goods[articul]);
+
 
   const name = goods[articul]['name']
   const picture = goods[articul]['picture']
@@ -34,7 +33,7 @@ dispatch(removeFromCart(obj))
           <th >{index}.</th>
           <th><img src = {host+picture}/></th>
           <th>{name}</th>
-          <th><CountChanger count = {count} articul = {articul} /> </th>
+          <th><CountChanger count = {count} articul = {articul} cart={goods} /> </th>
           <th>
             {priceFormating(price*count)}
              &#8372; </th> 

@@ -1,0 +1,17 @@
+.deliveryAdress{
+    &__appartment,
+    &__lit,
+    &__house,
+    &__address
+    {
+        label:not(:first-child){
+        margin-left:10px;
+
+        }
+        width:150px;
+    }
+    &__address{
+        display: flex;
+        
+    }
+}

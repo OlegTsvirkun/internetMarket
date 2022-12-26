@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import {Link} from'react-router-dom'
 import { CartItem } from "../CartItem";
 import { Button } from "../Button";
 import { BsX } from "react-icons/bs";
@@ -37,7 +38,7 @@ export const CartMenu = ({ totalPrice, cart, onClick }) => {
 								&#8372;
 							</span>
 						</div>
-						<Button onClick={onClick}>Оформить заказ</Button>
+						<Button onClick={onClick}><Link to ='/order'>Оформить заказ</Link></Button>
 					</div>
 				) : null}
 			</div>

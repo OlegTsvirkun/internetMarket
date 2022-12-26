@@ -10,12 +10,20 @@ export const GoodBuy = ({ good }) => {
 	const isItemImBasket =Object.keys(cart).some((item) => {
 		return item === good.articul
 	});
-
+	
 	const handleButton = (event) => {
 		event.stopPropagation();
 		let count = 0;
 		if (isItemImBasket) {
-			dispatch(removeFromCart(good.articul));
+			
+		let objRemoved = Object.keys(cart).reduce((acc,item) =>{
+			if (item !== good.articul){
+			acc[item]= cart[item]
+		  }
+		  return acc
+		},{});
+		// console.log(obj);
+		dispatch(removeFromCart(objRemoved))
 		} else {
 			count++;
 		const obj = {}

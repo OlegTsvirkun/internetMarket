@@ -5,11 +5,13 @@ import mainReducer from './mainSlice'
 import categoryReducer from './categorySlice'
 import cartReducer from "./cartSlice";
 import goodReducer from "./goodSlice";
+import  orderSlice  from "./orderSlice";
 export const store = configureStore(({
     reducer: {
         main: mainReducer,
         category: categoryReducer,
         cart: cartReducer,
-        good: goodReducer
+        good: goodReducer,
+        order: orderSlice,
     }
 }))
