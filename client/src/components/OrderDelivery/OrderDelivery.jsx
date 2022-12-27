@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { OptionOrderCard } from "../OptionOrderCard/OptionOrderCard";
 import {host} from '../../host'
 import styles from "./OrderDelivery.module.scss";
@@ -8,12 +8,18 @@ import { Input } from "../Input/Input";
 import { DeliveryAdress } from "../DeliveryAdress/DeliveryAdress";
 import { DeliveryPost } from "../DeliveryPost/DeliveryPost";
 import { DeliverySelf } from "../DeliverySelf/DeliverySelf";
+import { useDispatch } from "react-redux";
 
 export const OrderDelivery = ({}) => {
 	const [deliveryAdress, setDeliveryAdress] = useState(true);
 	const [deliveryPost, setDeliveryPost] = useState(false);
 	const [deliverySelf, setDeliverySelf] = useState(false);
+	const dispatch = useDispatch(
+
+	)
+	// useEffect(() => {
 	
+	// }, []);
 	return (
 		<div className={styles.orderDelivery}>
 			<div className={styles.orderDelivery__toggle}>
@@ -28,6 +34,7 @@ export const OrderDelivery = ({}) => {
 					name="delivery"
 					id="deliveryAdress"
 					title="Адресная доставка"
+					value = 'Адресная доставка'
 					subtitle="Доставим завтра от:"
 					deliveryPrice="200uah"
 					onClick={() => {
@@ -47,6 +54,7 @@ export const OrderDelivery = ({}) => {
 					name="delivery"
 					id="deliveryPost"
 					title="Доставка НП"
+					value="Доставка НП"
 					subtitle="Доставим завтра от:"
 					deliveryPrice="200uah"
 					onClick={() => {
@@ -67,6 +75,7 @@ export const OrderDelivery = ({}) => {
 					name="delivery"
 					id="deliverySelf"
 					title="Самовывоз из магазина:"
+					value="Самовывоз из магазина:"
 					subtitle="Забрать завтра"
 					deliveryPrice="0 uah"
 					onClick={() => {

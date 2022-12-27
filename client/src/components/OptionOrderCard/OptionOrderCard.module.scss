@@ -1,6 +1,8 @@
 .optionOrderCard{
     input[type=radio]{
 // visibility: hidden;
+// position: absolute;
+// left:0;
 
     }
     position: relative;
@@ -20,10 +22,13 @@ align-items: center;
         span{
             position: absolute;
             right: 8px;
-            top: 8px;
+            top: 0px;
             transform: translate(50%,-50%);
             padding: 0;
         }
+    input[type=radio]{
+        visibility: hidden;
+    }
         h4{
             text-align: center;
             margin: 10px;

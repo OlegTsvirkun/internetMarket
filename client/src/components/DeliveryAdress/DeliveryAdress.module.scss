@@ -1,17 +1,36 @@
-.deliveryAdress{
-    &__appartment,
-    &__lit,
-    &__house,
-    &__address
-    {
-        label:not(:first-child){
-        margin-left:10px;
-
-        }
-        width:150px;
+.deliveryAdress {
+    margin-top: 50px;
+    label {
+        position: relative;
+        // display: flex;
+        // flex-direction: column;
+        // align-items:flex-start;
     }
-    &__address{
+    &__city {
         display: flex;
-        
+        flex-direction: column;
+        align-items: flex-start;
+        // margin-left:10px;
+        margin-right: 10px;
+
+        label {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    &__address {
+        display: flex;
+        align-items: flex-start;
+        // label:not(:first-child){
+
+        // }
+        label {
+            margin-right: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        input {
+            width: 50px;
+        }
     }
 }

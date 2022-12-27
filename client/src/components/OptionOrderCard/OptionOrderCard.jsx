@@ -12,6 +12,7 @@ export const OptionOrderCard = ({
 	icon,
 	checked,
 	deliveryPrice,
+	value
 }) => {
 	// const [isChecked, setIsChecked] = useState(checked);
 
@@ -34,7 +35,7 @@ export const OptionOrderCard = ({
 						type="radio"
 						name={name}
 						checked={checked}
-						value={id}
+						value={value}
 						onChange={onClick}
 					/>
 

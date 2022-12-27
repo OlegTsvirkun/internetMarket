@@ -3,7 +3,46 @@
     // border: 1px solid #000;
     // border-radius:10px;
     // padding: 50px;
+    &__contacts{
+        
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    label{
+        display: flex;
+        flex-direction: column;
+
+        position: relative;
+    }
     span{
         font-size: 18px;
     }
+    
+ 
 }
+// .error{
+
+//     position:absolute;
+//     right:-5px;
+    
+//     bottom: 0;
+//     background: rgb(58, 58, 58);
+//     // border: 1px solid rgb(108, 108, 108);
+//     border-radius:5px;
+//     padding: 7px;
+//     transform: translate(100% ,-50%);
+//     color:rgba(255, 255, 255, 0.879);
+//     z-index: 2;
+//     // width: ;
+// }
+// .error::after{
+//     content: " ";
+//     position: absolute;
+//     top: 50%;  /* At the top of the tooltip */
+//     left: -10px;
+//     margin-top: -5px;
+//     border-width: 5px;
+//     border-style: solid;
+//     border-color: transparent rgb(58, 58, 58) transparent  transparent ;
+// }

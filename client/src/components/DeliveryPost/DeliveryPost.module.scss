@@ -1,10 +1,22 @@
 .deliveryPost{
-    &__postN{
-        label:not(:first-child){
-            margin-left:10px;
-    
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    margin-top: 50px;
+
+        label{
+    display: flex;
+    flex-direction: column;
+position: relative;
             }
-            width:50px;
-    }
-    
-}
+            input{
+                margin: 5px 0;
+            }
+            
+        }
+        .deliveryPost__postN{
+            input{
+
+                width: 50px;
+            }
+        }
