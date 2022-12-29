@@ -22,13 +22,11 @@ export const GoodBuy = ({ good }) => {
 		  }
 		  return acc
 		},{});
-		// console.log(obj);
 		dispatch(removeFromCart(objRemoved))
 		} else {
 			count++;
 		const obj = {}
 		obj[good.articul] = {...good,'count':count , 'price': good.price}
-		// obj[good.articul]
 		console.log(obj);
 			dispatch(setInCart({...obj}));
 		}
@@ -43,7 +41,7 @@ export const GoodBuy = ({ good }) => {
 				}`}
 				onClick={handleButton}
 			>
-				{isItemImBasket ? "Убрать из корзины" : "В корзину"}
+				{isItemImBasket? "Прибрати з кошика" : "В кошик"}
 			</Button>
 		</div>
 	);

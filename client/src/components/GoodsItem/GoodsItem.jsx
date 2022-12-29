@@ -18,7 +18,7 @@ export const GoodsItem = ({
       { goodImage && <img className={styles.image} src={goodImage} alt=""/> }
       <div className={styles.info}>
         <h2 className={styles.title}>{ name }</h2>
-        <span className={styles.price}>{ price }$</span>
+        <span className={styles.price}>{ price } грн.</span>
       </div>
     </Link>
   );

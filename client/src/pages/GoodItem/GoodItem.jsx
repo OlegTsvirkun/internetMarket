@@ -57,7 +57,7 @@ console.log(images);
 						<div className={styles.goodItem__price}>
 							{priceFormating(good.price)}ГРН
 						</div>
-            <h2 className={styles.goodItem__descTitle}>Основные характеристики {good.name}:</h2>
+            <h2 className={styles.goodItem__descTitle}>Основні характеристики {good.name}:</h2>
 						{good.description?.split("|").map((items, i) => (
 							<p key={i} className={styles.goodItem__desc}>
 								{items.split(":").map((part, i) => {

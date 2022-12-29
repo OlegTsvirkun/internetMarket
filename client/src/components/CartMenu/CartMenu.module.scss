@@ -36,5 +36,12 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 20px;
+    }  
+    &__button{
+        width: auto;
     }
+    a{
+        color:white;
+      
+      }
 }

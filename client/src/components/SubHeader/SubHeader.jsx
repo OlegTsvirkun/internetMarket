@@ -19,7 +19,7 @@ export const SubHeader = ({ searchValue, setSearchValue }) => {
 	// console.log(goods);
 	const [isCatMenuOpen, setisCatMenuOpen] = useState(false);
 
-	if (location.pathname == "/order") return <></>;
+	if (location.pathname == "/order" || location.pathname == "/finish-order") return <></>;
 	return (
 		<div className={styles.subHeader}>
 			<ContentWrapper className={styles.subHeader__container}>
@@ -40,7 +40,7 @@ export const SubHeader = ({ searchValue, setSearchValue }) => {
 						/>
 					)}
 					{/* </ModalWindow> */}
-					<BiCategoryAlt size="30" /> <span>КАТАЛОГ ТОВАРОВ</span>
+					<BiCategoryAlt size="30" /> <span>КАТАЛОГ ТОВАРІВ</span>
 				</Button>
 				<SearchBar
 					containerClassName={styles.searchBar}

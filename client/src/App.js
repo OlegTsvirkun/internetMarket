@@ -9,6 +9,7 @@ import { GoodItem } from "./pages/GoodItem/GoodItem";
 import { HomePage } from "./pages/HomePage";
 import { OrderPage } from "./pages/OrderPage/OrderPage";
 import './App.css';
+import { FinishOrder } from "./pages/FinishOrder/FinishOrder";
 
 function App() {
   const [searchValue, setSearchValue] = useState('');
@@ -22,6 +23,7 @@ function App() {
           <Route exact path="/good" element={<GoodItem />} />
           <Route exact path="/cat/:category" element={<CategoryPage />} />
           <Route exact path="/order" element={<OrderPage />} />
+          <Route exact path="/finish-order" element={<FinishOrder />} />
         </Routes>
       </Router>
     </div>

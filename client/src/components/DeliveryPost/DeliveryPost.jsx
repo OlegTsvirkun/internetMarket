@@ -16,12 +16,11 @@ const {itemsInOrder}= useSelector(state=>state.order)
   const blurHandler = (e, maxValue = 40, minValue = 3) => {
 		let obj = {};
 		if (e.target.value.length < 1) {
-			obj = { ["Поле не может быть пустым"]: true };
-		
+			obj = { ["Поле не може бути порожнім"]: true };
 		} else if (e.target.value.length < minValue) {
-			obj = { [`Поле должно быть больше ${minValue} символов`]: true };
+			obj = { [`Поле має бути більше ${minValue} символів`]: true };
 		} else if (e.target.value.length > maxValue) {
-			obj = { [`Поле должно быть не больше ${maxValue} символов`]: true };
+			obj = { [`Поле має бути не більше ${maxValue} символів`]: true };
 		} else if (Validator(e)) {
 			obj = { [Validator(e)]: true };
 		} else {
@@ -31,27 +30,18 @@ const {itemsInOrder}= useSelector(state=>state.order)
 			dispatch(addError({ [e.target.name]: true }));
 		} else {
 			dispatch(remooveError({ [e.target.name]: false }));
-      // let obj1 ={}
-      // obj1[e.target.dataset.set]={[e.target.name]:e.target.value}
-      // console.log(obj1);
-      // let obj2 ={}
-      // obj2[e.target.dataset.set]
-      // obj2={...obj2[e.target.dataset.set],...{[e.target.name]:e.target.value}}
-      // obj2[e.target.dataset.set][e.target.name]=e.target.value
-      // {[e.target.dataset.set][e.target.name]= e.target.value }
-			// dispatch(addCatDelivery({...obj1}))
 		}
 return obj
 	}
   return (
     <div className={styles.deliveryPost}>
    <label htmlFor=''>
-   Город:
+   Місто:
       <input
         type="text"
-        name="cityDelivery"
-      data-caption = "Город"
-        placeholder="Город"
+        name="city"
+      data-caption = "Місто"
+        placeholder="Місто"
         onChange={(e) => {
           setCityDelivery(e.target.value);
         }}
@@ -64,12 +54,12 @@ return obj
     )}
    </label>
      
-    <label className={styles.deliveryPost__postN}  htmlFor="post">Отделение НП
+    <label className={styles.deliveryPost__postN}  htmlFor="postNP">Відділення НП
     <input
-      id="post"
+      id="postNP"
       type="number"
-      name="post"
-      data-caption = "Отделение НП"
+      name="postNP"
+      data-caption = "Відділення НП"
       placeholder="№"
       onChange={(e) => {
         setPost(e.target.value);

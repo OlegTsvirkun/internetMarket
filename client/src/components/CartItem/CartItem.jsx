@@ -11,11 +11,11 @@ export const CartItem = ({className}) =>{
     <thead >
       <tr className={styles.cartTable}>
           <th >No</th>
-          <th >Изображение</th>
-          <th >Наименование</th>
-          <th >Количество</th>
-          <th >Общая сумма</th>
-          <th >Удалить товар</th>
+          <th >Зображення</th>
+          <th >Найменування</th>
+          <th >Кількість</th>
+          <th >Загальна сума</th>
+          <th >Видалити товар</th>
       </tr>
     </thead>
           {Object.keys(cart).map((articul,index) => {

@@ -1,11 +1,23 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getCartFromLS } from "../utils/getCartFromLS";
+import services from "./services/service";
 
+    
+    export const finishOrder = createAsyncThunk('FINISH_ORDER',async(orderData,thunkAPI)=>{
+        try{
+           return await services.finishOrder(orderData)
+        }
+        catch(error){
+return thunkAPI.rejectWithValue(error.response.data)
+        }
+    })
 export const orderSlice = createSlice({
     name: "order",
     initialState: {
         isErrors: {},
-        itemsInOrder: {},
+        orderNumber: {},
+        isError: false,
+    isLoading: false,
     },
     reducers: {
         addError: (state, action) => {
@@ -20,33 +32,34 @@ export const orderSlice = createSlice({
                         return acc
                     }, {})
         },
-        addField: (state, action) => {
-            state.itemsInOrder = { ...state.itemsInOrder, ...action.payload }
-        },
-        addCatDelivery:(state,action)=>{
-            state.itemsInOrder={...action.payload }
-            console.log(Object.values(action.payload));
-        }
-        // openCartMenu: (state, action) => {
-        //     state.isCartOpen = action.payload
+        // addField: (state, action) => {
+        //     state.itemsInOrder = { ...state.itemsInOrder, ...action.payload }
         // },
-        // setInCart: (state, action) => {
-        //     state.itemsInCart = {...state.itemsInCart, ...action.payload}
-        // },
-        // incrementGood: (state, action) => {
-        //     state.itemsInCart[action.payload].count ++
-        // },
-        // decrementGood: (state, action) => {
-        //         state.itemsInCart[action.payload].count --
-        // },
-        // removeFromCart: (state, action) => {
-        // state.itemsInCart  = action.payload
-
-
-        // },
-
+        // addCatDelivery:(state,action)=>{
+        //     state.itemsInOrder={...action.payload }
+        //     console.log(Object.values(action.payload));
+        // }
+      
 
     },
+    extraReducers:(builder)=>{
+        builder
+        .addCase(finishOrder.pending,(state, action)=>{
+          state.isLoading = true
+        })
+        .addCase(finishOrder.fulfilled,(state, action)=>{
+          state.isLoading = false
+          state.orderNumber = action.payload
+          
+        })
+        .addCase(finishOrder.rejected,(state, action)=>{
+          state.isLoading = false
+          state.isError = true
+          state.orderNumber = {}
+
+         
+        })
+      }
 });
 
 export const { addError, remooveError,addField,addCatDelivery } = orderSlice.actions;

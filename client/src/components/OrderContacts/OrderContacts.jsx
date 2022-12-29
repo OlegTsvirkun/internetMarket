@@ -24,11 +24,11 @@ export const OrderContacts = ({}) => {
 	const blurHandler = (e, maxValue = 40, minValue = 3) => {
 		let obj = {};
 		if (e.target.value.length < 1) {
-			obj = { ["Поле не может быть пустым"]: true };
+			obj = { ["Поле не може бути порожнім"]: true };
 		} else if (e.target.value.length < minValue) {
-			obj = { [`Поле должно быть больше ${minValue} символов`]: true };
+			obj = { [`Поле має бути більше ${minValue} символів`]: true };
 		} else if (e.target.value.length > maxValue) {
-			obj = { [`Поле должно быть не больше ${maxValue} символов`]: true };
+			obj = { [`Поле має бути не більше ${maxValue} символів`]: true };
 		} else if (Validator(e)) {
 			obj = { [Validator(e)]: true };
 		} else {
@@ -46,17 +46,16 @@ export const OrderContacts = ({}) => {
 
 	return (
 		<div className={styles.orderContacts}>
-			<h3>Заполните Ваши контактные данные</h3>
-			<div className={styles.orderContacts__contacts}>
+<h3>Заповніть Ваші контактні дані</h3>			<div className={styles.orderContacts__contacts}>
 				<label>
-					Фамилия
+					Прізвище
 					<input
 						type="text"
 						name="firstname"
-						data-caption = "Фамилия"
+						data-caption = "Прізвище"
 
 
-						placeholder="Фамилия"
+						placeholder="Прізвище"
 						onChange={(e) => {
 							setFirstName(e.target.value);
 						}}
@@ -72,13 +71,13 @@ export const OrderContacts = ({}) => {
 					)}
 				</label>
 				<label>
-					Имя
+					Ім'я
 					<input
 						type="text"
 						name="name"
-						data-caption = "Имя"
+						data-caption = "Ім'я"
 
-						placeholder="Имя"
+						placeholder="Ім'я"
 						onChange={(e) => {
 							setName(e.target.value);
 						}}

@@ -17,7 +17,7 @@ export const CartMenu = ({ totalPrice, cart, onClick }) => {
 		isVisible && (
 			<div className={styles.cartMenu}>
 				<div className={styles.cartMenu__topBar}>
-					<span>Корзина</span>
+					<span>Кошик</span>
 					{
 						<BsX
 							className={styles.cartMenu__close}
@@ -27,18 +27,18 @@ export const CartMenu = ({ totalPrice, cart, onClick }) => {
 					}
 				</div>
 				<div className={styles.cartMenu__goodList}>
-					{Object.keys(cart).length > 0 ? <CartItem /> : "Корзина пуста"}
+					{Object.keys(cart).length > 0 ? <CartItem /> : "Кошик порожній"}
 				</div>
 				{Object.keys(cart).length > 0 ? (
 					<div className={styles.cartMenu__arrange}>
 						<div className={styles.cartMenu__totalPrice}>
-							<span>Итого:</span>
+							<span>Разом:</span>
 							<span>
 								{priceFormating(totalPrice)}
 								&#8372;
 							</span>
 						</div>
-						<Button onClick={onClick}><Link to ='/order'>Оформить заказ</Link></Button>
+						<Button onClick={onClick} className={styles.cartMenu__button} ><Link to ='/order'>Перейти до оформлення замовлення</Link></Button>
 					</div>
 				) : null}
 			</div>

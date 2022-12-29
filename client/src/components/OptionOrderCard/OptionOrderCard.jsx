@@ -55,7 +55,7 @@ export const OptionOrderCard = ({
 				<h4> {title}</h4>
 				<div className={styles.optionOrderCard__deliveryPrice}>
 					{subtitle}
-					<p>{deliveryPrice}</p>
+					<p>{deliveryPrice} грн.</p>
 				</div>
 				<div className={styles.optionOrderCard__icon}> {icon}</div>
 			</label>

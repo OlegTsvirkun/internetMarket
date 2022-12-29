@@ -2,7 +2,7 @@ export const Validator = (e) => {
     let value = e?.target?.value || " ";
     switch (e?.target?.type || " ") {
         case "text":
-            let reText = /^[a-zA-ZА-Яа-я]+$/;
+            let reText = /^[a-zA-ZА-Яа-яєЄііЇїГг\s'-]+$/;
             if (!reText.test(String(value).toLowerCase().trim())) {
                 return "Поле должно содержать только буквы";
             } else {

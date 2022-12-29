@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import services from './services/service';
 
 export const getMain = createAsyncThunk('GET_MAIN', async (_, thunkAPI) => {
-  try {
+  try { 
     return await services.getMain();
   } catch(error) {
      return thunkAPI.rejectWithValue(error.response.data)
