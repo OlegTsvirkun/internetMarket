@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./MenuCatalog.module.scss";
 import { BsLaptop } from "react-icons/bs";
 import { host } from "../../host";
 import { MenuGoods } from "../MenuGoods/MenuGoods";
 import { ModalWindow } from "../ModalWindow/ModalWindow";
+import { useDispatch } from "react-redux";
+import { getMain } from "../../store/mainSlice";
 
 export const MenuCatalog = ({ categories, goods, className }) => {
+
+
 	const [catId, setCatId] = useState("");
 	let good = [];
 	if (goods[0]) good = goods.filter((item) => item.category["_id"] == catId);

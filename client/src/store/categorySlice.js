@@ -8,6 +8,15 @@ export const getCategory = createAsyncThunk('GET_CATEGORY', async (category, thu
      return thunkAPI.rejectWithValue(error.response.data)
   }
 });
+export const searchingGoods = createAsyncThunk('SEARCH_GOOD', async (searchValue, thunkAPI) => {
+  try {
+    const v= await services.searchGoods(searchValue);
+    console.log(v);
+    return v
+  } catch(error) {
+     return thunkAPI.rejectWithValue(error.response.data)
+  }
+});
 
 const categorySlice = createSlice({
   name: 'category',
@@ -36,6 +45,25 @@ const categorySlice = createSlice({
       state.message = action.payload;
       state.goods = null
       state.catName = null
+    })
+
+
+    .addCase(searchingGoods.pending,(state, action)=>{
+      state.isLoading = true
+    })
+    .addCase(searchingGoods.fulfilled,(state, action)=>{
+      console.log(action.payload);
+      state.isLoading = false
+      state.goods = action.payload.goods
+      // state.images = action.payload.images
+      
+    })
+    .addCase(searchingGoods.rejected,(state, action)=>{
+      state.isLoading = false
+      state.isError = true
+      state.message = action.payload;
+      // state.images = null
+      state.goods = null
     })
   }
 }) 

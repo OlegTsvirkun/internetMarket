@@ -12,38 +12,21 @@ import { Button } from "../Button";
 import { CategoryCard } from "../CategoryCard/CategoryCard";
 import { ContentWrapper } from "../ContentWrapper";
 import { GoodCard } from "../GoodCard";
-// import { PlaneItem } from "../plane-item";
-// import { Spinner } from "../spinner";
 import styles from './Goods.module.scss';
 
-export const Goods = ({category}) => {
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(getCategory(category))
-  }, [dispatch]);
-  const {goods, isLoading } = useSelector((state) => state.category);
-  
-
-
-  if (isLoading) return <div>Loaadiing...</div>;
+export const Goods = ({goods}) => {
+  // const navigate = useNavigate()
+ 
 
   return (
-    <div>
-     
-     <ContentWrapper className = {styles.backButton}>
-        <Button  onClick={() => navigate(-1)} isBackButton={true}>
-  					Назад
-  				</Button>
-     </ContentWrapper>
+    <>
       <ContentWrapper className={styles.goodsGrid}>
         {Object.keys(goods).map(item=>{
      return  <GoodCard 
      key = {goods[item]['_id']} 
      {...goods[item]}/>
-
         })} 
       </ContentWrapper>
-    </div>
+    </>
   );
 };

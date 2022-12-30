@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -11,14 +11,20 @@ import { CartBlock } from "../CartBlock/CartBlock";
 import { Modal } from "../Modal/Modal";
 import { ModalWindow } from "../ModalWindow/ModalWindow";
 import { MenuCatalog } from "../MenuCatalog/MenuCatalog";
+import { getMain } from "../../store/mainSlice";
 
-export const SubHeader = ({ searchValue, setSearchValue }) => {
+export const SubHeader = ({
+	//  searchValue, setSearchValue 
+	}) => {
 	const location = useLocation();
 	const main = useSelector((state) => state.main);
 	const { categories, goods } = main;
 	// console.log(goods);
 	const [isCatMenuOpen, setisCatMenuOpen] = useState(false);
-
+	const dispatch =useDispatch();
+	useEffect(() => {
+		dispatch(getMain())
+	}, [isCatMenuOpen]);
 	if (location.pathname == "/order" || location.pathname == "/finish-order") return <></>;
 	return (
 		<div className={styles.subHeader}>
@@ -44,8 +50,8 @@ export const SubHeader = ({ searchValue, setSearchValue }) => {
 				</Button>
 				<SearchBar
 					containerClassName={styles.searchBar}
-					searchValue={searchValue}
-					setSearchValue={setSearchValue}
+					// searchValue={searchValue}
+					// setSearchValue={setSearchValue}
 				/>
 
 				{location.pathname !== "/" && location.pathname !== "/good" ? (

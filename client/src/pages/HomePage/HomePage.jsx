@@ -7,11 +7,10 @@ import { getMain } from '../../store/mainSlice';
 import styles from './HomePage.module.scss';
 
 export const HomePage = ({}) =>{
-  // const [searchValue, setSearchValue] = useState('');
 
   return (
     <div className={styles.homePage}>
-      {/* <SubHeader searchValue = {searchValue} setSearchValue={setSearchValue}/> */}
+   
     <div className={styles.wraper}>
    <div className={styles.homePage__game_item}>
    

@@ -1,21 +1,27 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { BsSearch, BsX } from "react-icons/bs";
 import { CiSearch } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 import { Button } from "../Button/Button";
 import styles from "./SearchBar.module.scss";
 
 export const SearchBar = ({
 	containerClassName,
-	searchValue,
-	setSearchValue,
+	// searchValue,
+	// setSearchValue,
 }) => {
+	const [searchValue, setSearchValue] = useState('');
+
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	let search = "1";
+// const handleSearch = ()=>{
+// 	dispat
+// }
 	// const search = useSelector(searchVal)
-	let searchedGames = [];
+	// let searchedGames = [];
 	// useEffect(() => {
 	// //  searchedGames = GAMES.filter((game) => {
 	//   if (
@@ -32,11 +38,9 @@ export const SearchBar = ({
 
 	const onChange = (event) => {
 		setSearchValue(event.target.value);
-		// dispatch(setSearchVal(event.target.value))
 		if (event.target.value.length > 0) {
 			// navigate(`/search`);
 		}
-		//  else navigate("/");
 	};
 
 	return (
@@ -53,16 +57,13 @@ export const SearchBar = ({
 				<BsX
 					className={styles.searchBar__iconClear}
 					size="35"
-					// color={searchValue.length > 0 ? "white" : "grey"}
 					onClick={() => {
 						setSearchValue("");
-						// dispatch(setSearchVal(''))
-						// dispatch(findGame([]));
-						// navigate("/");
+					
 					}}
 				/>
 			)}
-			<Button className={styles.searchBar__button}>ПОШУК</Button>
+			<Button className={styles.searchBar__button} ><Link to ={`/search?q=${searchValue}`}>ПОШУК</Link></Button>
 		</div>
 	);
 };

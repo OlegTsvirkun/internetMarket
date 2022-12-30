@@ -9,6 +9,7 @@ export const getGood = createAsyncThunk('GET_GOOD', async (id, thunkAPI) => {
   }
 });
 
+
 const goodSlice = createSlice({
   name: 'good',
   initialState:{
@@ -34,9 +35,11 @@ const goodSlice = createSlice({
       state.isLoading = false
       state.isError = true
       state.message = action.payload;
-      state.images = null
       state.good = null
     })
+
+
+   
   }
 }) 
 

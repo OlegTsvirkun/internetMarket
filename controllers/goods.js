@@ -103,9 +103,30 @@ const getGood = async (req, res) => {
     res.status(200).json({ good, images })
 }
 
+const searchGood = async (req, res) => {
+    const searchValue = req.query.q
+    console.log(req.query);
+  let searchArr = searchValue.split(" ")
+    const goods = await Good
+    .find({name:{'$regex' : searchValue, '$options' : 'im'}})
+        .then(data =>{
+             return data
+             .reduce((acc, item) => {
+                acc[item['articul']] = item
+                return acc
+            }, {})
+            }
+            )
+        .catch((error) => {
+            handleError(res, error)
+        });
+   console.log(goods);
+   res.status(200).json({ goods })
+} 
 
 module.exports = {
     getCategory,
     getGoods,
-    getGood
+    getGood,
+    searchGood
 }

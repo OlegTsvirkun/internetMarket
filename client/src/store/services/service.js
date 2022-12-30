@@ -12,6 +12,11 @@ const getGood = async (id) => {
     const good = await axios.get(`/good?id=${id}`);
     return good.data;
 }
+const searchGoods = async(searchValue)=>{
+    const goods = await axios.get(`/search?q=${searchValue}`)
+    console.log(goods.data);
+    return goods.data
+}
 const finishOrder = async (orderData) => {
     const order = await axios.post('/finish-order', orderData);
     return order.data;
@@ -20,7 +25,8 @@ const services = {
     getMain,
     getCategory,
     getGood,
-    finishOrder
+    finishOrder,
+    searchGoods
    
 }
 

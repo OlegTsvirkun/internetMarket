@@ -9,21 +9,23 @@ import { GoodItem } from "./pages/GoodItem/GoodItem";
 import { HomePage } from "./pages/HomePage";
 import { OrderPage } from "./pages/OrderPage/OrderPage";
 import './App.css';
-import { FinishOrder } from "./pages/FinishOrder/FinishOrder";
+import { SearchPage } from "./pages/SearchPage/SearchPage";
 
 function App() {
-  const [searchValue, setSearchValue] = useState('');
+  // const [searchValue, setSearchValue] = useState('');
   return (
     <div className="App">
       <Router>
         <Header/>
-        <SubHeader searchValue = {searchValue} setSearchValue={setSearchValue}/>
+        <SubHeader 
+        // searchValue = {searchValue} setSearchValue={setSearchValue}
+        />
         <Routes>
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/good" element={<GoodItem />} />
           <Route exact path="/cat/:category" element={<CategoryPage />} />
           <Route exact path="/order" element={<OrderPage />} />
-          <Route exact path="/finish-order" element={<FinishOrder />} />
+          <Route exact path="/search" element={<SearchPage />} />
         </Routes>
       </Router>
     </div>

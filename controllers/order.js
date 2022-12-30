@@ -46,20 +46,17 @@ if(orderCount[0]){
             .finally(()=>OrderCounter.findByIdAndUpdate(idOfCounter,{count: +countOfOrder+1}))
         }
     
-try{
+// try{
     
- await   User.deleteMany({})
- await OrderDelivery.deleteMany({})
- await OrderCounter.create({count:0})
-await Order.deleteMany({})
-}
-catch(err){
-    console.log(err);
-}
+//  await   User.deleteMany({})
+//  await OrderDelivery.deleteMany({})
+//  await OrderCounter.create({count:0})
+// await Order.deleteMany({})
+// }
+// catch(err){
+//     console.log(err);
+// }
         res.status(201).json({ "orderNumber": countOfOrder+1 })
-    
-   
-    
 }
 
 module.exports = {
