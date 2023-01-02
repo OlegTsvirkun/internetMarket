@@ -1,4 +1,5 @@
 
+const sortGood  = require('../helpers/sort');
 const Category = require('../models/category');
 const Good = require('../models/good');
 const Image = require('../models/image');
@@ -105,11 +106,19 @@ const getGood = async (req, res) => {
 
 const searchGood = async (req, res) => {
     const searchValue = req.query.q
-    console.log(req.query);
+    // console.log(req.query.s);
+    const query = req.query.s
+    let sortValue ={}
+    req.query.s ?sortValue = sortGood(query):sortValue ={name: 1}
+    console.log('sortValue',sortValue);
   let searchArr = searchValue.split(" ")
     const goods = await Good
     .find({name:{'$regex' : searchValue, '$options' : 'im'}})
+    .sort(
+        sortValue
+        )
         .then(data =>{
+            console.log(data);
              return data
              .reduce((acc, item) => {
                 acc[item['articul']] = item
@@ -120,7 +129,9 @@ const searchGood = async (req, res) => {
         .catch((error) => {
             handleError(res, error)
         });
-   console.log(goods);
+   console.log(Object.keys(goods));
+//    sortValue 
+
    res.status(200).json({ goods })
 } 
 
@@ -128,5 +139,6 @@ module.exports = {
     getCategory,
     getGoods,
     getGood,
-    searchGood
+    searchGood,
+    // sortGood
 }
