@@ -22,7 +22,7 @@ export const FinishOrder = ({}) => {
 				/>
 				<div className={styles.finishOrder__info}>
 					<p className={styles.finishOrder__orderNumber}>
-						Ваш номер заказу:<span> 2{orderNumber}</span>
+						Ваш номер заказу:<span>{orderNumber}</span>
 					</p>
 					<p>
 						У найближчий час нашменеджер зв'яжеться з Вами для уточнення
