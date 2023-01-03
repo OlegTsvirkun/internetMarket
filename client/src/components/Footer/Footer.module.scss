@@ -1,0 +1,51 @@
+.footer{
+    flex: 0 0 auto;
+    border-top: 3px solid rgba(71, 71, 71, 0.247);
+    li{
+        margin: 5px 0 0;
+    }
+    span{
+        font-weight: 600;
+            }
+            a{
+                color:rgb(47, 181, 252);
+
+            }
+            a:hover{
+                text-decoration: underline;
+            }
+    &__container{
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+    }
+    &__mainInfo{
+        display: flex;
+justify-content: space-between;
+    }
+    &__workingHours{
+        // flex: 0 0 50%;
+
+        
+    }
+    &__days{
+        width: 120px;
+        display: flex;
+        justify-content: space-between;
+    }
+    &__info {
+    }
+    &__address{
+        span{
+            margin-top:5px;
+        }
+
+    }
+    &__genInfo{
+        margin-top:5px;
+        text-align: center;
+        padding: 10px 0;
+font-size: 12px;
+
+    }
+}

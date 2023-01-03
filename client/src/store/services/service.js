@@ -21,12 +21,18 @@ const finishOrder = async (orderData) => {
     const order = await axios.post('/finish-order', orderData);
     return order.data;
 }
+const getMainContacts = async () => {
+    const caontact = await axios.get('/main-contacts');
+    return caontact.data;
+}
 const services = {
     getMain,
     getCategory,
     getGood,
     finishOrder,
-    searchGoods
+    searchGoods,
+    getMainContacts,
+
    
 }
 

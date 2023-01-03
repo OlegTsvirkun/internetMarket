@@ -27,3 +27,4 @@ app.use(express.static('images'))
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
 
 app.use(require('./routes/goods'))
+app.use(require('./routes/contacts')) 

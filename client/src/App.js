@@ -10,23 +10,27 @@ import { HomePage } from "./pages/HomePage";
 import { OrderPage } from "./pages/OrderPage/OrderPage";
 import './App.css';
 import { SearchPage } from "./pages/SearchPage/SearchPage";
+import { Footer } from "./components/Footer/Footer";
 
 function App() {
   // const [searchValue, setSearchValue] = useState('');
   return (
     <div className="App">
       <Router>
-        <Header/>
-        <SubHeader 
-        // searchValue = {searchValue} setSearchValue={setSearchValue}
-        />
+          <Header/>
+          <SubHeader 
+          // searchValue = {searchValue} setSearchValue={setSearchValue}
+          />
+      <div className="main">
         <Routes>
-          <Route exact path="/" element={<HomePage />} />
-          <Route exact path="/good" element={<GoodItem />} />
-          <Route exact path="/cat/:category" element={<CategoryPage />} />
-          <Route exact path="/order" element={<OrderPage />} />
-          <Route exact path="/search" element={<SearchPage />} />
-        </Routes>
+            <Route exact path="/" element={<HomePage />} />
+            <Route exact path="/good" element={<GoodItem />} />
+            <Route exact path="/cat/:category" element={<CategoryPage />} />
+            <Route exact path="/order" element={<OrderPage />} />
+            <Route exact path="/search" element={<SearchPage />} />
+          </Routes>
+          <Footer/>
+      </div>
       </Router>
     </div>
   );
