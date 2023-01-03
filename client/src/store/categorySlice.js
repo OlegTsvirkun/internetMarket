@@ -11,7 +11,7 @@ export const getCategory = createAsyncThunk('GET_CATEGORY', async (category, thu
 export const searchingGoods = createAsyncThunk('SEARCH_GOOD', async (searchValue, thunkAPI) => {
   try {
     const v= await services.searchGoods(searchValue);
-    console.log(v);
+    // console.log(v);
     return v
   } catch(error) {
      return thunkAPI.rejectWithValue(error.response.data)
@@ -52,7 +52,7 @@ const categorySlice = createSlice({
       state.isLoading = true
     })
     .addCase(searchingGoods.fulfilled,(state, action)=>{
-      console.log(action.payload);
+      // console.log(action.payload);
       state.isLoading = false
       state.goods = action.payload.goods
       // state.images = action.payload.images

@@ -13,8 +13,8 @@ const getGood = async (id) => {
     return good.data;
 }
 const searchGoods = async(searchValue)=>{
-    const goods = await axios.get(`/search?q=${searchValue}`)
-    console.log(goods.data);
+    const goods = await axios.get(`/search${searchValue}`)
+    // console.log(goods.data);
     return goods.data
 }
 const finishOrder = async (orderData) => {

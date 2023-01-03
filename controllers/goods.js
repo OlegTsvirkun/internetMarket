@@ -48,8 +48,13 @@ const getCategory = async (req, res) => {
 
 const getGoods = async (req, res) => {
     const catName = req.params.id
+    // console.log(req.query.s);
+    let sortValue ={}
+    req.query.s ?sortValue = sortGood(req.query.s):sortValue ={name: 1}
+    // console.log(sortValue);
     const goods = await Good
         .find()
+        .sort(sortValue)
         .populate({
             path: 'category',
             match: {
@@ -60,11 +65,13 @@ const getGoods = async (req, res) => {
         .then(good => {
             return good
                 .filter(item => item.category)
-                .reduce((acc, item) => {
-                    acc[item['articul']] = item
-                    return acc
-                }, {})
-        })
+        //         .reduce((acc, item) => {
+        //             acc[item['articul']] = item
+        //             return acc
+        //         }, {})
+        // 
+    }
+        )
         .catch((error) => {
             handleError(res, error)
         });
@@ -107,11 +114,11 @@ const getGood = async (req, res) => {
 const searchGood = async (req, res) => {
     const searchValue = req.query.q
     // console.log(req.query.s);
-    const query = req.query.s
+    // const query = req.query.s
     let sortValue ={}
-    req.query.s ?sortValue = sortGood(query):sortValue ={name: 1}
-    console.log('sortValue',sortValue);
-  let searchArr = searchValue.split(" ")
+    req.query.s ?sortValue = sortGood(req.query.s):sortValue ={name: 1}
+    // console.log('sortValue',sortValue);
+//   let searchArr = searchValue.split(" ")
     const goods = await Good
     .find({name:{'$regex' : searchValue, '$options' : 'im'}})
     .sort(
@@ -120,16 +127,16 @@ const searchGood = async (req, res) => {
         .then(data =>{
             console.log(data);
              return data
-             .reduce((acc, item) => {
-                acc[item['articul']] = item
-                return acc
-            }, {})
+            //  .reduce((acc, item) => {
+            //     acc[item['articul']] = item
+            //     return acc
+            // }, {})
             }
             )
         .catch((error) => {
             handleError(res, error)
         });
-   console.log(Object.keys(goods));
+//    console.log(Object.keys(goods));
 //    sortValue 
 
    res.status(200).json({ goods })

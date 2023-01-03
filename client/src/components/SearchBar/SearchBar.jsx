@@ -17,29 +17,11 @@ export const SearchBar = ({
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	let search = "1";
-// const handleSearch = ()=>{
-// 	dispat
-// }
-	// const search = useSelector(searchVal)
-	// let searchedGames = [];
-	// useEffect(() => {
-	// //  searchedGames = GAMES.filter((game) => {
-	//   if (
-	//     game.title
-	//       .toLocaleLowerCase()
-	//       .includes(search.toLocaleLowerCase())
-	//   )
-	//     return true;
-	//   return false;
-	// });
-	// dispatch(findGame(searchedGames));
 
-	// },[search]);
 
 	const onChange = (event) => {
 		setSearchValue(event.target.value);
 		if (event.target.value.length > 0) {
-			// navigate(`/search`);
 		}
 	};
 
@@ -53,7 +35,7 @@ export const SearchBar = ({
 				onChange={onChange}
 				placeholder="ЩО ХОЧЕТЕ ЗНАЙТИ?"
 			/>
-			{search && (
+			{searchValue && (
 				<BsX
 					className={styles.searchBar__iconClear}
 					size="35"
@@ -63,7 +45,11 @@ export const SearchBar = ({
 					}}
 				/>
 			)}
-			<Button className={styles.searchBar__button} ><Link to ={`/search?q=${searchValue}`}>ПОШУК</Link></Button>
+				<Link to ={`/search?q=${searchValue}`}>
+			<Button className={styles.searchBar__button} onClick = {()=>setSearchValue('')} >
+					ПОШУК
+					</Button>
+					</Link>
 		</div>
 	);
 };

@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 router.get('/', getCategory);
-// router.get('/*:s',sortGood)
+// router.get('/*:s',sortGood) 
 router.get('/cat/:id', getGoods);
 router.get('/good', getGood);
 router.get('/search', searchGood);

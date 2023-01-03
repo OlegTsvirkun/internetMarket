@@ -1,0 +1,37 @@
+.sortMenu{
+    position:absolute;
+    top:100%;
+    left:0;
+    // transform: translateY(100%);
+    width: 150%;
+    z-index: 100;
+    background-color:rgb(249, 249, 249) ;
+    &__list{
+        
+        
+    }
+    &__item{
+        // padding: 0 5px;
+        color: rgb(71,71,71);
+        font-weight: 300;
+        text-align: start;
+
+
+    }
+    &__item:hover{
+        // background-color: rgb(235, 235, 235);
+
+    }
+}
+.sortMenu a{
+    // padding: 2px 7px;
+    padding: 5px 20px;
+
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.sortMenu a:hover{
+    background-color: rgb(235, 235, 235);
+
+}
