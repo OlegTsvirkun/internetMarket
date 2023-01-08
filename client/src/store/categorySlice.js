@@ -10,9 +10,8 @@ export const getCategory = createAsyncThunk('GET_CATEGORY', async (category, thu
 });
 export const searchingGoods = createAsyncThunk('SEARCH_GOOD', async (searchValue, thunkAPI) => {
   try {
-    const v= await services.searchGoods(searchValue);
-    // console.log(v);
-    return v
+   
+    return await services.searchGoods(searchValue);
   } catch(error) {
      return thunkAPI.rejectWithValue(error.response.data)
   }
@@ -23,6 +22,7 @@ const categorySlice = createSlice({
   initialState:{
     catName:'',
     goods:{},
+    total:null,
     
     isError: false,
     isLoading: false,
@@ -37,6 +37,7 @@ const categorySlice = createSlice({
       state.isLoading = false
       state.catName = action.payload.category
       state.goods = action.payload.goods
+      state.total = action.payload.total
       
     })
     .addCase(getCategory.rejected,(state, action)=>{
@@ -44,6 +45,7 @@ const categorySlice = createSlice({
       state.isError = true
       state.message = action.payload;
       state.goods = null
+      state.total = null
       state.catName = null
     })
 
@@ -52,17 +54,17 @@ const categorySlice = createSlice({
       state.isLoading = true
     })
     .addCase(searchingGoods.fulfilled,(state, action)=>{
-      // console.log(action.payload);
       state.isLoading = false
       state.goods = action.payload.goods
-      // state.images = action.payload.images
+      state.total = action.payload.total
+
       
     })
     .addCase(searchingGoods.rejected,(state, action)=>{
       state.isLoading = false
       state.isError = true
       state.message = action.payload;
-      // state.images = null
+      state.total = null
       state.goods = null
     })
   }

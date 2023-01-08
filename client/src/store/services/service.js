@@ -6,6 +6,7 @@ const getMain = async () => {
 }
 const getCategory = async (category) => {
     const main = await axios.get(`/cat/${category}`);
+    // console.log(main.data);
     return main.data;
 }
 const getGood = async (id) => {
@@ -13,7 +14,7 @@ const getGood = async (id) => {
     return good.data;
 }
 const searchGoods = async(searchValue)=>{
-    const goods = await axios.get(`/search${searchValue}`)
+    const goods = await axios.get(`/search?${searchValue}`)
     // console.log(goods.data);
     return goods.data
 }

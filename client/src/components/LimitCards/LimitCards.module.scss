@@ -1,0 +1,93 @@
+.limitCards{
+    display: flex;
+    font-size: 18px;
+    justify-content : flex-end;
+    margin-bottom: 20px;
+    &__title{
+        color:rgb(71,71,71)
+    }
+    &__value{
+       display: flex;
+        position: relative;
+        margin-left: 5px;
+        // overflow: hidden;
+
+    }
+ 
+    &__item{
+        // margin: 0 5px;
+        
+    }
+    &__list{
+        // display: flex;
+        position: absolute;
+        font-weight: 300;
+       color: #2FB5FC;
+        bottom: -3px;
+        height:0;
+        width:100px;
+        overflow: hidden;
+        transition: all .8s;
+        cursor:pointer;
+        transform: translateX(-50%);
+        span{
+            padding-right: 10px;
+        }
+    }
+    &__valueItem:hover{
+        color:orange;
+    }
+    &__valueItem{
+        // width:100px;
+        font-weight: 300;
+        
+        color:#2FB5FC;
+        text-decoration:underline dotted 2px;
+        // cursor:pointer;
+        
+        
+    }
+    &__list.active span:first-child{
+        padding-left:10px;
+
+    }
+    &__list.active span:last-child{
+        
+
+            // padding: 7px 0 10px 7px;
+            // background-color:rgb(179, 133, 133);
+        
+    }
+    &__list.active{
+        overflow:visible;
+        z-index: 100;
+        // background:rgba(129, 35, 35, 0.582) ;
+
+        span{
+            // height:auto;
+            // display: block;
+            font-size: 20px;
+            // padding: 5px 0 0px 7px;
+            // margin: 5px 0 0 5px;
+            background-color:rgba(245, 245, 245, 0.349);
+        }
+        
+        span:hover{
+            // display: inline-block;
+
+        color:orange;
+
+        }
+        // height: auto;
+    }
+    &__arrow:hover{
+        color:orange;
+
+    }
+    &__arrow{
+        margin: 0 10px;
+        color:#2FB5FC;
+        cursor: pointer;
+    }
+}
+

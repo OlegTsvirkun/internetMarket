@@ -1,14 +1,12 @@
-
-const sortGood  = require('../helpers/sort');
+const sortGood = require('../helpers/sort');
 const Category = require('../models/category');
 const Good = require('../models/good');
 const Image = require('../models/image');
-const handleError = (res, error) => {
-    console.log(error);
-    res.status(500).json({ 'Error:': error })
-}
+const { handleError } = require('../helpers/handleError');
+
 
 const getCategory = async (req, res) => {
+
     const category = await Category
         .find({}, { description: 0 })
         .then(categories => {
@@ -48,53 +46,54 @@ const getCategory = async (req, res) => {
 
 const getGoods = async (req, res) => {
     const catName = req.params.id
-    // console.log(req.query.s);
-    let sortValue ={}
-    req.query.s ?sortValue = sortGood(req.query.s):sortValue ={name: 1}
-    // console.log(sortValue);
+    let sortValue = {}
+    req.query.s ? sortValue = sortGood(req.query.s) : sortValue = { name: 1 }
+    let pageQuery = parseInt(req.query?.page)
+    // console.log('pageQuery', pageQuery);
+    pageQuery === 0 ? pageQuery = 1 : pageQuery
+    let page = parseInt(pageQuery) - 1 || 0;
+    let limit = parseInt(req.query?.limit) || 3;
+    // console.log('limit', limit);
+    // console.log('page', page);
+    let skip = page * limit
+    // console.log('skip', skip);
+
+
+    const cat = await Category
+        .findOne({ category: catName })
     const goods = await Good
-        .find()
-        .sort(sortValue)
+        .find({ category: cat?._id || '' },
+        )
         .populate({
             path: 'category',
             match: {
-                category: { $eq: catName },
+                category: catName,
             }
         })
+        .sort(sortValue)
+        .skip(skip)
+        .limit(limit)
         .exec()
-        .then(good => {
-            return good
-                .filter(item => item.category)
-        //         .reduce((acc, item) => {
-        //             acc[item['articul']] = item
-        //             return acc
-        //         }, {})
-        // 
-    }
-        )
         .catch((error) => {
             handleError(res, error)
         });
-    res.status(200).json({ goods })
+    const total = await Good
+        .countDocuments({ category: cat?._id || '' })
+        .catch(error => handleError(res, error))
+    console.log('total', total);
+    res.status(200).json({
+        goods,
+        total
+    })
 
 }
 const getGood = async (req, res) => {
     const Id = req.query.id
-    // console.log(req.query);
     const good = await Good
         .findById(Id)
-        .then(data =>{
-            // let newData = {}
-            // newData[data['articul']] =data
-            // console.log(newData);
-            //  return newData
-             return data
-            }
-            // .reduce((acc, item) => {
-            //     acc[item['articul']] = item
-            //     return acc
-            // }, {})
-            )
+        .then(data => {
+            return data
+        })
         .catch((error) => {
             handleError(res, error)
         });
@@ -107,45 +106,46 @@ const getGood = async (req, res) => {
         .catch((error) => {
             handleError(res, error)
         });
-        // console.log(good);
     res.status(200).json({ good, images })
 }
 
 const searchGood = async (req, res) => {
     const searchValue = req.query.q
-    // console.log(req.query.s);
-    // const query = req.query.s
-    let sortValue ={}
-    req.query.s ?sortValue = sortGood(req.query.s):sortValue ={name: 1}
-    // console.log('sortValue',sortValue);
-//   let searchArr = searchValue.split(" ")
+    let sortValue = {}
+    req.query.s ? sortValue = sortGood(req.query.s) : sortValue = { name: 1 }
+    let pageQuery = parseInt(req.query?.page)
+    // console.log('pageQuery', pageQuery);
+    pageQuery === 0 ? pageQuery = 1 : pageQuery
+    let page = parseInt(pageQuery) - 1 || 0;
+    let limit = parseInt(req.query?.limit) || 3;
+    // console.log('limit', limit);
+    // console.log('page', page);
+    let skip = page * limit
+    // console.log('skip', skip);
+
     const goods = await Good
-    .find({name:{'$regex' : searchValue, '$options' : 'im'}})
-    .sort(
-        sortValue
+        .find({ name: { '$regex': searchValue, '$options': 'im' } })
+        .sort(sortValue)
+        .skip(skip)
+        .limit(limit)
+        .exec()
+        .then(data => {
+            return data
+        }
         )
-        .then(data =>{
-            console.log(data);
-             return data
-            //  .reduce((acc, item) => {
-            //     acc[item['articul']] = item
-            //     return acc
-            // }, {})
-            }
-            )
         .catch((error) => {
             handleError(res, error)
         });
-//    console.log(Object.keys(goods));
-//    sortValue 
+    const total = await Good
+        .countDocuments({ name: { '$regex': searchValue, '$options': 'im' } })
+        .catch(error => handleError(res, error))
 
-   res.status(200).json({ goods })
-} 
+    res.status(200).json({ goods, total })
+}
 
 module.exports = {
     getCategory,
     getGoods,
     getGood,
     searchGood,
-    // sortGood
 }

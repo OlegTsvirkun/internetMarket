@@ -28,16 +28,15 @@ export const SortMenu = ({}) => {
 	const handleSort = (e) => {
 		e.preventDefault();
 		const type = e.target.dataset.type;
-		console.log(type);
-		if (search.has("q")) {
-			console.log(search.get("q"));
-		}
+		// if (search.has("q")) {
+		// 	console.log(search.get("q"));
+		// }
 		if (search.has("s")) {
 			search.set("s", type);
 		} else {
 			search.append("s", type);
 		}
-		console.log(search.toString());
+		// console.log(search.toString());
 		navigate(url.pathname + "?" + search.toString());
 	};
 	return (

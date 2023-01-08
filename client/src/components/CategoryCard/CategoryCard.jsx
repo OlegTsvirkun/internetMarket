@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./CategoryCard.module.scss";
-
+ import {host} from '../../host'
 export const CategoryCard = ({ cat, id, image, goods }) => {
 	return (
 		<div className={styles.categoryCard}>
 			<Link className={styles.cardItem} to={`cat/${cat}`}>
 				<div className={styles.categoryCard__name}>{cat}</div>
-				{image && <img className={styles.categoryCard__image} src={image} alt={cat} />}
+				{image && <img className={styles.categoryCard__image} src={host + image} alt={cat} />}
 			</Link>
 			<ul className={styles.categoryCard__goodsList}>
 				{Object.keys(goods).map((good) => {

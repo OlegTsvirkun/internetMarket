@@ -1,6 +1,7 @@
 .categoryCard{
     padding: 0px 10px;
     max-height:400px;
+    min-height: 400px;
     display:flex; 
     flex-direction: column;
     transition: all .3s;

@@ -4,4 +4,10 @@
 .backButton{
     // height: 50px;
     margin: 25px auto;
+    display: flex;
+    justify-content: space-between;
+}
+.pagination{
+    margin:20px 0;
+   text-align: center;
 }

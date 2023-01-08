@@ -1,32 +1,56 @@
-
-
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { getCategory } from "../../store/categorySlice";
-import { getMain } from "../../store/mainSlice";
-// import { useSortGoods } from "../../hooks/useSortGoods";
-// import { paths } from "../../paths";
-// import { getGoods } from "../../store/Goods/GoodsSlice";
-import { Button } from "../Button";
-import { CategoryCard } from "../CategoryCard/CategoryCard";
+import React, { useEffect, useState } from "react";
+import {
+	useSearchParams,
+} from "react-router-dom";
 import { ContentWrapper } from "../ContentWrapper";
 import { GoodCard } from "../GoodCard";
-import styles from './Goods.module.scss';
+import { LimitCards } from "../LimitCards/LimitCards";
+import { Pagination } from "../Pagination/Pagination";
+import styles from "./Goods.module.scss";
 
-export const Goods = ({goods}) => {
-  // const navigate = useNavigate()
- 
+export const Goods = ({ goods, total }) => {
+	const [searchParams, setSearchParams] = useSearchParams();
+	const [currentPage, setCurrentPage] = useState();
+	const [cardsLimit, setCardsLimit] = useState();
+	let totalPages = Math.ceil(total / cardsLimit);
+	useEffect(() => {
+		searchParams.get("page")
+			? setCurrentPage(+searchParams.get("page"))
+			: setCurrentPage(1);
+		searchParams.get("limit")
+			? setCardsLimit(+searchParams.get("limit"))
+			: setCardsLimit(3);
+	}, []);
 
-  return (
-    <>
-      <ContentWrapper className={styles.goodsGrid}>
-        {Object.keys(goods).map(item=>{
-     return  <GoodCard 
-     key = {goods[item]['_id']} 
-     {...goods[item]}/>
-        })} 
-      </ContentWrapper>
-    </>
-  );
+	return (
+		<>
+			<ContentWrapper>
+				{" "}
+				{cardsLimit && (
+					<LimitCards
+						value={cardsLimit}
+						setValue={setCardsLimit}
+						total={total}
+						setCurrentPage={setCurrentPage}
+					/>
+				)}
+			</ContentWrapper>
+
+			<ContentWrapper className={styles.goodsGrid}>
+				{Object.keys(goods).map((item) => {
+					return <GoodCard key={goods[item]["_id"]} {...goods[item]} />;
+				})}
+			</ContentWrapper>
+			{totalPages && (
+				<Pagination
+					setCurrentPage={setCurrentPage}
+					currentPage={currentPage}
+					totalPages={totalPages}
+					className={styles.pagination}
+					classNameActive
+					classNameCurPage
+				/>
+			)}
+		</>
+	);
 };

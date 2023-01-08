@@ -16,7 +16,6 @@ export const SearchBar = ({
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	let search = "1";
 
 
 	const onChange = (event) => {

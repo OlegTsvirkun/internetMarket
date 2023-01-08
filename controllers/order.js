@@ -2,10 +2,8 @@ const Order = require('../models/order');
 const User = require('../models/user');
 const OrderDelivery = require('../models/orderDelivery');
 const OrderCounter = require('../models/orderCounter');
-const handleError = (res, error) => {
-    console.log(error);
-    res.status(500).json({ 'err:': error })
-}
+const { handleError } = require('../helpers/handleError');
+
 const createOrder = async (req, res) => {
     const { user: userInfo, delivery: deliveryInfo, orderedGoods } = req.body
 

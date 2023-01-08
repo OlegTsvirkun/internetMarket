@@ -1,9 +1,7 @@
 const  ShopContact = require('../models/ShopContact');
+const { handleError } = require('../helpers/handleError');
 
-const handleError = (res, error) => {
-    console.log(error);
-    res.status(500).json({ 'Error:': error })
-}
+
 const getOfficeContact = async (req, res) => {
     const contacts = await ShopContact
     .find({name:"mainOffice"})
@@ -20,7 +18,7 @@ const getOfficeContact = async (req, res) => {
 
     // })
     .then((contact)=>{
-        console.log(contact)
+        // console.log(contact)
     return contact})
     .catch(error=>handleError(res,error))
     
