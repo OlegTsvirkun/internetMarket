@@ -11,12 +11,12 @@ export const HomePage = ({}) =>{
   return (
     <div className={styles.homePage}>
    
-    <div className={styles.wraper}>
-   <div className={styles.homePage__game_item}>
+    {/* <div className={styles.wraper}> */}
+   {/* <div className={styles.homePage__game_item}> */}
    
    <Categories/>
-    </div>
-  </div>
+    {/* </div> */}
+  {/* </div> */}
 </div>
 )};
 

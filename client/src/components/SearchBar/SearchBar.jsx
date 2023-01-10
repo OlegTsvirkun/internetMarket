@@ -25,7 +25,8 @@ export const SearchBar = ({
 	};
 
 	return (
-		<div className={styles.searchBar + " " + containerClassName}>
+		// <div className={styles.searchBar + " " + containerClassName}>
+			<form className={styles.searchBar + " " + containerClassName} action="post">
 			<CiSearch className={styles.searchBar__icon} size="23" />
 			<input
 				value={searchValue}
@@ -44,11 +45,13 @@ export const SearchBar = ({
 					}}
 				/>
 			)}
+
 				<Link to ={`/search?q=${searchValue}`}>
 			<Button className={styles.searchBar__button} onClick = {()=>setSearchValue('')} >
 					ПОШУК
 					</Button>
 					</Link>
-		</div>
+			</form>
+		// </div>
 	);
 };

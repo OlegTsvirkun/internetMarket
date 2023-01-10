@@ -1,10 +1,16 @@
 .categoryCard{
     padding: 0px 10px;
-    max-height:400px;
+    height:400px;
     min-height: 400px;
     display:flex; 
     flex-direction: column;
     transition: all .3s;
+    overflow: hidden;
+    position: relative;
+
+    &__item {
+margin:0 auto;
+    }
     &__name:visited{
         // margin-top: 20px;
         color:black;
@@ -24,8 +30,8 @@
     &__image{
         margin-bottom: 20px;
         max-width: 100%;
-        height: auto;
-        
+        max-height: 200px;
+
     }
     &__goodsList{
         
@@ -39,7 +45,7 @@
     -2px 0px 2px -2px rgba(0, 0, 0, 0.5), 
         2px 0px 2px -2px rgba(0, 0, 0, 0.5);
 
-    filter: brightness(115%);
+    filter: brightness(105%);
   
 }
 .goodsList{
@@ -62,4 +68,13 @@
         color:rgb(47, 181, 252);
         // text-decoration: underline;
     }
+}
+.gradient{
+    position: absolute;
+    bottom: 0;
+    // z-index: 200;
+    background: linear-gradient(to top,rgba(255,255,255,1) 0%,rgba(255,255,255,1) 20%,rgba(255,255,255,0) 100%);
+    // background-color: black;
+    width: 100%;
+    height: 30px
 }

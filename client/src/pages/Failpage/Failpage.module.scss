@@ -1,0 +1,31 @@
+.failpage {
+    margin:50px 0;
+    display: flex;
+    justify-content: center;
+    &__icon,
+    &__404 {
+        font-size: 30vh;
+        color: rgba(71, 71, 71, 0.5);
+        font-weight: 300;
+    }
+    &__404{
+        color:rgba(47, 180, 252, 0.8);
+    //     font-size: 30vh;
+    //     color:rgba(71,71,71,.5)
+    }
+    &__title{
+        font-size: 36px;
+        font-weight: 300;
+        color: rgba(71, 71, 71, 0.5);
+      a  {
+display:inline-block;
+
+        }
+button{
+    margin: 20px 0 ;
+
+}
+    }
+    // button{
+    // }
+}

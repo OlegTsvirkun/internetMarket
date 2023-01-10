@@ -17,7 +17,7 @@ export const CategoryPage = ({}) => {
 	const url = useLocation();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const { goods, total, isLoading } = useSelector((state) => state.category);
+	const { goods, total, isLoading ,catDescription} = useSelector((state) => state.category);
 
 	useEffect(() => {
 		if (!searchParams.get("limit")) searchParams.set("limit", 3);
@@ -46,11 +46,11 @@ export const CategoryPage = ({}) => {
 	return (
 		<div className={styles.categoryPage}>
 			<ContentWrapper className={styles.backButton}>
-				<Button onClick={() => navigate(-1)} isBackButton={true}>
+				<Button onClick={() => navigate('/')} isBackButton={true}>
 					Назад
 				</Button>
 			</ContentWrapper>
-			<ContentWrapper>
+			<ContentWrapper className={styles.categoryPage}>
 				{goods && total && (
 					<Goods
 						goods={goods}
@@ -58,8 +58,9 @@ export const CategoryPage = ({}) => {
 					/>
 				)}
 			</ContentWrapper>
-
-		
+			<ContentWrapper>
+<p className={styles.categoryPage__description}>{catDescription[0]}</p>
+		</ContentWrapper>
 		</div>
 	);
 };

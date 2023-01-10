@@ -6,18 +6,17 @@ import { Goods } from "../../components/Goods";
 import { Button } from "../../components/Button";
 import { searchingGoods } from "../../store/categorySlice";
 import styles from "./SearchPage.module.scss";
+import { ErrorComponent } from "../../components/Error";
 
 export const SearchPage = ({}) => {
 	const [searchParams, setSearchParams] = useSearchParams();
-	const location = useLocation();
-	const query = searchParams.get("s") || "";
-	// const searchValue = searchParams.get("q") + query;
+
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	//!
 
 	const url = useLocation();
-	const { goods, total, isLoading } = useSelector((state) => state.category);
+	const { goods, total, isLoading,isError,message } = useSelector((state) => state.category);
 
 	useEffect(() => {
 		if (!searchParams.get("limit")) searchParams.set("limit", 3);
@@ -31,6 +30,7 @@ export const SearchPage = ({}) => {
 		navigate(url.pathname + "?" + searchParams.toString());
 	}, [searchParams]);
 
+  if(isError) return <ErrorComponent>{message}</ErrorComponent>
 	return (
 		<div className={styles.searchPage}>
 			<ContentWrapper className={styles.backButton}>
@@ -38,11 +38,12 @@ export const SearchPage = ({}) => {
 					Назад
 				</Button>
 			</ContentWrapper>
+      
 			{!Object.keys(goods)[0] && <div>Товар з такою назвою відсутній</div>}
 			{isLoading ? (
 				<div className="Skeleton">Loading...</div>
 			) : (
-				<Goods total={total} goods={goods} />
+				(!isError && Object.keys(goods)[0]) && <Goods total={total} goods={goods} />
 			)}
 		</div>
 	);

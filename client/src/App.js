@@ -12,6 +12,7 @@ import './App.css';
 import { SearchPage } from "./pages/SearchPage/SearchPage";
 import { Footer } from "./components/Footer/Footer";
 import { FinishOrder } from "./pages/FinishOrder/FinishOrder";
+import { Failpage } from "./pages/Failpage/Failpage";
 
 function App() {
   // const [searchValue, setSearchValue] = useState('');
@@ -30,6 +31,8 @@ function App() {
             <Route exact path="/order" element={<OrderPage />} />
             <Route exact path="/search" element={<SearchPage />} />
             <Route exact path="/finish-order" element={<FinishOrder />} />
+            <Route exact path="/finish-order" element={<FinishOrder />} />
+            <Route path="*" element={<Failpage />} />
           </Routes>
           <Footer/>
       </div>

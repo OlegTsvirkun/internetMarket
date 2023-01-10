@@ -52,6 +52,16 @@ export const Pagination = ({
 	};
 	console.log("currentPage pagination", currentPage);
 	console.log("	totalPages pagination", totalPages);
+
+	// if (totalPages == NaN || totalPages == undefined || totalPages == 0) {
+	// 	return (
+	// 		<div className={`${styles.pagination + " " + className}`}>
+	// 			<ul className={styles.pagination__container}>
+	// 				<li className={`${styles.page + " " + classNameCurPage}`}>0</li>
+	// 			</ul>
+	// 		</div>
+	// 	);
+	// }
 	return (
 		<div className={`${styles.pagination + " " + className}`}>
 			{

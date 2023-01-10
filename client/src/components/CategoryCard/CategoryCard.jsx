@@ -5,7 +5,7 @@ import styles from "./CategoryCard.module.scss";
 export const CategoryCard = ({ cat, id, image, goods }) => {
 	return (
 		<div className={styles.categoryCard}>
-			<Link className={styles.cardItem} to={`cat/${cat}`}>
+			<Link className={styles.categoryCard__item} to={`cat/${cat}`}>
 				<div className={styles.categoryCard__name}>{cat}</div>
 				{image && <img className={styles.categoryCard__image} src={host + image} alt={cat} />}
 			</Link>
@@ -25,6 +25,7 @@ export const CategoryCard = ({ cat, id, image, goods }) => {
 					);
 				})}
 			</ul>
+			<div className={styles.gradient}></div>
 		</div>
 	);
 };
