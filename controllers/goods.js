@@ -6,6 +6,7 @@ const Image = require('../models/image');
 const { handleError } = require('../helpers/handleError');
 const ApiErrors = require('../helpers/ApiErrors');
 const { filenameMaker } = require('../helpers/filenameMaker');
+const { throws } = require('assert');
 
 const getCategory = async (req, res, next) => {
     try {
@@ -98,22 +99,39 @@ const getGoods = async (req, res, next) => {
 }
 const getGood = async (req, res, next) => {
     try {
-        const Id = req.query.id
-        if (!Id) {
-            return next(ApiErrors.badRequest('Не завдан id товару'))
+        const Id = req.query?.id || ''
+        const articul = req.query?.articul || ''
+        // if (!Id) {
+        //     return next(ApiErrors.badRequest('Не завдан id товару'))
+        // }
+        // console.log(Id);
+        let good = {}
+        if(Id && !articul){
+            good = await Good
+               .findById(Id)
+                // .findOne({articul: articul})
+                .then(data => {
+                    return data
+                })
+
         }
-        const good = await Good
-            .findById(Id)
-            .then(data => {
-                return data
-            })
+        else if(!Id && articul){
+            good = await Good
+            //    .findById(Id)
+                .findOne({articul: articul})
+                .then(data => {
+                    return data
+                })
+
+        }
 
         const images = await Image
-            .find({ goodId: { $eq: Id } }, { _id: 0 })
+            .find({goodId: good._id }, { _id: 0 })
             .then(image => {
                 return image.map(item => item.image)
             }
             )
+            console.log(good);
 
         res.status(200).json({ good, images })
     } catch (error) {
@@ -174,58 +192,11 @@ const searchGood = async (req, res, next) => {
 
 }
 
-const createGood = async (req, res, next) => {
-    try {
-        const { category, catDescription, name, articul, description, price } = req.body
-        const { catPicture,picture, images } = req.files
-        // let picExt =picture.name.split('.').slice(-1),
-        let picName = filenameMaker(picture,category,name)
-
-        // let fileName = category + '-' + name + '-' + Date.now() + picExt
-        // console.log('picExt',picExt);
-        // console.log('fileName', filenameMaker(picture,category,name));
-        console.log(
-            // req.body,
-            // picExt
-            // category, name, articul,description,price,picture, pictures
-        );
-
-        const cat = await Category
-        .create({
-            category: category,
-            description:catDescription
-        })
-        .then(data=>data)
-const catPic = await Image
-.create({
-    image:filenameMaker(catPicture,category,name),
-    goodId:cat._id
-})
-.then(data=>data)
-        // const good = await Good
-        // .create({
-        //     name: name,
-        //     articul:articul,
-        //     description:description,
-        //     price:price,
-        //     category: cat._id,
-        //     picture:picName,
-        //             })
-        res.json({
-            cat,
-            catPic
-        })
-
-    } catch (error) {
-        next(ApiErrors.badRequest(error.message))
-
-    }
-}
 
 module.exports = {
     getCategory,
     getGoods,
     getGood,
     searchGood,
-    createGood
+   
 }
