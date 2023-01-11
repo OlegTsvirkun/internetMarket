@@ -4,11 +4,16 @@ const Schema = mongoose.Schema
 const GoodSchema = new Schema({
     name:{
         type:String,
-        required: true
+        required: true,
+        index: true, 
+        unique: true
+    
     },
     articul:{
         type:String,
-        required: true
+        required: true,
+        index: true, 
+        unique: true
     },
     description:{
         type:String,
