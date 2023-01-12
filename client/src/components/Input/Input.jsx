@@ -11,7 +11,10 @@ export const Input = ({
 	onChange = () => null,
 	onClick = () => null,
 	onInput = () => null,
+	onBlur=()=>null,
 	id,
+	accept,
+	multiple=false
 }) => {
 	return (
 		<div className={`${styles.container} ${containerClassname}`}>
@@ -21,11 +24,13 @@ export const Input = ({
 				className={`${styles.input} ${className}`}
 				placeholder={placeholder}
 				onChange={onChange}
-				onBlur={(e) => onBlur}
+				onBlur={onBlur}
 				value={value}
-				onClick={() => onClick}
+				onClick={onClick}
 				id={id}
 				onInput={onInput}
+				multiple={multiple}
+				accept={accept}
 			/>
 		</div>
 	);

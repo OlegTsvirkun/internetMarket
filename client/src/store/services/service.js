@@ -23,9 +23,11 @@ const finishOrder = async (orderData) => {
     return order.data;
 }
 const getMainContacts = async () => {
-    const caontact = await axios.get('/main-contacts');
-    return caontact.data;
+    const contact = await axios.get('/main-contacts');
+    return contact.data;
 }
+
+
 const services = {
     getMain,
     getCategory,
@@ -33,7 +35,7 @@ const services = {
     finishOrder,
     searchGoods,
     getMainContacts,
-
+   
    
 }
 

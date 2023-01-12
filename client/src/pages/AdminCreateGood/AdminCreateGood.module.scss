@@ -1,0 +1,11 @@
+.adminCreateGood{
+    position: relative;
+}
+.buttonContainer{
+    display: flex;
+    &__button{
+        margin:20px 20px;
+        width: 200px;
+    }
+
+}

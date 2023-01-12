@@ -8,6 +8,7 @@ export const getCategory = createAsyncThunk('GET_CATEGORY', async (category, thu
      return thunkAPI.rejectWithValue(error.response.data)
   }
 });
+
 export const searchingGoods = createAsyncThunk('SEARCH_GOOD', async (searchValue, thunkAPI) => {
   try {
     return await services.searchGoods(searchValue);

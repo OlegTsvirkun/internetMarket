@@ -8,49 +8,59 @@ const { handleError } = require('../helpers/handleError');
 const ApiErrors = require('../helpers/ApiErrors');
 const { filenameMaker } = require('../helpers/filenameMaker');
 const { throws } = require('assert');
+const { MongooseError } = require('mongoose');
 
 
 const createCategory = async (req, res, next) => {
     try{
-const {category,catDescription }= req.body
-const {catPicture} = req.files
+const {category,description }= req.body
+const {picture} = req.files
 if(!category) next(ApiErrors.badRequest('Не вказана категорія'))
-if(!catDescription) next(ApiErrors.badRequest('Не вказан опис'))
-if(!catPicture) next(ApiErrors.badRequest('Не вказано зображення'))
+if(!description) next(ApiErrors.badRequest('Не вказан опис'))
+if(!picture) next(ApiErrors.badRequest('Не вказано зображення'))
 const cat = await Category
             .create({
                 category: category,
-                description: catDescription
+                description: description
             })
             .then(data => data)
-            .catch(err=>{if(err) throw err})
-            console.log(cat._id, '>>> _id');
+            // .catch(err=>{if(err) throw err})
         const catPic = await Image
             .create({
-                image: filenameMaker(catPicture, category),
+                image: filenameMaker(picture, category),
                 goodId: cat._id
             })
             .then(data => {
-                catPicture.mv(path.resolve(__dirname, '..', 'images', data.image))
+                picture.mv(path.resolve(__dirname, '..', 'images', data.image))
                 return data
             })
-            res.json({cat,catPic})
+            res.json({response:`Категорія ${cat.category} додана`})
     }catch(error){
-        next(ApiErrors.badRequest(error.message))
+        next(ApiErrors.internal(
+            error.message
+            ))
 
     }
 }
 const createGood = async (req, res, next) => {
     try {
-        const { category, name, articul, description, price } = req.body
-        const {  picture, images } = req.files
+        const {name, articul, price , category,  description } = req.body
+        const {  picture} = req.files
+        console.log(picture);
         // let picExt =picture.name.split('.').slice(-1),
         let picName = filenameMaker(picture, category, name)
-
+let images = Object.keys(req.files).reduce((acc,item)=> {
+    if(item!='picture'){
+        acc.push(req.files[item])
+    }
+    return acc
+},[])
         // let fileName = category + '-' + name + '-' + Date.now() + picExt
         // console.log('picExt',picExt);
         // console.log('fileName', filenameMaker(picture,category,name));
         console.log(
+            // req.files
+            // 'images',images 
             // picName
             // req.body,
             // picExt
@@ -62,7 +72,7 @@ const createGood = async (req, res, next) => {
             }).then(data=>{
                return data[0]})
             .catch(err=>{if(err) throw err})
-            console.log(cat.category);
+            // console.log(cat.category);
         
         const good = await Good
             .create({
@@ -103,14 +113,15 @@ const createGood = async (req, res, next) => {
                 })
             return goodImage
         }))
-
-        res.json({
-            cat,
-            catPic,
-            good,
-            goodPic,
-            goodImages
-        })
+        res.json({response:`Товар ${good.name} додано`})
+        // res.json({
+        //     cat,
+        //     goodPic,
+        //     good,
+        //     goodPic,
+        //     goodImages
+        // })
+        // res.json({name, articul, price , category,  description })
 
     } catch (error) {
         if(error){
