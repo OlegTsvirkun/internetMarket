@@ -19,7 +19,7 @@ export const OrderContacts = ({}) => {
 	const [telError, setTelError] = useState({});
 	const [emailError, setEmailError] = useState({});
 
-	const dispatch = useDispatch();
+	const dispatch = useDispatch(); 
 
 	const blurHandler = (e, maxValue = 40, minValue = 3) => {
 		let obj = {};

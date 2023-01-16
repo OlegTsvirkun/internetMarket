@@ -109,6 +109,7 @@ const getGood = async (req, res, next) => {
         if(Id && !articul){
             good = await Good
                .findById(Id)
+               .populate('category',{_id: 0,description:0})
                 // .findOne({articul: articul})
                 .then(data => {
                     return data
@@ -131,7 +132,7 @@ const getGood = async (req, res, next) => {
                 return image.map(item => item.image)
             }
             )
-            console.log(good);
+            // console.log(good);
 
         res.status(200).json({ good, images })
     } catch (error) {
@@ -189,14 +190,28 @@ const searchGood = async (req, res, next) => {
 
     }
 
-
+    
 }
 
+const searchGoodByArticul = async(req,res,next)=>{
+    try{
+        let articul = req.query?.articul || ''
+        if(!articul) return next(ApiErrors.badRequest({error:'Немає основного зображення'}))
+        const goods = await Good
+        .find({articul : articul})
+        .then(res=> res)
+        res.json({goods})
+    }catch(error){
+next(ApiErrors.badRequest(error.message))
+    }
+   
+}
 
 module.exports = {
     getCategory,
     getGoods,
     getGood,
     searchGood,
+    searchGoodByArticul
    
 }

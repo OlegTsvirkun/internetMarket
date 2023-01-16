@@ -18,6 +18,11 @@ const searchGoods = async(searchValue)=>{
     // console.log(goods.data);
     return goods.data
 }
+const searchGoodsByArticul = async(articul)=>{
+    const goods = await axios.get(`/search-articul?${articul}`)
+    // console.log(goods.data);
+    return goods.data
+}
 const finishOrder = async (orderData) => {
     const order = await axios.post('/finish-order', orderData);
     return order.data;
@@ -27,6 +32,15 @@ const getMainContacts = async () => {
     return contact.data;
 }
 
+const removeImageData = async (imageData) => {
+    const image = await axios.post("/admin/remove-image",imageData);
+    return image.data;
+}
+const removeGood = async (id) => {
+    const image = await axios.post("/admin/remove-good",id);
+    return image.data;
+}
+
 
 const services = {
     getMain,
@@ -34,8 +48,10 @@ const services = {
     getGood,
     finishOrder,
     searchGoods,
+    searchGoodsByArticul,
     getMainContacts,
-   
+    removeImageData,
+    removeGood
    
 }
 

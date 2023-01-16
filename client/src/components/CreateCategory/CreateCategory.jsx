@@ -20,18 +20,18 @@ export const CreateCategory = ({setNewCatIsOpen}) => {
 	const handleCreatePlane = useCallback(
 		async (e) => {
 			e.preventDefault();
-			setIsOpen(!isOpen);
-			console.log(picture);
-			// const formData = new FormData();
-			// formData.append("category", category);
-			// formData.append("description", description);
-			// formData.append("picture", picture);
-			// await createCategory(formData)
-			// .then(res=>{
-			//   if(!res.error){
-			//     setResponse(res)
-			//       }
-			// })
+			// console.log(picture);
+			const formData = new FormData();
+			formData.append("category", category);
+			formData.append("description", description);
+			formData.append("picture", picture);
+			await createCategory(formData)
+			.then(res=>{
+				if(!res.error){
+					setResponse(res)
+					setIsOpen(!isOpen);
+			      }
+			})
 		},
 		[category, description, picture],
 	);
@@ -80,7 +80,7 @@ export const CreateCategory = ({setNewCatIsOpen}) => {
 			{isOpen && (
 				<div className={styles.createCategory__modal}>
 					<div className={styles.createCategory__modalMessege}>
-						<p>response{response?.response}</p>
+						<p>{response?.response}</p>
 					</div>
 					<Button onClick={()=>setNewCatIsOpen(false)}>Back</Button>
 				</div>

@@ -31,9 +31,12 @@ export const SubHeader = (
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(getMain());
+		console.log(location.pathname.split('/').includes('admin'));
 	}, [isCatMenuOpen]);
-	if (location.pathname == "/order" || location.pathname == "/finish-order")
+	if (location.pathname == "/order" || location.pathname == "/finish-order" )
 		return <></>;
+     
+	  if(location.pathname .split('/').includes('admin')) return  <div className={styles.caption}>ADMIN PANEL</div>
 	return (
 		<div className={styles.subHeader}>
 			<ContentWrapper className={styles.subHeader__container}>

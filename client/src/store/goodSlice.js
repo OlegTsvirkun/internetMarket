@@ -20,6 +20,14 @@ const goodSlice = createSlice({
     isLoading: false,
     message:''
   },
+  reducers:{
+    removeImage:(state, action) => {
+      state.images = state.images.filter(item=>item!=action.payload)
+    
+         
+      },
+    
+      },
   extraReducers:(builder)=>{
     builder
     .addCase(getGood.pending,(state, action)=>{
@@ -42,5 +50,5 @@ const goodSlice = createSlice({
    
   }
 }) 
-
+export const{removeImage} = goodSlice.actions
 export default goodSlice.reducer

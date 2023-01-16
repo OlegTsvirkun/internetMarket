@@ -14,6 +14,7 @@ import { Footer } from "./components/Footer/Footer";
 import { FinishOrder } from "./pages/FinishOrder/FinishOrder";
 import { Failpage } from "./pages/Failpage/Failpage";
 import { AdminCreateGood } from "./pages/AdminCreateGood/AdminCreateGood";
+import {  EditGoodPage } from "./pages/EditGoodPage/EditGoodPage";
 
 function App() {
   // const [searchValue, setSearchValue] = useState('');
@@ -32,8 +33,8 @@ function App() {
             <Route exact path="/order" element={<OrderPage />} />
             <Route exact path="/search" element={<SearchPage />} />
             <Route exact path="/finish-order" element={<FinishOrder />} />
-            <Route exact path="/admin-create" element={<AdminCreateGood />} />
-            {/* <Route exact path="/finish-order" element={<FinishOrder />} /> */}
+            <Route exact path="/admin" element={<AdminCreateGood />} />
+            <Route exact path="/admin/edit-good" element={<EditGoodPage />} />
 
             <Route path="*" element={<Failpage />} />
           </Routes>

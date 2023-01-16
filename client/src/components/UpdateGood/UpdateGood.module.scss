@@ -1,3 +1,84 @@
 .updateGood{
-    
+    display: flex;
+    &__searchInput{
+        width: 200px;
+        height: 42px;     
+
+    }
+    &__searchContainer{
+        flex: 0 1 30%;
+        width: 250px;
+        // display: flex;
+    }
+    &__goodList{
+        flex: 1 1 70%;
+        margin:20px 0 20px 20px;
+        
+    }
+}
+.goodList{
+    &__goodItem{
+        height: 150px;
+
+        position: relative;
+        font-size: 18px;
+        text-align: start;
+        padding:10px;
+        border:1px solid rgba(71, 71, 71, 0.2) ;
+display:flex;
+justify-content: space-between;
+align-items:center;
+margin-bottom: 5px;
+p{
+    margin: 5px 0 5px 20px;
+}
+}
+&__buttons{
+    margin: 10px 20px ;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 20px;
+}
+&__buttonCorrect{
+    padding: 3px 9px;
+    width: 120px;
+    height: auto;
+}
+&__buttonDelete{
+    padding: 3px 9px;
+    width: 120px;
+    height: auto;
+    background-color: red;
+}
+    &__goodImage{
+        margin:0 20px;
+
+        // width: 150px;
+        height: 95%;
+    }
+}
+.searchContainer{
+    &__container{
+        // label{
+        //     width: min-content;
+        //     text-align: start;
+            
+        // }
+        display: flex;
+        align-items:center;
+        
+    }
+    &__searchButtonContainer{
+
+    }
+    &__searchButton:hover{
+        color:orange;
+    }
+    &__searchButton{
+        transform:rotate(-90deg);
+        // width: 40px;
+        width: 42px;     
+         height: 100%;
+    }
+
 }
