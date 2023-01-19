@@ -19,7 +19,8 @@ mongoose.set('strictQuery', false)
 
 app.use(require('./routes/goods'))
 app.use(require('./routes/contacts')) 
-app.use(require('./routes/admin')) 
+// app.use(require('./routes/admin')) 
+app.use(require('./routes/index')) 
 
 app.use(errorHandler)
 
