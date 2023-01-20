@@ -7,6 +7,7 @@ export const Button = ({
 	onClick = () => null,
 	children = "",
 	isBackButton = false,
+	// isHover=true,
 	type
 }) => {
 	return (
@@ -15,7 +16,9 @@ export const Button = ({
 			type={type}
 				className={`${
 					isBackButton ?styles.backButton : styles.button
-				} ${className}`}
+				} ${className}
+				`}
+				// ${isHover ? styles.buttonHover: null}
 				onClick={onClick}
 			>
 				{children}

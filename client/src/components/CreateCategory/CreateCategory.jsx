@@ -4,7 +4,7 @@ import { Button } from "../Button";
 import { ContentWrapper } from "../ContentWrapper";
 import { Input } from "../Input/Input";
 import styles from "./CreateCategory.module.scss";
-import axios from "../../axios";
+import {hostAuth} from "../../axios";
 import { ModalWindow } from "../ModalWindow/ModalWindow";
 import { Link } from "react-router-dom";
 export const CreateCategory = ({setNewCatIsOpen}) => {
@@ -14,7 +14,7 @@ export const CreateCategory = ({setNewCatIsOpen}) => {
 	const [response, setResponse] = useState(null);
 	const [isOpen, setIsOpen] = useState(false);
 	const createCategory = async (categoryData) => {
-		const cat = await axios.post("/admin/create-category", categoryData);
+		const cat = await hostAuth.post("/admin/create-category", categoryData);
 		return cat.data;
 	};
 	const handleCreatePlane = useCallback(

@@ -41,7 +41,7 @@ console.log(images);
 						<div className={styles.goodItem__imageContent}>
 							<img
 								className={styles.goodItem__image}
-								src={good.picture}
+								src={process.env.REACT_APP_API_URL + good.picture}
 								alt= {good.name}
 							/>
 						</div>

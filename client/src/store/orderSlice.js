@@ -2,22 +2,22 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getCartFromLS } from "../utils/getCartFromLS";
 import services from "./services/service";
 
-    
-    export const finishOrder = createAsyncThunk('FINISH_ORDER',async(orderData,thunkAPI)=>{
-        try{
-           return await services.finishOrder(orderData)
-        }
-        catch(error){
-return thunkAPI.rejectWithValue(error.response.data)
-        }
-    })
+
+export const finishOrder = createAsyncThunk('FINISH_ORDER', async (orderData, thunkAPI) => {
+    try {
+        return await services.finishOrder(orderData)
+    }
+    catch (error) {
+        return thunkAPI.rejectWithValue(error.response.data)
+    }
+})
 export const orderSlice = createSlice({
     name: "order",
     initialState: {
         isErrors: {},
         orderNumber: {},
         isError: false,
-    isLoading: false,
+        isLoading: false,
     },
     reducers: {
         addError: (state, action) => {
@@ -39,28 +39,28 @@ export const orderSlice = createSlice({
         //     state.itemsInOrder={...action.payload }
         //     console.log(Object.values(action.payload));
         // }
-      
+
 
     },
-    extraReducers:(builder)=>{
+    extraReducers: (builder) => {
         builder
-        .addCase(finishOrder.pending,(state, action)=>{
-          state.isLoading = true
-        })
-        .addCase(finishOrder.fulfilled,(state, action)=>{
-          state.isLoading = false
-          state.orderNumber = action.payload
-          
-        })
-        .addCase(finishOrder.rejected,(state, action)=>{
-          state.isLoading = false
-          state.isError = true
-          state.orderNumber = {}
+            .addCase(finishOrder.pending, (state, action) => {
+                state.isLoading = true
+            })
+            .addCase(finishOrder.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.orderNumber = action.payload
 
-         
-        })
-      }
+            })
+            .addCase(finishOrder.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.orderNumber = {}
+
+
+            })
+    }
 });
 
-export const { addError, remooveError,addField,addCatDelivery } = orderSlice.actions;
+export const { addError, remooveError, addField, addCatDelivery } = orderSlice.actions;
 export default orderSlice.reducer;

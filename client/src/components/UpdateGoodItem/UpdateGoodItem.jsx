@@ -2,7 +2,8 @@ import React, { useCallback, useEffect, useState } from "react";
 import {useNavigate} from 'react-router-dom'
 import { ContentWrapper } from "../ContentWrapper";
 import { Input } from "../Input/Input";
-import axios from "../../axios";
+import {hostAuth} from "../../axios";
+
 import { Button } from "../Button";
 import { ModalWindow } from "../ModalWindow/ModalWindow";
 import { useDispatch, useSelector } from "react-redux";
@@ -52,7 +53,7 @@ export const UpdateGoodItem = ({
 	const { categories } = useSelector((state) => state.main);
 	
 	const updateGood = async (goodData) => {
-		const good = await axios.post("/admin/update-good", goodData);
+		const good = await hostAuth.post("/admin/update-good", goodData);
 		return good.data;
 	};
 	const pictureCreate = document.getElementById("pictureCreateGood");
@@ -160,7 +161,6 @@ export const UpdateGoodItem = ({
 			// setIsOpen(!isOpen);
 			console.log(err.response.data);
 		}})
-		console.log();
 
 }
 	return (
@@ -272,7 +272,7 @@ export const UpdateGoodItem = ({
 								type="file"
 								multiple={false}
 							/>
-							<img className={styles.createGood__imgMain} src={host +_picture} alt="" />
+							<img className={styles.createGood__imgMain} src={process.env.REACT_APP_API_URL +_picture} alt="" />
 						</label>
 						
 						
@@ -290,7 +290,7 @@ export const UpdateGoodItem = ({
 								</>
 								 } */}
 								 <DobleActionDelete  onClick={()=>handleRemoveImage(image)}/>
-								<img className={styles.createGood__img} src={host +image} />
+								<img className={styles.createGood__img} src={process.env.REACT_APP_API_URL +image} />
 								</div>
 							))}
 						</div>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { OptionOrderCard } from "../OptionOrderCard/OptionOrderCard";
-import { host } from "../../host";
 import styles from "./OrderDelivery.module.scss";
 import { TbTruckDelivery } from "react-icons/tb";
 import { TfiShoppingCartFull } from "react-icons/tfi";
@@ -44,7 +43,7 @@ export const OrderDelivery = ({}) => {
 				/>
 
 				<OptionOrderCard
-					icon={<img src={host + "NP.svg"} />}
+					icon={<img src={process.env.REACT_APP_API_URL + "NP.svg"} />}
 					name="delivery"
 					id="deliveryPost"
 					title="Доставка НП"

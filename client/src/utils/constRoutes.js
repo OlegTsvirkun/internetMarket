@@ -1,0 +1,10 @@
+
+export const MAIN_ROUTE = "/"
+export const LOGIN_ROUTE = "/user/login"
+export const REGISTRATION_ROUTE = "/user/registration"
+export const GOOD_ROUTE = "/good"
+export const CATEGORY_ROUTE = "/cat/:category"
+export const SEARCH_ROUTE = "/search"
+export const ORDER_ROUTE = "/order"
+export const FINISH_ORDER_ROUTE = "/order/finish-order"
+export const ADMIN_ROUTE = "/admin"

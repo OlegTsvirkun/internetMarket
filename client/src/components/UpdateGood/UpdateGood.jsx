@@ -117,7 +117,7 @@ export const UpdateGood = ({}) => {
 							</div>
 							<img
 								className={styles.goodList__goodImage}
-								src={itemGoods[item].picture}
+								src={process.env.REACT_APP_API_URL +itemGoods[item].picture}
 							/>
 							{isDeleteOpen && (
 								<DeleteWithBtn

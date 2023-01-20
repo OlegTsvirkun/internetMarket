@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { priceFormating } from "../../hooks";
-import { host } from "../../host";
 import { GoodBuy } from "../GoodBuy";
 import styles from "./GoodCard.module.scss";
 
@@ -18,7 +17,7 @@ export const GoodCard = (good) => {
 					{picture && (
 						<img
 							className={styles.goodCard__image}
-							src={host + picture}
+							src={process.env.REACT_APP_API_URL + picture}
 							alt={name}
 						/>
 					)}

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaQuoteRight } from "react-icons/fa";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { host } from "../../host";
 import styles from "./Carousel.scss";
 export const Carousel = ({ images,onClick }) => {
 	const [image, setImage] = useState(images);
@@ -40,7 +39,7 @@ export const Carousel = ({ images,onClick }) => {
 					return (
 						<article className={position} key={Index}>
 							<img
-								src={host + item}
+								src={process.env.REACT_APP_API_URL + item}
 								alt={item}
 								className="image"
 								onClick={onClick}

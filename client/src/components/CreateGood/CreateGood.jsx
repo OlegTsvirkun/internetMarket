@@ -2,7 +2,8 @@ import React, { useCallback, useEffect, useState } from "react";
 import { ContentWrapper } from "../ContentWrapper";
 import { Input } from "../Input/Input";
 import styles from "./CreateGood.module.scss";
-import axios from "../../axios";
+import {hostAuth} from "../../axios";
+
 import { Button } from "../Button";
 import { ModalWindow } from "../ModalWindow/ModalWindow";
 import { useDispatch, useSelector } from "react-redux";
@@ -50,11 +51,11 @@ export const CreateGood = ({
 
 	const { categories } = useSelector((state) => state.main);
 	const createGood = async (goodData) => {
-		const good = await axios.post("/admin/create-good", goodData);
+		const good = await hostAuth.post("/admin/create-good", goodData);
 		return good.data;
 	};
 	const updateGood = async (goodData) => {
-		const good = await axios.post("/admin/update-good", goodData);
+		const good = await hostAuth.post("/admin/update-good", goodData);
 		return good.data;
 	};
 	const pictureCreate = document.getElementById("pictureCreateGood");
@@ -325,7 +326,7 @@ export const CreateGood = ({
 							{_images.map((image, i) => (
 								<span key = {image} >
 								<span  onClick={()=>handleRemoveImage(image) }>X</span>
-								<img className={styles.createGood__img} key={i} src={image} />
+								<img className={styles.createGood__img} key={i} src={process.env.REACT_APP_API_URL +image} />
 								</span>
 							))}
 						</div>

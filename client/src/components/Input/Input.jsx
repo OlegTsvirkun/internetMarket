@@ -14,11 +14,13 @@ export const Input = ({
 	onBlur=()=>null,
 	id,
 	accept,
-	multiple=false
+	multiple=false,
+	autoComplete
 }) => {
 	return (
 		<div className={`${styles.container} ${containerClassname}`}>
 			<input
+			autoComplete={autoComplete}
 				type={type}
 				name={name}
 				className={`${styles.input} ${className}`}

@@ -7,6 +7,7 @@ import cartReducer from "./cartSlice";
 import goodReducer from "./goodSlice";
 import  orderSlice  from "./orderSlice";
 import  mainContactSlice  from "./mainContactSlice";
+import userSlice from "./userSlice";
 export const store = configureStore(({
     reducer: {
         main: mainReducer,
@@ -15,5 +16,6 @@ export const store = configureStore(({
         good: goodReducer,
         order: orderSlice,
         mainContact:mainContactSlice,
+        user:userSlice,
     }
 }))

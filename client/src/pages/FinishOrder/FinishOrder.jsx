@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styles from "./FinishOrder.module.scss";
-import { host } from "../../host";
 import { ContentWrapper } from "../../components/ContentWrapper";
 import { Button } from "../../components/Button";
 import { Link } from "react-router-dom";
@@ -17,7 +16,7 @@ export const FinishOrder = ({}) => {
 			<div className={styles.finishOrder__block}>
 				<img
 					className={styles.finishOrder__img}
-					src={host + "maneger-service.png"}
+					src={process.env.REACT_APP_API_URL + "maneger-service.png"}
 					alt="maneger-service.png"
 				/>
 				<div className={styles.finishOrder__info}>

@@ -4,7 +4,6 @@
 import React from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 import { priceFormating } from '../../hooks';
-import { host } from '../../host';
 import { removeFromCart } from '../../store/cartSlice';
 import { CountChanger } from '../CountChanger/CountChanger';
 import styles from './CartTableItem.module.scss';
@@ -31,7 +30,7 @@ dispatch(removeFromCart(obj))
   <tbody className={styles.cartTable}>
   <tr>
           <th >{index}.</th>
-          <th><img src = {host+picture}/></th>
+          <th><img src = {process.env.REACT_APP_API_URL+picture}/></th>
           <th>{name}</th>
           <th><CountChanger count = {count} articul = {articul} cart={goods} /> </th>
           <th>

@@ -28,7 +28,7 @@
         text-decoration: none;
         color: rgb(71, 71, 71);
     }
-    &__basket {
+    &__auth {
         text-align: right;
     }
 
@@ -39,4 +39,24 @@
     &__basketIcon {
         cursor: pointer;
     }
+    &__adminBtn{
+        width: 50px;
+        height: 15px;
+        width: 50px;
+        height: 15px;
+        padding: 0;
+        background-color: rgb(237, 237, 237);
+    }
+}
+.buttonContainer{
+    display: flex;
+    a{
+        margin-right:5px ;
+    }
+}
+.adminBtn{
+    width: 50px;
+    height: 15px;
+    padding: 0;
+    background-color: aquamarine;
 }

@@ -1,6 +1,9 @@
 
 .button:hover {
-    // filter:brightness(105%)
+    // filter:brightness(105%);
+    background-color: #46bcfc;
+
+    border: 1.5px solid #19afff;
 }
 .button {
     width: 135px;
@@ -12,6 +15,8 @@
     font-weight: 400;
     color: white;
     cursor: pointer;
+    border: 1.5px solid transparent;
+
 }
 
 .backButton {
