@@ -5,7 +5,7 @@ export const Input = ({
 	type = "",
 	name = "",
 	value = "",
-	containerClassname = "",
+	containerClassName = "",
 	className,
 	placeholder = "",
 	onChange = () => null,
@@ -15,10 +15,13 @@ export const Input = ({
 	id,
 	accept,
 	multiple=false,
-	autoComplete
+	autoComplete,
+	labelTitle='',
+	children
 }) => {
 	return (
-		<div className={`${styles.container} ${containerClassname}`}>
+		<label className={`${styles.container} ${containerClassName}`}>
+			{labelTitle}
 			<input
 			autoComplete={autoComplete}
 				type={type}
@@ -34,6 +37,7 @@ export const Input = ({
 				multiple={multiple}
 				accept={accept}
 			/>
-		</div>
+			{children}
+		</label>
 	);
 };

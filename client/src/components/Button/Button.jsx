@@ -7,22 +7,28 @@ export const Button = ({
 	onClick = () => null,
 	children = "",
 	isBackButton = false,
+	isOrangeButton = false,
+	isDisableButton=false,
+	isBlueButton = true,
+
 	// isHover=true,
-	type
+	type,
 }) => {
+	if (isBackButton || isOrangeButton||isDisableButton) isBlueButton = false;
 	return (
 		<div className={containerClassName}>
 			<button
-			type={type}
-				className={`${
-					isBackButton ?styles.backButton : styles.button
-				} ${className}
+				type={type}
+				className={`${styles.button} 
+				${isBackButton && styles.backButton} 
+				${isBlueButton && styles.blueButton} 
+				${isOrangeButton && styles.orangeButton} 
+				${isDisableButton && styles.disableButton} 
+				${className}
 				`}
-				// ${isHover ? styles.buttonHover: null}
 				onClick={onClick}
 			>
 				{children}
-				
 			</button>
 		</div>
 	);

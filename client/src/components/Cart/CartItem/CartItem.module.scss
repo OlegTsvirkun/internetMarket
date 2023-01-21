@@ -1,0 +1,19 @@
+.cartItem {
+    margin: 0 auto;
+    img {
+        width: 70px;
+        height: auto;
+    }
+
+    thead th {
+        font-weight: 500;
+        padding: 5px 5px;
+    }
+    tbody th {
+        font-weight: 300;
+    }
+ 
+    th {
+        padding: 2px 5px;
+    }
+}

@@ -1,23 +1,22 @@
+import styles from "./CreateCategory.module.scss";
+
 import React, { useCallback } from "react";
 import { useState } from "react";
-import { Button } from "../Button";
-import { ContentWrapper } from "../ContentWrapper";
-import { Input } from "../Input/Input";
-import styles from "./CreateCategory.module.scss";
-import {hostAuth} from "../../axios";
-import { ModalWindow } from "../ModalWindow/ModalWindow";
-import { Link } from "react-router-dom";
-export const CreateCategory = ({setNewCatIsOpen}) => {
+import { Link, useNavigate } from "react-router-dom";
+import { ContentWrapper } from "../../components/ContentWrapper";
+import { Input } from "../../components/Input/Input";
+import { Button } from "../../components/Button";
+import adminServices from "../../store/services/adminServices";
+
+export const CreateCategory = ({}) => {
 	const [category, setCategory] = useState("");
 	const [picture, setPicture] = useState(null);
 	const [description, setDescription] = useState("");
 	const [response, setResponse] = useState(null);
 	const [isOpen, setIsOpen] = useState(false);
-	const createCategory = async (categoryData) => {
-		const cat = await hostAuth.post("/admin/create-category", categoryData);
-		return cat.data;
-	};
-	const handleCreatePlane = useCallback(
+	const navigate = useNavigate();
+
+	const handleCreateCategory = useCallback(
 		async (e) => {
 			e.preventDefault();
 			// console.log(picture);
@@ -25,67 +24,62 @@ export const CreateCategory = ({setNewCatIsOpen}) => {
 			formData.append("category", category);
 			formData.append("description", description);
 			formData.append("picture", picture);
-			await createCategory(formData)
-			.then(res=>{
-				if(!res.error){
-					setResponse(res)
+			await adminServices.createCategory(formData).then((res) => {
+				if (!res.error) {
+					setResponse(res);
 					setIsOpen(!isOpen);
-			      }
-			})
+				}
+			});
 		},
 		[category, description, picture],
 	);
-
 	return (
-		<ContentWrapper className={styles.createCategory}>
+		<>
 			<h1 className={styles.createCategory__title}>Нова категорія</h1>
 			<form>
 				<div className={styles.createCategory__container}>
 					<div className={styles.createCategory__containerInputs}>
-						<label>
-							Введіть назву{" "}
-							<Input
-								className={styles.createCategory__input}
-								name="category"
-								type="text"
-								placeholder="Назва категорії"
-								value={category}
-								onChange={(e) => setCategory(e.target.value)}
-								onInput={(e) => setCategory(e.target.value)}
-							/>
-						</label>
-						<label>
-							Виберіть зображення
-							<Input
-								onChange={(e) => setPicture(e.target.files[0])}
-								name="picture"
-								type="file"
-							/>
-							{/* <input  type="file" name="picture" id="" onChange={(e) => setPicture(e.target.files[0])} /> */}
-						</label>
-					
+						<Input
+							labelTitle="Введіть назву"
+							className={styles.createCategory__input}
+							name="category"
+							type="text"
+							placeholder="Назва категорії"
+							value={category}
+							onChange={(e) => setCategory(e.target.value)}
+							onInput={(e) => setCategory(e.target.value)}
+						/>
+
+						<Input
+							labelTitle="Виберіть зображення"
+							onChange={(e) => setPicture(e.target.files[0])}
+							name="picture"
+							type="file"
+						/>
 					</div>
 					<img className={styles.createCategory__img} src={null} alt="" />
 				</div>
-			<label className={styles.createCategory__description} > Опис:
+				<label className={styles.createCategory__description}>
+					{" "}
+					Опис:
 					<textarea
 						value={description}
 						name="description"
 						placeholder="Опис категорії"
 						onChange={(e) => setDescription(e.target.value)}
 					/>
-			</label>
+				</label>
 			</form>
-			<Button  onClick={handleCreatePlane}>Створити категорію</Button>
+			<Button onClick={handleCreateCategory}>Створити категорію</Button>
 			{isOpen && (
 				<div className={styles.createCategory__modal}>
 					<div className={styles.createCategory__modalMessege}>
 						<p>{response?.response}</p>
 					</div>
-					<Button onClick={()=>setNewCatIsOpen(false)}>Back</Button>
+					<Button onClick={() => setNewCatIsOpen(false)}>Back</Button>
 				</div>
 			)}
 			{isOpen && <ModalWindow />}
-		</ContentWrapper>
+		</>
 	);
 };

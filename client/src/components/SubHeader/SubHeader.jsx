@@ -9,9 +9,9 @@ import { BiCategoryAlt } from "react-icons/bi";
 import { TbSortDescending } from "react-icons/tb";
 // import { RiSortAsc } from "react-icons/ri";
 import styles from "./SubHeader.module.scss";
-import { CartBlock } from "../CartBlock/CartBlock";
+import { CartBlock } from "../Cart/CartBlock/CartBlock";
 import { Modal } from "../Modal/Modal";
-import { ModalWindow } from "../ModalWindow/ModalWindow";
+import { ModalBackground } from "../ModalBackground/ModalBackground";
 import { MenuCatalog } from "../MenuCatalog/MenuCatalog";
 import { getMain } from "../../store/mainSlice";
 import { SortMenu } from "../SortMenu/SortMenu";
@@ -45,7 +45,7 @@ export const SubHeader = (
 					onClick={() => setisCatMenuOpen(!isCatMenuOpen)}
 				>
 					{isCatMenuOpen && (
-						<ModalWindow onClick={() => setisCatMenuOpen(false)} />
+						<ModalBackground onClick={() => setisCatMenuOpen(false)} />
 					)}
 					{isCatMenuOpen && (
 						<MenuCatalog
@@ -66,16 +66,17 @@ export const SubHeader = (
 						onClick={() => setIsSortOpen(!isSortOpen)}
 					>
 						<TbSortDescending size='35'/>
-						{isSortOpen && <ModalWindow onClick={() => setIsSortOpen(false)} />}
+						{isSortOpen && <ModalBackground onClick={() => setIsSortOpen(false)} />}
 						{isSortOpen && <SortMenu />}
 					</Button>
 				) : (
 					<div></div>
 				)}
 				<CartBlock />
-				{isVisible && <ModalWindow />}
+				
+				{/* {isVisible && <ModalBackground />} */}
 			</ContentWrapper>
-			<Modal />
+			{/* <Modal /> */}
 		</div>
 	);
 };

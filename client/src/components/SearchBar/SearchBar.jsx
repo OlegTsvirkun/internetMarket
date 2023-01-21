@@ -47,7 +47,7 @@ export const SearchBar = ({
 			)}
 
 				<Link to ={`/search?q=${searchValue}`}>
-			<Button className={styles.searchBar__button} onClick = {()=>setSearchValue('')} >
+			<Button className={styles.searchButton} isOrangeButton={true} onClick = {()=>setSearchValue('')} >
 					ПОШУК
 					</Button>
 					</Link>

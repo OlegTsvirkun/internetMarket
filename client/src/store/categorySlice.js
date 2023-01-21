@@ -44,6 +44,13 @@ removeGood:(state,action)=>{
     if(state.goods[item]._id!= action.payload) acc[item]=state.goods[item]
     return acc
   },{} )
+},
+cleanupCatSlice:(state,action)=>{
+  state.isLoading = false
+      state.catName = ''
+      state.goods = {}
+      state.total = null
+      state.catDescription =[]
 }
   },
   
@@ -119,5 +126,5 @@ removeGood:(state,action)=>{
     })
   }
 }) 
-export const {removeGood} =categorySlice.actions
+export const {removeGood,cleanupCatSlice} =categorySlice.actions
 export default categorySlice.reducer

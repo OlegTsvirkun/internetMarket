@@ -1,0 +1,11 @@
+.modalBackground {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(48, 48, 48, 0.3);
+  z-index: 10;
+  cursor: default;
+}

@@ -32,14 +32,6 @@ const getMainContacts = async () => {
     return contact.data;
 }
 
-const removeImageData = async (imageData) => {
-    const image = await hostAuth.post("/admin/remove-image",imageData);
-    return image.data;
-}
-const removeGood = async (id) => {
-    const image = await hostAuth.post("/admin/remove-good",id);
-    return image.data;
-}
 
 
 const services = {
@@ -50,8 +42,6 @@ const services = {
     searchGoods,
     searchGoodsByArticul,
     getMainContacts,
-    removeImageData,
-    removeGood
    
 }
 

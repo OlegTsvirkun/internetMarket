@@ -4,23 +4,25 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-route
 import { Header } from "./components/Header";
 import { Modal } from "./components/Modal/Modal";
 import { SubHeader } from "./components/SubHeader";
-import { CategoryPage } from "./pages/CategoryPage";
-import { GoodItem } from "./pages/GoodItem/GoodItem";
-import { HomePage } from "./pages/HomePage";
-import { OrderPage } from "./pages/OrderPage/OrderPage";
+import { CategoryPage } from "./pages/ShopPages/CategoryPage";
+import { GoodItem } from "./pages/ShopPages/GoodItem/GoodItem";
+import { HomePage } from "./pages/ShopPages/HomePage";
+import { OrderPage } from "./pages/ShopPages/OrderPage/OrderPage";
 import './App.css';
-import { SearchPage } from "./pages/SearchPage/SearchPage";
+import { SearchPage } from "./pages/ShopPages/SearchPage/SearchPage";
 import { Footer } from "./components/Footer/Footer";
 import { FinishOrder } from "./pages/FinishOrder/FinishOrder";
-import { Failpage } from "./pages/Failpage/Failpage";
-import { AdminCreateGood } from "./pages/AdminCreateGood/AdminCreateGood";
-import {  EditGoodPage } from "./pages/EditGoodPage/EditGoodPage";
+import { FailPage} from "./pages/FailPage/FailPage";
+import { AdminCreateGood, AdminPage } from "./pages/AdminPages/AdminPage/AdminPage";
+import {  EditGoodPage } from "./pages/AdminPages/EditGoodPage/EditGoodPage";
 import { AuthPage } from "./pages/AuthPage/AuthPage";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { changeAuth, checkUser } from "./store/userSlice";
-import { LOGIN_ROUTE } from "./utils/constRoutes";
+import { CATEGORY_ROUTE, CREATE_CATEGORY_ROUTE, CREATE_GOOD_ROUTE, FINISH_ORDER_ROUTE, GOOD_ROUTE, LOGIN_ROUTE, MAIN_ROUTE, ORDER_ROUTE, REGISTRATION_ROUTE, SEARCH_ROUTE } from "./utils/constRoutes";
 import { ModalAlert } from "./components/ModalAlert/ModalAlert";
+import { CreateCategoryPage } from "./pages/AdminPages/CreateCategoryPage/CreateCategoryPage";
+import { CreateGoodPage } from "./pages/AdminPages/CreateGoodPage/CreateGoodPage";
 
 
 function App() {
@@ -45,21 +47,26 @@ useEffect(() => {
           />
       <div className="main">
         <Routes>
-            <Route exact path="/" element={<HomePage />} />
-            <Route exact path="/good" element={<GoodItem />} />
-            <Route exact path="/cat/:category" element={<CategoryPage />} />
-            <Route exact path="/search" element={<SearchPage />} />
-            <Route exact path="/order" element={<OrderPage />} />
-            <Route exact path="/order/finish-order" element={<FinishOrder />} />
-            <Route exact path="/user/registration" element={<AuthPage />} />
-            <Route exact path="/user/login" element={<AuthPage />} />
+            <Route exact path={MAIN_ROUTE} element={<HomePage />} />
+            <Route exact path={GOOD_ROUTE} element={<GoodItem />} />
+            <Route exact path={CATEGORY_ROUTE} element={<CategoryPage />} />
+            <Route exact path={SEARCH_ROUTE} element={<SearchPage />} />
+            <Route exact path={ORDER_ROUTE} element={<OrderPage />} />
+            <Route exact path={FINISH_ORDER_ROUTE} element={<FinishOrder />} />
+            <Route exact path={REGISTRATION_ROUTE} element={<AuthPage />} />
+            <Route exact path={LOGIN_ROUTE} element={<AuthPage />} />
 
          {role.includes("ADMIN") &&
-         <><Route exact path="/admin" element={<AdminCreateGood />} /><Route exact path="/admin/edit-good" element={<EditGoodPage />} /></>
+         <><Route exact path="/admin" element={<AdminPage />} />
+         <Route exact path="/admin/edit-good" element={<EditGoodPage />} />
+         <Route exact path={CREATE_CATEGORY_ROUTE} element={<CreateCategoryPage />} />
+         <Route exact path={CREATE_GOOD_ROUTE} element={<CreateGoodPage />} />
+         
+         </>
          
             }
 
-            <Route path="*" element={<Failpage />} />
+            <Route path="*" element={<FailPage />} />
           </Routes>
           <Footer/>
       </div>

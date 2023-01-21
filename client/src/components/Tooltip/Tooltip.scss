@@ -1,10 +1,10 @@
 .tooltip{
   
-    background: rgb(58, 58, 58);
+    background: rgba(48, 155, 255, 0.384);
     // border: 1px solid rgb(108, 108, 108);
     border-radius:5px;
     padding: 7px;
-    color:rgba(255, 255, 255, 0.879);
+    color:rgba(75, 75, 75, 0.879);
     z-index: 5;
 
 }
@@ -39,7 +39,7 @@
 .tooltip.bottom{
     position:absolute;
     left:0%;
-    bottom: 0px;
+    bottom: -5px;
     transform: translate(0 ,100%);
     z-index: 5;
 

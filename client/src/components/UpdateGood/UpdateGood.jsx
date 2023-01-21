@@ -6,7 +6,7 @@ import { Button } from "../Button";
 import { Input } from "../Input/Input";
 import styles from "./UpdateGood.module.scss";
 import { removeGood, searchingGoods, searchingGoodsByArticul } from "../../store/categorySlice";
-import { priceFormating } from "../../hooks";
+import { priceFormating } from "../../utils/priceFormating";
 import { DeleteWithBtn } from "../DeleteWithBtn/DeleteWithBtn";
 import services from "../../store/services/service";
 

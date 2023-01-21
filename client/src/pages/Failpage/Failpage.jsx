@@ -1,11 +1,11 @@
 import React from 'react';
 import { ContentWrapper } from '../../components/ContentWrapper';
 import { BiConfused } from 'react-icons/bi';
-import styles from './Failpage.module.scss';
+import styles from './FailPage.module.scss';
 import { Button } from '../../components/Button';
 import { Link } from 'react-router-dom';
 
-export const Failpage = ({}) =>{
+export const FailPage = ({}) =>{
   return (
  <>
     <ContentWrapper className={styles.failpage}>

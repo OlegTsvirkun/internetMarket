@@ -1,21 +1,23 @@
 import React, { useEffect } from "react";
 import { Button } from "../Button";
-import { IoIosCloseCircleOutline } from "react-icons/io";
+import { BsX } from "react-icons/bs";
 import styles from "./ModalAlert.module.scss";
 
 export const ModalAlert = ({
-	onClick = () => null,
 	title = "",
 	message_1 = "",
 	message = "",
 	children,
 	className = "",
+	frstBtnTitle,
 	scndBtnTitle = "",
+	isFirst = true,
 	isSecond = false,
-  frstBtnClick,
-  scndBtnClick,
-  closeClick,
-  bcgClick
+	onClick = () => null,
+	frstBtnClick = () => null,
+	scndBtnClick = () => null,
+	closeClick ,
+	bcgClick = () => null,
 }) => {
 	useEffect(() => {
 		document.body.style.overflow = "hidden";
@@ -26,25 +28,23 @@ export const ModalAlert = ({
 
 	return (
 		<div onClick={bcgClick} className={styles.modalBackground}>
-			{children}
+			
 			<div className={`${styles.itemWindow} ${className}`}>
 				<div className={styles.itemWindow__title}>
 					<div></div> <h3>{title}</h3>
-					<IoIosCloseCircleOutline size="22" onClick={closeClick}/>
+					<span onClick={closeClick}><BsX size="25"  /></span>
 				</div>
-				{/* <div className={styles.itemWindow__container} > */}
-				{/* <div className={styles.itemWindow__flexContainer}> */}
-					{/* <h3 className={styles.itemWindow__message}>{message_1}</h3> */}
-					<h3 className={styles.itemWindow__message}>{message}</h3>
-					<div className={styles.itemWindow__btnContainer}>
-						<Button className={styles.btnContainer__btn} onClick={frstBtnClick} >Ок</Button>
-						{isSecond && (
-							<Button onClick={scndBtnClick}  className={styles.btnContainer__btn}>
-								{scndBtnTitle}
-							</Button>
-						)}
-					{/* </div> */}
-					{/* </div> */}
+{/* {children} */}
+				{children?<div className={styles.children} >{children}</div> : <h3 className={styles.itemWindow__message}>{message}</h3> }
+				<div className={styles.itemWindow__btnContainer}>
+					{isFirst && <Button className={styles.btnContainer__btn} onClick={frstBtnClick}>
+						{frstBtnTitle? frstBtnTitle :  'Ок' }
+					</Button>}
+					{isSecond && (
+						<Button onClick={scndBtnClick} className={styles.btnContainer__btn}>
+							{scndBtnTitle}
+						</Button>
+					)}
 				</div>
 			</div>
 		</div>

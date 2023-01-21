@@ -8,7 +8,7 @@ import { Button } from "../Button";
 import { ModalWindow } from "../ModalWindow/ModalWindow";
 import { useDispatch, useSelector } from "react-redux";
 import { getMain } from "../../store/mainSlice";
-import { Validator } from "../../utils/validator";
+import { Validator, valueValidator } from "../../utils/validator";
 import { Tooltip } from "../Tooltip/Tooltip";
 import { removeImage } from "../../store/goodSlice";
 import  services  from "../../store/services/service";
@@ -77,21 +77,11 @@ export const UpdateGoodItem = ({
 	//   setIsButton(false)
 	// }, []);
 
-	const blurHandler = (e, maxValue = 40, minValue = 3) => {
+	const blurHandler = (e,onlyText, maxValue = 40, minValue = 3) => {
 		// setIsButton(false)
 		let obj = {};
 		// console.log(e.target.value.length);
-		if (e.target.value.length < 1) {
-			obj = { ["Поле не може бути порожнім"]: true };
-		} else if (e.target.value.length < minValue) {
-			obj = { [`Поле має бути більше ${minValue} символів`]: true };
-		} else if (e.target.value.length > maxValue) {
-			obj = { [`Поле має бути не більше ${maxValue} символів`]: true };
-		} else if (Validator(e)) {
-			obj = { [Validator(e)]: true };
-		} else {
-			obj = {};
-		}
+		obj = valueValidator(e,onlyText, maxValue, minValue)
 		if (Object.keys(obj)[0]) {
 			setErrors({ ...errors, ...{ [e.target.name]: true } });
 		} else {

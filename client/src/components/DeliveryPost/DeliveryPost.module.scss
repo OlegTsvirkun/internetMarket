@@ -1,22 +1,20 @@
-.deliveryPost{
-    display: flex;
-    flex-direction: column;
-    align-items:flex-start;
+.deliveryPost {
     margin-top: 50px;
 
-        label{
-    display: flex;
-    flex-direction: column;
-position: relative;
-            }
-            input{
-                margin: 5px 0;
-            }
-            
-        }
-        .deliveryPost__postN{
-            input{
 
-                width: 50px;
-            }
-        }
+}
+.cityContainer{
+    width:30vw;
+
+}
+.postNContainer{
+    width: 50px;
+
+
+}
+.city{
+}
+
+  .postN {
+      width: 50px;
+  }

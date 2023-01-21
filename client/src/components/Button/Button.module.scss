@@ -1,22 +1,14 @@
-
-.button:hover {
-    // filter:brightness(105%);
-    background-color: #46bcfc;
-
-    border: 1.5px solid #19afff;
-}
 .button {
-    width: 135px;
-    height: 50px;
+    width: fit-content;
+    height: fit-content;
     padding: 8px 12px;
     font-size: 14px;
     border: none;
-    background-color: #2FB5FC;
     font-weight: 400;
     color: white;
     cursor: pointer;
     border: 1.5px solid transparent;
-
+    transition: all .3s;
 }
 
 .backButton {
@@ -24,4 +16,31 @@
     font-weight: bold;
     color: rgb(148, 163, 184);
     cursor: pointer;
+    
+    padding: 2px 4px;
+    // width: auto;
+
+}
+.disableButton {
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(148, 163, 184);
+    cursor: pointer;
+   
+}
+.orangeButton{
+    background-color: orange;
+}
+.orangeButton:hover{
+    background-color:  var(--orange-hover)
+}
+.blueButton{
+    background-color:var(--blue);
+
+}
+.blueButton:hover {
+    // filter:brightness(105%);
+    background-color: var(--blue-hover);
+    
+    // border: 1.5px solid #19afff;
 }

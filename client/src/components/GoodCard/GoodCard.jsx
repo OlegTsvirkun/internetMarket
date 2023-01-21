@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { priceFormating } from "../../hooks";
+import { priceFormating } from "../../utils/priceFormating";
 import { GoodBuy } from "../GoodBuy";
 import styles from "./GoodCard.module.scss";
 

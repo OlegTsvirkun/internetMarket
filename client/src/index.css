@@ -23,7 +23,15 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;}
 *:visited{
     color:black;
 }
+:root{
+  --blue: rgb(47, 181, 252);
+  --blue-transparent:rgba(47, 180, 252, .1);
+  --blue-hover: rgb(70, 188, 252);
+  --black-grey: rgb(71, 71, 71);
+  --grey: rgb(109,109,109);
+  --orange-hover: rgb(255, 186, 58);
 
+}
 .Skeleton{
     display: flex;
     justify-content: center;
