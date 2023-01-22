@@ -1,11 +1,8 @@
-import React, { useCallback, useRef, useEffect } from "react";
-
+import React, {  useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { priceFormating } from "../../../utils/priceFormating";
-
 import { useNavigate } from "react-router";
 import { BsCart } from "react-icons/bs";
-
 import styles from "./CartBlock.module.scss";
 import { CartMenu } from "../CartMenu";
 import { ItemsInCart } from "../../ItemInCart/ItemInCart";

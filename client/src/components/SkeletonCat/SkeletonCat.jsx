@@ -2,7 +2,7 @@
 import React from "react"
 import ContentLoader from "react-content-loader"
 import './SkeletonCat.scss'
-const SkeletonCat = (props) => (
+export const SkeletonCat = (props) => (
   <ContentLoader 
   className='skeletonCat'
     speed={2}
@@ -23,5 +23,5 @@ const SkeletonCat = (props) => (
   </ContentLoader>
 )
 
-export default SkeletonCat
+// export default SkeletonCat
 

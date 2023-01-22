@@ -5,7 +5,7 @@ import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import styles from "./Pagination.module.scss";
 
 export const Pagination = ({
-	currentPage,
+	currentPage = 1,
 	setCurrentPage,
 	totalPages,
 	className,
@@ -17,10 +17,9 @@ export const Pagination = ({
 	const [params, setParams] = useSearchParams();
 	const navigate = useNavigate();
 	const url = useLocation();
-	useEffect(() => {
-		params.set("page", currentPage);
-		navigate(url.pathname + "?" + params.toString());
-	}, [currentPage]);
+	// useEffect(() => {
+		
+	// }, [currentPage]);
 	const handlePrev = () => {
 		setNextDisplay(true);
 		if (currentPage - 1 > 1) {
@@ -50,8 +49,8 @@ export const Pagination = ({
 	const handleItem = (index) => {
 		setCurrentPage(index + 1);
 	};
-	console.log("currentPage pagination", currentPage);
-	console.log("	totalPages pagination", totalPages);
+	// console.log("currentPage pagination", currentPage);
+	// console.log("	totalPages pagination", totalPages);
 
 	// if (totalPages == NaN || totalPages == undefined || totalPages == 0) {
 	// 	return (

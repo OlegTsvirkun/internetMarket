@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Button } from "../Button";
+import { Button } from "../UA_Components/Button";
 import { Input } from "../Input/Input";
 import styles from "./UpdateGood.module.scss";
 import { removeGood, searchingGoods, searchingGoodsByArticul } from "../../store/categorySlice";

@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
 import {useNavigate} from 'react-router-dom'
-import { ContentWrapper } from "../ContentWrapper";
+import { ContentWrapper } from "../UA_Components/ContentWrapper";
 import { Input } from "../Input/Input";
 import {hostAuth} from "../../axios";
 
-import { Button } from "../Button";
+import { Button } from "../UA_Components/Button";
 import { ModalWindow } from "../ModalWindow/ModalWindow";
 import { useDispatch, useSelector } from "react-redux";
 import { getMain } from "../../store/mainSlice";

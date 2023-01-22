@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AiFillCheckCircle, AiOutlineCheckCircle } from "react-icons/ai";
-import { ContentWrapper } from "../ContentWrapper";
+import { ContentWrapper } from "../UA_Components/ContentWrapper";
 import styles from "./OptionOrderCard.module.scss";
 
 export const OptionOrderCard = ({

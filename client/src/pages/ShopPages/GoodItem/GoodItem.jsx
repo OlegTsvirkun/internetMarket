@@ -1,10 +1,10 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getGood } from "../../../store/goodSlice";
-import { ContentWrapper } from "../../../components/ContentWrapper/ContentWrapper";
-import { Button } from "../../../components/Button";
-import {BsX} from 'react-icons/bs'
+import { ContentWrapper } from "../../../components/UA_Components/ContentWrapper/ContentWrapper";
+import { Button } from "../../../components/UA_Components/Button";
+import { BsX } from "react-icons/bs";
 import { priceFormating } from "../../../utils/priceFormating";
 import { GoodBuy } from "../../../components/GoodBuy";
 import styles from "./GoodItem.module.scss";
@@ -14,15 +14,13 @@ import { ModalWindow } from "../../../components/ModalWindow/";
 
 export const GoodItem = ({}) => {
 	const [searchParams, setSearchParams] = useSearchParams();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalImg, setModalImg] = useState('');
-  
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [modalImg, setModalImg] = useState("");
+
 	const queryParams = searchParams.get("id");
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const { good, images, isLoading } = useSelector((state) => state.good);
-	console.log(good.picture);
-console.log(images);
 	useEffect(() => {
 		dispatch(getGood(queryParams));
 	}, [dispatch, queryParams]);
@@ -32,7 +30,11 @@ console.log(images);
 	return (
 		good && (
 			<ContentWrapper className={styles.goodItem}>
-				<Button className = {styles.goodItem__backButton} onClick={() => navigate(-1)} isBackButton={true}>
+				<Button
+					className={styles.goodItem__backButton}
+					onClick={() => navigate(-1)}
+					isBackButton={true}
+				>
 					Назад
 				</Button>
 				<h1 className={styles.goodItem__title}>{good.name}</h1>
@@ -42,48 +44,64 @@ console.log(images);
 							<img
 								className={styles.goodItem__image}
 								src={process.env.REACT_APP_API_URL + good.picture}
-								alt= {good.name}
+								alt={good.name}
 							/>
 						</div>
-							<h3 className={styles.goodItem__articul}>
-								АРТИКУЛ: {good.articul}{" "}
-							</h3>
-           {images.length>0 && <Carousel images={images} onClick ={(e)=>{ setModalImg( e.target.src ); setIsModalOpen(true)}}/>}
-						<ContentWrapper className={styles.goodItem__underImage}>
-						</ContentWrapper>
-					
+						<h3 className={styles.goodItem__articul}>
+							АРТИКУЛ: {good.articul}{" "}
+						</h3>
+						{images.length > 0 && (
+							<Carousel
+								images={images}
+								onClick={(e) => {
+									setModalImg(e.target.src);
+									setIsModalOpen(true);
+								}}
+							/>
+						)}
+						<ContentWrapper
+							className={styles.goodItem__underImage}
+						></ContentWrapper>
 					</div>
 					<div className={styles.goodItem__right}>
 						<div className={styles.goodItem__price}>
 							{priceFormating(good.price)}ГРН
 						</div>
-            <h2 className={styles.goodItem__descTitle}>Основні характеристики {good.name}:</h2>
+						<h2 className={styles.goodItem__descTitle}>
+							Основні характеристики {good.name}:
+						</h2>
 						{good.description?.split("|").map((items, i) => (
 							<p key={i} className={styles.goodItem__desc}>
 								{items.split(":").map((part, i) => {
 									return i == 0 && part.length > 0 ? (
 										<b key={i}>{part}:</b>
 									) : (
-                    part
-                    );
-                  })}
+										part
+									);
+								})}
 							</p>
 						))}
 
-           <div className={styles.goodItem__buyContainer}> <GoodBuy good={good} /></div>
+						<div className={styles.goodItem__buyContainer}>
+							{" "}
+							<GoodBuy good={good} />
+						</div>
 					</div>
 				</div>
-    { isModalOpen  && <ModalWindow onClick={()=>{
-    
-      setIsModalOpen(false)}}><div  className = {styles.modalPicture}  >
-      <div className={styles.modalPicture__close}>
-        <BsX
-  							
-  							size="25"
-  							onClick={() => setIsModalOpen(false)}
-  						/>
-      </div>
-            <img className = {styles.modalPicture__img} src={modalImg} alt="" /></div></ModalWindow>}
+				{isModalOpen && (
+					<ModalWindow
+						onClick={() => {
+							setIsModalOpen(false);
+						}}
+					>
+						<div className={styles.modalPicture}>
+							<div className={styles.modalPicture__close}>
+								<BsX size="25" onClick={() => setIsModalOpen(false)} />
+							</div>
+							<img className={styles.modalPicture__img} src={modalImg} alt="" />
+						</div>
+					</ModalWindow>
+				)}
 			</ContentWrapper>
 		)
 	);

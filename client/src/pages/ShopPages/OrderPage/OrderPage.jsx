@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Button } from "../../../components/Button";
+import { Button } from "../../../components/UA_Components/Button";
 import { CartItem } from "../../../components/Cart/CartItem";
-import { ContentWrapper } from "../../../components/ContentWrapper";
+import { ContentWrapper } from "../../../components/UA_Components/ContentWrapper/";
 import { OrderForm } from "../../../components/OrderForm/OrderForm";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./OrderPage.module.scss";

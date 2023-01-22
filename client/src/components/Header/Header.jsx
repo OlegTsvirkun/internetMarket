@@ -4,12 +4,12 @@ import { BsCart, BsApple } from "react-icons/bs";
 import styles from "./Header.module.scss";
 import icon from "../../images/apple.svg";
 import basket from "../../images/basket.svg";
-import { Button } from "../Button/Button";
-import { ContentWrapper } from "../ContentWrapper/ContentWrapper";
 import { CartBlock } from "../Cart/CartBlock/CartBlock";
 import { useDispatch, useSelector } from "react-redux";
 import { ADMIN_ROUTE, LOGIN_ROUTE, MAIN_ROUTE, REGISTRATION_ROUTE } from "../../utils/constRoutes";
 import { changeAuth } from "../../store/userSlice";
+import { ContentWrapper } from "../UA_Components/ContentWrapper";
+import { Button } from "../UA_Components/Button";
 
 export const Header = ({}) => {
 	const navigate = useNavigate()

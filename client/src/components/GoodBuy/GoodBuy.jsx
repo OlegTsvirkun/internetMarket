@@ -1,6 +1,7 @@
 import React from "react";
 import { setInCart, removeFromCart, setItemsGoods } from "../../store/cartSlice";
-import { Button } from "../Button";
+import { Button } from "../UA_Components/Button";
+
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./GoodBuy.module.scss";
 

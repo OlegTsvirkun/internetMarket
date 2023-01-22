@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
-import { Button } from "../Button";
+import { Button } from "../UA_Components/Button";
 import { BsX } from "react-icons/bs";
 import styles from "./ModalAlert.module.scss";
 
 export const ModalAlert = ({
 	title = "",
-	message_1 = "",
 	message = "",
 	children,
 	className = "",
@@ -30,13 +29,12 @@ export const ModalAlert = ({
 		<div onClick={bcgClick} className={styles.modalBackground}>
 			
 			<div className={`${styles.itemWindow} ${className}`}>
-				<div className={styles.itemWindow__title}>
+				<div className={styles.title}>
 					<div></div> <h3>{title}</h3>
 					<span onClick={closeClick}><BsX size="25"  /></span>
 				</div>
-{/* {children} */}
-				{children?<div className={styles.children} >{children}</div> : <h3 className={styles.itemWindow__message}>{message}</h3> }
-				<div className={styles.itemWindow__btnContainer}>
+				{children?<div className={styles.children} >{children}</div> : <h3 className={styles.message}>{message}</h3> }
+				<div className={styles.btnContainer}>
 					{isFirst && <Button className={styles.btnContainer__btn} onClick={frstBtnClick}>
 						{frstBtnTitle? frstBtnTitle :  'Ок' }
 					</Button>}

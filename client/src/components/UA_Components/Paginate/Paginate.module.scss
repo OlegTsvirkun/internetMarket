@@ -1,0 +1,50 @@
+.paginate{
+    // background-color :rgb(0, 255, 234);
+    // display:inline-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  a{
+    // display: inline-block;
+    display: flex;
+        justify-content: center;
+align-items:center;
+
+// text-align: center;
+    font-size: 22px;
+        width: 50px;
+        height: 50px;
+        padding: 5px;
+        border:1px solid  #2FB5FC;
+        color:#2FB5FC;
+        font-weight: 300;
+        margin:0 10px;
+        cursor: pointer;
+        transition: all .2s;
+  }
+    li{
+        // align-self: baseline;
+        
+    }
+    li:hover{
+        a{
+            background:var(--blue-hover);
+            color:white;
+        
+        }
+    }
+:global{
+    .previous{
+        // background-color  :red;
+    }
+    .selected{
+        a{
+
+            background:var(--blue-transparent);
+        }
+
+    }
+}
+    
+   
+}

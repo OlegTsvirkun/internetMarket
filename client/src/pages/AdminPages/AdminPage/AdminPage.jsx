@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { Button } from "../../../components/Button";
-import { ContentWrapper } from "../../../components/ContentWrapper";
+import { Button } from "../../../components/UA_Components/Button";
+import { ContentWrapper } from "../../../components/UA_Components/ContentWrapper/";
 
 import { CreateGood } from "../CreateGoodPage/CreateGoodPage";
 import { UpdateGood } from "../../../components/UpdateGood/UpdateGood";

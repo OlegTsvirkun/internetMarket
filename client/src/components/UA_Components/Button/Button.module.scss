@@ -16,17 +16,13 @@
     font-weight: bold;
     color: rgb(148, 163, 184);
     cursor: pointer;
-    
     padding: 2px 4px;
-    // width: auto;
-
 }
 .disableButton {
     font-size: 14px;
     font-weight: bold;
     color: rgb(148, 163, 184);
     cursor: pointer;
-   
 }
 .orangeButton{
     background-color: orange;
@@ -39,8 +35,5 @@
 
 }
 .blueButton:hover {
-    // filter:brightness(105%);
     background-color: var(--blue-hover);
-    
-    // border: 1.5px solid #19afff;
 }

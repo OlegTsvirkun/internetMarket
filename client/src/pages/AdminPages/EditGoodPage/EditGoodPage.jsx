@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { Button } from '../../../components/Button';
-import { ContentWrapper } from '../../../components/ContentWrapper';
+import { Button } from '../../../components/UA_Components/Button';
+import { ContentWrapper } from '../../../components/UA_Components/ContentWrapper';
 import { UpdateGoodItem } from '../../../components/UpdateGoodItem/UpdateGoodItem';
 
 import { getGood } from '../../../store/goodSlice';

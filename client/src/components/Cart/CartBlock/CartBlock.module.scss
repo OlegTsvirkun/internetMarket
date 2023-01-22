@@ -1,26 +1,26 @@
-.cartBlock{
+.cartBlock {
   margin: auto 0;
   width: 100%;
 }
-  .container{
-      display: flex;
-      align-items: center;
-      align-content: center;
-      width: 100%;
-      position: relative;
-    }
-    .icon:hover {
-      color:orange;
-    }
-    .icon {
-    cursor: pointer;
-    margin-left: 5px;
-    color:whitesmoke;
-  }
-  .totalPrice {
-    color:whitesmoke;
-    right: 0px;
-    margin-left: 15px;
-    font-weight: bold;
-    font-size: 1.2em;
-  }
+.container {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  position: relative;
+}
+.icon:hover {
+  color: orange;
+}
+.icon {
+  cursor: pointer;
+  margin-left: 5px;
+  color: whitesmoke;
+}
+.totalPrice {
+  color: whitesmoke;
+  right: 0px;
+  margin-left: 15px;
+  font-weight: bold;
+  font-size: 1.2em;
+}

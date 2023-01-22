@@ -1,7 +1,7 @@
 import React from "react";
-import { Button } from "../Button";
+import { Button } from "../UA_Components/Button";
 import styles from "./CountChanger.module.scss";
-import { useSelector, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import {
 	decrementGood,
 	incrementGood,

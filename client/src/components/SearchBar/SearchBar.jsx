@@ -4,7 +4,7 @@ import { CiSearch } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-import { Button } from "../Button/Button";
+import { Button } from "../UA_Components/Button";
 import styles from "./SearchBar.module.scss";
 
 export const SearchBar = ({

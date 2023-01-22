@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Button } from "../../components/Button";
-import { ContentWrapper } from "../../components/ContentWrapper";
+import { Button } from "../../components/UA_Components/Button";
+import { ContentWrapper } from "../../components/UA_Components/ContentWrapper";
 import { Input } from "../../components/Input/Input";
 import { ModalAlert } from "../../components/ModalAlert/ModalAlert";
 import authServices, {

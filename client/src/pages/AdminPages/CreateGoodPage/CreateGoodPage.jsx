@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { ContentWrapper } from "../../../components/ContentWrapper";
+import { ContentWrapper } from "../../../components/UA_Components/ContentWrapper/";
 import { Input } from "../../../components/Input/Input";
 import styles from "./CreateGoodPage.module.scss";
 import {hostAuth} from "../../../axios";
 
-import { Button } from "../../../components/Button";
+import { Button } from "../../../components/UA_Components/Button";
 import { ModalWindow } from "../../../components/ModalWindow/ModalWindow";
 import { useDispatch, useSelector } from "react-redux";
 import { getMain } from "../../../store/mainSlice";

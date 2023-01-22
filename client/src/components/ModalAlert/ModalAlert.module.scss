@@ -20,10 +20,11 @@
     padding: 0 0px 10px;
     display: grid;
     grid-template-rows: 30px 8fr auto;
-    &__title {
+    .title {
         display: grid;
         grid-template-columns: 18px 10fr 30px;
         align-items: center;
+        text-align: center;
         width: 100%;
         outline: 1.5px solid rgba(71, 71, 71, 0.4);
 span:hover{
@@ -39,11 +40,12 @@ span:hover{
             font-weight: 500;
         }
     }
-    &__container {
+}
+    .container {
         // padding: 8px;
         height: 100%;
     }
-    &__flexContainer {
+    .flexContainer {
         // display: flex;
         // flex:1 1 100%;
         // flex-direction: column;
@@ -51,20 +53,22 @@ span:hover{
         // align-items: center;
         // align-content: stretch;
     }
-    &__message {
-        margin: auto 0;
+    .message {
+        margin: 20px 0;
+        text-align: center;
         //     display: flex;
         //   align-self:center;
     }
-    &__btnContainer {
+    .btnContainer {
         padding: 0 40px 10px;
         display: flex;
         justify-content: space-around;
     }
-}
+
 .btnContainer__btn {
     margin: 10px 5px 5px 5px;
 }
 .children {
     position: relative;
+    margin: 0 auto;
 }

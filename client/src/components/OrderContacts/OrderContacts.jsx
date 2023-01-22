@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "../Button";
+import { Button } from "../UA_Components/Button";
 import { Link } from "react-router-dom";
 
 import styles from "./OrderContacts.module.scss";

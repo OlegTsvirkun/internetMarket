@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContentWrapper } from '../ContentWrapper';
+import { ContentWrapper } from '../UA_Components/ContentWrapper';
 import styles from './ErrorComponent.module.scss';
 
 export const ErrorComponent = ({children , message}) =>{

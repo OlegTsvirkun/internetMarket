@@ -11,7 +11,7 @@ import { OrderPage } from "./pages/ShopPages/OrderPage/OrderPage";
 import './App.css';
 import { SearchPage } from "./pages/ShopPages/SearchPage/SearchPage";
 import { Footer } from "./components/Footer/Footer";
-import { FinishOrder } from "./pages/FinishOrder/FinishOrder";
+import { FinishOrder } from "./pages/ShopPages/FinishOrder/FinishOrder";
 import { FailPage} from "./pages/FailPage/FailPage";
 import { AdminCreateGood, AdminPage } from "./pages/AdminPages/AdminPage/AdminPage";
 import {  EditGoodPage } from "./pages/AdminPages/EditGoodPage/EditGoodPage";
@@ -31,8 +31,11 @@ function App() {
   // const [isAuth, setIsAuth] = useState(false);
   // const navigate = useNavigate()
   const dispatch = useDispatch()
+  const token = localStorage.getItem('token')
+  // console.log('token',token);
   // console.log();
 useEffect(() => {
+  if(!token) return
   dispatch(checkUser())
 }, []);
 // ()=>navigate(LOGIN_ROUTE)

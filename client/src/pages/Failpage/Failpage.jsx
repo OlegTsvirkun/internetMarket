@@ -1,8 +1,8 @@
 import React from 'react';
-import { ContentWrapper } from '../../components/ContentWrapper';
+import { ContentWrapper } from '../../components/UA_Components/ContentWrapper';
 import { BiConfused } from 'react-icons/bi';
 import styles from './FailPage.module.scss';
-import { Button } from '../../components/Button';
+import { Button } from '../../components/UA_Components/Button';
 import { Link } from 'react-router-dom';
 
 export const FailPage = ({}) =>{

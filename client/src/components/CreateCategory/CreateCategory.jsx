@@ -3,9 +3,9 @@ import styles from "./CreateCategory.module.scss";
 import React, { useCallback } from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ContentWrapper } from "../../components/ContentWrapper";
+// import { ContentWrapper } from "../../components/UA_Components/ContentWrapper";
 import { Input } from "../../components/Input/Input";
-import { Button } from "../../components/Button";
+import { Button } from "../../components/UA_Components/Button";
 import adminServices from "../../store/services/adminServices";
 
 export const CreateCategory = ({}) => {

@@ -15,7 +15,7 @@ const navigate = useNavigate()
 	const [catId, setCatId] = useState("");
 	let good = [];
 	if (goods[0]) good = goods.filter((item) => item.category["_id"] == catId);
-console.log(categories);
+// console.log(categories);
 	return (
 		<div className={`${styles.menuCatalog} ${className}`}>
 			<ul

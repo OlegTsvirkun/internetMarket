@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Categories } from '../../../components/Categories/Categories';
+import { Categories } from '../../../components/CategoriesList/Categories/Categories';
 import { Goods } from '../../../components/Goods';
 import { SubHeader } from '../../../components/SubHeader';
 import { getMain } from '../../../store/mainSlice';

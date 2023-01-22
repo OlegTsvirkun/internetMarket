@@ -1,47 +1,41 @@
 import React, { useEffect, useState } from "react";
 import {
+	useLocation,
+	useNavigate,
 	useSearchParams,
 } from "react-router-dom";
-import { ContentWrapper } from "../ContentWrapper";
+import { ContentWrapper } from "../UA_Components/ContentWrapper";
 import { GoodCard } from "../GoodCard";
 import { LimitCards } from "../LimitCards/LimitCards";
 import { Pagination } from "../Pagination/Pagination";
 import styles from "./Goods.module.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { cleanupCatSlice, getCategory } from "../../store/categorySlice";
+import ReactPaginate from "react-paginate";
+import { Paginate } from "../UA_Components/Paginate/Paginate";
 
-export const Goods = ({ goods, total }) => {
+export const Goods = ({ }) => {
 	const [searchParams, setSearchParams] = useSearchParams();
-	const [currentPage, setCurrentPage] = useState();
-	const [cardsLimit, setCardsLimit] = useState();
-	let totalPages = Math.ceil(total / cardsLimit);
-	useEffect(() => {
-		searchParams.get("page")
-			? setCurrentPage(+searchParams.get("page"))
-			: setCurrentPage(1);
-		searchParams.get("limit")
-			? setCardsLimit(+searchParams.get("limit"))
-			: setCardsLimit(3);
-	}, []);
+	const [currentPage, setCurrentPage] = useState(1);
+	const [cardsLimit, setCardsLimit] = useState(3);
+	const dispatch = useDispatch();
+	const { goods, total, isLoading ,catDescription,curPage,limit} = useSelector((state) => state.category);
+	const url = useLocation();
+	const navigate = useNavigate();
+	let totalPages = Math.ceil(total / cardsLimit||3) ;
 
+	
+	if (isLoading) return <div>Loaadiing...</div>;
 	return (
 		<>
-			<ContentWrapper>
-				{" "}
-				{cardsLimit && (
-					<LimitCards
-						value={cardsLimit}
-						setValue={setCardsLimit}
-						total={total}
-						setCurrentPage={setCurrentPage}
-					/>
-				)}
-			</ContentWrapper>
+			
 
 			<ContentWrapper className={styles.goodsGrid}>
 				{Object.keys(goods).map((item) => {
 					return <GoodCard key={goods[item]["_id"]} {...goods[item]} />;
 				})}
 			</ContentWrapper>
-			{totalPages && (
+			{/* {totalPages && (
 				<Pagination
 					setCurrentPage={setCurrentPage}
 					currentPage={currentPage}
@@ -50,7 +44,9 @@ export const Goods = ({ goods, total }) => {
 					classNameActive
 					classNameCurPage
 				/>
-			)}
+			)} */}
+		{/* <Paginate/> */}
+
 		</>
 	);
 };
