@@ -8,9 +8,9 @@ import { BsX } from "react-icons/bs";
 import { priceFormating } from "../../../utils/priceFormating";
 import { GoodBuy } from "../../../components/GoodBuy";
 import styles from "./GoodItem.module.scss";
-import { Carousel } from "../../../components/ControlledCarousel/Carousel";
+import { Carousel } from "../../../components/UA_Components/Carousel/Carousel";
 import { Modal } from "../../../components/Modal/Modal";
-import { ModalWindow } from "../../../components/ModalWindow/";
+import { ModalWindow } from "../../../components/ModalWindow";
 
 export const GoodItem = ({}) => {
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -92,7 +92,9 @@ export const GoodItem = ({}) => {
 					<ModalWindow
 						onClick={() => {
 							setIsModalOpen(false);
+
 						}}
+						
 					>
 						<div className={styles.modalPicture}>
 							<div className={styles.modalPicture__close}>

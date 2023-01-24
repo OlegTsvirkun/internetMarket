@@ -35,15 +35,15 @@ export const GoodBuy = ({ good }) => {
 
 	return (
 		<div className={styles.goodBuy}>
-			<Button
-				className={`
-        ${
-					isItemImBasket ? styles.goodBuy__buttonInCart : styles.goodBuy__button
-				}`}
-				onClick={handleButton}
-			>
-				{isItemImBasket? "Прибрати з кошика" : "В кошик"}
-			</Button>
+			{isItemImBasket ?<Button isOrangeButton={true} 	onClick={handleButton} >
+				Прибрати з кошика
+			</Button >:
+			<Button onClick={handleButton} >
+В кошик
+</Button>
+			}
+			
+			
 		</div>
 	);
 };

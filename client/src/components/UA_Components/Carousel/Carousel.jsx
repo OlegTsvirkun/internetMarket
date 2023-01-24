@@ -4,7 +4,6 @@ import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import styles from "./Carousel.module.scss";
 export const Carousel = ({ images,onClick }) => {
 	const [image, setImage] = useState(images);
-	console.log(image);
 	const [currentIndex, setCurrentIndex] = useState(0);
 
 	useEffect(() => {
@@ -17,7 +16,6 @@ export const Carousel = ({ images,onClick }) => {
 		}
 	}, [currentIndex, image]);
 
-	console.log(currentIndex);
 	if (!image) return <div>'loading'</div>;
 	return (
 			

@@ -1,12 +1,12 @@
 import React from "react";
-import { Button } from "../UA_Components/Button";
+import { Button } from "../../UA_Components/Button";
 import styles from "./CountChanger.module.scss";
 import {  useDispatch } from "react-redux";
 import {
 	decrementGood,
 	incrementGood,
 	removeFromCart,
-} from "../../store/cartSlice";
+} from "../../../store/cartSlice";
 
 export const CountChanger = ({ count, articul, cart }) => {
 	const dispatch = useDispatch();
@@ -30,13 +30,13 @@ export const CountChanger = ({ count, articul, cart }) => {
 	return (
 		<div className={styles.countChanger}>
 			<Button
-				className={styles.countChanger__button}
+				className={styles.button}
 				onClick={() => dispatch(incrementGood(articul))}
 			>
 				+
 			</Button>
 			{count}
-			<Button className={styles.countChanger__button} onClick={handleDecrement}>
+			<Button className={styles.button} onClick={handleDecrement}>
 				-
 			</Button>
 		</div>

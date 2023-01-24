@@ -1,11 +1,11 @@
-.adminCreateGood{
+.adminPage{
     position: relative;
 }
 .buttonContainer{
     display: flex;
-    &__button{
-        margin:20px 20px;
-        width: 200px;
-    }
-
+    
+}
+.button{
+    margin:20px 20px;
+    width: 200px;
 }

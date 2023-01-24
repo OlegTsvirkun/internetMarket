@@ -1,0 +1,110 @@
+.goodItem{
+    text-align: start;
+    // position:relative;
+   &__container{
+    padding: 50px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 80px;
+   
+    // min-height: 50vh;
+   }
+   &__backButton{
+    margin-top: 20px;
+   }
+       
+   &__title {
+       margin-top: 40px;
+       font-size: 26px;
+   }
+    &__left{
+        // display: flex;
+        // flex-direction: column;
+margin: 40px 0 0;
+    }
+    
+    &__articul{
+
+        font-size: 16px;
+        font-weight: 300;
+        color: rgb(121, 121, 121);
+        margin-bottom: 20px;
+    }
+    
+   
+    &__right {
+        line-height: 24px;
+        color: rgb(148, 163, 184);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    &__price {
+        margin: 30px 0;
+        font-size: 24px;
+        font-weight: bold;
+        color: #2FB5FC;
+    }
+    &__imageContent{
+        margin: auto 0;
+        margin-bottom: 20px;
+    }
+    &____underImage{
+        padding: 0 2em;
+    }
+    &__image {
+        // padding-top: 20px;
+        // aspect-ratio: 3 / 2;
+        object-fit: cover;
+        // border-radius: 20px;
+        border: 1px solid  rgba(121, 121, 121, 0.24);
+        padding: 10px;
+    }
+    &__descTitle{
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    &__desc{
+        font-size: 16px;
+        
+    }
+    &__buyContainer{
+        margin-top: 20px;
+        display: flex;
+        align-items:center;
+        height: 100%;
+        justify-content: start;
+    }
+}
+.modalPicture{
+    height: fit-content;
+    width:auto;
+    background-color:rgb(255, 255, 255);
+    // position:absolute;
+    // top:50%;
+    // left:50%;
+    // transform: translate(-50%, -50%);
+    padding: 20px;
+    // display: flex;
+// flex-direction: column;
+// transition: all .5s;
+
+&__close:hover {
+    color: rgba(71, 71, 71, 0.845);
+}
+&__close {
+    color: rgb(38, 38, 38);
+    text-align: end;
+    margin: 10px 0 ;
+    transition: all .5s;
+    // display: flex;
+    // justify-content: end;
+}
+    &__img{
+        background-color:whitesmoke;
+        width:auto;
+    }
+
+}

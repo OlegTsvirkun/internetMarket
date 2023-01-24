@@ -7,7 +7,6 @@ import {
 import { ContentWrapper } from "../UA_Components/ContentWrapper";
 import { GoodCard } from "../GoodCard";
 import { LimitCards } from "../LimitCards/LimitCards";
-import { Pagination } from "../Pagination/Pagination";
 import styles from "./Goods.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { cleanupCatSlice, getCategory } from "../../store/categorySlice";

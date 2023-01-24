@@ -4,8 +4,6 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-route
 import { Header } from "./components/Header";
 import { Modal } from "./components/Modal/Modal";
 import { SubHeader } from "./components/SubHeader";
-import { CategoryPage } from "./pages/ShopPages/CategoryPage";
-import { GoodItem } from "./pages/ShopPages/GoodItem/GoodItem";
 import { HomePage } from "./pages/ShopPages/HomePage";
 import { OrderPage } from "./pages/ShopPages/OrderPage/OrderPage";
 import './App.css';
@@ -23,6 +21,8 @@ import { CATEGORY_ROUTE, CREATE_CATEGORY_ROUTE, CREATE_GOOD_ROUTE, FINISH_ORDER_
 import { ModalAlert } from "./components/ModalAlert/ModalAlert";
 import { CreateCategoryPage } from "./pages/AdminPages/CreateCategoryPage/CreateCategoryPage";
 import { CreateGoodPage } from "./pages/AdminPages/CreateGoodPage/CreateGoodPage";
+import { GoodsPage } from "./pages/ShopPages/GoodsPage";
+import { GoodItemPage } from "./pages/ShopPages/GoodItemPage/GoodItemPage";
 
 
 function App() {
@@ -51,8 +51,8 @@ useEffect(() => {
       <div className="main">
         <Routes>
             <Route exact path={MAIN_ROUTE} element={<HomePage />} />
-            <Route exact path={GOOD_ROUTE} element={<GoodItem />} />
-            <Route exact path={CATEGORY_ROUTE} element={<CategoryPage />} />
+            <Route exact path={GOOD_ROUTE} element={<GoodItemPage />} />
+            <Route exact path={CATEGORY_ROUTE} element={<GoodsPage />} />
             <Route exact path={SEARCH_ROUTE} element={<SearchPage />} />
             <Route exact path={ORDER_ROUTE} element={<OrderPage />} />
             <Route exact path={FINISH_ORDER_ROUTE} element={<FinishOrder />} />

@@ -48,7 +48,7 @@ const createGood = async (req, res, next) => {
         const { name, articul, price, category, description } = req.body
         const picture = req.files?.picture || {}
         if (!picture.name) return next(ApiErrors.badRequest({ error: 'Немає основного зображення' }))
-        console.log(picture);
+        // console.log(picture);
         // let picExt =picture.name.split('.').slice(-1),
         let picName = filenameMaker(picture, category, name)
         let images = Object.keys(req.files).reduce((acc, item) => {
@@ -145,8 +145,8 @@ const updateGood = async (req, res, next) => {
             .findById(id)
             .populate('category', { description: 0, _id: 0 })
             .then(data => data)
-            console.log(goodDB.category.category);
-            console.log(req.body?.name);
+            // console.log(goodDB.category.category);
+            // console.log(req.body?.name);
 
         let category
         let name
@@ -168,7 +168,7 @@ const updateGood = async (req, res, next) => {
             }
             return acc
         }, [])
-        console.log(filter);
+        // console.log(filter);
 
                 const good = await Good
                 .findByIdAndUpdate(id,filter)
@@ -207,22 +207,22 @@ const updateGood = async (req, res, next) => {
         res.json({messege:`Товар ${good.name} оновлено. Оневлені поля: ${Object.keys(filter).map(item=>item)}` })
     } catch (error) {
         next(ApiErrors.badRequest(error.message))
-        console.log(error)
+        // console.log(error)
     }
 }
 const removeImage =async(req,res,next)=>{
     try{
         const {image} = req.body
-        console.log(image);
+        // console.log(image);
         const im = await Image
         //! .findOneAndDelete({image:{$eq: req.body.image}})
         .findOne({image:{$eq: req.body.image}})
         .then(data=>data)
-        console.log(im);
+        // console.log(im);
         res.json({message:`Зображення ${im._id} видалено` || '000'})
 
     }catch(error){
-        console.log(error);
+        // console.log(error);
         next(ApiErrors.badRequest(error.message))
     } 
 }
@@ -235,11 +235,11 @@ const removeGood =async(req,res,next)=>{
         .findById(id)
         // !.findByIdAndDelete(id)
         .then(data=>data)
-        console.log(good);
+        // console.log(good);//////////////////
         res.json({message:`Товар ${good.name} видалено` || '000'})
 
     }catch(error){
-        console.log(error);
+        // console.log(error);
         next(ApiErrors.badRequest(error.message))
     } 
 }

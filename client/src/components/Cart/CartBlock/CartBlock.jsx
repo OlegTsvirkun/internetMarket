@@ -51,7 +51,7 @@ export const CartBlock = () => {
 			{isVisible && (
 				<ModalAlert
 					title="Кошик"
-					bcgClick={() => dispatch(openCartMenu(!isVisible))}
+					bcgClick={() => dispatch(openCartMenu(false))}
 					frstBtnTitle={
 						!Object.keys(cart).length
 							? "Вийти"

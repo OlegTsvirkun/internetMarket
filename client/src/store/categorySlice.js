@@ -54,6 +54,7 @@ const categorySlice = createSlice({
       state.total = null
       state.catDescription = []
         state.curPage = 1
+        state.message=''
       
 
 
@@ -70,6 +71,7 @@ const categorySlice = createSlice({
     builder
       .addCase(getCategory.pending, (state, action) => {
         state.isLoading = true;
+        state.isError = false;
 
         state.message = null;
 

@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { priceFormating } from "../../../utils/priceFormating";
 import { removeFromCart } from "../../../store/cartSlice";
-import { CountChanger } from "../../CountChanger/CountChanger";
+import { CountChanger } from "../CountChanger/CountChanger";
 import styles from "./CartTableItem.module.scss";
 
 export const CartTableItem = ({ index, articul, count, price }) => {

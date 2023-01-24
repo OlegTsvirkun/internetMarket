@@ -18,13 +18,13 @@ export const AdminPage = ({}) => {
 	dispatch(cleanupCatSlice())
   }, []);
 	return (
-		<div className={styles.adminCreateGood}>
+		<div className={styles.adminPage}>
 			<ContentWrapper>
 				
 				<div className={styles.buttonContainer}>
 				  	<Link to ={CREATE_CATEGORY_ROUTE} >
 				  		<Button
-	  						className={styles.buttonContainer__button}
+	  						className={styles.button}
 	  					>
 	  						Створити категорію
 	  					</Button>
@@ -33,13 +33,13 @@ export const AdminPage = ({}) => {
           	
   					<Link to= {CREATE_GOOD_ROUTE}>
   						<Button
-	  						className={styles.buttonContainer__button}
+	  						className={styles.button}
 	  					>
 	  						Створити товар
 	  					</Button>
   					</Link>
   					<Button
-  						className={styles.buttonContainer__button}
+  						className={styles.button}
   						onClick={() => {
                 setUpdateGoodIsOpen(!updateGoodIsOpen)
               

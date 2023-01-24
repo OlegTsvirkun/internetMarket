@@ -13,10 +13,11 @@ export const ModalAlert = ({
 	isFirst = true,
 	isSecond = false,
 	onClick = () => null,
-	frstBtnClick = () => null,
-	scndBtnClick = () => null,
-	closeClick ,
-	bcgClick = () => null,
+	frstBtnClick ,
+	scndBtnClick,
+	closeClick,
+	bcgClick,
+	width = "auto",
 }) => {
 	useEffect(() => {
 		document.body.style.overflow = "hidden";
@@ -26,23 +27,40 @@ export const ModalAlert = ({
 	}, []);
 
 	return (
-		<div onClick={bcgClick} className={styles.modalBackground}>
-			
-			<div className={`${styles.itemWindow} ${className}`}>
+		<div className={styles.window}>
+			<div
+				onClick={bcgClick || closeClick}
+				className={styles.modalBackground}
+			></div>
+			<div
+				className={`${styles.itemWindow} ${className}`}
+				style={{ width: `${width}` }}
+			>
 				<div className={styles.title}>
-					<div></div> <h3>{title}</h3>
-					<span onClick={closeClick}><BsX size="25"  /></span>
+					<div></div>
+					 <h3>{title || message}</h3>
+					<span onClick={closeClick}>
+						<BsX size="25" />
+					</span>
 				</div>
-				{children?<div className={styles.children} >{children}</div> : <h3 className={styles.message}>{message}</h3> }
-				<div className={styles.btnContainer}>
-					{isFirst && <Button className={styles.btnContainer__btn} onClick={frstBtnClick}>
-						{frstBtnTitle? frstBtnTitle :  'Ок' }
-					</Button>}
-					{isSecond && (
-						<Button onClick={scndBtnClick} className={styles.btnContainer__btn}>
-							{scndBtnTitle}
-						</Button>
+				<div className={styles.contentContainer} >
+					{children ? (
+						<div className={styles.children}>{children}</div>
+					) : (
+						<h3 className={styles.message}>{message}</h3>
 					)}
+					<div className={styles.btnContainer}>
+						{isFirst && (
+							<Button className={styles.btn} onClick={frstBtnClick || closeClick}>
+								{frstBtnTitle ? frstBtnTitle : "Ок"}
+							</Button>
+						)}
+						{isSecond && (
+							<Button onClick={scndBtnClick} className={styles.btn}>
+								{scndBtnTitle}
+							</Button>
+						)}
+					</div>
 				</div>
 			</div>
 		</div>

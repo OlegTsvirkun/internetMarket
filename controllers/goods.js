@@ -41,7 +41,7 @@ const getCategory = async (req, res, next) => {
     } catch (error) {
         next(ApiErrors.badRequest(error.message))
         // handleError(res, error) //!
-    }
+    } 
 
 }
 
@@ -54,7 +54,7 @@ const getGoods = async (req, res, next) => {
         let sortValue = {}
         req.query.s ? sortValue = sortGood(req.query.s) : sortValue = { name: 1 }
         let pageQuery = parseInt(req.query?.page)
-        // console.log('pageQuery', pageQuery);
+        console.log('pageQuery', pageQuery);
         pageQuery === 0 ? pageQuery = 1 : pageQuery
         let page = parseInt(pageQuery) - 1 || 0;
         let limit = parseInt(req.query?.limit) || 3;
@@ -82,15 +82,17 @@ const getGoods = async (req, res, next) => {
 
         const total = await Good
             .countDocuments({ category: cat?._id || '' })
-        console.log('catDesc', cat?.description);
+        console.log('pageQuery', pageQuery||1);
 
         return res.status(200).json({
             goods,
             total,
-            catDescription: cat?.description || ''
+            catDescription: cat?.description || '',
+            curPage: pageQuery || 1
         })
     } catch (error) {
-        next(ApiErrors.badRequest(error.message))
+        // console.log('error',error);
+        next(ApiErrors.badRequest('Помилка: такої категоріі товару немає'))
 
     }
 
@@ -122,7 +124,7 @@ const getGood = async (req, res, next) => {
                 .findOne({articul: articul})
                 .then(data => {
                     return data
-                })
+                }).catch(err=>{return res.status(400).json({message:'err111'})})
 
         }
 
@@ -136,8 +138,9 @@ const getGood = async (req, res, next) => {
 
         res.status(200).json({ good, images })
     } catch (error) {
-        console.log(error.message);
-        next(ApiErrors.badRequest(error.message))
+        console.log(error);
+       return next(ApiErrors.badRequest('Помилка: такого товару немає'))
+    //    return next(ApiErrors.badRequest(error.message))
 
     }
 

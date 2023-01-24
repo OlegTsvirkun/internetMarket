@@ -19,7 +19,6 @@ export const CreateCategory = ({}) => {
 	const handleCreateCategory = useCallback(
 		async (e) => {
 			e.preventDefault();
-			// console.log(picture);
 			const formData = new FormData();
 			formData.append("category", category);
 			formData.append("description", description);

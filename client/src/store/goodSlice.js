@@ -32,6 +32,9 @@ const goodSlice = createSlice({
     builder
     .addCase(getGood.pending,(state, action)=>{
       state.isLoading = true
+      state.isError = false;
+      state.message = '';
+
     })
     .addCase(getGood.fulfilled,(state, action)=>{
       state.isLoading = false
@@ -42,7 +45,7 @@ const goodSlice = createSlice({
     .addCase(getGood.rejected,(state, action)=>{
       state.isLoading = false
       state.isError = true
-      state.message = action.payload;
+      state.message = action.payload?.message;
       state.good = null
     })
 

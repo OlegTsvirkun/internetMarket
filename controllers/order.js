@@ -53,7 +53,7 @@ for (let key in orderedGoods) {
 
     
 }catch(error){
-    console.log(error.message);
+    // console.log(error.message);
     next(ApiErrors.badRequest(error.message)) 
 }
     

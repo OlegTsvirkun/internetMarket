@@ -3,12 +3,13 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { Goods } from "../../../components/Goods";
+import {FailPage} from '../../FailPage'
 import {
 	cleanupCatSlice,
 	getCategory,
 	setCurPage,
 } from "../../../store/categorySlice";
-import styles from "./CategoryPage.module.scss";
+import styles from "./GoodsPage.module.scss";
 import { ContentWrapper } from "../../../components/UA_Components/ContentWrapper";
 import { Button } from "../../../components/UA_Components/Button";
 import { Paginate } from "../../../components/UA_Components/Paginate/Paginate";
@@ -16,7 +17,7 @@ import { GoodCard } from "../../../components/GoodCard";
 import { LimitCards } from "../../../components/LimitCards/LimitCards";
 import { useRef } from "react";
 
-export const CategoryPage = ({}) => {
+export const GoodsPage = ({}) => {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const url = useLocation();
 	const dispatch = useDispatch();
@@ -25,7 +26,7 @@ export const CategoryPage = ({}) => {
 	const isSearch = useRef(false);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [cardsLimit, setCardsLimit] = useState(3);
-	const { goods, total, isLoading, catDescription, curPage, limit } =
+	const { goods, total, isLoading, catDescription, curPage, limit, isError,message } =
 		useSelector((state) => state.category);
 	let totalPages = Math.ceil(total / cardsLimit || 3);
 
@@ -57,7 +58,7 @@ export const CategoryPage = ({}) => {
 		isSearch.current = false;
 	}, [currentPage, cardsLimit, url]);
 	useEffect(() => {
-		console.log(isMounted.current, "isMounted.current");
+		// console.log(isMounted.current, "isMounted.current");
 		if (isMounted.current) {
 			const page = searchParams.get("page");
 			const limit = searchParams.get("limit");
@@ -66,8 +67,10 @@ export const CategoryPage = ({}) => {
 		isMounted.current = true;
 	}, [currentPage, cardsLimit]);
 
+	if(isLoading) return <div>Loading...</div>
+if(isError) return <FailPage message={message} />
 	return (
-		<div className={styles.categoryPage}>
+		<div className={styles.goodsPage}>
 			<ContentWrapper className={styles.backButton}>
 				<Button onClick={() => navigate(-1)} isBackButton={true}>
 					Назад

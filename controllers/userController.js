@@ -12,7 +12,7 @@ const generateJwt = (id, email, role) => {
 const userRegistration = async (req, res, next) => {
     try {
         const { email, password, role } = req.body
-        console.log(email, password);
+        // console.log(email, password);
         if (!email || !password) return next(ApiErrors.badRequest('Некоректний пароль чи логін'))
         // await AuthRole.create({value: "MANAGER"})
         const candidate = await AuthUser
@@ -29,7 +29,7 @@ const userRegistration = async (req, res, next) => {
         res.json({ token })
     }
     catch (error) {
-        next(ApiErrors.badRequest(error.message)) 
+        next(ApiErrors.badRequest(error.message))
         // res.json({ messege: error })
     }
 }
@@ -37,7 +37,7 @@ const userLogin = async (req, res, next) => {
     try {
         const { email, password } = req.body
         const user = await AuthUser.findOne({ email: email })
-        console.log(user);
+        // console.log(user);
         if (!user) {
             return next(ApiErrors.internal("Користувача з такою поштою немає"))
         }

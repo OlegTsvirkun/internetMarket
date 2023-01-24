@@ -11,7 +11,7 @@ export const ModalWindow = ({onClick , children, className}) =>{
  }, []);
 
   return (
-  <div onClick={onClick} className={`${styles.modalWindow} ${className}`}>
+  <div onClick={onClick}  className={`${styles.modalWindow} ${className}`}>
    {children}
   </div>
 )};

@@ -20,10 +20,10 @@ export const Button = ({
 			<button
 				type={type}
 				className={`${styles.button} 
-				${isBackButton && styles.backButton} 
-				${isBlueButton && styles.blueButton} 
-				${isOrangeButton && styles.orangeButton} 
-				${isDisableButton && styles.disableButton} 
+				${isBackButton ? styles.backButton : ''} 
+				${isBlueButton ? styles.blueButton : ''} 
+				${isOrangeButton ? styles.orangeButton : ''} 
+				${isDisableButton ? styles.disableButton : ''} 
 				${className}
 				`}
 				onClick={onClick}
