@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import { input } from '../input/input';
 import styles from "./DeliveryAdress.module.scss";
 import { typeValidator, valueValidator } from "../../utils/validator";
@@ -8,6 +8,8 @@ import {
 	addCatDelivery,
 	addError,
 	addField,
+	addOrderData,
+	addOrderDeliveryData,
 	remooveError,
 } from "../../store/orderSlice";
 import { Input } from "../Input/Input";
@@ -25,6 +27,18 @@ export const DeliveryAdress = ({}) => {
 	const [litError, setLitError] = useState({});
 	const [appartmentError, setAppartmentError] = useState({});
 	const dispatch = useDispatch();
+	useEffect(() => {
+		let errorsObj = {
+			city: true,
+			street: true,
+			house: true,
+		};
+		dispatch(addError(errorsObj));
+		return () => {
+			dispatch(remooveError(errorsObj));
+		};
+	}, []);
+
 	const blurHandler = (
 		e,
 		onlyText = true,
@@ -38,6 +52,8 @@ export const DeliveryAdress = ({}) => {
 			dispatch(addError({ [e.target.name]: true }));
 		} else {
 			dispatch(remooveError({ [e.target.name]: false }));
+			dispatch(addOrderDeliveryData( {[e.target.name]:e.target.value}))
+
 		}
 		return obj;
 	};
@@ -58,13 +74,12 @@ export const DeliveryAdress = ({}) => {
 					onBlur={(e) => setCityError(blurHandler(e))}
 					onInput={(e) => setCityError(blurHandler(e))}
 				>
-				{Object.keys(cityError)[0] && (
-					<Tooltip error={Object.keys(cityError)[0]} className={"right"} />
-				)}
+					{Object.keys(cityError)[0] && (
+						<Tooltip error={Object.keys(cityError)[0]} className={"right"} />
+					)}
 				</Input>
 				<Input
 					containerClassName={styles.containerInp}
-
 					type="text"
 					name="street"
 					labelTitle="Вулиця"
@@ -76,9 +91,9 @@ export const DeliveryAdress = ({}) => {
 					onBlur={(e) => setStreetError(blurHandler(e))}
 					onInput={(e) => setStreetError(blurHandler(e))}
 				>
-				{Object.keys(streetError)[0] && (
-					<Tooltip error={Object.keys(streetError)[0]} className={"right"} />
-				)}
+					{Object.keys(streetError)[0] && (
+						<Tooltip error={Object.keys(streetError)[0]} className={"right"} />
+					)}
 				</Input>
 			</div>
 			<div className={styles.address}>
@@ -96,10 +111,10 @@ export const DeliveryAdress = ({}) => {
 					onBlur={(e) => setHouseError(blurHandler(e, false, 1, 4))}
 					onInput={(e) => setHouseError(blurHandler(e, false, 1, 4))}
 				>
-				{Object.keys(houseError)[0] && (
-					<Tooltip error={Object.keys(houseError)[0]} className={"bottom"} />
-				)}
-</Input>
+					{Object.keys(houseError)[0] && (
+						<Tooltip error={Object.keys(houseError)[0]} className={"bottom"} />
+					)}
+				</Input>
 				<Input
 					// className ={styles.deliveryAdress__lit}
 					className={styles.addressInput}
@@ -122,7 +137,7 @@ export const DeliveryAdress = ({}) => {
 				/>
 
 				<Input
-					className={styles.addressInput+' ' + styles.appartment}
+					className={styles.addressInput + " " + styles.appartment}
 					type="number"
 					name="appartment"
 					id="appartment"
@@ -151,12 +166,12 @@ export const DeliveryAdress = ({}) => {
 						}
 					}}
 				>
-				{Object.keys(appartmentError)[0] && (
-					<Tooltip
-						error={Object.keys(appartmentError)[0]}
-						className={"bottom"}
-					/>
-				)}
+					{Object.keys(appartmentError)[0] && (
+						<Tooltip
+							error={Object.keys(appartmentError)[0]}
+							className={"bottom"}
+						/>
+					)}
 				</Input>
 			</div>
 		</div>

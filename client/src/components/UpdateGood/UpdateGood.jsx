@@ -7,7 +7,7 @@ import { Input } from "../Input/Input";
 import styles from "./UpdateGood.module.scss";
 import { removeGood, searchingGoods, searchingGoodsByArticul } from "../../store/categorySlice";
 import { priceFormating } from "../../utils/priceFormating";
-import { DeleteWithBtn } from "../DeleteWithBtn/DeleteWithBtn";
+import { DeleteWithBtn } from "../AdminsComponents/DeleteWithBtn/DeleteWithBtn";
 import services from "../../store/services/service";
 
 export const UpdateGood = ({}) => {

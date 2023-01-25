@@ -7,6 +7,7 @@ const ApiErrors = require('../helpers/ApiErrors');
 const createOrder = async (req, res,next) => {
     try{
     const { user: userInfo, delivery: deliveryInfo, orderedGoods } = req.body
+    // console.log(deliveryInfo);
     if(!userInfo)return next(ApiErrors.badRequest('Не заповнено інформацію користувача'))
     if(!deliveryInfo)return next(ApiErrors.badRequest('Не заповнено інформацію по доставці'))
     if(!orderedGoods)return next(ApiErrors.badRequest('Немає товарів у заказі'))

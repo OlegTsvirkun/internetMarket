@@ -1,4 +1,4 @@
-import React, {  useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { priceFormating } from "../../../utils/priceFormating";
 import { useNavigate } from "react-router";
@@ -21,17 +21,11 @@ export const CartBlock = () => {
 	const isVisible = useSelector((state) => state.cart.isCartOpen);
 	const dispatch = useDispatch();
 	const cartBlock = useRef();
-	const isCartMounted = useRef(false);
 
-	useEffect(() => {
-		if (isCartMounted.current) {
-			let json = JSON.stringify(cart);
-			localStorage.setItem("cart", json);
-		}
-		isCartMounted.current = true;
-	}, [cart]);
-	
-
+	const moveToOrder = () => {
+		navigate(ORDER_ROUTE);
+		dispatch(openCartMenu(false));
+	};
 	return (
 		<div ref={cartBlock} className={styles.cartBlock}>
 			<div className={styles.container}>
@@ -39,7 +33,7 @@ export const CartBlock = () => {
 					size={35}
 					className={styles.icon}
 					name="cart-block"
-					onClick={()=>dispatch(openCartMenu(!isVisible))}
+					onClick={() => dispatch(openCartMenu(!isVisible))}
 				/>
 				<ItemsInCart count={Object.keys(cart).length} />
 
@@ -60,7 +54,7 @@ export const CartBlock = () => {
 					frstBtnClick={() =>
 						!Object.keys(cart).length
 							? dispatch(openCartMenu(!isVisible))
-							: navigate(ORDER_ROUTE)
+							: moveToOrder()
 					}
 					closeClick={() => dispatch(openCartMenu(!isVisible))}
 				>

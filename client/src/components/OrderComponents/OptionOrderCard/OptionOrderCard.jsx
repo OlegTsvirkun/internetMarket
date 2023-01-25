@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { AiFillCheckCircle, AiOutlineCheckCircle } from "react-icons/ai";
-import { ContentWrapper } from "../UA_Components/ContentWrapper";
 import styles from "./OptionOrderCard.module.scss";
 
 export const OptionOrderCard = ({
@@ -14,7 +13,6 @@ export const OptionOrderCard = ({
 	deliveryPrice,
 	value
 }) => {
-	// const [isChecked, setIsChecked] = useState(checked);
 
 	return (
 		<div
@@ -26,7 +24,7 @@ export const OptionOrderCard = ({
 		>
 			<label
 				htmlFor={id}
-				className={`${checked?styles.optionOrderCard__container + ' ' +styles.activeCard:styles.optionOrderCard__container}`}
+				className={`${checked?styles.container + ' ' +styles.activeCard:styles.container}`}
 				onClick = {onClick}
 			>
 				<span>
@@ -41,23 +39,23 @@ export const OptionOrderCard = ({
 
 					{checked ? (
 						<AiFillCheckCircle
-							className={`${styles.optionOrderCard__check} ${styles.active}`}
+							className={`${styles.check} ${styles.active}`}
 							style={{ backgroundColor: "transparent" }}
 							size="30"
 						/>
 					) : (
 						<AiOutlineCheckCircle
-							className={styles.optionOrderCard__check}
+							className={styles.check}
 							size="30"
 						/>
 					)}
 				</span>
 				<h4> {title}</h4>
-				<div className={styles.optionOrderCard__deliveryPrice}>
+				<div className={styles.deliveryPrice}>
 					{subtitle}
 					<p>{deliveryPrice} грн.</p>
 				</div>
-				<div className={styles.optionOrderCard__icon}> {icon}</div>
+				<div className={styles.icon}> {icon}</div>
 			</label>
 		</div>
 	);

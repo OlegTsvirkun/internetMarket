@@ -24,7 +24,7 @@ const OrderDeliverySchema = new Schema({
         required: true
     },
     appartment:{
-        type:Number,
+        type:String,
         required: true
     },
     postNP:{

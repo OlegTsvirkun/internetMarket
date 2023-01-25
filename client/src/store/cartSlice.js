@@ -22,13 +22,15 @@ export const cartSlice = createSlice({
         },
         removeFromCart: (state, action) => {
         state.itemsInCart  = action.payload
-    
-           
         },
+        clearCart: (state, action) => {
+        state.itemsInCart  = {}
+        },
+        
       
 
     },
 });
 
-export const { setInCart, removeFromCart, openCartMenu, decrementGood, incrementGood } = cartSlice.actions;
+export const { setInCart, removeFromCart, openCartMenu, decrementGood, incrementGood,clearCart } = cartSlice.actions;
 export default cartSlice.reducer;

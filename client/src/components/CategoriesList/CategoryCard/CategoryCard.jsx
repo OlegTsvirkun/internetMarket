@@ -6,13 +6,13 @@ export const CategoryCard = ({ cat, id, image, goods }) => {
 		<div className={styles.categoryCard}>
 			<Link className={styles.item} to={`cat/${cat}`}>
 				<div className={styles.name}>{cat}</div>
-				{image && (
+				
 					<img
 						className={styles.image}
 						src={process.env.REACT_APP_API_URL + image}
 						alt={cat}
 					/>
-				)}
+				
 			</Link>
 			<ul className={styles.goodsList}>
 				{Object.keys(goods).map((good) => {

@@ -11,10 +11,10 @@ export const Categories = () => {
 	const { categories, goods, images, isLoading } = useSelector(
 		(state) => state.main,
 	);
-	useEffect(() => {
-		dispatch(getMain());
-	}, [dispatch]);
-
+	// useEffect(() => {
+	// 	dispatch(getMain());
+	// }, [dispatch]);
+// console.log(Object.keys(categories)[0]);
 	return (
 		<div>
 			<ContentWrapper className={styles.goodsGrid}>
@@ -26,7 +26,7 @@ export const Categories = () => {
 								</div>
 							);
 					  })
-					: categories &&
+					:
 					  Object.keys(categories).map((id) => {
 							let good = goods.filter((item) => {
 								return item.category["_id"] == id;

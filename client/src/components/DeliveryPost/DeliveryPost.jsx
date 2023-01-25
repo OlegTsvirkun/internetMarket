@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	addCatDelivery,
@@ -19,6 +19,16 @@ export const DeliveryPost = ({}) => {
 	const [cityDeliveryError, setCityDeliveryError] = useState({});
 	const { itemsInOrder } = useSelector((state) => state.order);
 	const dispatch = useDispatch();
+	useEffect(() => {
+		let errorsObj = {
+			city: true,
+			postNP: true,
+		};
+		dispatch(addError(errorsObj));
+		return () => {
+			dispatch(remooveError(errorsObj));
+		};
+	}, []);
 	const blurHandler = (
 		e,
 		onlyText = true,
@@ -32,6 +42,8 @@ export const DeliveryPost = ({}) => {
 			dispatch(addError({ [e.target.name]: true }));
 		} else {
 			dispatch(remooveError({ [e.target.name]: false }));
+			dispatch(addOrderDeliveryData( {[e.target.name]:e.target.value}))
+
 		}
 		return obj;
 	};
@@ -72,8 +84,8 @@ containerClassName={styles.postNContainer}
 					setPost(e.target.value);
 				}}
 				value={post}
-				onBlur={(e) => setPostError(blurHandler(e))}
-				onInput={(e) => setPostError(blurHandler(e))}
+				onBlur={(e) => setPostError(blurHandler(e,false,1))}
+				onInput={(e) => setPostError(blurHandler(e,false,1))}
 			>
 			{Object.keys(postError)[0] && (
 				<Tooltip error={Object.keys(postError)[0]} className={"bottom"} />

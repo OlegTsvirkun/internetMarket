@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { ContentWrapper } from "../../../components/UA_Components/ContentWrapper/";
-import { Goods } from "../../../components/Goods";
+import { Goods } from "../../../components/GoodsContent/Goods";
 import { Button } from "../../../components/UA_Components/Button";
 import { searchingGoods } from "../../../store/categorySlice";
 import styles from "./SearchPage.module.scss";

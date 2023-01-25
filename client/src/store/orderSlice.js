@@ -15,26 +15,39 @@ export const orderSlice = createSlice({
     name: "order",
     initialState: {
         isErrors: {},
+        orderData:{
+            user: {},
+			// orderedGoods: {},
+			delivery: {},
+        },
         orderNumber: {},
         isError: false,
         isLoading: false,
+        message: ''
     },
     reducers: {
         addError: (state, action) => {
             state.isErrors = { ...state.isErrors, ...action.payload }
         },
         remooveError: (state, action) => {
-            // console.log(Object.keys(state.isErrors)[0]);
-            state.isErrors =
-                Object.keys(state.isErrors)
-                    .reduce((acc, item) => {
-                        if (item != Object.keys(action.payload)[0]) acc[item] = state.isErrors[item]
-                        return acc
-                    }, {})
+            Object.keys(action.payload).map(err => {
+                state.isErrors =
+                    Object.keys(state.isErrors)
+                        .reduce((acc, item) => {
+                            // console.log((item));
+                            // console.log(('err', err));
+                            if (item != err) acc[item] = state.isErrors[item]
+                            return acc
+                        }, {})
+            })
         },
-        // addField: (state, action) => {
-        //     state.itemsInOrder = { ...state.itemsInOrder, ...action.payload }
-        // },
+        addOrderDeliveryData: (state, action) => {
+            state.orderData.delivery = { ...state.orderData.delivery, ...action.payload }
+        },
+        addOrderUserData: (state, action) => {
+            state.orderData.user = { ...state.orderData.user, ...action.payload }
+        
+        },
         // addCatDelivery:(state,action)=>{
         //     state.itemsInOrder={...action.payload }
         //     console.log(Object.values(action.payload));
@@ -46,6 +59,8 @@ export const orderSlice = createSlice({
         builder
             .addCase(finishOrder.pending, (state, action) => {
                 state.isLoading = true
+                state.isLoading = true
+                state.isLoading = true
             })
             .addCase(finishOrder.fulfilled, (state, action) => {
                 state.isLoading = false
@@ -56,11 +71,12 @@ export const orderSlice = createSlice({
                 state.isLoading = false
                 state.isError = true
                 state.orderNumber = {}
+                state.message = action.payload.message
 
 
             })
     }
 });
 
-export const { addError, remooveError, addField, addCatDelivery } = orderSlice.actions;
+export const { addError, remooveError, addOrderDeliveryData,addOrderUserData } = orderSlice.actions;
 export default orderSlice.reducer;

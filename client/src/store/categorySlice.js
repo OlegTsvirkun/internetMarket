@@ -72,6 +72,7 @@ const categorySlice = createSlice({
       .addCase(getCategory.pending, (state, action) => {
         state.isLoading = true;
         state.isError = false;
+        state.goods = {}
 
         state.message = null;
 

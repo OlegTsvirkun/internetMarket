@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 
 import { Header } from "./components/Header";
@@ -10,9 +10,9 @@ import './App.css';
 import { SearchPage } from "./pages/ShopPages/SearchPage/SearchPage";
 import { Footer } from "./components/Footer/Footer";
 import { FinishOrder } from "./pages/ShopPages/FinishOrder/FinishOrder";
-import { FailPage} from "./pages/FailPage/FailPage";
+import { FailPage } from "./pages/FailPage/FailPage";
 import { AdminCreateGood, AdminPage } from "./pages/AdminPages/AdminPage/AdminPage";
-import {  EditGoodPage } from "./pages/AdminPages/EditGoodPage/EditGoodPage";
+import { EditGoodPage } from "./pages/AdminPages/EditGoodPage/EditGoodPage";
 import { AuthPage } from "./pages/AuthPage/AuthPage";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -26,30 +26,40 @@ import { GoodItemPage } from "./pages/ShopPages/GoodItemPage/GoodItemPage";
 
 
 function App() {
-  const {isAuth,isLoading,role} = useSelector(state=>state.user)
+  const cart = useSelector((state) => state.cart.itemsInCart);
+  const { isAuth, isLoading, role } = useSelector(state => state.user)
   const [isAlert, setIsAlert] = useState(false);
-  // const [isAuth, setIsAuth] = useState(false);
-  // const navigate = useNavigate()
+  const isCartMounted = useRef(false);
+
+
   const dispatch = useDispatch()
   const token = localStorage.getItem('token')
-  // console.log('token',token);
-  // console.log();
-useEffect(() => {
-  if(!token) return
-  dispatch(checkUser())
-}, []);
-// ()=>navigate(LOGIN_ROUTE)
-  // if(isLoading) return <>...Loading</> 
+
+  useEffect(() => {
+    if (!token) return
+    dispatch(checkUser())
+      .then(res => {
+        if (res.error) localStorage.removeItem('token');
+      })
+  }, []);
+  useEffect(() => {
+    if (isCartMounted.current) {
+      let json = JSON.stringify(cart);
+      localStorage.setItem("cart", json);
+    }
+    isCartMounted.current = true;
+  }, [cart]);
+
 
   return (
     <div className="App">
       <Router>
-          <Header/>
-          <SubHeader 
-          // searchValue = {searchValue} setSearchValue={setSearchValue}
-          />
-      <div className="main">
-        <Routes>
+        <Header />
+        <SubHeader
+        // searchValue = {searchValue} setSearchValue={setSearchValue}
+        />
+        <div className="main">
+          <Routes>
             <Route exact path={MAIN_ROUTE} element={<HomePage />} />
             <Route exact path={GOOD_ROUTE} element={<GoodItemPage />} />
             <Route exact path={CATEGORY_ROUTE} element={<GoodsPage />} />
@@ -59,21 +69,21 @@ useEffect(() => {
             <Route exact path={REGISTRATION_ROUTE} element={<AuthPage />} />
             <Route exact path={LOGIN_ROUTE} element={<AuthPage />} />
 
-         {role.includes("ADMIN") &&
-         <><Route exact path="/admin" element={<AdminPage />} />
-         <Route exact path="/admin/edit-good" element={<EditGoodPage />} />
-         <Route exact path={CREATE_CATEGORY_ROUTE} element={<CreateCategoryPage />} />
-         <Route exact path={CREATE_GOOD_ROUTE} element={<CreateGoodPage />} />
-         
-         </>
-         
+            {role.includes("ADMIN") &&
+              <><Route exact path="/admin" element={<AdminPage />} />
+                <Route exact path="/admin/edit-good" element={<EditGoodPage />} />
+                <Route exact path={CREATE_CATEGORY_ROUTE} element={<CreateCategoryPage />} />
+                <Route exact path={CREATE_GOOD_ROUTE} element={<CreateGoodPage />} />
+
+              </>
+
             }
 
             <Route path="*" element={<FailPage />} />
           </Routes>
-          <Footer/>
-      </div>
-      
+          <Footer />
+        </div>
+
       </Router>
     </div>
   );

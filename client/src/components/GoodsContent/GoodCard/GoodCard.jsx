@@ -1,13 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { priceFormating } from "../../utils/priceFormating";
-import { GoodBuy } from "../GoodBuy";
+import { priceFormating } from "../../../utils/priceFormating";
+import { GoodBuy } from "../../GoodBuy";
 import styles from "./GoodCard.module.scss";
 
 export const GoodCard = (good) => {
 	const { _id, articul, name, price,  picture, category } = good;
-//   console.log(good.category.category);
 	const { isLoading } = useSelector((state) => state.category);
 	if (isLoading) return <div>Loading...</div>;
 	return (

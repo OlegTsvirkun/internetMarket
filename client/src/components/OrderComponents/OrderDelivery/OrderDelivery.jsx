@@ -3,22 +3,40 @@ import { OptionOrderCard } from "../OptionOrderCard/OptionOrderCard";
 import styles from "./OrderDelivery.module.scss";
 import { TbTruckDelivery } from "react-icons/tb";
 import { TfiShoppingCartFull } from "react-icons/tfi";
-import { Input } from "../Input/Input";
-import { DeliveryAdress } from "../DeliveryAdress/DeliveryAdress";
-import { DeliveryPost } from "../DeliveryPost/DeliveryPost";
-import { DeliverySelf } from "../DeliverySelf/DeliverySelf";
+import { DeliveryAdress } from "../../DeliveryAdress/DeliveryAdress";
+import { DeliveryPost } from "../../DeliveryPost/DeliveryPost";
+import { DeliverySelf } from "../../DeliverySelf/DeliverySelf";
+import { addError, addOrderData, addOrderDeliveryData, remooveError } from "../../../store/orderSlice";
 import { useDispatch } from "react-redux";
 
-export const OrderDelivery = ({}) => {
+export const OrderDelivery = ({className}) => {
 	const [deliveryAdress, setDeliveryAdress] = useState(true);
 	const [deliveryPost, setDeliveryPost] = useState(false);
 	const [deliverySelf, setDeliverySelf] = useState(false);
 	const dispatch = useDispatch();
-	// useEffect(() => {
 
-	// }, []);
+useEffect(() => {
+	let deliveryObj = {
+		delivery:"Адресна доставка",
+		city: '-',
+		street:'-',
+		house:'-',
+		litHouse:'-',
+		appartment:'-',
+		postNP: '-',
+
+	};
+	dispatch(addOrderDeliveryData( deliveryObj))
+
+	
+}, []);
+
+	const handleClick =(e)=>{
+		dispatch(addOrderDeliveryData( {[e.target.name]:e.target.value}))
+	}
+
 	return (
-		<div className={styles.orderDelivery}>
+		<div className={`${styles.orderDelivery} ${className}`}>
 			<div className={styles.orderDelivery__toggle}>
 				<OptionOrderCard
 					icon={
@@ -34,7 +52,8 @@ export const OrderDelivery = ({}) => {
 					value="Адресна доставка"
 					subtitle="Доставимо завтра від:"
 					deliveryPrice="200"
-					onClick={() => {
+					onClick={(e) => {
+						handleClick(e)
 						setDeliveryAdress(true);
 						setDeliveryPost(false);
 						setDeliverySelf(false);
@@ -50,7 +69,8 @@ export const OrderDelivery = ({}) => {
 					value="Доставка НП"
 					subtitle="Доставимо завтра від:"
 					deliveryPrice="200"
-					onClick={() => {
+					onClick={(e) => {
+						handleClick(e)
 						setDeliveryAdress(false);
 						setDeliveryPost(true);
 						setDeliverySelf(false);
@@ -65,7 +85,8 @@ export const OrderDelivery = ({}) => {
 					value="Самовивіз із магазину:"
 					subtitle="Забрати завтра"
 					deliveryPrice="0"
-					onClick={() => {
+					onClick={(e) => {
+						handleClick(e)
 						setDeliveryAdress(false);
 						setDeliveryPost(false);
 						setDeliverySelf(true);

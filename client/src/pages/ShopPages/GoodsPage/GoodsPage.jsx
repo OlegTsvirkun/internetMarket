@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
-import { Goods } from "../../../components/Goods";
+
 import {FailPage} from '../../FailPage'
 import {
 	cleanupCatSlice,
@@ -13,9 +13,10 @@ import styles from "./GoodsPage.module.scss";
 import { ContentWrapper } from "../../../components/UA_Components/ContentWrapper";
 import { Button } from "../../../components/UA_Components/Button";
 import { Paginate } from "../../../components/UA_Components/Paginate/Paginate";
-import { GoodCard } from "../../../components/GoodCard";
+import { GoodCard } from "../../../components/GoodsContent/GoodCard";
 import { LimitCards } from "../../../components/LimitCards/LimitCards";
 import { useRef } from "react";
+import { Goods } from "../../../components/GoodsContent/Goods/Goods";
 
 export const GoodsPage = ({}) => {
 	const [searchParams, setSearchParams] = useSearchParams();

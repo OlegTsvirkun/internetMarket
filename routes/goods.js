@@ -11,7 +11,7 @@ router.get('/search', searchGood);
 router.get('/search-articul', searchGoodByArticul);
 router.post('/finish-order', createOrder);
 
-
-
 router.get('/', getCategory);
+
+
 module.exports = router; 

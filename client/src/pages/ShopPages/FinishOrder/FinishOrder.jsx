@@ -6,7 +6,7 @@ import { Button } from "../../../components/UA_Components/Button";
 import { Link } from "react-router-dom";
 export const FinishOrder = ({}) => {
 	const { orderNumber,isLoading } = useSelector((state) => state.order?.orderNumber);
-	console.log(orderNumber);
+	// console.log(orderNumber);
   isLoading && <div>Загрузка</div>
   	return (
 		<ContentWrapper className={styles.finishOrder}>

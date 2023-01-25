@@ -4,14 +4,14 @@ import {
 	useNavigate,
 	useSearchParams,
 } from "react-router-dom";
-import { ContentWrapper } from "../UA_Components/ContentWrapper";
+import { ContentWrapper } from "../../UA_Components/ContentWrapper";
 import { GoodCard } from "../GoodCard";
-import { LimitCards } from "../LimitCards/LimitCards";
+import { LimitCards } from "../../LimitCards/LimitCards";
 import styles from "./Goods.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { cleanupCatSlice, getCategory } from "../../store/categorySlice";
+import { cleanupCatSlice, getCategory } from "../../../store/categorySlice";
 import ReactPaginate from "react-paginate";
-import { Paginate } from "../UA_Components/Paginate/Paginate";
+import { Paginate } from "../../UA_Components/Paginate/Paginate";
 
 export const Goods = ({ }) => {
 	const [searchParams, setSearchParams] = useSearchParams();

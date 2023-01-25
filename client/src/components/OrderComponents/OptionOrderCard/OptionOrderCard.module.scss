@@ -1,0 +1,52 @@
+.optionOrderCard {
+    position: relative;
+    width: 150px;
+    height: 180px;
+    border: 1px solid var(--blue-hover);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+.container {
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 0;
+
+    span {
+        position: absolute;
+        right: 8px;
+        top: 0px;
+        transform: translate(50%, -50%);
+        padding: 0;
+    }
+    input[type="radio"] {
+        visibility: hidden;
+    }
+    h4 {
+        text-align: center;
+        margin: 10px;
+    }
+}
+.check.active {
+    color: var(--blue-hover) ;
+}
+.check {
+    background-color: rgb(255, 255, 255);
+    color:  var(--blue-hover);
+}
+.deliveryPrice {
+    width: 100%;
+    font-size: 14px;
+    p {
+        margin: 10px;
+        font-weight: 700;
+    }
+}
+.icon {
+    margin: 10px;
+}
+.optionOrderCard.active {
+    background: var(--blue-transparent);
+}

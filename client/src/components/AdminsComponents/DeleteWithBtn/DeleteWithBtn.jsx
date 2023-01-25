@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "../UA_Components/Button";
+import { Button } from "../../UA_Components/Button";
 
 import styles from "./DeleteWithBtn.module.scss";
 
