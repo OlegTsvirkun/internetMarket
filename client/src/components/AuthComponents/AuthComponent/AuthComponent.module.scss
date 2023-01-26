@@ -1,0 +1,23 @@
+
+.authComponent{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    a{
+        text-decoration: underline;
+        color:lightskyblue;
+    }
+}
+.caption{
+    font-size: 22px;
+}
+.formContainer{
+    width: 30vw;
+}
+.buttonContainer{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}

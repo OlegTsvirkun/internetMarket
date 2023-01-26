@@ -1,22 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SkeletonCat } from "../../SkeletonCat/SkeletonCat";
-import { getMain } from "../../../store/mainSlice";
 import { CategoryCard } from "../CategoryCard/CategoryCard";
 import styles from "./Categories.module.scss";
 import { ContentWrapper } from "../../UA_Components/ContentWrapper";
 
 export const Categories = () => {
-	const dispatch = useDispatch();
 	const { categories, goods, images, isLoading } = useSelector(
 		(state) => state.main,
 	);
-	// useEffect(() => {
-	// 	dispatch(getMain());
-	// }, [dispatch]);
-// console.log(Object.keys(categories)[0]);
 	return (
-		<div>
 			<ContentWrapper className={styles.goodsGrid}>
 				{isLoading
 					? [...new Array(6)].map((item, i) => {
@@ -42,6 +35,5 @@ export const Categories = () => {
 							);
 					  })}
 			</ContentWrapper>
-		</div>
 	);
 };

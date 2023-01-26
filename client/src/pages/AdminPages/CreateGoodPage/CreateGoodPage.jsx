@@ -1,17 +1,15 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { ContentWrapper } from "../../../components/UA_Components/ContentWrapper/";
-import { Input } from "../../../components/Input/Input";
+import { Input } from "../../../components/UA_Components/Input/Input";
+import { Button } from "../../../components/UA_Components/Button";
 import styles from "./CreateGoodPage.module.scss";
 import {hostAuth} from "../../../axios";
 
-import { Button } from "../../../components/UA_Components/Button";
 import { ModalWindow } from "../../../components/ModalWindow/ModalWindow";
 import { useDispatch, useSelector } from "react-redux";
 import { getMain } from "../../../store/mainSlice";
-import { useRef } from "react";
 import { typeValidator } from "../../../utils/validator";
 import { Tooltip } from "../../../components/Tooltip/Tooltip";
-import { host } from "../../../host";
 import { removeImage } from "../../../store/goodSlice";
 import  services  from "../../../store/services/service";
 import { useNavigate } from "react-router-dom";

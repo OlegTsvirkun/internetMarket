@@ -3,9 +3,9 @@ import { OptionOrderCard } from "../OptionOrderCard/OptionOrderCard";
 import styles from "./OrderDelivery.module.scss";
 import { TbTruckDelivery } from "react-icons/tb";
 import { TfiShoppingCartFull } from "react-icons/tfi";
-import { DeliveryAdress } from "../../DeliveryAdress/DeliveryAdress";
-import { DeliveryPost } from "../../DeliveryPost/DeliveryPost";
-import { DeliverySelf } from "../../DeliverySelf/DeliverySelf";
+import { DeliveryAdress } from "../DeliveryAdress/DeliveryAdress";
+import { DeliveryPost } from "../DeliveryPost/DeliveryPost";
+import { DeliverySelf } from "../DeliverySelf/DeliverySelf";
 import { addError, addOrderData, addOrderDeliveryData, remooveError } from "../../../store/orderSlice";
 import { useDispatch } from "react-redux";
 
@@ -37,7 +37,8 @@ useEffect(() => {
 
 	return (
 		<div className={`${styles.orderDelivery} ${className}`}>
-			<div className={styles.orderDelivery__toggle}>
+			<p className={styles.title} >Виберіть спосіб доставки:</p>
+			<div className={styles.toggle}>
 				<OptionOrderCard
 					icon={
 						<TbTruckDelivery

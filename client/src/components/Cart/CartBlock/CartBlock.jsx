@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 import { BsCart } from "react-icons/bs";
 import styles from "./CartBlock.module.scss";
 import { CartMenu } from "../CartMenu";
-import { ItemsInCart } from "../../ItemInCart/ItemInCart";
+import { ItemsInCart } from "../ItemInCart/ItemInCart";
 import { openCartMenu } from "../../../store/cartSlice";
 import { ModalAlert } from "../../ModalAlert/ModalAlert";
 import { ORDER_ROUTE } from "../../../utils/constRoutes";

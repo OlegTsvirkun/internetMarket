@@ -1,11 +1,10 @@
 import React from 'react';
-import { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Button } from '../../../components/UA_Components/Button';
 import { ContentWrapper } from '../../../components/UA_Components/ContentWrapper';
-import { UpdateGoodItem } from '../../../components/UpdateGoodItem/UpdateGoodItem';
+import { UpdateGoodItem } from '../../../components/AdminsComponents/UpdateGoodItem/UpdateGoodItem';
 
 import { getGood } from '../../../store/goodSlice';
 
@@ -26,7 +25,7 @@ export const EditGoodPage = ({}) =>{
   return (
    <>
     <ContentWrapper className={styles.editGood}>
-      <Button className = {styles.goodItem__backButton} onClick={() => navigate(-1)} isBackButton={true}>
+      <Button className = {styles.backButton} onClick={() => navigate(-1)} isBackButton={true}>
   					Назад
   				</Button>
       

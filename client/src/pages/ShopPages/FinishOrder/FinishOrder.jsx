@@ -5,10 +5,11 @@ import { ContentWrapper } from "../../../components/UA_Components/ContentWrapper
 import { Button } from "../../../components/UA_Components/Button";
 import { Link } from "react-router-dom";
 export const FinishOrder = ({}) => {
-	const { orderNumber,isLoading } = useSelector((state) => state.order?.orderNumber);
-	// console.log(orderNumber);
-  isLoading && <div>Загрузка</div>
-  	return (
+	const { orderNumber, isLoading } = useSelector(
+		(state) => state.order?.orderNumber,
+	);
+	isLoading && <div>Загрузка</div>;
+	return (
 		<ContentWrapper className={styles.finishOrder}>
 			<h1 className={styles.finishOrder__title}>
 				Дякуємо за покупку у нашому інтернет магазині MyApple Store.
@@ -27,7 +28,9 @@ export const FinishOrder = ({}) => {
 						У найближчий час нашменеджер зв'яжеться з Вами для уточнення
 						замовлення
 					</p>
-          <Button className={styles.finishOrder__button} ><Link to='/'>Перейти до головної </Link></Button>
+					<Button className={styles.finishOrder__button}>
+						<Link to="/">Перейти до головної </Link>
+					</Button>
 				</div>
 			</div>
 		</ContentWrapper>

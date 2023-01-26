@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaQuoteRight } from "react-icons/fa";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import styles from "./Carousel.module.scss";
-export const Carousel = ({ images,onClick }) => {
+export const Carousel = ({ images,onClick,className }) => {
 	const [image, setImage] = useState(images);
 	const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -19,8 +19,8 @@ export const Carousel = ({ images,onClick }) => {
 	if (!image) return <div>'loading'</div>;
 	return (
 			
-		<div className={styles.sectionContainer}>
-			<div className={styles.sectionCenter}>
+		// <div className={styles.sectionContainer}>
+			<div className={`${styles.sectionCenter} ${className}`}>
 				{image.map((item, Index) => {
 					let position = "nextSlide";
 					if (Index === currentIndex) {
@@ -60,7 +60,7 @@ export const Carousel = ({ images,onClick }) => {
 					<FiChevronRight />
 				</button>
 			</div>
-		</div>
+		// </div>
 	
 	);
 };

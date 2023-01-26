@@ -120,11 +120,10 @@ const getGood = async (req, res, next) => {
         }
         else if(!Id && articul){
             good = await Good
-            //    .findById(Id)
                 .findOne({articul: articul})
                 .then(data => {
                     return data
-                }).catch(err=>{return res.status(400).json({message:'err111'})})
+                }).catch(err=>{return res.status(400).json({message:err})})
 
         }
 
@@ -133,9 +132,8 @@ const getGood = async (req, res, next) => {
             .then(image => {
                 return image.map(item => item.image)
             }
-            )
-            // console.log(good);
-
+            ).catch(err=>{return res.status(400).json({message:err})})
+// console.log(images);
         res.status(200).json({ good, images })
     } catch (error) {
         console.log(error);

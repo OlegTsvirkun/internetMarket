@@ -1,18 +1,11 @@
-.goodsPage{
-    &__description{
-font-size: 16px;
-font-weight: 300;
-margin:20px 0;
-line-height: 1.1;
-    }
+.pagination {
+    margin: 20px 0;
+    text-align: center;
 }
-.backButton{
-    // height: 50px;
-    margin: 25px auto;
-    display: flex;
-    justify-content: space-between;
-}
-.pagination{
-    margin:20px 0;
-   text-align: center;
+.description {
+    margin: 20px 0;
+    text-align: start;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.1;
 }

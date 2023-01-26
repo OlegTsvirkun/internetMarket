@@ -1,0 +1,63 @@
+.header {
+    display: flex;
+    height: 80px;
+    align-items: center;
+}
+    .headerContainer {
+        display: grid;
+        grid-template-columns: 1fr 6fr 3fr 2fr;
+    }
+    .item {
+        display: flex;
+        /* width: 80vw; */
+
+        // color: white;
+        font-size: 26px;
+        text-decoration: none;
+        font-weight: 700;
+    }
+    .title {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: rgb(71, 71, 71);
+    }
+    .logo {
+        margin-right: 2rem;
+    }
+    .menu {
+        text-decoration: none;
+        color: rgb(71, 71, 71);
+    }
+    .auth {
+        text-align: right;
+    }
+
+    .logoIcon {
+        cursor: pointer;
+       
+    }
+    .basketIcon {
+        cursor: pointer;
+    }
+    .adminBtn{
+        // width: 50px;
+        // height: 15px;
+        // width: 50px;
+        // height: 15px;
+        // padding: 0;
+        // background-color: rgb(237, 237, 237);
+    }
+
+.buttonContainer{
+    display: flex;
+    a{
+        margin-right:5px ;
+    }
+}
+.adminBtn{
+    // width: 50px;
+    // height: 15px;
+    // padding: 0;
+    // background-color: aquamarine;
+}

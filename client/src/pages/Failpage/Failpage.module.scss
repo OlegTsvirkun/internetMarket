@@ -1,7 +1,11 @@
 .failpage {
-    margin:50px 0;
+    // margin:50px 0;
     display: flex;
-    justify-content: center;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items: center;
+    height: 100%;
+    margin: 20px 0;
     &__icon,
     &__404 {
         font-size: 30vh;

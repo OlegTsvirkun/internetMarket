@@ -4,16 +4,17 @@ import styles from "./CategoryCard.module.scss";
 export const CategoryCard = ({ cat, id, image, goods }) => {
 	return (
 		<div className={styles.categoryCard}>
-			<Link className={styles.item} to={`cat/${cat}`}>
-				<div className={styles.name}>{cat}</div>
-				
+			<div className={styles.name}>{cat}</div>
+
+			<div className={styles.imageContainer}>
+				<Link className={styles.item} to={`cat/${cat}`}>
 					<img
 						className={styles.image}
 						src={process.env.REACT_APP_API_URL + image}
 						alt={cat}
 					/>
-				
-			</Link>
+				</Link>
+			</div>
 			<ul className={styles.goodsList}>
 				{Object.keys(goods).map((good) => {
 					return (

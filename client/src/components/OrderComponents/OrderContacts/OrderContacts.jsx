@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addError, addField, addOrderData, addOrderUserData, remooveError } from "../../../store/orderSlice";
 import { valueValidator } from "../../../utils/validator";
 import { Tooltip } from "../../Tooltip/Tooltip";
-import { Input } from "../../Input/Input";
+import { Input } from "../../UA_Components/Input/Input";
 
 export const OrderContacts = ({className}) => {
 	const [firstName, setFirstName] = useState("");
@@ -51,7 +51,6 @@ export const OrderContacts = ({className}) => {
 			dispatch(remooveError({ [e.target.name]: false }));
 			dispatch(addOrderUserData({[e.target.name]:e.target.value}))
 		}
-
 		return obj;
 	};
 

@@ -5,7 +5,7 @@ import { Button } from "../../../components/UA_Components/Button";
 import { ContentWrapper } from "../../../components/UA_Components/ContentWrapper/";
 
 import { CreateGood } from "../CreateGoodPage/CreateGoodPage";
-import { UpdateGood } from "../../../components/UpdateGood/UpdateGood";
+import { UpdateGood } from "../../../components/AdminsComponents/UpdateGood/UpdateGood";
 import { cleanupCatSlice } from "../../../store/categorySlice";
 import { CREATE_CATEGORY_ROUTE, CREATE_GOOD_ROUTE } from "../../../utils/constRoutes";
 import styles from "./AdminPage.module.scss";

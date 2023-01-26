@@ -1,34 +1,11 @@
-.orderDelivery{
- 
-    &__toggle{
-        display: flex;
-        gap: 20px;
-    }
-    &__postN,
-    &__appartment,
-    &__lit,
-    &__house,
-    &__address
-    {
-        label:not(:first-child){
-        margin-left:10px;
-
-        }
-        width:50px;
-        // margin-left:10px;
-    }
-    
-        label &__house {
-
-        margin-left: 0;
-        
-    }
-   
-    &__address{
-        display: flex;
-        
-    }
-
-
+.orderDelivery {
 }
-
+.toggle {
+    display: flex;
+    gap: 20px;
+}
+.title {
+    font-size: 21px;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}

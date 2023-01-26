@@ -3,13 +3,11 @@ import styles from "./CreateCategoryPage.module.scss";
 
 import React, { useCallback } from "react";
 import { useState } from "react";
-import { hostAuth } from "../../../axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ContentWrapper } from "../../../components/UA_Components/ContentWrapper";
-import { Input } from "../../../components/Input/Input";
 import { Button } from "../../../components/UA_Components/Button";
 import adminServices from "../../../store/services/adminServices";
-import { CreateCategory } from "../../../components/CreateCategory";
+import { CreateCategory } from "../../../components/AdminsComponents/CreateCategory";
 
 export const CreateCategoryPage = ({}) => {
 	const [category, setCategory] = useState("");

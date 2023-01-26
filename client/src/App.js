@@ -1,24 +1,22 @@
 import { useRef, useState } from "react";
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 
-import { Header } from "./components/Header";
-import { Modal } from "./components/Modal/Modal";
-import { SubHeader } from "./components/SubHeader";
+import { Header } from "./components/Header Components/Header";
+import { SubHeader } from "./components/Header Components/SubHeader";
 import { HomePage } from "./pages/ShopPages/HomePage";
 import { OrderPage } from "./pages/ShopPages/OrderPage/OrderPage";
 import './App.css';
-import { SearchPage } from "./pages/ShopPages/SearchPage/SearchPage";
+import { SearchPage } from "./pages/ShopPages/(__SearchPage)/SearchPage";
 import { Footer } from "./components/Footer/Footer";
 import { FinishOrder } from "./pages/ShopPages/FinishOrder/FinishOrder";
 import { FailPage } from "./pages/FailPage/FailPage";
-import { AdminCreateGood, AdminPage } from "./pages/AdminPages/AdminPage/AdminPage";
+import {  AdminPage } from "./pages/AdminPages/AdminPage/AdminPage";
 import { EditGoodPage } from "./pages/AdminPages/EditGoodPage/EditGoodPage";
 import { AuthPage } from "./pages/AuthPage/AuthPage";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { changeAuth, checkUser } from "./store/userSlice";
+import { checkUser } from "./store/userSlice";
 import { CATEGORY_ROUTE, CREATE_CATEGORY_ROUTE, CREATE_GOOD_ROUTE, FINISH_ORDER_ROUTE, GOOD_ROUTE, LOGIN_ROUTE, MAIN_ROUTE, ORDER_ROUTE, REGISTRATION_ROUTE, SEARCH_ROUTE } from "./utils/constRoutes";
-import { ModalAlert } from "./components/ModalAlert/ModalAlert";
 import { CreateCategoryPage } from "./pages/AdminPages/CreateCategoryPage/CreateCategoryPage";
 import { CreateGoodPage } from "./pages/AdminPages/CreateGoodPage/CreateGoodPage";
 import { GoodsPage } from "./pages/ShopPages/GoodsPage";
@@ -63,7 +61,8 @@ function App() {
             <Route exact path={MAIN_ROUTE} element={<HomePage />} />
             <Route exact path={GOOD_ROUTE} element={<GoodItemPage />} />
             <Route exact path={CATEGORY_ROUTE} element={<GoodsPage />} />
-            <Route exact path={SEARCH_ROUTE} element={<SearchPage />} />
+            <Route exact path={SEARCH_ROUTE} element={<GoodsPage />} />
+            {/* <Route exact path={SEARCH_ROUTE} element={<SearchPage />} /> */}
             <Route exact path={ORDER_ROUTE} element={<OrderPage />} />
             <Route exact path={FINISH_ORDER_ROUTE} element={<FinishOrder />} />
             <Route exact path={REGISTRATION_ROUTE} element={<AuthPage />} />
