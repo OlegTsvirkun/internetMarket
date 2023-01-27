@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BsX } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { FailPage } from "../../../pages/FailPage";
+import { FailPage } from "../../../pages/FailPage/Failpage";
 import { priceFormating } from "../../../utils/priceFormating";
 import { GoodBuy } from "../../GoodBuy";
 import { ModalAlert } from "../../ModalAlert/ModalAlert";
