@@ -24,11 +24,7 @@ export const EditGoodPage = ({}) =>{
   if(isLoading) return <>Loading....</>
   return (
    <>
-    <ContentWrapper className={styles.editGood}>
-      <Button className = {styles.backButton} onClick={() => navigate(-1)} isBackButton={true}>
-  					Назад
-  				</Button>
-      
+    {/* <ContentWrapper className={styles.editGood}> */}
       <UpdateGoodItem
       id = {good._id}
       _category = {good.category?.category}
@@ -39,7 +35,7 @@ export const EditGoodPage = ({}) =>{
       _images  ={images}
       _description = {good.description}
       />
-    </ContentWrapper>
+    {/* </ContentWrapper> */}
    </>
 )};
 

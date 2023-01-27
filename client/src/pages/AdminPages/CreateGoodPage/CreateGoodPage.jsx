@@ -207,9 +207,7 @@ export const CreateGoodPage = ({
 }
 	return (
 		<ContentWrapper className={styles.createGood}>
-			<Button className = {styles.goodItem__backButton} onClick={() => navigate(-1)} isBackButton={true}>
-  					Назад
-  				</Button>
+		
 			<h1 className={styles.createGood__title}>Новий товар</h1>
 			<form id="formCreateGood">
 				<div className={styles.createGood__container}>

@@ -2,23 +2,21 @@ import { useRef, useState } from "react";
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 
 import { Header } from "./components/Header Components/Header";
-import { SubHeader } from "./components/Header Components/SubHeader";
+import { SubHeader } from "./components/Header Components/SubHeader/SubHeader";
 import { HomePage } from "./pages/ShopPages/HomePage";
 import { OrderPage } from "./pages/ShopPages/OrderPage/OrderPage";
 import './App.css';
-import { SearchPage } from "./pages/ShopPages/(__SearchPage)/SearchPage";
+// import { SearchPage } from "./pages/ShopPages/(__SearchPage)/SearchPage";
 import { Footer } from "./components/Footer/Footer";
 import { FinishOrder } from "./pages/ShopPages/FinishOrder/FinishOrder";
 import { FailPage } from "./pages/FailPage/FailPage";
 import {  AdminPage } from "./pages/AdminPages/AdminPage/AdminPage";
-import { EditGoodPage } from "./pages/AdminPages/EditGoodPage/EditGoodPage";
+// import { EditGoodPage } from "./pages/AdminPages/EditGoodPage/EditGoodPage";
 import { AuthPage } from "./pages/AuthPage/AuthPage";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { checkUser } from "./store/userSlice";
 import { CATEGORY_ROUTE, CREATE_CATEGORY_ROUTE, CREATE_GOOD_ROUTE, FINISH_ORDER_ROUTE, GOOD_ROUTE, LOGIN_ROUTE, MAIN_ROUTE, ORDER_ROUTE, REGISTRATION_ROUTE, SEARCH_ROUTE } from "./utils/constRoutes";
-import { CreateCategoryPage } from "./pages/AdminPages/CreateCategoryPage/CreateCategoryPage";
-import { CreateGoodPage } from "./pages/AdminPages/CreateGoodPage/CreateGoodPage";
 import { GoodsPage } from "./pages/ShopPages/GoodsPage";
 import { GoodItemPage } from "./pages/ShopPages/GoodItemPage/GoodItemPage";
 
@@ -69,10 +67,10 @@ function App() {
             <Route exact path={LOGIN_ROUTE} element={<AuthPage />} />
 
             {role.includes("ADMIN") &&
-              <><Route exact path="/admin" element={<AdminPage />} />
-                <Route exact path="/admin/edit-good" element={<EditGoodPage />} />
-                <Route exact path={CREATE_CATEGORY_ROUTE} element={<CreateCategoryPage />} />
-                <Route exact path={CREATE_GOOD_ROUTE} element={<CreateGoodPage />} />
+              <><Route exact path="/admin/*" element={<AdminPage />} />
+                {/* <Route exact path="/admin/edit-good" element={<EditGoodPage />} /> */}
+                {/* <Route exact path={CREATE_CATEGORY_ROUTE} element={<CreateCategoryPage />} /> */}
+                {/* <Route exact path={CREATE_GOOD_ROUTE} element={<CreateGoodPage />} /> */}
 
               </>
 

@@ -85,6 +85,7 @@ h6 {
 :root {
   --blue: rgb(47, 181, 252);
   --blue-transparent: rgba(47, 180, 252, 0.1);
+  --blue-less-transparent: rgba(47, 180, 252, 0.5);
   --blue-hover: rgb(70, 188, 252);
   --black-grey: rgb(71, 71, 71);
   --black-grey-transparent: rgb(71, 71, 71, .8);

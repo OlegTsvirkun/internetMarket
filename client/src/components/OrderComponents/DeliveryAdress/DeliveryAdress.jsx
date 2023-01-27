@@ -79,7 +79,7 @@ export const DeliveryAdress = ({}) => {
 					containerClassName={styles.containerInp}
 					type="text"
 					name="street"
-					labelTitle="Вулиця"
+					labelTitle="Вулиця" 
 					placeholder="Вулиця"
 					onChange={(e) => {
 						setStreet(e.target.value);

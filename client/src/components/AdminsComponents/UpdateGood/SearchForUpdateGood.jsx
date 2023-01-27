@@ -4,18 +4,18 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../../UA_Components/Button";
 import { Input } from "../../UA_Components/Input";
-import styles from "./UpdateGood.module.scss";
+import styles from "./SearchForUpdateGood.module.scss";
 import { removeGood, searchingGoods, searchingGoodsByArticul } from "../../../store/categorySlice";
 import { priceFormating } from "../../../utils/priceFormating";
 import { DeleteWithBtn } from "../DeleteWithBtn/DeleteWithBtn";
 import services from "../../../store/services/service";
 
-export const UpdateGood = ({}) => {
+export const SearchForUpdateGood = ({}) => {
 	const [searchArticul, setSearchArticul] = useState("");
 	const [searchName, setSearchName] = useState("");
 	const [itemGoods, setItemGoods] = useState({});
 	const [isDeleteOpen, setIsDeleteOpen] = useState(false);
-	const searchParams = useSearchParams();
+	const [searchParams] = useSearchParams();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const { isLoading, goods } = useSelector((state) => state.category);

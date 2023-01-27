@@ -1,1 +1,1 @@
-export * from './UpdateGood'
+export * from './SearchForUpdateGood'

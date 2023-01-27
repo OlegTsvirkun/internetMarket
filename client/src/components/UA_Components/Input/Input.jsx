@@ -36,6 +36,7 @@ export const Input = ({
 				onInput={onInput}
 				multiple={multiple}
 				accept={accept}
+						
 			/>
 			{children}
 		</label>

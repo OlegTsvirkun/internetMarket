@@ -19,6 +19,9 @@ const createCategory = async (req, res, next) => {
         if (!category) next(ApiErrors.badRequest('Не вказана категорія'))
         if (!description) next(ApiErrors.badRequest('Не вказан опис'))
         if (!picture) next(ApiErrors.badRequest('Не вказано зображення'))
+    await Category.findOne({category:category}).then(data=>{
+        if(data) return next(ApiErrors.badRequest('Така категорія вже існує'))
+    })
         const cat = await Category
             .create({
                 category: category,
