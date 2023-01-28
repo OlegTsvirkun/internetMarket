@@ -19,9 +19,9 @@ const createCategory = async (req, res, next) => {
         if (!category) next(ApiErrors.badRequest('Не вказана категорія'))
         if (!description) next(ApiErrors.badRequest('Не вказан опис'))
         if (!picture) next(ApiErrors.badRequest('Не вказано зображення'))
-    await Category.findOne({category:category}).then(data=>{
-        if(data) return next(ApiErrors.badRequest('Така категорія вже існує'))
-    })
+        await Category.findOne({ category: category }).then(data => {
+            if (data) return next(ApiErrors.badRequest('Така категорія вже існує'))
+        })
         const cat = await Category
             .create({
                 category: category,
@@ -49,10 +49,17 @@ const createCategory = async (req, res, next) => {
 const createGood = async (req, res, next) => {
     try {
         const { name, articul, price, category, description } = req.body
+        if (!name) next(ApiErrors.badRequest('Не вказана назва'))
+        if (!articul) next(ApiErrors.badRequest('Не вказан артикул'))
+        if (!price) next(ApiErrors.badRequest('Не вказана ціна'))
+        if (!category) next(ApiErrors.badRequest('Не вказана категорія'))
+        if (!description) next(ApiErrors.badRequest('Не вказан опис'))
+
+        await Good.findOne({ name: name , articul:articul}).then(data => {
+            if (data) return next(ApiErrors.badRequest('Такий товар вже існує'))
+        })
         const picture = req.files?.picture || {}
         if (!picture.name) return next(ApiErrors.badRequest({ error: 'Немає основного зображення' }))
-        // console.log(picture);
-        // let picExt =picture.name.split('.').slice(-1),
         let picName = filenameMaker(picture, category, name)
         let images = Object.keys(req.files).reduce((acc, item) => {
             if (item != 'picture') {
@@ -60,17 +67,7 @@ const createGood = async (req, res, next) => {
             }
             return acc
         }, [])
-        // let fileName = category + '-' + name + '-' + Date.now() + picExt
-        // console.log('picExt',picExt);
-        // console.log('fileName', filenameMaker(picture,category,name));
-        console.log(
-            // req.files
-            // 'images',images 
-            // picName
-            // req.body,
-            // picExt
-            // category, name, articul,description,price,picture, pictures
-        );
+
         const cat = await Category
             .find({
                 category: category
@@ -121,15 +118,8 @@ const createGood = async (req, res, next) => {
                 return goodImage
             }))
         }
-        res.json({ message: `Товар ${good.name} додано` })
-        // res.json({
-        //     cat,
-        //     goodPic,
-        //     good,
-        //     goodPic,
-        //     goodImages
-        // })
-        // res.json({name, articul, price , category,  description })
+        res.json({ response: `Товар ${good.name} додано` })
+       
 
     } catch (error) {
         if (error) {
@@ -148,13 +138,13 @@ const updateGood = async (req, res, next) => {
             .findById(id)
             .populate('category', { description: 0, _id: 0 })
             .then(data => data)
-            // console.log(goodDB.category.category);
-            // console.log(req.body?.name);
+        // console.log(goodDB.category.category);
+        // console.log(req.body?.name);
 
         let category
         let name
-        req.body?.category!=undefined  ? category = req.body.category : category = goodDB.category.category
-        req.body?.name!=undefined ? name = req.body.name : name = goodDB.name
+        req.body?.category != undefined ? category = req.body.category : category = goodDB.category.category
+        req.body?.name != undefined ? name = req.body.name : name = goodDB.name
         // let picName = filenameMaker(picture, category, name)
 
         const filter = Object.keys(req.body).reduce((acc, item) => {
@@ -163,7 +153,7 @@ const updateGood = async (req, res, next) => {
 
             return acc
         }, {})
-        if (picture?.name) filter.picture =filenameMaker(picture, category, name)
+        if (picture?.name) filter.picture = filenameMaker(picture, category, name)
 
         let images = Object.keys(req.files || {}).reduce((acc, item) => {
             if (item != 'picture') {
@@ -173,24 +163,24 @@ const updateGood = async (req, res, next) => {
         }, [])
         // console.log(filter);
 
-                const good = await Good
-                .findByIdAndUpdate(id,filter)
-                .then(data=>data)
-                .catch(err=>console.log(err))
-                if (picture?.name){
+        const good = await Good
+            .findByIdAndUpdate(id, filter)
+            .then(data => data)
+            .catch(err => console.log(err))
+        if (picture?.name) {
 
-                    const goodPic = await Image
-                    .create({
-                        image: good.picture,
-                        goodId: id
-                    })
-                    .then(data => {
-                        picture.mv(path.resolve(__dirname, '..', 'images', data.image))
-        
-                        return data
-                    }
-                    )
+            const goodPic = await Image
+                .create({
+                    image: good.picture,
+                    goodId: id
+                })
+                .then(data => {
+                    picture.mv(path.resolve(__dirname, '..', 'images', data.image))
+
+                    return data
                 }
+                )
+        }
 
         if (images.length > 0) {
             const goodImages = await Promise.all(images.map(async item => {
@@ -207,44 +197,44 @@ const updateGood = async (req, res, next) => {
             }))
         }
         // res.json({good})
-        res.json({messege:`Товар ${good.name} оновлено. Оневлені поля: ${Object.keys(filter).map(item=>item)}` })
+        res.json({ messege: `Товар ${good.name} оновлено. Оневлені поля: ${Object.keys(filter).map(item => item)}` })
     } catch (error) {
         next(ApiErrors.badRequest(error.message))
         // console.log(error)
     }
 }
-const removeImage =async(req,res,next)=>{
-    try{
-        const {image} = req.body
+const removeImage = async (req, res, next) => {
+    try {
+        const { image } = req.body
         // console.log(image);
         const im = await Image
-        //! .findOneAndDelete({image:{$eq: req.body.image}})
-        .findOne({image:{$eq: req.body.image}})
-        .then(data=>data)
+            //! .findOneAndDelete({image:{$eq: req.body.image}})
+            .findOne({ image: { $eq: req.body.image } })
+            .then(data => data)
         // console.log(im);
-        res.json({message:`Зображення ${im._id} видалено` || '000'})
+        res.json({ message: `Зображення ${im._id} видалено` || '000' })
 
-    }catch(error){
+    } catch (error) {
         // console.log(error);
         next(ApiErrors.badRequest(error.message))
-    } 
+    }
 }
-const removeGood =async(req,res,next)=>{
-    try{
-        const {id} = req.body
+const removeGood = async (req, res, next) => {
+    try {
+        const { id } = req.body
         console.log(id);
         const good = await Good
-        
-        .findById(id)
-        // !.findByIdAndDelete(id)
-        .then(data=>data)
-        // console.log(good);//////////////////
-        res.json({message:`Товар ${good.name} видалено` || '000'})
 
-    }catch(error){
+            .findById(id)
+            // !.findByIdAndDelete(id)
+            .then(data => data)
+        // console.log(good);//////////////////
+        res.json({ message: `Товар ${good.name} видалено` || '000' })
+
+    } catch (error) {
         // console.log(error);
         next(ApiErrors.badRequest(error.message))
-    } 
+    }
 }
 
 

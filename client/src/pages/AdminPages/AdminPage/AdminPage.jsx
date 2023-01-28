@@ -4,7 +4,7 @@ import { Link, Route, Routes, useLocation } from "react-router-dom";
 import { Button } from "../../../components/UA_Components/Button";
 import { ContentWrapper } from "../../../components/UA_Components/ContentWrapper/";
 
-import { CreateGood, CreateGoodPage } from "../CreateGoodPage/CreateGoodPage";
+import {  CreateGoodPage } from "../CreateGoodPage/CreateGoodPage";
 import {
 	SearchForUpdateGood,
 	UpdateGood,
@@ -18,6 +18,7 @@ import {
 import styles from "./AdminPage.module.scss";
 import { EditGoodPage } from "../EditGoodPage/EditGoodPage";
 import { CreateCategory } from "../../../components/AdminsComponents/CreateCategory";
+import { CreateGood } from "../../../components/AdminsComponents/CreateGood";
 
 export const AdminPage = ({}) => {
 	const [updateGoodIsOpen, setUpdateGoodIsOpen] = useState(false);
@@ -60,7 +61,7 @@ export const AdminPage = ({}) => {
 						<Route
 							exact
 							path={CREATE_GOOD_ROUTE}
-							element={<CreateGoodPage />}
+							element={<CreateGood />}
 						/>
 						<Route exact path={EDIT_GOOD_ROUTE} element={<EditGoodPage />} />
 					</Routes>

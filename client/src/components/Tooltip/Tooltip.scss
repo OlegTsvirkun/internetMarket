@@ -1,11 +1,12 @@
 .tooltip{
   
-    background: var(--blue-less-transparent);
-    // border: 1px solid rgb(108, 108, 108);
+    background: white;
+    // background: grey;
+    border: 1px solid grey;
     border-radius:5px;
     padding: 7px;
-    color:var(--black-grey-transparent);
-
+    // color:var(--grey-grey-transparent);
+color:red;
     z-index: 5;
 
 }
@@ -17,7 +18,7 @@
     margin-top: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent var(--blue-less-transparent) transparent  transparent ;
+    border-color: transparent grey transparent  transparent ;
 }
 .tooltip.right{
     position:absolute;
@@ -33,9 +34,9 @@
     top: -5px;  /* At the top of the tooltip */
     left:20%;
     margin-top: -5px;
-    border-width: 5px;
+    border-width: 1px;
     border-style: solid;
-    border-color: transparent transparent var(--blue-less-transparent)  transparent ;
+    border-color: transparent transparent grey  transparent ;
 }
 .tooltip.bottom{
     position:absolute;
@@ -53,7 +54,7 @@
     margin-top: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: var(--blue-less-transparent)  transparent transparent  transparent ;
+    border-color: grey  transparent transparent  transparent ;
 }
 .tooltip.top{
     position:absolute;

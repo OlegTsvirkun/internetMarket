@@ -26,7 +26,7 @@ export const Button = ({
 				${isDisableButton ? styles.disableButton : ''} 
 				${className}
 				`}
-				onClick={onClick}
+				onClick={!isDisableButton?onClick:null}
 			>
 				{children}
 			</button>

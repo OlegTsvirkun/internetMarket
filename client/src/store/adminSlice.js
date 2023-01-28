@@ -8,12 +8,22 @@ export const createNewCategory = createAsyncThunk('CREATE_CATEGORY', async (form
       return thunkAPI.rejectWithValue(error.response.data)
     }
   });
+export const createNewGood = createAsyncThunk('CREATE_GOOD', async (formData, thunkAPI) => {
+    try {
+      return await adminServices.createGood(formData);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data)
+    }
+  });
 
 export const adminSlice = createSlice({
     name: "admin",
     initialState: {
         errors: {},
-        fields: {},
+        fields: {
+            createCategory:{},
+            createGood:{}
+        },
         message:'',
         isLoading:false,
         isError:false,
@@ -21,13 +31,17 @@ export const adminSlice = createSlice({
     },
     reducers: {
         addFields: (state, action) => {
-            console.log(action.payload);
-            state.fields = action.payload
-            // state.fields[Object.keys(action.payload)[0]]
+            state.fields[Object.keys(action.payload)[0]] ={...action.payload[Object.keys(action.payload)[0]]}
         },
-        openCartMenu: (state, action) => {
-            state.isCartOpen = action.payload
+        addNewGoodFields: (state, action) => {
+            state.fields.createGood[Object.keys(action.payload)[0]] =Object.values(action.payload)[0]
         },
+        addNewCategoryFields: (state, action) => {
+            state.fields.createCategory[Object.keys(action.payload)[0]] =Object.values(action.payload)[0]
+        },
+        // openCartMenu: (state, action) => {
+        //     state.isCartOpen = action.payload
+        // },
         addAdminError: (state, action) => {
             state.errors = { ...state.errors, ...action.payload }
         },
@@ -42,15 +56,15 @@ export const adminSlice = createSlice({
                         }, {})
             })
         },
-        addOrderDeliveryData: (state, action) => {
-            state.orderData.delivery = { ...state.orderData.delivery, ...action.payload }
-        },
-        addOrderUserData: (state, action) => {
-            state.orderData.user = { ...state.orderData.user, ...action.payload }
+        // addOrderDeliveryData: (state, action) => {
+        //     state.orderData.delivery = { ...state.orderData.delivery, ...action.payload }
+        // },
+        // addOrderUserData: (state, action) => {
+        //     state.orderData.user = { ...state.orderData.user, ...action.payload }
 
-        },
+        // },
         clearFields: (state, action) => {
-            state.fields = {}
+            state.fields = {...state.fields, ...action.payload}
         },
 
 
@@ -76,9 +90,28 @@ export const adminSlice = createSlice({
             state.message = ''
             state.errMessage = action.payload.message
           })
+          //? Create NEW GOOD
+        .addCase(createNewGood.pending, (state, action) => {
+            state.isLoading = true;
+            state.isError = false;
+            state.message = ''
+            state.errMessage = '';
+    
+          })
+          .addCase(createNewGood.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.message = action.payload.response
+            state.errMessage = '';
+          })
+          .addCase(createNewGood.rejected, (state, action) => {
+            state.isLoading = false;
+            state.isError = true;
+            state.message = ''
+            state.errMessage = action.payload.message
+          })
     
     }
 });
 
-export const { addFields, addAdminError, removeAdminError ,clearFields} = adminSlice.actions;
+export const { addFields, addAdminError, removeAdminError ,clearFields,addNewGoodFields,addNewCategoryFields,} = adminSlice.actions;
 export default adminSlice.reducer;

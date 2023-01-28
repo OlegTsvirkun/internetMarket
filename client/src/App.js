@@ -9,7 +9,7 @@ import './App.css';
 // import { SearchPage } from "./pages/ShopPages/(__SearchPage)/SearchPage";
 import { Footer } from "./components/Footer/Footer";
 import { FinishOrder } from "./pages/ShopPages/FinishOrder/FinishOrder";
-import { FailPage } from "./pages/FailPage/FailPage";
+import { FailPage } from "./pages/FailPage/Failpage";
 import {  AdminPage } from "./pages/AdminPages/AdminPage/AdminPage";
 // import { EditGoodPage } from "./pages/AdminPages/EditGoodPage/EditGoodPage";
 import { AuthPage } from "./pages/AuthPage/AuthPage";

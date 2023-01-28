@@ -17,7 +17,8 @@ export const Input = ({
 	multiple=false,
 	autoComplete,
 	labelTitle='',
-	children
+	children,
+	style
 }) => {
 	return (
 		<label className={`${styles.container} ${containerClassName}`}>
@@ -36,6 +37,7 @@ export const Input = ({
 				onInput={onInput}
 				multiple={multiple}
 				accept={accept}
+				style={style}
 						
 			/>
 			{children}

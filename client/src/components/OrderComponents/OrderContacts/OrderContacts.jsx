@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "../../UA_Components/Button";
 import { Link } from "react-router-dom";
-
+		
+		import  debounce from 'lodash.debounce'
 import styles from "./OrderContacts.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { addError, addField, addOrderData, addOrderUserData, remooveError } from "../../../store/orderSlice";
 import { valueValidator } from "../../../utils/validator";
 import { Tooltip } from "../../Tooltip/Tooltip";
 import { Input } from "../../UA_Components/Input/Input";
+import { useCallback } from "react";
 
 export const OrderContacts = ({className}) => {
 	const [firstName, setFirstName] = useState("");
@@ -36,23 +38,30 @@ export const OrderContacts = ({className}) => {
 		};
 
 	}, []);
-	const blurHandler = (
-		e,
-		onlyText = true,
-		minValue = 3,
-		maxValue = 40,
-		empty = false,
-	) => {
+ 
+			
+	const timeout=useCallback((ms)=>{
+		return new Promise(resolve=>setTelError(resolve,ms))
+	},[])
+
+	const blurHandler = 
+		async(e,onlyText = true,minValue = 3,maxValue = 40,		empty = false,	) => {
 		let obj = {};
-		obj = valueValidator(e, onlyText, minValue, maxValue, empty);
-		if (Object.keys(obj)[0]) {
-			dispatch(addError({ [e.target.name]: true }));
-		} else {
-			dispatch(remooveError({ [e.target.name]: false }));
-			dispatch(addOrderUserData({[e.target.name]:e.target.value}))
-		}
-		return obj;
-	};
+
+	
+			
+obj = valueValidator(e, onlyText, minValue, maxValue, empty) 
+
+
+	if (Object.keys(obj)[0]) {
+		dispatch(addError({ [e.target.name]: true }));
+	} else {
+		dispatch(remooveError({ [e.target.name]: false }));
+		dispatch(addOrderUserData({[e.target.name]:e.target.value}))
+	}
+	return obj;
+
+	}
 
 	return (
 		<div className={`${styles.orderContacts} ${className}`}>
