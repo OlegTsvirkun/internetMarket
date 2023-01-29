@@ -18,7 +18,7 @@ import {
 import styles from "./AdminPage.module.scss";
 import { EditGoodPage } from "../EditGoodPage/EditGoodPage";
 import { CreateCategory } from "../../../components/AdminsComponents/CreateCategory";
-import { CreateGood } from "../../../components/AdminsComponents/CreateGood";
+import { CreateGood_ } from "../../../components/AdminsComponents/CreateGood_";
 
 export const AdminPage = ({}) => {
 	const [updateGoodIsOpen, setUpdateGoodIsOpen] = useState(false);
@@ -61,7 +61,7 @@ export const AdminPage = ({}) => {
 						<Route
 							exact
 							path={CREATE_GOOD_ROUTE}
-							element={<CreateGood />}
+							element={<CreateGood_/>}
 						/>
 						<Route exact path={EDIT_GOOD_ROUTE} element={<EditGoodPage />} />
 					</Routes>

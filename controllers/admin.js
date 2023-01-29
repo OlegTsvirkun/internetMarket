@@ -46,7 +46,7 @@ const createCategory = async (req, res, next) => {
 
     }
 }
-const createGood = async (req, res, next) => {
+const createGood = async (req, res, next) => { 
     try {
         const { name, articul, price, category, description } = req.body
         if (!name) next(ApiErrors.badRequest('Не вказана назва'))
@@ -55,8 +55,13 @@ const createGood = async (req, res, next) => {
         if (!category) next(ApiErrors.badRequest('Не вказана категорія'))
         if (!description) next(ApiErrors.badRequest('Не вказан опис'))
 
-        await Good.findOne({ name: name , articul:articul}).then(data => {
-            if (data) return next(ApiErrors.badRequest('Такий товар вже існує'))
+        await Good.findOne({ name: name}).then(data => {
+            console.log(data,"name");
+            if (data) return next(ApiErrors.badRequest('Товар з такою назвою вже існує'))
+        })
+        await Good.findOne({ articul:articul}).then(data => {
+            console.log(data,"art");
+            if (data) return next(ApiErrors.badRequest('Товар з таким артикулом вже існує'))
         })
         const picture = req.files?.picture || {}
         if (!picture.name) return next(ApiErrors.badRequest({ error: 'Немає основного зображення' }))

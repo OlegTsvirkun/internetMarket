@@ -65,8 +65,7 @@ export const CreateGood = ({}) => {
 		dispatch(getMain);
 	}, []);
 	useEffect(() => {
-		console.log(categories[Object.keys(categories)[0]]);
-		console.log(catLoading, "1");
+	
 		setCategory(categories[Object.keys(categories)[0]]);
 	}, [catLoading]);
 	useEffect(() => {
