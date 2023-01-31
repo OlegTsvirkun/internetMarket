@@ -10,4 +10,7 @@ export const FINISH_ORDER_ROUTE = "/order/finish-order"
 export const ADMIN_ROUTE = "/admin"
 export const CREATE_GOOD_ROUTE = "create-good"
 export const CREATE_CATEGORY_ROUTE = "create-category"
+export const EDIT_ROUTE = "edit"
+export const EDIT_LIST_ROUTE = "edit-list"
 export const EDIT_GOOD_ROUTE = "edit-good"
+

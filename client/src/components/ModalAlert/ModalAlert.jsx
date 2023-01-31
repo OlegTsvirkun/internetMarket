@@ -4,6 +4,7 @@ import { BsX } from "react-icons/bs";
 import styles from "./ModalAlert.module.scss";
 
 export const ModalAlert = ({
+	isErrorWindow = false,
 	title = "",
 	message = "",
 	children,
@@ -13,7 +14,7 @@ export const ModalAlert = ({
 	isFirst = true,
 	isSecond = false,
 	onClick = () => null,
-	frstBtnClick ,
+	frstBtnClick,
 	scndBtnClick,
 	closeClick,
 	bcgClick,
@@ -38,25 +39,28 @@ export const ModalAlert = ({
 			>
 				<div className={styles.title}>
 					<div></div>
-					 <h3>{title || message}</h3>
+					<h3 style={{color:`${isErrorWindow? "red":""}`}} >{title || message}</h3>
 					<span onClick={closeClick}>
 						<BsX size="25" />
 					</span>
 				</div>
-				<div className={styles.contentContainer} >
+				<div className={styles.contentContainer}>
 					{children ? (
 						<div className={styles.children}>{children}</div>
 					) : (
-						<h3 className={styles.message}>{message}</h3>
+						<h3 style={{color:`${isErrorWindow? "red":""}`}} className={styles.message}>{message}</h3>
 					)}
 					<div className={styles.btnContainer}>
 						{isFirst && (
-							<Button className={styles.btn} onClick={frstBtnClick || closeClick}>
+							<Button
+								className={styles.btn}
+								onClick={frstBtnClick || closeClick}
+							>
 								{frstBtnTitle ? frstBtnTitle : "Ок"}
 							</Button>
 						)}
 						{isSecond && (
-							<Button onClick={scndBtnClick} className={styles.btn}>
+							<Button onClick={scndBtnClick} isAlertButton={isErrorWindow} className={styles.btn}>
 								{scndBtnTitle}
 							</Button>
 						)}

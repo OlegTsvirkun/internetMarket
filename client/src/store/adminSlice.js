@@ -39,9 +39,7 @@ export const adminSlice = createSlice({
         addNewCategoryFields: (state, action) => {
             state.fields.createCategory[Object.keys(action.payload)[0]] =Object.values(action.payload)[0]
         },
-        // openCartMenu: (state, action) => {
-        //     state.isCartOpen = action.payload
-        // },
+       
         addAdminError: (state, action) => {
             state.errors = { ...state.errors, ...action.payload }
         },
@@ -56,13 +54,7 @@ export const adminSlice = createSlice({
                         }, {})
             })
         },
-        // addOrderDeliveryData: (state, action) => {
-        //     state.orderData.delivery = { ...state.orderData.delivery, ...action.payload }
-        // },
-        // addOrderUserData: (state, action) => {
-        //     state.orderData.user = { ...state.orderData.user, ...action.payload }
-
-        // },
+     
         clearFields: (state, action) => {
             state.fields = {...state.fields, ...action.payload}
         },
@@ -88,7 +80,7 @@ export const adminSlice = createSlice({
             state.isLoading = false;
             state.isError = true;
             state.message = ''
-            state.errMessage = action.payload.message
+            state.errMessage = action.payload?.message.message || "EROR"
           })
           //? Create NEW GOOD
         .addCase(createNewGood.pending, (state, action) => {
@@ -107,7 +99,7 @@ export const adminSlice = createSlice({
             state.isLoading = false;
             state.isError = true;
             state.message = ''
-            state.errMessage = action.payload.message
+            state.errMessage = action.payload?.message.message || "EROR"
           })
     
     }

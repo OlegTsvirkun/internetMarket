@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "../../UA_Components/Button";
+import { Button } from "../../../UA_Components/Button";
 
 import styles from "./DeleteWithBtn.module.scss";
 
@@ -12,7 +12,7 @@ export const DeleteWithBtn = ({
 			<span className={styles.message} >Видалити товар ?</span>
 
 			<div className={styles.btnContainer}>
-				<Button className={styles.btn} onClick={onClickYes}>
+				<Button isAlertButton={true} onClick={onClickYes}>
 					Так
 				</Button>
 				<Button onClick={onClickNo}>Ні</Button>

@@ -1,0 +1,33 @@
+.root{
+    // display: flex;
+    margin-right: 20px;
+}
+.InputContainer{
+
+    margin-bottom: 0;
+    text-align: start;
+}
+    .searchInput{
+        width: 200px;
+        height: 42px;     
+
+    }
+  
+    .container{
+     
+        display: flex;
+        align-items:flex-end;
+
+    .searchButton:hover{
+        color:orange;
+    }
+    .searchButton{
+        transform:rotate(-90deg);
+        // width: 40px;
+        // border:1px transparent;
+        // margin-bottom: 2px;
+        width: 42px;     
+         height: 42px;
+    }
+
+}

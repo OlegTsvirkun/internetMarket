@@ -41,8 +41,10 @@ const categorySlice = createSlice({
   },
   reducers: {
     removeGood: (state, action) => {
+      console.log(action.payload);
       // state.goods = state.goods.filter(item=>item!=action.payload)
       state.goods = Object.keys(state.goods).reduce((acc, item) => {
+        console.log(state.goods[item]._id);
         if (state.goods[item]._id != action.payload) acc[item] = state.goods[item]
         return acc
       }, {})
@@ -116,7 +118,7 @@ const categorySlice = createSlice({
       .addCase(searchingGoods.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
-        state.message = action.payload.message;
+        state.message = action.payload.message.message;
         state.total = null
         state.goods = {}
       })
@@ -139,7 +141,7 @@ const categorySlice = createSlice({
       .addCase(searchingGoodsByArticul.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
-        state.message = action.payload.message;
+        state.message = action.payload.message.message;
         state.total = null
         state.goods = {}
       })

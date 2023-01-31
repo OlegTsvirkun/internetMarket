@@ -2,15 +2,13 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { Button } from '../../../components/UA_Components/Button';
-import { ContentWrapper } from '../../../components/UA_Components/ContentWrapper';
-import { UpdateGoodItem } from '../../../components/AdminsComponents/UpdateGoodItem/UpdateGoodItem';
 
-import { getGood } from '../../../store/goodSlice';
+import { getGood } from '../../../../store/goodSlice';
 
-import styles from './EditGoodPage.module.scss';
+import styles from './EditGoodComponent.module.scss';
+import { EditGoodItem } from '../EditGoodItem_';
 
-export const EditGoodPage = ({}) =>{
+export const EditGoodComponent = ({}) =>{
 
 	const navigate = useNavigate()
 
@@ -24,8 +22,7 @@ export const EditGoodPage = ({}) =>{
   if(isLoading) return <>Loading....</>
   return (
    <>
-    {/* <ContentWrapper className={styles.editGood}> */}
-      <UpdateGoodItem
+      <EditGoodItem
       id = {good._id}
       _category = {good.category?.category}
       _name ={good.name}
@@ -35,7 +32,6 @@ export const EditGoodPage = ({}) =>{
       _images  ={images}
       _description = {good.description}
       />
-    {/* </ContentWrapper> */}
    </>
 )};
 
