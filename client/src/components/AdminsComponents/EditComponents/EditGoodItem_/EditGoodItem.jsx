@@ -1,23 +1,16 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ContentWrapper } from "../../../UA_Components/ContentWrapper";
-import { Input } from "../../../UA_Components/Input/Input";
-import { hostAuth } from "../../../../axios";
 import { useForm } from "react-hook-form";
 
 import { Button } from "../../../UA_Components/Button";
-import { ModalWindow } from "../../../ModalWindow/ModalWindow";
 import { useDispatch, useSelector } from "react-redux";
 import { getMain } from "../../../../store/mainSlice";
-import { Validator, valueValidator } from "../../../../utils/validator";
-import { Tooltip } from "../../../Tooltip/Tooltip";
 import { removeImage } from "../../../../store/goodSlice";
-import services from "../../../../store/services/service";
 import styles from "./EditGoodItem.module.scss";
 import { DobleActionDelete } from "../DobleActionDelete/DobleActionDelete";
 import adminServices from "../../../../store/services/adminServices";
 import { ModalAlert } from "../../../ModalAlert/ModalAlert";
-import { ADMIN_ROUTE } from "../../../../utils/constRoutes";
 
 export const EditGoodItem = ({
 	_category = "",

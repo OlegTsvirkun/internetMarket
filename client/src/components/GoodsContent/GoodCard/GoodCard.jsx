@@ -7,8 +7,8 @@ import styles from "./GoodCard.module.scss";
 
 export const GoodCard = (good) => {
 	const { _id, articul, name, price,  picture } = good;
-	const { isLoading } = useSelector((state) => state.category);
-	if (isLoading) return <div>Loading...</div>;
+	// const { isLoading } = useSelector((state) => state.category);
+	// if (isLoading) return <div>Loading...</div>;
 	return (
 		<div className={styles.goodCard}>
 			<Link className={styles.link} to={`/good?id=${good._id}`}>
