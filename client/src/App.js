@@ -11,15 +11,13 @@ import { Footer } from "./components/Footer/Footer";
 import { FinishOrder } from "./pages/ShopPages/FinishOrder/FinishOrder";
 import { FailPage } from "./pages/FailPage/Failpage";
 import {  AdminPage } from "./pages/AdminPages/AdminPage/AdminPage";
-// import { EditGoodPage } from "./pages/AdminPages/EditGoodPage/EditGoodPage";
 import { AuthPage } from "./pages/AuthPage/AuthPage";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { checkUser } from "./store/userSlice";
-import { CATEGORY_ROUTE, CREATE_CATEGORY_ROUTE, CREATE_GOOD_ROUTE, FINISH_ORDER_ROUTE, GOOD_ROUTE, LOGIN_ROUTE, MAIN_ROUTE, ORDER_ROUTE, REGISTRATION_ROUTE, SEARCH_ROUTE } from "./utils/constRoutes";
+import { CATEGORY_ROUTE, FINISH_ORDER_ROUTE, GOOD_ROUTE, LOGIN_ROUTE, MAIN_ROUTE, ORDER_ROUTE, REGISTRATION_ROUTE, SEARCH_ROUTE } from "./utils/constRoutes";
 import { GoodsPage } from "./pages/ShopPages/GoodsPage";
 import { GoodItemPage } from "./pages/ShopPages/GoodItemPage/GoodItemPage";
-import { ModalBackground } from "./components/AdditionalComponents/ModalBackground/ModalBackground";
 
 
 function App() {
@@ -53,7 +51,6 @@ function App() {
       <Router>
         <Header />
         <SubHeader
-        // searchValue = {searchValue} setSearchValue={setSearchValue}
         />
         <div className="main">
           <Routes>
@@ -61,7 +58,6 @@ function App() {
             <Route exact path={GOOD_ROUTE} element={<GoodItemPage />} />
             <Route exact path={CATEGORY_ROUTE} element={<GoodsPage />} />
             <Route exact path={SEARCH_ROUTE} element={<GoodsPage />} />
-            {/* <Route exact path={SEARCH_ROUTE} element={<SearchPage />} /> */}
             <Route exact path={ORDER_ROUTE} element={<OrderPage />} />
             <Route exact path={FINISH_ORDER_ROUTE} element={<FinishOrder />} />
             <Route exact path={REGISTRATION_ROUTE} element={<AuthPage />} />
