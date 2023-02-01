@@ -7,7 +7,7 @@ import {
 	MAIN_ROUTE,
 	REGISTRATION_ROUTE,
 } from "../../../utils/constRoutes";
-import { ModalAlert } from "../../ModalAlert/ModalAlert";
+import { ModalAlert } from "../../AdditionalComponents/ModalAlert/ModalAlert";
 import { Button } from "../../UA_Components/Button";
 import { Input } from "../../UA_Components/Input/Input";
 import styles from "./AuthComponent.module.scss";

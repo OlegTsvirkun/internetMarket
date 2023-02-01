@@ -4,52 +4,72 @@ import { Link, Route, Routes, useLocation } from "react-router-dom";
 import { Button } from "../../../components/UA_Components/Button";
 import { ContentWrapper } from "../../../components/UA_Components/ContentWrapper/";
 
-import { CreateGood, CreateGoodPage } from "../CreateGoodPage/CreateGoodPage";
+// import {  CreateGoodPage } from "../CreateGoodPage/CreateGoodPage";
 import {
+	EditGoodSearch,
 	SearchForUpdateGood,
 	UpdateGood,
-} from "../../../components/AdminsComponents/UpdateGood/SearchForUpdateGood";
+} from "../../../components/AdminsComponents/EditComponents/EditGoodSearch/EditGoodSearch";
 import { cleanupCatSlice } from "../../../store/categorySlice";
 import {
 	CREATE_CATEGORY_ROUTE,
 	CREATE_GOOD_ROUTE,
 	EDIT_GOOD_ROUTE,
+	EDIT_LIST_ROUTE,
+	EDIT_ROUTE,
+	SEARCH_EDIT_GOOD_ROUTE,
 } from "../../../utils/constRoutes";
 import styles from "./AdminPage.module.scss";
-import { EditGoodPage } from "../EditGoodPage/EditGoodPage";
+import { EditGoodComponent, EditGoodPage } from "../../../components/AdminsComponents/EditComponents/EditGoodComponent/EditGoodComponent";
 import { CreateCategory } from "../../../components/AdminsComponents/CreateCategory";
+import { CreateGood_ } from "../../../components/AdminsComponents/CreateGood_";
+import { EditListGoods, SearchListUpdateGood } from "../../../components/AdminsComponents/EditComponents/EditListGoods/EditListGoods";
+import { ModalBackground } from "../../../components/AdditionalComponents/ModalBackground/ModalBackground";
+import { FailPage } from "../../FailPage";
+import { Spinner } from "../../../components/UA_Components/Spinner";
 
-export const AdminPage = ({}) => {
+export const AdminPage = ({isLoading,role}) => {
 	const [updateGoodIsOpen, setUpdateGoodIsOpen] = useState(false);
 	const dispatch = useDispatch();
 	const location =useLocation()
 
 	const url = location.pathname
-	console.log();
 	useEffect(() => {
 		dispatch(cleanupCatSlice());
 	}, []);
+	if(isLoading) return<ContentWrapper className={styles.spinner}><Spinner  /> <ModalBackground/></ContentWrapper>
+	if(!role.includes("ADMIN") && !isLoading ) return <FailPage/>
 	return (
 		<ContentWrapper>
 			<div className={styles.adminPage}>
 				<div className={styles.buttonContainer}>
 					<Link to={CREATE_CATEGORY_ROUTE}>
-						<Button isOrangeButton={url.includes(CREATE_CATEGORY_ROUTE)?true:false} className={styles.button}>Створити категорію</Button>
+						<Button isOrangeButton={url.includes(CREATE_CATEGORY_ROUTE)?true:false} className={styles.button}
+						onClick={() => {
+							setUpdateGoodIsOpen(false);
+						}}
+						>Створити категорію</Button>
 					</Link>
 
 					<Link to={CREATE_GOOD_ROUTE}>
-						<Button isOrangeButton={url.includes(CREATE_GOOD_ROUTE)?true:false} className={styles.button}>Створити товар</Button>
+						<Button isOrangeButton={url.includes(CREATE_GOOD_ROUTE)?true:false} className={styles.button}	onClick={() => {
+							setUpdateGoodIsOpen(false);
+						}} >Створити товар</Button>
 					</Link>
-					<Button
-					// isOrangeButton={url.includes(CREATE_GOOD_ROUTE)?true:false}
-						className={styles.button}
-						onClick={() => {
-							setUpdateGoodIsOpen(!updateGoodIsOpen);
-						}}
-					>
-						Змінити товар
-					</Button>
+					<Link to ={EDIT_ROUTE}>
+						<Button
+						isOrangeButton={url.includes(EDIT_ROUTE)?true:false}
+							className={styles.button}
+							onClick={() => {
+								setUpdateGoodIsOpen(!updateGoodIsOpen);
+							}}
+						>
+							Змінити товар
+						</Button>
+					</Link>
+				{url.includes(EDIT_ROUTE) && <EditGoodSearch />}
 				</div>
+{/* // !------------------------------------------------------------------------------------- */}
 				<div className={styles.pages}>
 					<Routes>
 						<Route
@@ -60,13 +80,13 @@ export const AdminPage = ({}) => {
 						<Route
 							exact
 							path={CREATE_GOOD_ROUTE}
-							element={<CreateGoodPage />}
+							element={<CreateGood_/>}
 						/>
-						<Route exact path={EDIT_GOOD_ROUTE} element={<EditGoodPage />} />
+						<Route exact path={EDIT_LIST_ROUTE} element={<EditListGoods />} />
+						<Route exact path={EDIT_GOOD_ROUTE} element={<EditGoodComponent />} />
 					</Routes>
 				</div>
 
-				{updateGoodIsOpen && <SearchForUpdateGood />}
 			</div>
 		</ContentWrapper>
 	);

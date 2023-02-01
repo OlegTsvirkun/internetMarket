@@ -1,12 +1,8 @@
-const path = require('path');
 const sortGood = require('../helpers/sort');
 const Category = require('../models/category');
 const Good = require('../models/good');
 const Image = require('../models/image');
-const { handleError } = require('../helpers/handleError');
 const ApiErrors = require('../helpers/ApiErrors');
-const { filenameMaker } = require('../helpers/filenameMaker');
-const { throws } = require('assert');
 
 const getCategory = async (req, res, next) => {
     try {
@@ -40,8 +36,7 @@ const getCategory = async (req, res, next) => {
         return res.status(200).json({ category, goods, image })
     } catch (error) {
         next(ApiErrors.badRequest(error.message))
-        // handleError(res, error) //!
-    } 
+    }
 
 }
 
@@ -49,7 +44,7 @@ const getGoods = async (req, res, next) => {
     try {
         const catName = req.params.id
         if (!catName) {
-            return next(ApiErrors.badRequest('Не завдана категорія товару'))
+            return next(ApiErrors.badRequest({ message: 'Не завдана категорія товару' }))
         }
         let sortValue = {}
         req.query.s ? sortValue = sortGood(req.query.s) : sortValue = { name: 1 }
@@ -58,10 +53,7 @@ const getGoods = async (req, res, next) => {
         pageQuery === 0 ? pageQuery = 1 : pageQuery
         let page = parseInt(pageQuery) - 1 || 0;
         let limit = parseInt(req.query?.limit) || 3;
-        // console.log('limit', limit);
-        // console.log('page', page);
         let skip = page * limit
-        // console.log('skip', skip);
 
 
         const cat = await Category
@@ -82,7 +74,7 @@ const getGoods = async (req, res, next) => {
 
         const total = await Good
             .countDocuments({ category: cat?._id || '' })
-        console.log('pageQuery', pageQuery||1);
+        console.log('pageQuery', pageQuery || 1);
 
         return res.status(200).json({
             goods,
@@ -91,8 +83,7 @@ const getGoods = async (req, res, next) => {
             curPage: pageQuery || 1
         })
     } catch (error) {
-        // console.log('error',error);
-        next(ApiErrors.badRequest('Помилка: такої категоріі товару немає'))
+        next(ApiErrors.badRequest({ message: 'Помилка: такої категоріі товару немає' }))
 
     }
 
@@ -103,42 +94,35 @@ const getGood = async (req, res, next) => {
     try {
         const Id = req.query?.id || ''
         const articul = req.query?.articul || ''
-        // if (!Id) {
-        //     return next(ApiErrors.badRequest('Не завдан id товару'))
-        // }
-        // console.log(Id);
         let good = {}
-        if(Id && !articul){
+        if (Id && !articul) {
             good = await Good
-               .findById(Id)
-               .populate('category',{_id: 0,description:0})
-                // .findOne({articul: articul})
+                .findById(Id)
+                .populate('category', { _id: 0, description: 0 })
                 .then(data => {
                     return data
                 })
 
         }
-        else if(!Id && articul){
+        else if (!Id && articul) {
             good = await Good
-                .findOne({articul: articul})
+                .findOne({ articul: articul })
                 .then(data => {
                     return data
-                }).catch(err=>{return res.status(400).json({message:err})})
+                }).catch(err => { return res.status(400).json({ message: err }) })
 
         }
 
         const images = await Image
-            .find({goodId: good._id }, { _id: 0 })
+            .find({ goodId: good._id }, { _id: 0 })
             .then(image => {
                 return image.map(item => item.image)
             }
-            ).catch(err=>{return res.status(400).json({message:err})})
-// console.log(images);
+            ).catch(err => { return res.status(400).json({ message: err }) })
         res.status(200).json({ good, images })
     } catch (error) {
         console.log(error);
-       return next(ApiErrors.badRequest('Помилка: такого товару немає'))
-    //    return next(ApiErrors.badRequest(error.message))
+        return next(ApiErrors.badRequest({ message: 'Помилка: такого товару немає' }))
 
     }
 
@@ -149,26 +133,22 @@ const searchGood = async (req, res, next) => {
     try {
         const searchValue = req.query.q
         if (!searchValue) {
-            return next(ApiErrors.badRequest('Введіть запрос у пошук'))
+            return next(ApiErrors.badRequest({ message: 'Введіть запрос у пошук' }))
 
         }
         let sortValue = {}
 
         req.query.s ? sortValue = sortGood(req.query.s) : sortValue = { name: 1 }
         let pageQuery = parseInt(req.query?.page)
-        // console.log('pageQuery', pageQuery);
         pageQuery === 0 ? pageQuery = 1 : pageQuery
         let page = parseInt(pageQuery) - 1 || 0;
         let limit = parseInt(req.query?.limit) || 3;
-        // console.log('limit', limit);
-        // console.log('page', page);
         let skip = page * limit
-        // console.log('skip', skip);
 
         const total = await Good
             .countDocuments({ name: { '$regex': searchValue, '$options': 'im' } })
         if (!total) {
-            return next(ApiErrors.notFound('Товари з таким запитом відсутні'))
+            return next(ApiErrors.notFound({ message: 'Товари з таким запитом відсутні' }))
 
         }
         const goods = await Good
@@ -183,7 +163,6 @@ const searchGood = async (req, res, next) => {
             )
 
 
-
         res.status(200).json({ goods, total })
     } catch (error) {
         console.log(error.message);
@@ -191,21 +170,27 @@ const searchGood = async (req, res, next) => {
 
     }
 
-    
+
 }
 
-const searchGoodByArticul = async(req,res,next)=>{
-    try{
+const searchGoodByArticul = async (req, res, next) => {
+    try {
         let articul = req.query?.articul || ''
-        if(!articul) return next(ApiErrors.badRequest({error:'Немає основного зображення'}))
+        if (!articul) return next(ApiErrors.badRequest({ message: 'Введіть артикул' }))
         const goods = await Good
-        .find({articul : articul})
-        .then(res=> res)
-        res.json({goods})
-    }catch(error){
-next(ApiErrors.badRequest(error.message))
+            .find({ articul: articul })
+            .then(data => {
+
+                return data
+            })
+        if (goods.length == 0)
+            return next(ApiErrors.badRequest({ message: 'Немає товару за таким запитом' }))
+        res.json({ goods })
+    } catch (error) {
+        console.log('error:', error.message);
+        return next(ApiErrors.internal(error))
     }
-   
+
 }
 
 module.exports = {
@@ -214,5 +199,5 @@ module.exports = {
     getGood,
     searchGood,
     searchGoodByArticul
-   
+
 }

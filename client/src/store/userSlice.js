@@ -34,17 +34,17 @@ export const userSlice = createSlice({
         email: '',
 
         isError: false,
-        isLoading: false,
+        isLoading: true,
         message: '',
     },
     reducers: {
         changeAuth: (state, action) => {
             state.isAuth = action.payload
-            state.isLoading = false
+            // state.isLoading = true
             state.isError = false
             state.email = ''
             state.role = []
-            localStorage.setItem('token','')
+            localStorage.setItem('token', '')
         }
     },
     extraReducers: (builder) => {
@@ -64,7 +64,7 @@ export const userSlice = createSlice({
                 state.isLoading = false
                 state.isError = true
                 state.isAuth = false
-                state.email =''
+                state.email = ''
                 state.role = ''
                 state.message = action.payload
 

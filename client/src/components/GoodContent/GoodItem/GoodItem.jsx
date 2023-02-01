@@ -5,8 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { FailPage } from "../../../pages/FailPage/Failpage";
 import { priceFormating } from "../../../utils/priceFormating";
 import { GoodBuy } from "../../GoodBuy";
-import { ModalAlert } from "../../ModalAlert/ModalAlert";
+import { ModalAlert } from "../../AdditionalComponents/ModalAlert/ModalAlert";
 import { Carousel } from "../../UA_Components/Carousel/Carousel";
+import { SkeletonGoodItem } from "../SkeletonGoodItem";
 import styles from "./GoodItem.module.scss";
 
 export const GoodItem = ({}) => {
@@ -16,7 +17,7 @@ export const GoodItem = ({}) => {
 	const { good, images, isLoading, isError, message } = useSelector(
 		(state) => state.good,
 	);
-	if (isLoading) return <div>Loading...</div>;
+	if (isLoading) return <SkeletonGoodItem/>
 
 	if (isError) return <FailPage message={message} />;
 

@@ -11,7 +11,7 @@ import {
 import styles from "./GoodsPage.module.scss";
 import { ContentWrapper } from "../../../components/UA_Components/ContentWrapper";
 import { Paginate } from "../../../components/UA_Components/Paginate/Paginate";
-import { LimitCards } from "../../../components/LimitCards/LimitCards";
+import { LimitCards } from "../../../components/UA_Components/LimitCards/LimitCards";
 import { useRef } from "react";
 import { Goods } from "../../../components/GoodsContent/Goods/Goods";
 import { BackNavigate } from "../../../components/AdditionalComponents/BackNavigate/BackNavigate";
@@ -85,21 +85,21 @@ export const GoodsPage = ({}) => {
 		isMounted.current = true;
 	}, [currentPage, cardsLimit]);
 
-	if (isLoading) return <div>Loading...</div>;
+	// if (isLoading) return <div>Loading...</div>;
 	if (isError) return <FailPage message={message} />;
 	return (
 		<ContentWrapper>
 				<BackNavigate />
 				<LimitCards
-					cardsLimit={cardsLimit}
+					cardsLimit={cardsLimit || 3}
 					setCardsLimit={setCardsLimit}
-					total={total}
+					total={total || 3}
 					setCurrentPage={setCurrentPage}
 				/>
-				<Goods />
+				<Goods cardsLimit ={cardsLimit} />
 				<Paginate
 					onChange={(n) => setCurrentPage(n)}
-					totalPages={totalPages}
+					totalPages={totalPages || 1}
 					forcePage={currentPage - 1}
 				/>
 				<p className={styles.description}>{catDescription[0]}</p>

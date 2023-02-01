@@ -7,7 +7,7 @@ import styles from "./CartBlock.module.scss";
 import { CartMenu } from "../CartMenu";
 import { ItemsInCart } from "../ItemInCart/ItemInCart";
 import { openCartMenu } from "../../../store/cartSlice";
-import { ModalAlert } from "../../ModalAlert/ModalAlert";
+import { ModalAlert } from "../../AdditionalComponents/ModalAlert/ModalAlert";
 import { ORDER_ROUTE } from "../../../utils/constRoutes";
 
 export const CartBlock = () => {

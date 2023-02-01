@@ -45,6 +45,7 @@
     margin: 10px 0 0;
 }
 .img {
+    visibility: hidden;
     width: 250px;
     height: 250px;
     background-color: rgba(71, 71, 71, 0.1);
@@ -72,7 +73,9 @@
     height: 100%;
 }
 .pictureInput{
-
+input{
+    margin-top: 10px;
+}
 }
 .message{
     color: var(--blue)
@@ -80,4 +83,11 @@
 .alertMessage{
     color:red;
     font-size: 20px;
+}
+.confirm:first-child{
+    margin-right: 20px;
+}
+.confirm{
+    display: flex;
+justify-content: space-around;
 }

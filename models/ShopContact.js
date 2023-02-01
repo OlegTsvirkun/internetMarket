@@ -13,7 +13,9 @@ const ShopContactSchema = new Schema({
     },
     address:{
         type:String,
-        required: true
+        required: true,
+        index: true, 
+        unique: true
     },
     tel:{   
         type:Array,
@@ -21,7 +23,9 @@ const ShopContactSchema = new Schema({
     },
     email:{
         type:String,
-        required: true
+        required: true,
+        index: true, 
+        unique: true
     },
     scheduling:{
         type:Schema.Types.Mixed,

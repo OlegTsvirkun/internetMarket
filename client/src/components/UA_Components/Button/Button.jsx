@@ -9,12 +9,13 @@ export const Button = ({
 	isBackButton = false,
 	isOrangeButton = false,
 	isDisableButton=false,
+	isAlertButton=false,
 	isBlueButton = true,
 
 	// isHover=true,
 	type,
 }) => {
-	if (isBackButton || isOrangeButton||isDisableButton) isBlueButton = false;
+	if (isBackButton || isOrangeButton||isDisableButton ||isAlertButton) isBlueButton = false;
 	return (
 		<div className={containerClassName}>
 			<button
@@ -24,9 +25,10 @@ export const Button = ({
 				${isBlueButton ? styles.blueButton : ''} 
 				${isOrangeButton ? styles.orangeButton : ''} 
 				${isDisableButton ? styles.disableButton : ''} 
+				${isAlertButton ? styles.alertButton : ''} 
 				${className}
 				`}
-				onClick={onClick}
+				onClick={!isDisableButton?onClick:null}
 			>
 				{children}
 			</button>

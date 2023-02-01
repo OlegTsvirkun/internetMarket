@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getMainContact } from "../../store/mainContactSlice";
+import { getMainContact } from "../../store/contactSlice";
 import { ContentWrapper } from "../UA_Components/ContentWrapper";
 import styles from "./Footer.module.scss";
 
@@ -12,9 +12,10 @@ export const Footer = ({}) => {
 	}, []);
 
 	const {
-		contacts: { tel, email, scheduling, city, address },
-	} = useSelector((state) => state?.mainContact);
-	// if(!city) return <></>
+		mainContacts: { tel, email, scheduling, city, address },
+	} = useSelector((state) => state?.contacts);
+	console.log(tel);
+	if(!city) return <></>
 	return (
 		<div className={styles.footer}>
 			<ContentWrapper className={styles.footer__container}>

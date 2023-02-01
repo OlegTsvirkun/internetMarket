@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 // import { input } from '../../UA_Components/Input/Input';
 import styles from "./DeliveryAdress.module.scss";
 import { typeValidator, valueValidator } from "../../../utils/validator";
-import { Tooltip } from "../../Tooltip/Tooltip";
+import { Tooltip } from "../../AdditionalComponents/Tooltip/Tooltip";
 import { useDispatch } from "react-redux";
 import {
 	addError,
