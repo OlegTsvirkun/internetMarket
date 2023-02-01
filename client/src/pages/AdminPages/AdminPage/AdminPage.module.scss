@@ -19,3 +19,14 @@
 }
 .button {
 }
+.spinner{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items:center;
+   width: calc(100vh - 180px);
+   svg{
+          margin: 50% 0;
+    // transform: translateY(50%);
+   }
+}

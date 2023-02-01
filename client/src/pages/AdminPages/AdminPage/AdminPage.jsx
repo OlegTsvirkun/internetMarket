@@ -24,17 +24,21 @@ import { EditGoodComponent, EditGoodPage } from "../../../components/AdminsCompo
 import { CreateCategory } from "../../../components/AdminsComponents/CreateCategory";
 import { CreateGood_ } from "../../../components/AdminsComponents/CreateGood_";
 import { EditListGoods, SearchListUpdateGood } from "../../../components/AdminsComponents/EditComponents/EditListGoods/EditListGoods";
+import { ModalBackground } from "../../../components/AdditionalComponents/ModalBackground/ModalBackground";
+import { FailPage } from "../../FailPage";
+import { Spinner } from "../../../components/UA_Components/Spinner";
 
-export const AdminPage = ({}) => {
+export const AdminPage = ({isLoading,role}) => {
 	const [updateGoodIsOpen, setUpdateGoodIsOpen] = useState(false);
 	const dispatch = useDispatch();
 	const location =useLocation()
 
 	const url = location.pathname
-	console.log();
 	useEffect(() => {
 		dispatch(cleanupCatSlice());
 	}, []);
+	if(isLoading) return<ContentWrapper className={styles.spinner}><Spinner  /> <ModalBackground/></ContentWrapper>
+	if(!role.includes("ADMIN") && !isLoading ) return <FailPage/>
 	return (
 		<ContentWrapper>
 			<div className={styles.adminPage}>

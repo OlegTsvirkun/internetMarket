@@ -17,9 +17,9 @@ import {
 	clearFields,
 	addNewCategoryFields,
 } from "../../../store/adminSlice";
-import { Tooltip } from "../../Tooltip/Tooltip";
+import { Tooltip } from "../../AdditionalComponents/Tooltip/Tooltip";
 import { valueValidator } from "../../../utils/validator";
-import { ModalAlert } from "../../ModalAlert/ModalAlert";
+import { ModalAlert } from "../../AdditionalComponents/ModalAlert/ModalAlert";
 
 export const CreateCategory = ({}) => {
 	const [category, setCategory] = useState("");

@@ -22,7 +22,6 @@ export const adminSlice = createSlice({
         errors: {},
         fields: {
             createCategory:{},
-            createGood:{}
         },
         message:'',
         isLoading:false,

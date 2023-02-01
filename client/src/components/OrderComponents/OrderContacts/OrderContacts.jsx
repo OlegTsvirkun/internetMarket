@@ -13,7 +13,7 @@ import {
 	remooveError,
 } from "../../../store/orderSlice";
 import { valueValidator } from "../../../utils/validator";
-import { Tooltip } from "../../Tooltip/Tooltip";
+import { Tooltip } from "../../AdditionalComponents/Tooltip/Tooltip";
 import { Input } from "../../UA_Components/Input/Input";
 import { useCallback } from "react";
 
@@ -76,8 +76,9 @@ export const OrderContacts = ({ className }) => {
 						setFirstName(e.target.value);
 					}}
 					value={firstName}
+					onClick={()=>setFirstNameError({})}
 					onBlur={(e) => setFirstNameError(blurHandler(e))}
-					onInput={(e) => setFirstNameError(blurHandler(e))}
+					// onInput={(e) => setFirstNameError(blurHandler(e))}
 				>
 					{Object.keys(firstNameError)[0] && (
 						<Tooltip
@@ -95,6 +96,7 @@ export const OrderContacts = ({ className }) => {
 						setName(e.target.value);
 					}}
 					value={name}
+					onClick={()=>setNameError({})}
 					onBlur={(e) => setNameError(blurHandler(e))}
 					// onInput={(e) => setNameError(blurHandler(e))}
 				>
@@ -111,6 +113,7 @@ export const OrderContacts = ({ className }) => {
 						setTel(e.target.value);
 					}}
 					value={tel}
+					onClick={()=>setTelError({})}
 					onBlur={(e) => setTelError(blurHandler(e))}
 					// onInput={(e) => setTelError(blurHandler(e))}
 				>
@@ -127,6 +130,8 @@ export const OrderContacts = ({ className }) => {
 						setEmail(e.target.value);
 					}}
 					value={email}
+					onClick={()=>setEmailError({})}
+
 					onBlur={(e) => setEmailError(blurHandler(e))}
 					// onInput={(e) => setEmailError(blurHandler(e))}
 				>

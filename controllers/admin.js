@@ -75,7 +75,6 @@ const createGood = async (req, res, next) => {
                 return data[0]
             })
             .catch(err => { if (err) throw err })
-        // console.log(cat.category);
 
         const good = await Good
             .create({
@@ -103,7 +102,6 @@ const createGood = async (req, res, next) => {
                 return data
             }
             )
-        //     console.log(images.map(item=>item.name));
         if (images.length > 0) {
             const goodImages = await Promise.all(images.map(async item => {
                 const goodImage = Image
@@ -129,7 +127,6 @@ const createGood = async (req, res, next) => {
     }
 }
 const updateGood = async (req, res, next) => {
-    // console.log(req.body);
     try {
         const { id } = req.body
         const picture = req.files?.picture || {}
@@ -245,8 +242,7 @@ const removeGood = async (req, res, next) => {
                     })
                     })
             })
-        // console.log(good);//////////////////
-        res.json({ response: `Товар ${good.name} видалено` || '000' })
+        res.json({ response: `Товар ${good.name} видалено`  })
 
     } catch (error) {
         next(ApiErrors.badRequest(error.message))

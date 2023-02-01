@@ -19,6 +19,7 @@ import { checkUser } from "./store/userSlice";
 import { CATEGORY_ROUTE, CREATE_CATEGORY_ROUTE, CREATE_GOOD_ROUTE, FINISH_ORDER_ROUTE, GOOD_ROUTE, LOGIN_ROUTE, MAIN_ROUTE, ORDER_ROUTE, REGISTRATION_ROUTE, SEARCH_ROUTE } from "./utils/constRoutes";
 import { GoodsPage } from "./pages/ShopPages/GoodsPage";
 import { GoodItemPage } from "./pages/ShopPages/GoodItemPage/GoodItemPage";
+import { ModalBackground } from "./components/AdditionalComponents/ModalBackground/ModalBackground";
 
 
 function App() {
@@ -65,23 +66,17 @@ function App() {
             <Route exact path={FINISH_ORDER_ROUTE} element={<FinishOrder />} />
             <Route exact path={REGISTRATION_ROUTE} element={<AuthPage />} />
             <Route exact path={LOGIN_ROUTE} element={<AuthPage />} />
+           
+            <Route exact path="/admin/*" element={<AdminPage isLoading={isLoading} role ={role}/>} />
+         
 
-            {role.includes("ADMIN") &&
-              <><Route exact path="/admin/*" element={<AdminPage />} />
-                {/* <Route exact path="/admin/edit-good" element={<EditGoodPage />} /> */}
-                {/* <Route exact path={CREATE_CATEGORY_ROUTE} element={<CreateCategoryPage />} /> */}
-                {/* <Route exact path={CREATE_GOOD_ROUTE} element={<CreateGoodPage />} /> */}
-
-              </>
-
-            }
-
-            <Route path="*" element={<FailPage />} />
+         { !isLoading &&  <Route path="*" element={<FailPage />} />}
           </Routes>
           <Footer />
         </div>
 
       </Router>
+      
     </div>
   );
 }

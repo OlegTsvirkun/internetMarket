@@ -6,7 +6,7 @@ import {
 } from "../../../store/orderSlice";
 import {  valueValidator } from "../../../utils/validator";
 import { Input } from "../../UA_Components/Input/Input";
-import { Tooltip } from "../../Tooltip/Tooltip";
+import { Tooltip } from "../../AdditionalComponents/Tooltip/Tooltip";
 // import { input } from '../../UA_Components/Input/Input';
 import styles from "./DeliveryPost.module.scss";
 
@@ -58,8 +58,10 @@ containerClassName={styles.cityContainer}
 					setCityDelivery(e.target.value);
 				}}
 				value={cityDelivery}
+				onClick={()=>setCityDeliveryError({})}
+
 				onBlur={(e) => setCityDeliveryError(blurHandler(e))}
-				onInput={(e) => setCityDeliveryError(blurHandler(e))}
+				// onInput={(e) => setCityDeliveryError(blurHandler(e))}
 			>
 			{Object.keys(cityDeliveryError)[0] && (
 				<Tooltip
@@ -82,8 +84,10 @@ containerClassName={styles.postNContainer}
 					setPost(e.target.value);
 				}}
 				value={post}
+				onClick={()=>setPostError({})}
+
 				onBlur={(e) => setPostError(blurHandler(e,false,1))}
-				onInput={(e) => setPostError(blurHandler(e,false,1))}
+				// onInput={(e) => setPostError(blurHandler(e,false,1))}
 			>
 			{Object.keys(postError)[0] && (
 				<Tooltip error={Object.keys(postError)[0]} className={"bottom"} />

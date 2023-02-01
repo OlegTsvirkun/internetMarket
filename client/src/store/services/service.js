@@ -28,7 +28,11 @@ const finishOrder = async (orderData) => {
     return order.data;
 }
 const getMainContacts = async () => {
-    const contact = await host.get('/main-contacts');
+    const contact = await host.get('/contacts/main-contacts');
+    return contact.data;
+}
+const getSeconadryContacts = async () => {
+    const contact = await host.get('/contacts/secondary-contacts');
     return contact.data;
 }
 
@@ -42,6 +46,7 @@ const services = {
     searchGoods,
     searchGoodsByArticul,
     getMainContacts,
+    getSeconadryContacts
    
 }
 

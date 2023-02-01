@@ -35,18 +35,28 @@ export const Header = ({}) => {
 				<Link to="/" className={styles.item}>
 					<span className={styles.title}> MyApple Store</span>
 				</Link>
-				<div></div>
-				{
-					<div className={styles.auth}>
-						{isAuth ? (
+				<div>{isAuth &&
 							<div className={styles.buttonContainer}>
 								{role.includes("ADMIN") && (
 									<Link to={ADMIN_ROUTE}>
 										<Button className={styles.adminBtn}>
 											Адмін Панель
 										</Button>
+									</Link>)}
+								</div>
+									}
+									</div>
+				{
+					<div className={styles.auth}>
+						{isAuth ? (
+							<div className={styles.buttonContainer}>
+								{/* {role.includes("ADMIN") && (
+									<Link to={ADMIN_ROUTE}>
+										<Button className={styles.adminBtn}>
+											Адмін Панель
+										</Button>
 									</Link>
-								)}
+								)} */}
 								<Link to="/">
 									<Button className={styles.adminBtn} onClick={logOut}>
 										Вийти

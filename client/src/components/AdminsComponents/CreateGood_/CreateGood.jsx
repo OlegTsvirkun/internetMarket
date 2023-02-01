@@ -3,7 +3,7 @@ import { Button } from "../../UA_Components/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { getMain } from "../../../store/mainSlice";
 import styles from "./CreateGood.module.scss";
-import { ModalAlert } from "../../ModalAlert/ModalAlert";
+import { ModalAlert } from "../../AdditionalComponents/ModalAlert/ModalAlert";
 import { useForm } from "react-hook-form";
 import { createNewGood } from "../../../store/adminSlice";
 

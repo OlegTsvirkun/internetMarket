@@ -10,7 +10,7 @@ import { removeImage } from "../../../../store/goodSlice";
 import styles from "./EditGoodItem.module.scss";
 import { DobleActionDelete } from "../DobleActionDelete/DobleActionDelete";
 import adminServices from "../../../../store/services/adminServices";
-import { ModalAlert } from "../../../ModalAlert/ModalAlert";
+import { ModalAlert } from "../../../AdditionalComponents/ModalAlert/ModalAlert";
 
 export const EditGoodItem = ({
 	_category = "",

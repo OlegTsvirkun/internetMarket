@@ -10,7 +10,7 @@ import {
 	searchingGoodsByArticul,
 } from "../../../../store/categorySlice";
 import { EDIT_LIST_ROUTE } from "../../../../utils/constRoutes";
-import { ModalAlert } from "../../../ModalAlert/ModalAlert";
+import { ModalAlert } from "../../../AdditionalComponents/ModalAlert/ModalAlert";
 
 export const EditGoodSearch = ({}) => {
 	const [searchArticul, setSearchArticul] = useState("");

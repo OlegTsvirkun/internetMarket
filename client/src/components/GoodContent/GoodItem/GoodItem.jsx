@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { FailPage } from "../../../pages/FailPage/Failpage";
 import { priceFormating } from "../../../utils/priceFormating";
 import { GoodBuy } from "../../GoodBuy";
-import { ModalAlert } from "../../ModalAlert/ModalAlert";
+import { ModalAlert } from "../../AdditionalComponents/ModalAlert/ModalAlert";
 import { Carousel } from "../../UA_Components/Carousel/Carousel";
 import { SkeletonGoodItem } from "../SkeletonGoodItem";
 import styles from "./GoodItem.module.scss";

@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SkeletonCat } from "../../SkeletonCat/SkeletonCat";
+import { SkeletonCat } from "../SkeletonCat/SkeletonCat";
 import { CategoryCard } from "../CategoryCard/CategoryCard";
 import styles from "./Categories.module.scss";
 import { ContentWrapper } from "../../UA_Components/ContentWrapper";

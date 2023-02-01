@@ -8,7 +8,7 @@ import { SearchBar } from "../SearchBar/SearchBar";
 import { BiCategoryAlt } from "react-icons/bi";
 import { TbSortDescending } from "react-icons/tb";
 import { CartBlock } from "../../Cart/CartBlock/CartBlock";
-import { ModalBackground } from "../../ModalBackground/ModalBackground";
+import { ModalBackground } from "../../AdditionalComponents/ModalBackground/ModalBackground";
 import { MenuCatalog } from "../MenuCatalog/MenuCatalog";
 import { getMain } from "../../../store/mainSlice";
 import { SortMenu } from "../SortMenu/SortMenu";
