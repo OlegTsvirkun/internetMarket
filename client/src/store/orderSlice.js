@@ -63,8 +63,6 @@ export const orderSlice = createSlice({
         builder
             .addCase(finishOrder.pending, (state, action) => {
                 state.isLoading = true
-                state.isLoading = true
-                state.isLoading = true
             })
             .addCase(finishOrder.fulfilled, (state, action) => {
                 state.isLoading = false

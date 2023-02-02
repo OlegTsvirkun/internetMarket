@@ -14,9 +14,10 @@ import { AuthPage } from "./pages/AuthPage/AuthPage";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { checkUser } from "./store/userSlice";
-import { CATEGORY_ROUTE, FINISH_ORDER_ROUTE, GOOD_ROUTE, LOGIN_ROUTE, MAIN_ROUTE, ORDER_ROUTE, REGISTRATION_ROUTE, SEARCH_ROUTE } from "./utils/constRoutes";
+import { ADMIN_ROUTE, CATEGORY_ROUTE, FINISH_ORDER_ROUTE, GOOD_ROUTE, LOGIN_ROUTE, MAIN_ROUTE, ORDER_ROUTE, REGISTRATION_ROUTE, SEARCH_ROUTE, USER_CABINET_ROUTE } from "./utils/constRoutes";
 import { GoodsPage } from "./pages/ShopPages/GoodsPage/GoodsPage";
 import { GoodItemPage } from "./pages/ShopPages/GoodItemPage/GoodItemPage";
+import {  UserCabinetPage } from "./pages/UserCabinetPage/UserCabinetPage";
 
 
 function App() {
@@ -61,8 +62,9 @@ function App() {
             <Route exact path={FINISH_ORDER_ROUTE} element={<FinishOrder />} />
             <Route exact path={REGISTRATION_ROUTE} element={<AuthPage />} />
             <Route exact path={LOGIN_ROUTE} element={<AuthPage />} />
+            <Route exact path={USER_CABINET_ROUTE+'*'} element={<UserCabinetPage />} />
            
-            <Route exact path="/admin/*" element={<AdminPage isLoading={isLoading} role ={role}/>} />
+            <Route exact path={ADMIN_ROUTE+'*'} element={<AdminPage isLoading={isLoading} role ={role}/>} />
          
 
          { !isLoading &&  <Route path="*" element={<FailPage />} />}

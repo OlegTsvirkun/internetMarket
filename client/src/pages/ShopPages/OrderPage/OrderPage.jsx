@@ -13,6 +13,7 @@ import { clearCart } from "../../../store/cartSlice";
 
 export const OrderPage = ({}) => {
 	const cart = useSelector((state) => state.cart.itemsInCart);
+	const {email} = useSelector((state) => state.user);
 	const { isErrors, orderData } = useSelector((state) => state.order);
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
@@ -23,20 +24,25 @@ export const OrderPage = ({}) => {
 	);
 
 	const handleForm = () => {
-		let orderedGoods = {};
-		Object.keys(cart).forEach((item) => {
-			orderedGoods[item] = {
-				id: cart[item]["_id"],
-				price: cart[item]["price"],
-				count: cart[item]["count"],
-				["totalPrice"]: cart[item]["count"] * cart[item]["price"],
-			};
+		let orderedGoods = Object.keys(cart).map((item) => {
+			return Object.keys(cart[item]).reduce((acc,keys)=>{
+				console.log(keys);
+				
+				if(keys !='category' && keys !='description' ) 	acc[keys]=cart[item][keys]
+				
+				return acc
+			},{}) 
+		
 		});
+		console.log(orderedGoods);
 		let orderItem = {
 			...orderData,
-			orderedGoods: { ...orderedGoods },
+			orderedGoods: [ ...orderedGoods ],
+			totalPrice:totalPrice,
+			
 		};
-
+		if(email) orderItem.login = email
+		console.log(orderItem);
 		dispatch(finishOrder(orderItem)).then((res) => {
 			console.log(res.error);
 			if (!res.error) {

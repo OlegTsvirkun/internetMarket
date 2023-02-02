@@ -12,16 +12,21 @@ import { changeAuth } from "../../../store/userSlice";
 import { ContentWrapper } from "../../UA_Components/ContentWrapper/ContentWrapper";
 import { Button } from "../../UA_Components/Button/Button";
 import styles from "./Header.module.scss";
+import { UserButton } from "../../UserComponents/UserButton/UserButton";
+import { UserMenu } from "../../UserComponents/UserMenu/UserMenu";
+import { useState } from "react";
 
 export const Header = ({}) => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-
+	
+const [isUserMenu, setIsUserMenu] = useState(false);
 	const location = useLocation();
 	const isLogin = location.pathname === LOGIN_ROUTE;
 	const { isAuth, role, isLoading } = useSelector((state) => state.user);
 	const logOut = () => {
 		dispatch(changeAuth(false));
+		setIsUserMenu(false)
 		navigate(MAIN_ROUTE);
 	};
 	return (
@@ -57,11 +62,15 @@ export const Header = ({}) => {
 										</Button>
 									</Link>
 								)} */}
-								<Link to="/">
+								{/* <Link to="/">
 									<Button className={styles.adminBtn} onClick={logOut}>
 										Вийти
 									</Button>
-								</Link>
+								</Link> */}
+								<div className={styles.userCabinetBtn} >
+									<UserButton onClick={()=>setIsUserMenu(!isUserMenu)}/> 
+								{isUserMenu && <UserMenu onClick={()=>setIsUserMenu(false)} logOutClick={logOut} className={styles.userMenu}/>}
+								</div>
 							</div>
 						) : !isLogin ? (
 							<Link to={LOGIN_ROUTE}>

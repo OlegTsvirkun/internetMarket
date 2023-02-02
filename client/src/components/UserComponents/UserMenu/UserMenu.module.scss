@@ -1,0 +1,28 @@
+.userMenu {
+    position: absolute;
+    z-index: 100;
+    width: 20vw;
+    right: 0;
+    // bottom:-100%;
+    // transform: translateY(50%);
+    border: 1px solid var(--black-grey-transparent);
+}
+.list {
+    background-color: rgb(249, 249, 249);
+    width: 100%;
+}
+.row:hover {
+    background-color: var(--orange-transparent);
+    //  rgb(235, 235, 235);
+    color: var(--blue);
+}
+.row {
+    width: 100%;
+
+    padding: 5px 20px;
+    display: flex;
+    justify-content: space-between;
+    color: rgb(71, 71, 71);
+    font-weight: 400;
+    cursor: pointer;
+}
