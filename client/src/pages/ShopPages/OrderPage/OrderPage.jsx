@@ -1,14 +1,12 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Button } from "../../../components/UA_Components/Button";
+import { Button } from "../../../components/UA_Components/Button/Button";
 import { CartItem } from "../../../components/Cart/CartItem";
-import { ContentWrapper } from "../../../components/UA_Components/ContentWrapper/";
+import { ContentWrapper } from "../../../components/UA_Components/ContentWrapper/ContentWrapper";
 import { OrderForm } from "../../../components/OrderComponents/OrderForm/OrderForm";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import styles from "./OrderPage.module.scss";
-import { createRef } from "react";
-import { host } from "../../../axios";
-import { clearOrderSlice, finishOrder } from "../../../store/orderSlice";
+import { finishOrder } from "../../../store/orderSlice";
 import { priceFormating } from "../../../utils/priceFormating";
 import { FINISH_ORDER_ROUTE } from "../../../utils/constRoutes";
 import { clearCart } from "../../../store/cartSlice";

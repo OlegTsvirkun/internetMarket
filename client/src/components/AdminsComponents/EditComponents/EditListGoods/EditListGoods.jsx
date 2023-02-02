@@ -3,10 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { removeGood } from '../../../../store/categorySlice';
 import adminServices from '../../../../store/services/adminServices';
-import services from '../../../../store/services/service';
 import { ADMIN_ROUTE, EDIT_GOOD_ROUTE, EDIT_ROUTE } from '../../../../utils/constRoutes';
 import { priceFormating } from '../../../../utils/priceFormating';
-import { Button } from '../../../UA_Components/Button';
+import { Button } from '../../../UA_Components/Button/Button';
 import { DeleteWithBtn } from '../DeleteWithBtn/DeleteWithBtn';
 import styles from './EditListGoods.module.scss';
 

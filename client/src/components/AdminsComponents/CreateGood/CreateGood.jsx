@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Button } from "../../UA_Components/Button";
+import { Button } from "../../UA_Components/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { getMain } from "../../../store/mainSlice";
 import styles from "./CreateGood.module.scss";

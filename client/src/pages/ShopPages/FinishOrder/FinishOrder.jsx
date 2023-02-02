@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styles from "./FinishOrder.module.scss";
-import { ContentWrapper } from "../../../components/UA_Components/ContentWrapper/";
-import { Button } from "../../../components/UA_Components/Button";
+import { ContentWrapper } from "../../../components/UA_Components/ContentWrapper/ContentWrapper";
+import { Button } from "../../../components/UA_Components/Button/Button";
 import { Link } from "react-router-dom";
 export const FinishOrder = ({}) => {
 	const { orderNumber, isLoading } = useSelector(

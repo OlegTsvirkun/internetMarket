@@ -1,32 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, Route, Routes, useLocation } from "react-router-dom";
-import { Button } from "../../../components/UA_Components/Button";
-import { ContentWrapper } from "../../../components/UA_Components/ContentWrapper/";
-
-// import {  CreateGoodPage } from "../CreateGoodPage/CreateGoodPage";
+import { Button } from "../../components/UA_Components/Button/Button";
+import { ContentWrapper } from "../../components/UA_Components/ContentWrapper/ContentWrapper";
 import {
 	EditGoodSearch,
-	SearchForUpdateGood,
-	UpdateGood,
-} from "../../../components/AdminsComponents/EditComponents/EditGoodSearch/EditGoodSearch";
-import { cleanupCatSlice } from "../../../store/categorySlice";
+} from "../../components/AdminsComponents/EditComponents/EditGoodSearch/EditGoodSearch";
+import { cleanupCatSlice } from "../../store/categorySlice";
 import {
 	CREATE_CATEGORY_ROUTE,
 	CREATE_GOOD_ROUTE,
 	EDIT_GOOD_ROUTE,
 	EDIT_LIST_ROUTE,
 	EDIT_ROUTE,
-	SEARCH_EDIT_GOOD_ROUTE,
-} from "../../../utils/constRoutes";
+} from "../../utils/constRoutes";
+import { EditGoodComponent } from "../../components/AdminsComponents/EditComponents/EditGoodComponent/EditGoodComponent";
+import { CreateCategory } from "../../components/AdminsComponents/CreateCategory";
+import { CreateGood_ } from "../../components/AdminsComponents/CreateGood";
+import { EditListGoods } from "../../components/AdminsComponents/EditComponents/EditListGoods/EditListGoods";
+import { ModalBackground } from "../../components/AdditionalComponents/ModalBackground/ModalBackground";
+import { FailPage } from "../FailPage";
+import { Spinner } from "../../components/UA_Components/Spinner/Spinner";
 import styles from "./AdminPage.module.scss";
-import { EditGoodComponent, EditGoodPage } from "../../../components/AdminsComponents/EditComponents/EditGoodComponent/EditGoodComponent";
-import { CreateCategory } from "../../../components/AdminsComponents/CreateCategory";
-import { CreateGood_ } from "../../../components/AdminsComponents/CreateGood_";
-import { EditListGoods, SearchListUpdateGood } from "../../../components/AdminsComponents/EditComponents/EditListGoods/EditListGoods";
-import { ModalBackground } from "../../../components/AdditionalComponents/ModalBackground/ModalBackground";
-import { FailPage } from "../../FailPage";
-import { Spinner } from "../../../components/UA_Components/Spinner";
 
 export const AdminPage = ({isLoading,role}) => {
 	const [updateGoodIsOpen, setUpdateGoodIsOpen] = useState(false);

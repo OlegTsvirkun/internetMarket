@@ -1,9 +1,9 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { SkeletonCat } from "../SkeletonCat/SkeletonCat";
 import { CategoryCard } from "../CategoryCard/CategoryCard";
 import styles from "./Categories.module.scss";
-import { ContentWrapper } from "../../UA_Components/ContentWrapper";
+import { ContentWrapper } from "../../UA_Components/ContentWrapper/ContentWrapper";
 
 export const Categories = () => {
 	const { categories, goods, images, isLoading } = useSelector(

@@ -8,13 +8,13 @@ import {
 	getCategory,
 	searchingGoods,
 } from "../../../store/categorySlice";
-import styles from "./GoodsPage.module.scss";
-import { ContentWrapper } from "../../../components/UA_Components/ContentWrapper";
+import { ContentWrapper } from "../../../components/UA_Components/ContentWrapper/ContentWrapper";
 import { Paginate } from "../../../components/UA_Components/Paginate/Paginate";
 import { LimitCards } from "../../../components/UA_Components/LimitCards/LimitCards";
 import { useRef } from "react";
 import { Goods } from "../../../components/GoodsContent/Goods/Goods";
 import { BackNavigate } from "../../../components/AdditionalComponents/BackNavigate/BackNavigate";
+import styles from "./GoodsPage.module.scss";
 
 export const GoodsPage = ({}) => {
 	const [searchParams] = useSearchParams();

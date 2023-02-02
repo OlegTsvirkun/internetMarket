@@ -2,11 +2,9 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-
 import { getGood } from '../../../../store/goodSlice';
-
+import { EditGoodItem } from '../EditGoodItem';
 import styles from './EditGoodComponent.module.scss';
-import { EditGoodItem } from '../EditGoodItem_';
 
 export const EditGoodComponent = ({}) =>{
 

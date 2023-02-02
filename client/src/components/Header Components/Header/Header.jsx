@@ -9,8 +9,8 @@ import {
 	REGISTRATION_ROUTE,
 } from "../../../utils/constRoutes";
 import { changeAuth } from "../../../store/userSlice";
-import { ContentWrapper } from "../../UA_Components/ContentWrapper";
-import { Button } from "../../UA_Components/Button";
+import { ContentWrapper } from "../../UA_Components/ContentWrapper/ContentWrapper";
+import { Button } from "../../UA_Components/Button/Button";
 import styles from "./Header.module.scss";
 
 export const Header = ({}) => {
