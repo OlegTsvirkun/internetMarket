@@ -10,7 +10,7 @@ const createOrder = async (req, res,next) => {
     if(!userInfo)return next(ApiErrors.badRequest('Не заповнено інформацію користувача'))
     if(!deliveryInfo)return next(ApiErrors.badRequest('Не заповнено інформацію по доставці'))
     if(!orderedGoods)return next(ApiErrors.badRequest('Немає товарів у заказі'))
-   
+   console.log(deliveryInfo);
     const user = await User
     .create({ ...userInfo })
     const orderDelivery = await OrderDelivery
@@ -31,6 +31,7 @@ else {
 
 for (let key in orderedGoods) {
     let item = orderedGoods[key]
+    
     await Order
         .create({
             userId: user._id,
@@ -39,6 +40,7 @@ for (let key in orderedGoods) {
             count: item.count,
             price: item.price,
             totalPrice: item.totalPrice,
+          
             orderId: countOfOrder + 1
 
         })

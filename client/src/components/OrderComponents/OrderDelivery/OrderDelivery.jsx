@@ -20,10 +20,11 @@ useEffect(() => {
 		delivery:"Адресна доставка",
 		city: '-',
 		street:'-',
-		house:'-',
+		house:'0',
 		litHouse:'-',
 		appartment:'-',
 		postNP: '-',
+		office:''
 
 	};
 	dispatch(addOrderDeliveryData( deliveryObj))
@@ -82,8 +83,8 @@ useEffect(() => {
 					icon={<TfiShoppingCartFull size="40" color="#2FB5FC" />}
 					name="delivery"
 					id="deliverySelf"
-					title="Самовівоз із магазину:"
-					value="Самовивіз із магазину:"
+					title="Самовівоз із магазину"
+					value="Самовивіз із магазину"
 					subtitle="Забрати завтра"
 					deliveryPrice="0"
 					onClick={(e) => {

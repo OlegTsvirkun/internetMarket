@@ -14,7 +14,6 @@ export const Footer = ({}) => {
 	const {
 		mainContacts: { tel, email, scheduling, city, address },
 	} = useSelector((state) => state?.contacts);
-	console.log(tel);
 	if(!city) return <></>
 	return (
 		<div className={styles.footer}>

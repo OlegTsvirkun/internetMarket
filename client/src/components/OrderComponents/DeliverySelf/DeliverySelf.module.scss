@@ -1,3 +1,82 @@
 .deliverySelf{
-    
+margin:20px 0 10px;
+}
+.deliverySelfTitle{
+    font-size: 21px;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+.gridContent{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.iconItem{
+    position: absolute;
+    right:5px;
+    top:0;
+}
+.containerCard{
+    // border-color: rgba(255, 166, 0, 0.3);
+width:300px;
+height:100px;
+    margin: 0 20px 20px 0px;
+    display: block;
+    grid-template-rows: 2fr 4fr;
+    padding: 5px 20px;
+    // margin: 10px ;
+
+}
+.headerContainer{
+    display: flex;
+    width: 100%;
+    justify-content:space-between;
+}
+.infoContainer{
+text-align: start;
+}
+.cardsContainer{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.card{
+    font-size: 18px;
+    color: black;
+    display: grid;
+    grid-template-rows: 105px 1fr;
+}
+.containerLoader{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+.title{
+    font-size: 18px;
+    // margin: 10px 0;
+
+}
+.info{
+    // margin-bottom: 10px;
+font-size: 20px;
+font-weight: 600;
+color:var(--blue)
+}
+.infoAddress{
+font-weight: 600;
+color:var(--blue);
+
+    font-size: 14px;
+}
+.titleName{
+    font-size: 16px;
+    font-weight: 400;
+    margin: 10px 0;
+    // text-align: start;
+}
+.section{
+    margin-right: 20px;
+}
+.section:only-child{
+    margin-bottom: 5px;
 }

@@ -5,9 +5,10 @@ const ApiErrors = require('../helpers/ApiErrors');
 const getOfficeContact = async (req, res, next) => {
     try {
         const contact = await ShopContact
-            .find({ name: "mainOffice" })
+            .find({ type: "mainOffice" })
             // .create({
-            //     name:'secondaryOffice',
+            //     type:'secondaryOffice',
+            //     name:'Основний офіс',
             //     city:"Дніпро",
             //     address:"вул.Михайла Грушевського, 10",
             //     tel:["+380562445566",
@@ -31,9 +32,10 @@ const getOfficeContact = async (req, res, next) => {
     const getSecondaryContacts = async (req, res, next) => {
         try {
             const contacts = await ShopContact
-                .find({ name: "secondaryOffice" })
+                .find({ type: "secondaryOffice" })
                 // .create({
-                //     name:'secondaryOffice',
+                   // type:'secondaryOffice',
+                //     name:'Представництво',
                 //     city:"Дніпро",
                 //     address:"вул.Михайла Грушевського, 10",
                 //     tel:["+380562445566",

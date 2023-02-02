@@ -33,7 +33,8 @@ const OrderSchema = new Schema({
     orderId:{
         type:Number,
         required: true
-    }
+    },
+  
 },
 {
     timestamp:true

@@ -31,6 +31,11 @@ const OrderDeliverySchema = new Schema({
         type:String,
         required: true
     },
+    office:{
+        type: String,
+        // ref: 'ShopContactSchema' ,
+        required: false
+    },
 },
 
 )

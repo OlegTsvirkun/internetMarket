@@ -15,10 +15,10 @@ export const orderSlice = createSlice({
     name: "order",
     initialState: {
         isErrors: {},
-        orderData:{
+        orderData: {
             user: {},
-			// orderedGoods: {},
-			delivery: {},
+            // orderedGoods: {},
+            delivery: {},
         },
         orderNumber: {},
         isError: false,
@@ -46,7 +46,11 @@ export const orderSlice = createSlice({
         },
         addOrderUserData: (state, action) => {
             state.orderData.user = { ...state.orderData.user, ...action.payload }
-        
+
+        },
+        clearOrderSlice: (state, action) => {
+            state.orderData = {}
+            state.isErrors = {}
         },
         // addCatDelivery:(state,action)=>{
         //     state.itemsInOrder={...action.payload }
@@ -65,7 +69,8 @@ export const orderSlice = createSlice({
             .addCase(finishOrder.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.orderNumber = action.payload
-
+                state.orderData = {}
+                state.isErrors = {}
             })
             .addCase(finishOrder.rejected, (state, action) => {
                 state.isLoading = false
@@ -78,5 +83,5 @@ export const orderSlice = createSlice({
     }
 });
 
-export const { addError, remooveError, addOrderDeliveryData,addOrderUserData } = orderSlice.actions;
+export const { addError, remooveError, addOrderDeliveryData, addOrderUserData,clearOrderSlice } = orderSlice.actions;
 export default orderSlice.reducer;

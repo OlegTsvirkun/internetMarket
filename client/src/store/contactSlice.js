@@ -38,6 +38,7 @@ const contactSlice = createSlice({
         state.mainContacts = { ...action.payload[0] }
       })
       .addCase(getMainContact.rejected, (state, action) => {
+        console.log(action.payload);
         state.isLoading = false
         state.isError = true
         state.message = action.payload;
@@ -51,7 +52,7 @@ const contactSlice = createSlice({
       })
       .addCase(getSecondaryContact.fulfilled, (state, action) => {
         state.isLoading = false
-        state.contacts = [ ...action.payload ]
+        state.secondaryContacts = [ ...action.payload ]
       })
       .addCase(getSecondaryContact.rejected, (state, action) => {
         state.isLoading = false

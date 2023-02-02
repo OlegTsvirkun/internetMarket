@@ -3,6 +3,10 @@ const Schema = mongoose.Schema
 
 const ShopContactSchema = new Schema({
 
+    type:{
+        type:String,
+        required: false
+    },
     name:{
         type:String,
         required: false
