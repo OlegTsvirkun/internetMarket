@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMainContact } from "../../store/contactSlice";
-import { ContentWrapper } from "../UA_Components/ContentWrapper";
+import { ContentWrapper } from "../UA_Components/ContentWrapper/ContentWrapper";
 import styles from "./Footer.module.scss";
 
 export const Footer = ({}) => {

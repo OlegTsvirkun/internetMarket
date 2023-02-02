@@ -1,12 +1,7 @@
-import styles from "./CreateCategory.module.scss";
-
 import React, { useCallback, useRef } from "react";
 import { useState } from "react";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-// import { ContentWrapper } from "../../components/UA_Components/ContentWrapper";
 import { Input } from "../../UA_Components/Input/Input";
-import { Button } from "../../UA_Components/Button";
-import adminServices from "../../../store/services/adminServices";
+import { Button } from "../../UA_Components/Button/Button";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -17,9 +12,9 @@ import {
 	clearFields,
 	addNewCategoryFields,
 } from "../../../store/adminSlice";
-import { Tooltip } from "../../AdditionalComponents/Tooltip/Tooltip";
 import { valueValidator } from "../../../utils/validator";
 import { ModalAlert } from "../../AdditionalComponents/ModalAlert/ModalAlert";
+import styles from "./CreateCategory.module.scss";
 
 export const CreateCategory = ({}) => {
 	const [category, setCategory] = useState("");

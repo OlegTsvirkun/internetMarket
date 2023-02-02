@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../../UA_Components/Button';
-import { ContentWrapper } from '../../UA_Components/ContentWrapper';
+import { Button } from '../../UA_Components/Button/Button';
+import { ContentWrapper } from '../../UA_Components/ContentWrapper/ContentWrapper';
 import styles from './BackNavigate.module.scss';
 
 export const BackNavigate = ({}) =>{
@@ -9,7 +9,6 @@ export const BackNavigate = ({}) =>{
 
   return (
   <ContentWrapper className={styles.backNavigate}>
-    
    	<Button
 				className={styles.backButton}
 				onClick={() => navigate(-1)}

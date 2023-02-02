@@ -1,5 +1,5 @@
 import React from 'react';
-import { CartTableItem } from '../CartTableItem';
+import { CartTableItem } from '../CartTableItem/CartTableItem';
 import styles from './CartItem.module.scss';
 import { useSelector } from "react-redux";
 

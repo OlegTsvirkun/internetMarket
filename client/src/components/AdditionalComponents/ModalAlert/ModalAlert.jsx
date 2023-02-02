@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Button } from "../../UA_Components/Button";
+import { Button } from "../../UA_Components/Button/Button";
 import { BsX } from "react-icons/bs";
 import styles from "./ModalAlert.module.scss";
 

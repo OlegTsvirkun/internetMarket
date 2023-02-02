@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ContentWrapper } from "../../../UA_Components/ContentWrapper";
+import { ContentWrapper } from "../../../UA_Components/ContentWrapper/ContentWrapper";
 import { useForm } from "react-hook-form";
 
-import { Button } from "../../../UA_Components/Button";
+import { Button } from "../../../UA_Components/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { getMain } from "../../../../store/mainSlice";
 import { removeImage } from "../../../../store/goodSlice";
@@ -54,15 +54,12 @@ useEffect(() => {
 	};
 }, []);
 useEffect(() => {
-	// console.log(errors);
 }, [isValid]);
 	useEffect(() => {
 		dispatch(getMain);
 	}, [isOpen]);
 	
-	// useEffect(() => {
-	//   setIsButton(false)
-	// }, []);
+
 
 	const handleUpdate = useCallback(async () => {
 		const formData = new FormData();
@@ -95,14 +92,6 @@ useEffect(() => {
 
 				}
 			})
-			// .catch((err) => {
-			// 	if (err.response) {
-			// 		setResponse(err.response.data.message);
-			// 		setIsOpen(!isOpen);
-			// 		console.log(err.response.data);
-			// 	}
-			// 	console.log(response);
-			// });
 	}, [getValues]);
 
 	const handleRemoveImage = (image) => {
@@ -116,8 +105,6 @@ useEffect(() => {
 			})
 			.catch((err) => {
 				if (err.response) {
-					// setResponse(err.response.data.message);
-					// setIsOpen(!isOpen);
 					console.log(err.response.data);
 				}
 			});
@@ -272,20 +259,8 @@ useEffect(() => {
 						placeholder="Опис категорії"
 					/>
 				</label>
-				{/* {isOpen && response && (
-					<div className={styles.modal}>
-						<div className={styles.modalMessege}>
-							{response?.error && <p>{response.error}</p>}
-							{response?.message && <p>{response.message}</p>}
-						</div>
-						<Button onClick={() => setCreateGoodisOpen(false)}>
-							Вийти у головне меню
-						</Button>
-					</div>
-				)} */}
-				{/* {isOpen && <ModalWindow />} */}
+			
 			</form>
-			{<>{/* <img src={} alt="" /> */}</>}
 
 			<Button isDisableButton={!isValid} onClick={handleUpdate}>
 				Змінити товар
@@ -299,7 +274,6 @@ useEffect(() => {
 					<ModalAlert
 						closeClick={() => {
 							setIsOpen(false)
-						// navigate(ADMIN_ROUTE)
 						}}
 						title="Оповіщення"
 						className={styles.message}

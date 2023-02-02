@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Button } from "../../UA_Components/Button";
+import { Button } from "../../UA_Components/Button/Button";
 import { ContentWrapper } from "../../UA_Components/ContentWrapper/ContentWrapper";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { BiCategoryAlt } from "react-icons/bi";

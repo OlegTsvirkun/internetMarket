@@ -1,10 +1,7 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { BsSearch, BsX } from "react-icons/bs";
+import React, {  useState } from "react";
 import { CiSearch } from "react-icons/ci";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-import { Button } from "../../UA_Components/Button";
+import { Button } from "../../UA_Components/Button/Button";
 import { Input } from "../../UA_Components/Input";
 import styles from "./SearchBar.module.scss";
 
@@ -32,8 +29,6 @@ export const SearchBar = ({
 				onChange={onChange}
 				placeholder="ЩО ХОЧЕТЕ ЗНАЙТИ?"
 			/>
-		
-
 				<Link to ={`/search?q=${searchValue}`}>
 			<Button className={styles.searchButton} isOrangeButton={true} onClick = {()=>setSearchValue('')} >
 					ПОШУК

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { BsX } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { FailPage } from "../../../pages/FailPage/Failpage";
@@ -13,7 +12,6 @@ import styles from "./GoodItem.module.scss";
 export const GoodItem = ({}) => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [modalImg, setModalImg] = useState("");
-	const navigate = useNavigate();
 	const { good, images, isLoading, isError, message } = useSelector(
 		(state) => state.good,
 	);
@@ -36,7 +34,7 @@ export const GoodItem = ({}) => {
 						<Carousel
 							images={images}
 							onClick={(e) => {
-								setModalImg(e.target.src);
+								// setModalImg(e.target.src);
 								setIsModalOpen(true);
 							}}
 						/>
@@ -77,8 +75,8 @@ export const GoodItem = ({}) => {
 							className={styles.carousel}
 							images={images}
 							onClick={(e) => {
-								setModalImg(e.target.src);
-								setIsModalOpen(true);
+								// setModalImg(e.target.src);
+								// setIsModalOpen(true);
 							}}
 						/>
 				

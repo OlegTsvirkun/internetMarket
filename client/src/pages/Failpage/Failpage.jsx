@@ -1,10 +1,10 @@
 import React from "react";
-import { ContentWrapper } from "../../components/UA_Components/ContentWrapper";
+import { ContentWrapper } from "../../components/UA_Components/ContentWrapper/ContentWrapper";
 import { BiConfused } from "react-icons/bi";
-import styles from "./FailPage.module.scss";
-import { Button } from "../../components/UA_Components/Button";
+import { Button } from "../../components/UA_Components/Button/Button";
 import { Link } from "react-router-dom";
 import { BackNavigate } from "../../components/AdditionalComponents/BackNavigate/BackNavigate";
+import styles from './Failpage.module.scss'
 
 export const FailPage = ({ message }) => {
 	return (
