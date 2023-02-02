@@ -10,8 +10,7 @@ import { finishOrder } from "../../../store/orderSlice";
 import { priceFormating } from "../../../utils/priceFormating";
 import { FINISH_ORDER_ROUTE } from "../../../utils/constRoutes";
 import { clearCart } from "../../../store/cartSlice";
-import { useEffect } from "react";
-import { getSecondaryContact } from "../../../store/contactSlice";
+
 export const OrderPage = ({}) => {
 	const cart = useSelector((state) => state.cart.itemsInCart);
 	const { isErrors, orderData } = useSelector((state) => state.order);

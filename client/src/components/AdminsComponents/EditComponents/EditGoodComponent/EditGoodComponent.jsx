@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { getGood } from '../../../../store/goodSlice';
-import { EditGoodItem } from '../EditGoodItem';
+import { EditGoodItem } from '../EditGoodItem/EditGoodItem';
 import styles from './EditGoodComponent.module.scss';
 
 export const EditGoodComponent = ({}) =>{

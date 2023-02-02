@@ -2,13 +2,15 @@ import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSecondaryContact } from "../../../store/contactSlice";
-import { ContentWrapper } from "../../UA_Components/ContentWrapper";
-import { Spinner } from "../../UA_Components/Spinner";
+import { ContentWrapper } from "../../UA_Components/ContentWrapper/ContentWrapper";
+import { Spinner } from "../../UA_Components/Spinner/Spinner";
 import { OptionOrderCard } from "../OptionOrderCard/OptionOrderCard";
-import styles from "./DeliverySelf.module.scss";
 import { AiOutlineCrown } from "react-icons/ai";
 import { HiOutlineOfficeBuilding } from "react-icons/hi";
 import { addOrderDeliveryData } from "../../../store/orderSlice";
+import styles from "./DeliverySelf.module.scss";
+
+
 export const DeliverySelf = ({}) => {
 	const dispatch = useDispatch();
 	const [checkedId, setCheckedId] = useState();
