@@ -2,15 +2,18 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
 const OrderSchema = new Schema({
-    
     userId:{
+        type: String,
+        required: false,
+    },
+    userContacts:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
-    goodId:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Good',
+    goods:{
+        type:[],
+        
         required: true
     },
     delivery:{
@@ -18,14 +21,7 @@ const OrderSchema = new Schema({
         ref: 'OrderDelivery',
         required: true
     },
-    count:{   
-        type:String,
-        required: true
-    },
-    price:{
-        type:String,
-        required: true
-    },
+    
     totalPrice:{
         type:Number,
         required: true
@@ -34,10 +30,17 @@ const OrderSchema = new Schema({
         type:Number,
         required: true
     },
+    
+    status:{
+        type: String, 
+        ref: 'OrderStatus',
+        required: true
+    },
+    
   
 },
 {
-    timestamp:true
+    timestamps:true
 }
 )
 const Order = mongoose.model('Order',OrderSchema)

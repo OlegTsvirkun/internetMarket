@@ -1,9 +1,15 @@
 const ShopContact = require('../models/ShopContact');
 const ApiErrors = require('../helpers/ApiErrors');
+const User = require('../models/user');
+const OrderDelivery = require('../models/orderDelivery');
+const Order = require('../models/order');
 
 
 const getOfficeContact = async (req, res, next) => {
     try {
+        // await User.deleteMany({}).exec()
+        // await OrderDelivery.deleteMany({}).exec()
+        // await Order.deleteMany({}).exec()
         const contact = await ShopContact
             .find({ type: "mainOffice" })
             // .create({
