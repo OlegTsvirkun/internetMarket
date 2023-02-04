@@ -22,7 +22,7 @@ export const Footer = ({}) => {
 			<ContentWrapper className={styles.footer__container}>
 				<div className={styles.footer__mainInfo}>
 					<div className={styles.footer__workingHours}>
-					{scheduling &&	<ScheduleList scheduling={scheduling}/>}
+					{scheduling &&	<ScheduleList schedule={scheduling}/>}
 						
 					</div>
 

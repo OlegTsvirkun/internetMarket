@@ -1,16 +1,16 @@
 import React from 'react';
 import styles from './ScheduleList.module.scss';
 
-export const ScheduleList = ({scheduling, containerClassName='', className=''}) =>{
-  if(!Object.keys(scheduling)[0]) <></>
+export const ScheduleList = ({schedule, containerClassName='', className='', titleClassName=''}) =>{
+  if(!Object.keys(schedule)[0]) <></>
 
   return (
   <ul className={ `${styles.scheduleList} ${containerClassName}`} >
-    <span>Час роботи Call-центру:</span>
+    <span className={titleClassName}>Час роботи Call-центру:</span>
 						
-						{	Object.keys(scheduling).map((days) => (
+						{	Object.keys(schedule).map((days) => (
 								<li key={days} className={`${styles.days} ${className}`} >
-									<span>{days}:</span> <h4>{scheduling[days]}</h4>
+									<span>{days}:</span> <h4>{schedule[days]}</h4>
 								</li>
 							))}
   </ul>

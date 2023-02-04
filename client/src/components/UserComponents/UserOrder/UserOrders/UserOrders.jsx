@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { clearOrderData, getUserOrder } from "../../../store/userCabinetSlice";
-import { priceFormating } from "../../../utils/priceFormating";
+import { clearOrderData, getUserOrder } from "../../../../store/userCabinetSlice";
+import { priceFormating } from "../../../../utils/priceFormating";
 import { UserOrderItem } from "../UserOrderItem/UserOrderItem";
 import styles from "./UserOrders.module.scss";
 
