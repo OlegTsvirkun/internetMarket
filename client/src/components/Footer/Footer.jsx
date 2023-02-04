@@ -2,6 +2,8 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMainContact } from "../../store/contactSlice";
+import { ScheduleList } from "../AdditionalComponents/ScheduleList/ScheduleList";
+import { TelList } from "../AdditionalComponents/TelList/TelList";
 import { ContentWrapper } from "../UA_Components/ContentWrapper/ContentWrapper";
 import styles from "./Footer.module.scss";
 
@@ -20,27 +22,14 @@ export const Footer = ({}) => {
 			<ContentWrapper className={styles.footer__container}>
 				<div className={styles.footer__mainInfo}>
 					<div className={styles.footer__workingHours}>
-						<span>Час роботи Call-центру:</span>
-						{scheduling &&
-							Object.keys(scheduling).map((days) => (
-								<li key={days} className={styles.footer__days}>
-									<span>{days}:</span> <h4>{scheduling[days]}</h4>
-								</li>
-							))}
+					{scheduling &&	<ScheduleList scheduling={scheduling}/>}
+						
 					</div>
 
 					<div className={styles.footer__info}>
-						<p>
-							<span> Контактні телефони:</span>
-						</p>
-						<ul className={styles.footer__telList}>
-							{tel &&
-								tel.map((item) => (
-									<li key={item} className={styles.footer__telItem}>
-										<a href={"tel:"+item}>{item}</a>
-									</li>
-								))}
-						</ul>
+						
+						{tel &&<TelList tel={tel} /> }
+					
 					</div>
 					<div className={styles.footer__address}>
 						<div>
