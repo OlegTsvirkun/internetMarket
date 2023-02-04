@@ -5,7 +5,7 @@ const OrderStatusSchema = new Schema({
     value:{ 
         type:String,
         unique:true,
-        default: "RIGISTERED" // "Awaiting payment" , "paid","confirmed ",completed , cancelled
+        default: "REGISTERED" // "Awaiting payment" , "paid","confirmed ",completed , cancelled
     }
 })
 

@@ -32,8 +32,8 @@ const OrderDeliverySchema = new Schema({
         required: true
     },
     office:{
-        type: String,
-        // ref: 'ShopContactSchema' ,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'ShopContact' ,
         required: false
     },
 },
