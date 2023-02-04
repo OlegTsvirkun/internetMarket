@@ -15,6 +15,6 @@ const {
 router.post('/registration', userRegistration)
 router.post('/login', userLogin)
 router.get('/auth',authMiddleware, userCheck)
-router.get('/cabinet/orders',getUserOrders)
+router.get('/cabinet/orders',authMiddleware,getUserOrders)
 
 module.exports = router

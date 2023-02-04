@@ -92,6 +92,7 @@ h6 {
   --grey: rgb(109, 109, 109);
   --grey-transparent: rgba(109, 109, 109, 0.2);
   --white-grey: rgb(148, 163, 184);
+  --white-grey-transparent: rgba(148, 163, 184, 0.3);
   --orange-hover: rgb(255, 186, 58);
   --orange-transparent: rgba(255, 166, 0, 0.3);
 }

@@ -14,6 +14,11 @@ const createOrder = async (req, res, next) => {
         if (!orderedGoods) return next(ApiErrors.badRequest('Немає товарів у заказі'))
         console.log(orderedGoods);
         const user = await User.create({ ...userInfo })
+        if(!deliveryInfo.office) {
+            delete deliveryInfo.office 
+            // console.log(deliveryInfo,'deliveryInfo.office');
+        
+        }
         const orderDelivery = await OrderDelivery.create({ ...deliveryInfo })
         const orderCount = await OrderCounter.find()
 // let status

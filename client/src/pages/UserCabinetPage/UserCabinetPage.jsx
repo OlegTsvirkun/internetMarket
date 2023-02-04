@@ -9,7 +9,7 @@ import styles from './UserCabinetPage.module.scss';
 export const UserCabinetPage = ({}) =>{
   return (
   <ContentWrapper className={styles.userCabinetPage}>
-    UserPage Component
+   
 <Routes>
 <Route exact path={USER_CONFIGS_ROUTE} element={<UserConfigs />} />
 <Route exact path={USER_ORDERS_ROUTE} element={<UserOrders />} />

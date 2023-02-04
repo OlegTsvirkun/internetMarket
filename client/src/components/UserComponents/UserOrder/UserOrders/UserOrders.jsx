@@ -3,28 +3,27 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearOrderData, getUserOrder } from "../../../../store/userCabinetSlice";
 import { priceFormating } from "../../../../utils/priceFormating";
+import { Spinner } from "../../../UA_Components/Spinner/Spinner";
 import { UserOrderItem } from "../UserOrderItem/UserOrderItem";
 import styles from "./UserOrders.module.scss";
 
 export const UserOrders = ({}) => {
 	const dispatch = useDispatch();
 	const { email } = useSelector((state) => state.user);
-	const { userId } = useSelector((state) => state.userCabinet.orderData);
 	const { orderData, isLoading, isError } = useSelector(
 		(state) => state.userCabinet,
 	);
 
 	useEffect(() => {
-		console.log(userId);
-		if (email) dispatch(getUserOrder(email));
-		if (email !== "userId") dispatch(clearOrderData());
+		if (email) dispatch(getUserOrder());
 		return () => {
 			dispatch(clearOrderData());
 		};
 	}, [email]);
-	if (isLoading) return <>Loading...</>;
+	if (isLoading) return <div className={styles.spinner}><Spinner/> </div>;
 	return (
 		<div className={styles.userOrders}>
+			<h1 className={styles.mainTitle}>Сторінка заказів:</h1>
 			{Object.values(orderData).map((order,index) => {
 				if (typeof order === "object")
 					return (

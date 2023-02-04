@@ -3,7 +3,9 @@ module.exports = function(req,res,next){
     if(req.method === 'OPTIONS'){
         next()
     } 
-    console.log('req.headers',req.headers.autorization);
+    // console.log(req);
+
+    // console.log('req.headers',req.headers.autorization);
     try{
 const token = req.headers.autorization.split(' ')[1]
 if(!token){

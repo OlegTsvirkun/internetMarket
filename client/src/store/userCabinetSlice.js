@@ -2,9 +2,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import userServices from "./services/userService";
 
 
-export const getUserOrder = createAsyncThunk('GET_ORDERS', async (userId, thunkAPI) => {
+export const getUserOrder = createAsyncThunk('GET_ORDERS', async (_, thunkAPI) => {
     try {
-        return await userServices.getOrders(userId)
+        return await userServices.getOrders()
     }
     catch (error) {
         return thunkAPI.rejectWithValue(error.response.data)

@@ -9,25 +9,28 @@ import {
 import { priceFormating } from "../../../../utils/priceFormating";
 import { ScheduleList } from "../../../AdditionalComponents/ScheduleList/ScheduleList";
 import { TelList } from "../../../AdditionalComponents/TelList/TelList";
+import { GoodListUserOrder } from "../GoodListUserOrder";
 import styles from "./UserOrderItem.module.scss";
 
 export const UserOrderItem = ({ order, index }) => {
 	return (
-		<details open={index == 0 ? true : false}>
-			<summary>
-				Заказ № <span className={styles.title}>{order.orderId}</span> від:{" "}
-				<span className={styles.title}>
-					{order.createdAt.split("T").slice(0, 1)}
-				</span>{" "}
-				СТАТУС:{" "}
-				<span
-					style={{
-						backgroundColor: `${statusColor[order.status]}`,
-					}}
-					className={styles.statusItem}
-				>
-					{order.status}
-				</span>{" "}
+		<details className={styles.userOrderItem } open={index == 0 ? true : false}>
+			<summary   >
+				<span className={styles.summary} >
+					Заказ № <span className={styles.title}>{order.orderId}</span> від:{" "}
+					<span className={styles.title}>
+						{order.createdAt.split("T").slice(0, 1)}
+					</span>{" "}
+					СТАТУС:{" "}
+					<span
+						style={{
+							backgroundColor: `${statusColor[order.status]}`,
+						}}
+						className={styles.statusItem}
+					>
+						{order.status}
+					</span>{" "}
+				</span>
 			</summary>
 			<div className={styles.userOrdersTable}>
 				<header className={styles.header}>
@@ -61,26 +64,7 @@ export const UserOrderItem = ({ order, index }) => {
 					</section>
 
 					<div className={styles.listTitile}>Список товарів:</div>
-
-					<section>
-						{order?.goods?.map((good) => (
-							<div key={good.name}>
-								<Link to={GOOD_ROUTE + `?id=${good._id}`}>
-									<p className={styles.goodName}>{good.name}</p>
-								</Link>
-								<div className={styles.goodInfoRow}>
-									<section className={styles.goodInfo}>
-										<p className={styles.price}>
-											Ціна: {priceFormating(good.price)} грн.
-										</p>
-
-										<p className={styles.count}>Кількість: {good.count}</p>
-									</section>
-									<p className={styles.articul}>Артикул: {good.articul}</p>
-								</div>
-							</div>
-						))}
-					</section>
+					{order?.goods && <GoodListUserOrder goods={order.goods} />}
 				</main>
 
 				<div className={styles.totalPrice}>
@@ -103,7 +87,7 @@ export const UserOrderItem = ({ order, index }) => {
 									);
 							}
 						})}
-						{Object.keys(order.delivery?.office)[0] &&
+						{typeof order.delivery?.office =='object' ?
 							Object.keys(order.delivery.office).map((key) => {
 								if (officeKeys[key]) {
 									if (
@@ -118,7 +102,9 @@ export const UserOrderItem = ({ order, index }) => {
 											</p>
 										);
 								}
-							})}
+							})
+						:<></>
+						}
 						<div className={styles.deliveryFooter}>
 							{order.delivery.office?.scheduling && (
 								<ScheduleList

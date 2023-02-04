@@ -1,9 +1,11 @@
 .userOrderItem{
-    
+    margin: 10px 0;
 }
-.userOrders {
-
-   
+.summary{
+    padding: 0 5px;
+    background-color: var(--white-grey-transparent);
+    line-height: 1.5;
+    // display: inline-block;
 }
 .userOrdersTable{
     border:1px solid var(--black-grey);
@@ -43,28 +45,7 @@ margin: 0 5px;
     
 }
 
-.goodName:hover {
-    text-decoration: underline;
-    color:var(--blue);
-}
-.goodName {
-    // grid-area: 1 / 1 / 2 / 3;
-    padding:  5px;
-    font-size: 16px;
-    font-weight: 600;
-    background-color: var(--blue-transparent);
-    border-bottom:1px solid var(--black-grey);  
 
-}
-.goodInfoRow{
-    display: grid;
-    grid-template-columns: auto 100px;
-}
-.price, .count, .articul{
-    padding:  5px;
-    font-size: 16px;
-    font-weight: 400;
-}
 .totalPrice{
     padding:  5px;
     font-size: 16px;

@@ -5,8 +5,9 @@ const ShopContact = require('../models/ShopContact');
 
 const getUserOrders = async (req, res, next) => {
     // "RIGISTERED"  "Awaiting payment" , "paid","confirmed ",completed , cancelled, delivering
+    // console.log( req.user.email);
 try{
-    const {login }= req.query
+    const login = req.user.email
     // console.log(login);
     const order = await Order
     .find({userId: login},{userId:0})
@@ -17,7 +18,7 @@ try{
     { _id: 0}
     )
   
-    console.log(order);
+    // console.log(order);
 //     const officeId = order.delivery.office
 //     const office= await ShopContact.findOne({id:officeId})
 // order.delivery.office=office
