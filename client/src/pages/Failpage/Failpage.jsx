@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 import { BackNavigate } from "../../components/AdditionalComponents/BackNavigate/BackNavigate";
 import styles from './Failpage.module.scss'
 
-export const FailPage = ({ message }) => {
+export const FailPage = ({ message, backTo=true }) => {
 	return (
 			<ContentWrapper className={styles.failpage}>
-				<BackNavigate />
+			{!backTo &&	<BackNavigate />}
 				<BiConfused className={styles.icon} />
 				<p className={styles.title}>
-					{message
+					{message 
 						? message
 						: "Сторінка з такою назвою не знайдена або доступ закрито"}
 				</p>

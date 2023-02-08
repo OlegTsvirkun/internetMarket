@@ -17,7 +17,7 @@ export const ModalAlert = ({
 	frstBtnClick,
 	scndBtnClick,
 	closeClick,
-	bcgClick,
+	bcgClick, 
 	width = "auto",
 }) => {
 	useEffect(() => {

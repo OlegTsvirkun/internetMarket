@@ -29,17 +29,16 @@ export const orderSlice = createSlice({
         addError: (state, action) => {
             state.isErrors = { ...state.isErrors, ...action.payload }
         },
-        remooveError: (state, action) => {
-            Object.keys(action.payload).map(err => {
+        removeError: (state, action) => {
+            
                 state.isErrors =
                     Object.keys(state.isErrors)
                         .reduce((acc, item) => {
                             // console.log((item));
                             // console.log(('err', err));
-                            if (item != err) acc[item] = state.isErrors[item]
+                            if (item != action.payload) acc[item] = state.isErrors[item]
                             return acc
                         }, {})
-            })
         },
         addOrderDeliveryData: (state, action) => {
             state.orderData.delivery = { ...state.orderData.delivery, ...action.payload }
@@ -81,5 +80,5 @@ export const orderSlice = createSlice({
     }
 });
 
-export const { addError, remooveError, addOrderDeliveryData, addOrderUserData,clearOrderSlice } = orderSlice.actions;
+export const { addError, removeError, addOrderDeliveryData, addOrderUserData,clearOrderSlice } = orderSlice.actions;
 export default orderSlice.reducer;

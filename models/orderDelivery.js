@@ -9,27 +9,27 @@ const OrderDeliverySchema = new Schema({
     },
     city:{
         type:String,
-        required: true
+        required: false
     },
     street:{
         type:String,
-        required: true
+        required: false
     },
     house:{   
         type:Number,
-        required: true
+        required: false
     },
     litHouse:{
         type:String,
-        required: true
+        required: false
     },
     appartment:{
         type:String,
-        required: true
+        required: false
     },
     postNP:{
         type:String,
-        required: true
+        required: false
     },
     office:{
         type: mongoose.Schema.Types.ObjectId,

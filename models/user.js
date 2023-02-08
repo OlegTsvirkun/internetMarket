@@ -13,11 +13,14 @@ const UserSchema = new Schema({
     },
     tel:{
         type:String,
-        required: true
+        required: true,
+        
+
     },
     email:{
-        type:String,
-        required: true
+        type:String, 
+        required: true,
+        
     },
     
 

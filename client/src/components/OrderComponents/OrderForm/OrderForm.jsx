@@ -6,6 +6,13 @@ import { OrderContacts } from "../OrderContacts/OrderContacts";
 export const OrderForm = ({ className }) => {
 	return (
 		<form  className={`${styles.orderForm} ${className}`}>
+			<div> <span
+					style={{
+						color: "red",
+					}}
+				>
+					* Поля обов'язкові для заповнення
+				</span></div>
 				<OrderContacts className={styles.contacts} />
 				<OrderDelivery className={styles.delivery}/>
 		</form>

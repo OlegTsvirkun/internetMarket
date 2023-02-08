@@ -10,10 +10,19 @@ export const getUserOrder = createAsyncThunk('GET_ORDERS', async (_, thunkAPI) =
         return thunkAPI.rejectWithValue(error.response.data)
     }
 })
+export const getUserContacts = createAsyncThunk('GET_USER_CONTACTS', async (_, thunkAPI) => {
+    try {
+        return await userServices.getContacts()
+    }
+    catch (error) {
+        return thunkAPI.rejectWithValue(error.response.data)
+    }
+})
 export const userCabinetSlice = createSlice({
     name: "userCabinet",
     initialState: {
         orderData: {},
+        userContacts:{},
         isError: false,
         isLoading: false,
         message: ''
@@ -38,6 +47,21 @@ state.orderData={}
                 state.orderData = action.payload
             })
             .addCase(getUserOrder.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload.message
+                state.orderData = {}
+            })
+            .addCase(getUserContacts.pending, (state, action) => {
+                state.isLoading = true
+                state.isError = false
+                state.orderData = {}
+            })
+            .addCase(getUserContacts.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.orderData = action.payload
+            })
+            .addCase(getUserContacts.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload.message

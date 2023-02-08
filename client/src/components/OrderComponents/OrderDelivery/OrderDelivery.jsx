@@ -6,39 +6,26 @@ import { TfiShoppingCartFull } from "react-icons/tfi";
 import { DeliveryAdress } from "../DeliveryAdress/DeliveryAdress";
 import { DeliveryPost } from "../DeliveryPost/DeliveryPost";
 import { DeliverySelf } from "../DeliverySelf/DeliverySelf";
-import { addError, addOrderData, addOrderDeliveryData, remooveError } from "../../../store/orderSlice";
+import { addOrderDeliveryData } from "../../../store/orderSlice";
 import { useDispatch } from "react-redux";
 
-export const OrderDelivery = ({className}) => {
+export const OrderDelivery = ({ className }) => {
 	const [deliveryAdress, setDeliveryAdress] = useState(true);
 	const [deliveryPost, setDeliveryPost] = useState(false);
 	const [deliverySelf, setDeliverySelf] = useState(false);
 	const dispatch = useDispatch();
 
-useEffect(() => {
-	let deliveryObj = {
-		delivery:"Адресна доставка",
-		city: '-',
-		street:'-',
-		house:'0',
-		litHouse:'-',
-		appartment:'-',
-		postNP: '-',
-		office:''
+	useEffect(() => {
+		dispatch(addOrderDeliveryData({ delivery: "Адресна доставка" }));
+	}, []);
 
+	const handleClick = (e) => {
+		dispatch(addOrderDeliveryData({ [e.target.name]: e.target.value }));
 	};
-	dispatch(addOrderDeliveryData( deliveryObj))
-
-	
-}, []);
-
-	const handleClick =(e)=>{
-		dispatch(addOrderDeliveryData( {[e.target.name]:e.target.value}))
-	}
 
 	return (
 		<div className={`${styles.orderDelivery} ${className}`}>
-			<p className={styles.title} >Виберіть спосіб доставки:</p>
+			<p className={styles.title}>Виберіть спосіб доставки:</p>
 			<div className={styles.toggle}>
 				<OptionOrderCard
 					icon={
@@ -55,7 +42,7 @@ useEffect(() => {
 					subtitle="Доставимо завтра від:"
 					deliveryPrice="200"
 					onClick={(e) => {
-						handleClick(e)
+						handleClick(e);
 						setDeliveryAdress(true);
 						setDeliveryPost(false);
 						setDeliverySelf(false);
@@ -72,7 +59,7 @@ useEffect(() => {
 					subtitle="Доставимо завтра від:"
 					deliveryPrice="200"
 					onClick={(e) => {
-						handleClick(e)
+						handleClick(e);
 						setDeliveryAdress(false);
 						setDeliveryPost(true);
 						setDeliverySelf(false);
@@ -88,7 +75,7 @@ useEffect(() => {
 					subtitle="Забрати завтра"
 					deliveryPrice="0"
 					onClick={(e) => {
-						handleClick(e)
+						handleClick(e);
 						setDeliveryAdress(false);
 						setDeliveryPost(false);
 						setDeliverySelf(true);

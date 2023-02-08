@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { GOOD_ROUTE } from "../../../../utils/constRoutes";
+import { GOOD_ROUTE } from "../../../utils/constRoutes";
 import {
 	deliveryKeys,
 	officeKeys,
 	statusColor,
-} from "../../../../utils/constUserOrder";
-import { priceFormating } from "../../../../utils/priceFormating";
-import { ScheduleList } from "../../../AdditionalComponents/ScheduleList/ScheduleList";
-import { TelList } from "../../../AdditionalComponents/TelList/TelList";
-import { GoodListUserOrder } from "../GoodListUserOrder";
+} from "../../../utils/constUserOrder";
+import { priceFormating } from "../../../utils/priceFormating";
+import { ScheduleList } from "../../AdditionalComponents/ScheduleList/ScheduleList";
+import { TelList } from "../../AdditionalComponents/TelList/TelList";
+import { GoodListUserOrder } from "../UserOrder/GoodListUserOrder";
 import styles from "./UserOrderItem.module.scss";
 
 export const UserOrderItem = ({ order, index }) => {

@@ -1,176 +1,203 @@
-import React, { useEffect, useState } from "react";
-// import { input } from '../../UA_Components/Input/Input';
+import React, { useEffect } from "react";
 import styles from "./DeliveryAdress.module.scss";
-import { typeValidator, valueValidator } from "../../../utils/validator";
-import { Tooltip } from "../../AdditionalComponents/Tooltip/Tooltip";
 import { useDispatch } from "react-redux";
 import {
 	addError,
 	addOrderDeliveryData,
-	remooveError,
+	removeError,
 } from "../../../store/orderSlice";
-import { Input } from "../../UA_Components/Input/Input";
+import { useForm } from "react-hook-form";
+import { regNum, regText } from "../../../utils/constValidPatterns";
 
 export const DeliveryAdress = ({}) => {
-	const [city, setCity] = useState("");
-	const [street, setStreet] = useState("");
-	const [house, setHouse] = useState("");
-	const [lit, setLit] = useState("-");
-	const [appartment, setAppartment] = useState("0");
+	const {
+		register,
+		watch,
+		formState: { errors, isValid, isValidating },
+	} = useForm({ mode: "all" });
 
-	const [cityError, setCityError] = useState({});
-	const [streetError, setStreetError] = useState({});
-	const [houseError, setHouseError] = useState({});
-	const [litError, setLitError] = useState({});
-	const [appartmentError, setAppartmentError] = useState({});
 	const dispatch = useDispatch();
+
 	useEffect(() => {
-		let errorsObj = {
-			city: true,
-			street: true,
-			house: true,
-		};
-		dispatch(addError(errorsObj));
-		return () => {
-			dispatch(remooveError(errorsObj));
-		};
-	}, []);
-
-	const blurHandler = (
-		e,
-		onlyText = true,
-		minValue = 3,
-		maxValue = 40,
-		empty = false,
-	) => {
-		let obj = {};
-		obj = valueValidator(e, onlyText, minValue, maxValue, empty);
-		if (Object.keys(obj)[0]) {
-			dispatch(addError({ [e.target.name]: true }));
+		if (isValid && !isValidating) {
+			dispatch(addOrderDeliveryData(watch()));
+			dispatch(removeError("deliveryAdress"));
 		} else {
-			dispatch(remooveError({ [e.target.name]: false }));
-			dispatch(addOrderDeliveryData( {[e.target.name]:e.target.value}))
-
+			dispatch(addError({ deliveryAdress: true }));
 		}
-		return obj;
-	};
+		return () => {
+			const subscription = watch((data) => data);
+			subscription.unsubscribe();
+			dispatch(removeError("deliveryAdress"));
+		};
+	}, [isValidating]);
 
 	return (
 		<div className={styles.deliveryAdress}>
-			<div className={styles.deliveryAdress__city}>
-				<Input
-					containerClassName={styles.containerInp}
-					type="text"
-					name="city"
-					labelTitle="Ваше Місто"
-					placeholder="Місто"
-					onChange={(e) => {
-						setCity(e.target.value);
-					}}
-					value={city}
-					onBlur={(e) => setCityError(blurHandler(e))}
-					onInput={(e) => setCityError(blurHandler(e))}
-				>
-					{Object.keys(cityError)[0] && (
-						<Tooltip error={Object.keys(cityError)[0]} className={"right"} />
-					)}
-				</Input>
-				<Input
-					containerClassName={styles.containerInp}
-					type="text"
-					name="street"
-					labelTitle="Вулиця" 
-					placeholder="Вулиця"
-					onChange={(e) => {
-						setStreet(e.target.value);
-					}}
-					value={street}
-					onBlur={(e) => setStreetError(blurHandler(e))}
-					onInput={(e) => setStreetError(blurHandler(e))}
-				>
-					{Object.keys(streetError)[0] && (
-						<Tooltip error={Object.keys(streetError)[0]} className={"right"} />
-					)}
-				</Input>
+			<div className={styles.city}>
+				<label className={styles.containerInp}>
+					Ваше Місто
+					<span
+						style={{
+							color: "red",
+						}}
+					>
+						*
+					</span>
+					<input
+						type="text"
+						placeholder="Місто"
+						style={{
+							border: `${errors?.city ? "solid 1px red" : ""}`,
+						}}
+						{...register("city", {
+							required: "Треба заповнити поле",
+							pattern: {
+								value: regText,
+								message: "Поле має містити лише літери",
+							},
+							minLength: {
+								value: 3,
+								message: "Назва повинна бути не менше 3 символів",
+							},
+							maxLength: {
+								value: 50,
+								message: "Назва повинна бути не більше 50 символів",
+							},
+						})}
+					/>
+				</label>
+				<p className={styles.error}>
+					{errors?.city ? errors?.city?.message || "Error" : ""}
+				</p>
+
+				<label className={styles.containerInp}>
+					Вулиця
+					<span
+						style={{
+							color: "red",
+						}}
+					>
+						*
+					</span>
+					<input
+						type="text"
+						placeholder="Вулиця"
+						style={{
+							border: `${errors?.street ? "solid 1px red" : ""}`,
+						}}
+						{...register("street", {
+							required: "Треба заповнити поле",
+							pattern: {
+								value: regText,
+								message: "Поле має містити лише літери",
+							},
+							minLength: {
+								value: 3,
+								message: "Назва повинна бути не менше 3 символів",
+							},
+							maxLength: {
+								value: 50,
+								message: "Назва повинна бути не більше 50 символів",
+							},
+						})}
+					/>
+				</label>
+				<p className={styles.error}>
+					{errors?.street ? errors?.street?.message || "Error" : ""}
+				</p>
 			</div>
 			<div className={styles.address}>
-				<Input
-					className={styles.addressInput}
-					type="number"
-					name="house"
-					id="house"
-					// placeholder=""
-					labelTitle="Дім"
-					onChange={(e) => {
-						setHouse(e.target.value);
-					}}
-					value={house}
-					onBlur={(e) => setHouseError(blurHandler(e, false, 1, 4))}
-					onInput={(e) => setHouseError(blurHandler(e, false, 1, 4))}
-				>
-					{Object.keys(houseError)[0] && (
-						<Tooltip error={Object.keys(houseError)[0]} className={"bottom"} />
-					)}
-				</Input>
-				<Input
-					// className ={styles.deliveryAdress__lit}
-					className={styles.addressInput}
-					type="text"
-					name="litHouse"
-					id="litHouse"
-					labelTitle="Літера"
-					placeholder=""
-					onChange={(e) => {
-						setLit(e.target.value);
-					}}
-					onClick={(e) => {
-						if (e.target.value == "-") {
-							setLit("");
-						}
-					}}
-					value={lit}
-					onBlur={(e) => setLitError(blurHandler(e, true, 1, 1))}
-					onInput={(e) => setLitError(blurHandler(e, true, 1, 1))}
-				/>
+				<label className={styles.addressInput}>
+					Дім{" "}
+					<span
+						style={{
+							color: "red",
+						}}
+					>
+						*
+					</span>
+					<input
+						type="number"
+						name="house"
+						style={{
+							border: `${errors?.house ? "solid 1px red" : ""}`,
+						}}
+						{...register("house", {
+							required: "Треба заповнити поле",
+							pattern: {
+								value: regNum,
+								message: "Поле має містити лише числа",
+							},
+							minLength: {
+								value: 1,
+								message: "Назва повинна бути не менше 1 символів",
+							},
+							maxLength: {
+								value: 3,
+								message: "Назва повинна бути не більше 3 символів",
+							},
+						})}
+					/>
+				</label>
 
-				<Input
-					className={styles.addressInput + " " + styles.appartment}
-					type="number"
-					name="appartment"
-					id="appartment"
-					labelTitle="Квартира"
-					placeholder=""
-					style={{ color: "transparent" }}
-					onChange={(e) => {
-						setAppartment(e.target.value);
-					}}
-					value={appartment}
-					onBlur={(e) => {
-						setAppartmentError(blurHandler(e, false, 0, 4, true));
-						if (e.target.value != "0") {
-							e.target.style.color = "inherit";
-						}
-						if (e.target.value.length == 0) {
-							e.target.style.color = "transparent";
-							setAppartment("0");
-						}
-					}}
-					onInput={(e) => setAppartmentError(blurHandler(e, false, 0, 4, true))}
-					onClick={({ target }) => {
-						if (target.value == "0") {
-							target.style.color = "inherit";
-							setAppartment("");
-						}
-					}}
-				>
-					{Object.keys(appartmentError)[0] && (
-						<Tooltip
-							error={Object.keys(appartmentError)[0]}
-							className={"bottom"}
-						/>
-					)}
-				</Input>
+				<label className={styles.addressInput}>
+					Літера
+					<input
+						type="text"
+						style={{
+							border: `${errors?.litHouse ? "solid 1px red" : ""}`,
+						}}
+						{...register("litHouse", {
+							pattern: {
+								value: regText,
+								message: "Поле має містити лише літери",
+							},
+							minLength: {
+								value: 1,
+								message: "Назва повинна бути не менше  символів",
+							},
+							maxLength: {
+								value: 1,
+								message: "Назва повинна бути не більше 1 символів",
+							},
+						})}
+					/>
+				</label>
+
+				<label className={styles.addressInput}>
+					Квартира
+					<input
+						type="number"
+						name="appartment"
+						placeholder=""
+						style={{
+							border: `${errors?.appartment ? "solid 1px red" : ""}`,
+						}}
+						{...register("appartment", {
+							pattern: {
+								value: regNum,
+								message: "Поле має містити лише числа",
+							},
+							minLength: {
+								value: 1,
+								message: "Назва повинна бути не менше 1 символів",
+							},
+							maxLength: {
+								value: 4,
+								message: "Назва повинна бути не більше 4 символів",
+							},
+						})}
+					/>
+				</label>
 			</div>
+			<p className={styles.error}>
+				{errors?.appartment || errors?.litHouse || errors?.house
+					? errors?.appartment?.message ||
+					  errors?.litHouse?.message ||
+					  errors?.house?.message
+					: ""}
+			</p>
 		</div>
 	);
 };

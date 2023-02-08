@@ -1,99 +1,118 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import {
 	addError,
-	remooveError,
+	addOrderDeliveryData,
+	removeError,
 } from "../../../store/orderSlice";
-import {  valueValidator } from "../../../utils/validator";
-import { Input } from "../../UA_Components/Input/Input";
-import { Tooltip } from "../../AdditionalComponents/Tooltip/Tooltip";
-// import { input } from '../../UA_Components/Input/Input';
+
 import styles from "./DeliveryPost.module.scss";
+import { useForm } from "react-hook-form";
+import { regNum, regText } from "../../../utils/constValidPatterns";
 
 export const DeliveryPost = ({}) => {
-	const [post, setPost] = useState("");
-	const [cityDelivery, setCityDelivery] = useState("");
-	const [postError, setPostError] = useState({});
-	const [cityDeliveryError, setCityDeliveryError] = useState({});
-	const { itemsInOrder } = useSelector((state) => state.order);
-	const dispatch = useDispatch();
-	useEffect(() => {
-		let errorsObj = {
-			city: true,
-			postNP: true,
-		};
-		dispatch(addError(errorsObj));
-		return () => {
-			dispatch(remooveError(errorsObj));
-		};
-	}, []);
-	const blurHandler = (
-		e,
-		onlyText = true,
-		minValue = 3,
-		maxValue = 40,
-		empty = false,
-	) => {
-		let obj = {};
-		obj = valueValidator(e, onlyText, minValue, maxValue, empty);
-		if (Object.keys(obj)[0]) {
-			dispatch(addError({ [e.target.name]: true }));
-		} else {
-			dispatch(remooveError({ [e.target.name]: false }));
-			dispatch(addOrderDeliveryData( {[e.target.name]:e.target.value}))
+	const {
+		register,
+		watch,
+		formState: { errors, isValid, isValidating },
+	} = useForm({ mode: "all" });
 
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		if (isValid && !isValidating) {
+			dispatch(addOrderDeliveryData(watch()));
+			dispatch(removeError("deliveryPost"));
+		} else {
+			dispatch(addError({ deliveryPost: true }));
 		}
-		return obj;
-	};
+		return () => {
+			const subscription = watch((data) => data);
+			subscription.unsubscribe();
+			dispatch(removeError("deliveryPost"));
+		};
+	}, [isValidating]);
+
 	return (
 		<div className={styles.deliveryPost}>
-			<Input
-			className={styles.city}
-containerClassName={styles.cityContainer}
-				labelTitle="Ваше місто:"
-				type="text"
-				name="city"
-				placeholder="Місто"
-				onChange={(e) => {
-					setCityDelivery(e.target.value);
-				}}
-				value={cityDelivery}
-				onClick={()=>setCityDeliveryError({})}
-
-				onBlur={(e) => setCityDeliveryError(blurHandler(e))}
-				// onInput={(e) => setCityDeliveryError(blurHandler(e))}
-			>
-			{Object.keys(cityDeliveryError)[0] && (
-				<Tooltip
-					error={Object.keys(cityDeliveryError)[0]}
-					className={"right"}
+			<label className={styles.cityContainer}>
+				Ваше місто:
+				<span
+					style={{
+						color: "red",
+					}}
+				>
+					*
+				</span>
+				<input
+					className={styles.city}
+					type="text"
+					name="city"
+					placeholder="Місто"
+					style={{
+						border: `${errors?.city ? "solid 1px red" : ""}`,
+					}}
+					{...register("city", {
+						required: "Треба заповнити поле",
+						pattern: {
+							value: regText,
+							message: "Поле має містити лише літери",
+						},
+						minLength: {
+							value: 3,
+							message: "Назва повинна бути не менше 3 символів",
+						},
+						maxLength: {
+							value: 50,
+							message: "Назва повинна бути не більше 50 символів",
+						},
+					})}
 				/>
-			)}
-			</Input>
+			</label>
+			<p className={styles.error}>
+				{errors?.city ? errors?.city?.message || "Error" : ""}
+			</p>
 
-			<Input
-			className={styles.postN}
-containerClassName={styles.postNContainer}
+			<label className={styles.postNContainer}>
+				Відділення НП{" "}
+				<span
+					style={{
+						color: "red",
+					}}
+				>
+					*
+				</span>
+				<input
+					className={styles.postN}
+					type="number"
+					name="postNP"
+					placeholder="№"
+					onWheel={(e) => e.currentTarget.blur()}
+					style={{
+						border: `${errors?.city ? "solid 1px red" : ""}`,
+					}}
+					{...register("postNP", {
+						required: "Треба заповнити поле",
+						pattern: {
+							value: regNum,
+							message: "Поле має містити лише числа",
+						},
+						valueAsNumber: true,
 
-				id="postNP"
-				type="number"
-				name="postNP"
-				labelTitle="Відділення НП"
-				placeholder="№"
-				onChange={(e) => {
-					setPost(e.target.value);
-				}}
-				value={post}
-				onClick={()=>setPostError({})}
-
-				onBlur={(e) => setPostError(blurHandler(e,false,1))}
-				// onInput={(e) => setPostError(blurHandler(e,false,1))}
-			>
-			{Object.keys(postError)[0] && (
-				<Tooltip error={Object.keys(postError)[0]} className={"bottom"} />
-			)}
-			</Input>
-
+						minLength: {
+							value: 1,
+							message: "Назва повинна бути не менше 1 символів",
+						},
+						maxLength: {
+							value: 3,
+							message: "Назва повинна бути не більше 3 символів",
+						},
+					})}
+				/>
+			</label>
+			<p className={styles.error}>
+				{errors?.postNP ? errors?.postNP?.message || "Error" : ""}
+			</p>
 		</div>
 	);
 };

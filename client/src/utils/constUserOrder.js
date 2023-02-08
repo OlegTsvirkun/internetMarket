@@ -1,5 +1,5 @@
 export const statusColor = {
-	RIGISTERED: "red",
+	REGISTERED: "red",
 	"AWAITING PAYMENT": "orange",
 	PAID: "green",
 	CONFIRMED: "deepskyblue",

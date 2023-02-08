@@ -3,7 +3,9 @@ const Schema = mongoose.Schema
 
 const OrderSchema = new Schema({
     userId:{
-        type: String,
+        // type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'AuthUser',
         required: false,
     },
     userContacts:{

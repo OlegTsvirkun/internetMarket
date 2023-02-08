@@ -10,7 +10,6 @@ import { HiOutlineOfficeBuilding } from "react-icons/hi";
 import { addOrderDeliveryData } from "../../../store/orderSlice";
 import styles from "./DeliverySelf.module.scss";
 
-
 export const DeliverySelf = ({}) => {
 	const dispatch = useDispatch();
 	const [checkedId, setCheckedId] = useState();
@@ -26,9 +25,6 @@ export const DeliverySelf = ({}) => {
 	const { mainContacts, secondaryContacts } = useSelector(
 		(state) => state.contacts,
 	);
-
-	// console.log(contacts);
-	// console.log(checkedId);
 
 	useEffect(() => {
 		setContacts([mainContacts, ...secondaryContacts]);
@@ -50,7 +46,6 @@ export const DeliverySelf = ({}) => {
 		}
 	}, [contacts]);
 
-	// console.log(currentOffice);
 	if (!contacts[0])
 		return (
 			<ContentWrapper className={styles.containerLoader}>

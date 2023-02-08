@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { createNewGood } from "../../../store/adminSlice";
 
 export const CreateGood_ = ({}) => {
-	const dispatch = useDispatch();
+	const dispatch = useDispatch(); 
 	const {
 		register,
 		getValues,
@@ -92,7 +92,7 @@ export const CreateGood_ = ({}) => {
 								className={styles.name}
 								placeholder="Назва товару"
 							/>
-						</label>
+						</label>0
 
 						<p className={styles.error}>
 							{errors?.name ? errors?.name?.message || "Error" : ""}

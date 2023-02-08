@@ -1,144 +1,237 @@
-import React, { useEffect, useState } from "react";
-import { Button } from "../../UA_Components/Button";
-import { Link } from "react-router-dom";
-
-import debounce from "lodash.debounce";
-import styles from "./OrderContacts.module.scss";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	addError,
-	addField,
-	addOrderData,
 	addOrderUserData,
-	remooveError,
+	removeError,
 } from "../../../store/orderSlice";
-import { valueValidator } from "../../../utils/validator";
-import { Tooltip } from "../../AdditionalComponents/Tooltip/Tooltip";
-import { Input } from "../../UA_Components/Input/Input";
-import { useCallback } from "react";
+import { regEmail, regTel, regText } from "../../../utils/constValidPatterns";
+import { useForm } from "react-hook-form";
+import { getUserInfo } from "../../../store/userSlice";
+import userServices from "../../../store/services/userService";
+import { useDebounce } from "../../../hooks/useDebounce";
+import styles from "./OrderContacts.module.scss";
 
 export const OrderContacts = ({ className }) => {
-	const [firstName, setFirstName] = useState("");
-	const [name, setName] = useState("");
-	const [tel, setTel] = useState("");
-	const [email, setEmail] = useState("");
+	const { isAuth, email, info } = useSelector((state) => state.user);
+	const [isUserReg, setisUserReg] = useState(false);
+	const {
+		register,
+		watch,
+		setValue,
+		getValues,
+		setError,
+		setFocus,
 
-	const [firstNameError, setFirstNameError] = useState({});
-	const [nameError, setNameError] = useState({});
-	const [telError, setTelError] = useState({});
-	const [emailError, setEmailError] = useState({});
+		formState: { errors, isValid, isValidating },
+	} = useForm({ mode: "all", criteriaMode: "all" });
 
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		let errorsObj = {
-			firstname: true,
-			name: true,
-			tel: true,
-			email: true,
-		};
-		dispatch(addError(errorsObj));
-		return () => {
-			dispatch(remooveError(errorsObj));
-		};
-	}, []);
-
-	const blurHandler =  (
-		e,
-		onlyText = true,
-		minValue = 3,
-		maxValue = 40,
-		empty = false,
-	) => {
-		let obj = {};
-
-		obj = valueValidator(e, onlyText, minValue, maxValue, empty);
-
-		if (Object.keys(obj)[0]) {
-			dispatch(addError({ [e.target.name]: true }));
-		} else {
-			dispatch(remooveError({ [e.target.name]: false }));
-			dispatch(addOrderUserData({ [e.target.name]: e.target.value }));
+		if (isAuth) dispatch(getUserInfo());
+	}, [isAuth]);
+	useEffect(() => {
+		if (isAuth) {
+			setValue("email", email || "");
+			setValue("firstname", info?.firstname || "");
+			setValue("name", info?.name || "");
+			setValue("tel", info?.tel || "");
+			setFocus("firstname");
 		}
-		return obj;
-	};
 
+		return () => {};
+	}, [info, email, isAuth]);
+
+	useEffect(() => {
+		if (!Object.keys(errors)[0] && !isValidating && isValid) {
+			dispatch(addOrderUserData(watch()));
+			dispatch(removeError("user"));
+		} else if (isUserReg) dispatch(addError({ user: true }));
+		else dispatch(addError({ user: true }));
+		return () => {
+			const subscription = watch((data) => data);
+			subscription.unsubscribe();
+			dispatch(removeError("user"));
+		};
+	}, [isValidating, setValue, watch, errors, isUserReg]);
+
+	const debounceEmail = useDebounce(getValues("email"), 1200);
+
+	const onChange = useMemo(async () => {
+		if (errors?.email?.type || isAuth) return;
+		else {
+			await userServices
+				.isUserRegistered(debounceEmail)
+				.then((res) => {
+					if (res.isUserRegistered == true) {
+						setisUserReg(true);
+						setError("email", {
+							types: "custom",
+							message: res?.message,
+						});
+					} else setisUserReg(false);
+				})
+				.catch((err) => console.log(err));
+		}
+	}, [debounceEmail, isAuth]);
+	
+	const onBlur = async (e) => {
+		if (errors?.email?.type || isAuth) return;
+		else {
+			await userServices
+				.isUserRegistered(e.target.value)
+				.then((res) => {
+					if (res.isUserRegistered == true) {
+						setisUserReg(true);
+						setError("email", {
+							types: "custom",
+							message: res?.message,
+						});
+					} else setisUserReg(false);
+				})
+				.catch((err) => console.log(err));
+		}
+	};
 	return (
 		<div className={`${styles.orderContacts} ${className}`}>
-			<h3>Заповніть Ваші контактні дані</h3>{" "}
+			<h3 className={styles.title}>Заповніть Ваші контактні дані </h3>{" "}
 			<div className={styles.contacts}>
-				<Input
-					type="text"
-					name="firstname"
-					labelTitle="Ваше прізвище"
-					placeholder="Прізвище"
-					onChange={(e) => {
-						setFirstName(e.target.value);
-					}}
-					value={firstName}
-					onClick={()=>setFirstNameError({})}
-					onBlur={(e) => setFirstNameError(blurHandler(e))}
-					// onInput={(e) => setFirstNameError(blurHandler(e))}
-				>
-					{Object.keys(firstNameError)[0] && (
-						<Tooltip
-							error={Object.keys(firstNameError)[0]}
-							className={"right"}
-						/>
-					)}
-				</Input>
-				<Input
-					type="text"
-					name="name"
-					labelTitle="Ваше ім'я"
-					placeholder="Ім'я"
-					onChange={(e) => {
-						setName(e.target.value);
-					}}
-					value={name}
-					onClick={()=>setNameError({})}
-					onBlur={(e) => setNameError(blurHandler(e))}
-					// onInput={(e) => setNameError(blurHandler(e))}
-				>
-					{Object.keys(nameError)[0] && (
-						<Tooltip error={Object.keys(nameError)[0]} className={"right"} />
-					)}
-				</Input>
-				<Input
-					type="tel"
-					name="tel"
-					placeholder="Телефон"
-					labelTitle="Ваш телефон"
-					onChange={(e) => {
-						setTel(e.target.value);
-					}}
-					value={tel}
-					onClick={()=>setTelError({})}
-					onBlur={(e) => setTelError(blurHandler(e))}
-					// onInput={(e) => setTelError(blurHandler(e))}
-				>
-					{Object.keys(telError)[0] && (
-						<Tooltip error={Object.keys(telError)[0]} className={"right"} />
-					)}
-				</Input>
-				<Input
-					type="email"
-					name="email"
-					placeholder="example@mail.com"
-					labelTitle="Ваш email"
-					onChange={(e) => {
-						setEmail(e.target.value);
-					}}
-					value={email}
-					onClick={()=>setEmailError({})}
-
-					onBlur={(e) => setEmailError(blurHandler(e))}
-					// onInput={(e) => setEmailError(blurHandler(e))}
-				>
-					{Object.keys(emailError)[0] && (
-						<Tooltip error={Object.keys(emailError)[0]} className={"right"} />
-					)}
-				</Input>
+				<label>
+					Прізвище{" "}
+					<span
+						style={{
+							color: "red",
+						}}
+					>
+						*
+					</span>
+					<input
+						style={{
+							border: `${errors?.firstname ? "solid 1px red" : ""}`,
+						}}
+						{...register("firstname", {
+							required: "Треба заповнити поле",
+							pattern: {
+								value: regText,
+								message: "Поле має містити лише літери",
+							},
+							minLength: {
+								value: 3,
+								message: "Назва повинна бути не менше 3 символів",
+							},
+							maxLength: {
+								value: 50,
+								message: "Назва повинна бути не більше 50 символів",
+							},
+						})}
+						placeholder="Прізвище"
+					/>
+				</label>
+				<p className={styles.error}>
+					{errors?.firstname ? errors?.firstname?.message || "Error" : ""}
+				</p>
+				<label>
+					Ім'я{" "}
+					<span
+						style={{
+							color: "red",
+						}}
+					>
+						*
+					</span>
+					<input
+						style={{
+							border: `${errors?.name ? "solid 1px red" : ""}`,
+						}}
+						placeholder="Ім'я"
+						{...register("name", {
+							pattern: {
+								value: regText,
+								message: "Поле має містити лише літери",
+							},
+							required: "Треба заповнити поле",
+							minLength: {
+								value: 3,
+								message: "Назва повинна бути не менше 3 символів",
+							},
+							maxLength: {
+								value: 50,
+								message: "Назва повинна бути не більше 50 символів",
+							},
+						})}
+					/>
+				</label>
+				<p className={styles.error}>
+					{errors?.name ? errors?.name?.message || "Error" : ""}
+				</p>
+				<label>
+					Телефон{" "}
+					<span
+						style={{
+							color: "red",
+						}}
+					>
+						*
+					</span>
+					<input
+						style={{
+							border: `${errors?.tel ? "solid 1px red" : ""}`,
+						}}
+						type="tel"
+						placeholder="Телефон"
+						{...register("tel", {
+							// onBlur:(e)=>{ !isAuth && isUserRegistered(e)},
+							pattern: {
+								value: regTel,
+								message: "Введіть телефон у фоматі: +380123456789",
+							},
+							required: "Треба заповнити поле",
+						})}
+					/>
+				</label>
+				<p className={styles.error}>
+					{errors?.tel ? errors?.tel?.message : ""}
+				</p>
+				<label>
+					email{" "}
+					<span
+						style={{
+							color: "red",
+						}}
+					>
+						*
+					</span>
+					<input
+						style={{
+							border: `${errors?.email ? "solid 1px red" : ""}`,
+						}}
+						type="email"
+						placeholder="example@mail.com"
+						{...register("email", {
+							onBlur: (e) => {
+								isAuth ? onBlur(e) : null;
+							},
+							onChange: () => {
+								!isAuth ? onChange : null;
+							},
+							pattern: {
+								value: regEmail,
+								message: "Некоректний e-mail",
+							},
+							required: "Треба заповнити поле",
+							minLength: {
+								value: 5,
+								message: "Назва повинна бути не менше 3 символів",
+							},
+							maxLength: {
+								value: 50,
+								message: "Назва повинна бути не більше 50 символів",
+							},
+						})}
+					/>
+				</label>
+				<p className={styles.error}>{errors?.email?.message}</p>
 			</div>
 		</div>
 	);
