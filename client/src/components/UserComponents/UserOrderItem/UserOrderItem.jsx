@@ -1,6 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { GOOD_ROUTE } from "../../../utils/constRoutes";
 import {
 	deliveryKeys,
 	officeKeys,
