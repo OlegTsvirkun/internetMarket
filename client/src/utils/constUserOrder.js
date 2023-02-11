@@ -27,7 +27,7 @@ export const deliveryKeys = {
 	litHouse: "Літера",
 	appartment: "Квартира",
 	postNP: "Нова Пошта",
-	// office:"Відділення",
+	office:"Відділення",
 };
 export const officeKeys = {
 	address: "Адреса",

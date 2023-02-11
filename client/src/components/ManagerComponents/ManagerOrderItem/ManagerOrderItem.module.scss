@@ -2,10 +2,9 @@
     width: 100%;
     display: grid;
     grid-template-columns: 2fr 1fr;
-    
+    text-align: start;
 }
 .containerOrderItem{
-    // flex: 1 1 60%;
     width: 100%;
 }
 .selectStatus{
