@@ -95,6 +95,7 @@ h6 {
   --white-grey-transparent: rgba(148, 163, 184, 0.3);
   --orange-hover: rgb(255, 186, 58);
   --orange-transparent: rgba(255, 166, 0, 0.3);
+  --gold-transparent: rgba(255, 217, 0, 0.5);
 }
 .Skeleton {
   display: flex;

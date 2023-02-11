@@ -18,4 +18,8 @@ export const USER_CABINET_ROUTE = "/user/cabinet/"
 export const USER_ORDERS_ROUTE = "orders"
 export const USER_CONFIGS_ROUTE = "configs"
 
+export const MANAGER_ROUTE = "/manager/"
+export const MANAGER_ORDER_ROUTE = "/manager/order"
+export const MANAGER_LIST_ROUTE = "list"
+
 

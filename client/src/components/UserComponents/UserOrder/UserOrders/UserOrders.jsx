@@ -3,15 +3,14 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FailPage } from "../../../../pages/FailPage/Failpage";
 import { clearOrderData, getUserOrder } from "../../../../store/userCabinetSlice";
-import { priceFormating } from "../../../../utils/priceFormating";
 import { Spinner } from "../../../UA_Components/Spinner/Spinner";
-import { UserOrderItem } from "../../UserOrderItem/UserOrderItem";
+import { UserOrderItem } from "../UserOrderItem/";
 import styles from "./UserOrders.module.scss";
 
 export const UserOrders = ({}) => {
 	const dispatch = useDispatch();
 	const { email } = useSelector((state) => state.user);
-	const { orderData, isLoading, isError } = useSelector(
+	const { orderData, isLoading } = useSelector(
 		(state) => state.userCabinet,
 	);
 
@@ -31,7 +30,7 @@ export const UserOrders = ({}) => {
 			Object.values(orderData).map((order,index) => {
 				if (typeof order === "object")
 					return (
-              <UserOrderItem  key={order.orderId} order={order} index = {index}/>
+              <UserOrderItem  key={order.orderId+''+index} order={order} index = {index}/>
            
 					);
 			})}

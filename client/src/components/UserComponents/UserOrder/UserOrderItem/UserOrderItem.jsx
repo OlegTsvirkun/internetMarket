@@ -3,21 +3,22 @@ import {
 	deliveryKeys,
 	officeKeys,
 	statusColor,
-} from "../../../utils/constUserOrder";
-import { priceFormating } from "../../../utils/priceFormating";
-import { ScheduleList } from "../../AdditionalComponents/ScheduleList/ScheduleList";
-import { TelList } from "../../AdditionalComponents/TelList/TelList";
-import { GoodListUserOrder } from "../UserOrder/GoodListUserOrder";
+	statusTranslate,
+} from "../../../../utils/constUserOrder";
+import { priceFormating } from "../../../../utils/priceFormating";
+import { ScheduleList } from "../../../AdditionalComponents/ScheduleList/ScheduleList";
+import { TelList } from "../../../AdditionalComponents/TelList/TelList";
+import { GoodListUserOrder } from "../GoodListUserOrder";
 import styles from "./UserOrderItem.module.scss";
 
-export const UserOrderItem = ({ order, index }) => {
+export const UserOrderItem = ({ order, index,containerClassName }) => {
 	return (
-		<details className={styles.userOrderItem } open={index == 0 ? true : false}>
+		<details className={`${styles.userOrderItem } `} open={index == 0 ? true : false}>
 			<summary   >
 				<span className={styles.summary} >
 					Заказ № <span className={styles.title}>{order.orderId}</span> від:{" "}
 					<span className={styles.title}>
-						{order.createdAt.split("T").slice(0, 1)}
+						{order?.createdAt.split("T").slice(0, 1)}
 					</span>{" "}
 					СТАТУС:{" "}
 					<span
@@ -26,11 +27,11 @@ export const UserOrderItem = ({ order, index }) => {
 						}}
 						className={styles.statusItem}
 					>
-						{order.status}
+						{statusTranslate[order.status]}
 					</span>{" "}
 				</span>
 			</summary>
-			<div className={styles.userOrdersTable}>
+			<div className={`${styles.userOrdersTable } ${containerClassName}`}>
 				<header className={styles.header}>
 					<div className={styles.headerEl}>Заказ номер: {order.orderId}</div>
 					<div className={styles.headerEl}>
@@ -41,18 +42,9 @@ export const UserOrderItem = ({ order, index }) => {
 					</div>
 				</header>
 				<main className={styles.main}>
+					
 					<section className={styles.orderInfo}>
-						<div className={styles.status}>
-							Статус:
-							<span
-								style={{
-									backgroundColor: `${statusColor[order.status]}`,
-								}}
-								className={styles.statusItem}
-							>
-								{order.status}
-							</span>
-						</div>
+						
 						<div className={styles.statusUpdated}>
 							Статус оновлено:{" "}
 							{order.updatedAt.split("T").slice(0, 1) +
@@ -60,7 +52,14 @@ export const UserOrderItem = ({ order, index }) => {
 								order.updatedAt.split(/[T\.]/).slice(1, 2)}
 						</div>
 					</section>
-
+					<section className={styles.userInfo}>
+						<div className={styles.title}>Замовник:</div>
+						<div>{`${order.userContacts.name} ${order.userContacts.firstname}` }</div>
+						<div className={styles.userContacts}>
+							<a href={`tel:${order.userContacts.tel}`} className={styles.tel}>Телефон: {`${order.userContacts.tel}`}</a>
+							<a href={`email:${order.userContacts.tel}`} className={styles.email}>email: {`${order.userContacts.email}`}</a>
+						</div>
+					</section>
 					<div className={styles.listTitile}>Список товарів:</div>
 					{order?.goods && <GoodListUserOrder goods={order.goods} />}
 				</main>
@@ -71,7 +70,6 @@ export const UserOrderItem = ({ order, index }) => {
 				<footer className={styles.footer}>
 					<section className={styles.delivery}>
 						{Object.keys(order.delivery).map((key) => {
-							// return <p>{order.delivery[key]}</p>
 							if (deliveryKeys[key]) {
 								if (
 									order.delivery[key] &&

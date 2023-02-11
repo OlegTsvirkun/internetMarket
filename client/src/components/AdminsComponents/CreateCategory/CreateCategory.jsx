@@ -1,173 +1,134 @@
-import React, { useCallback, useRef } from "react";
+import React, { useCallback } from "react";
 import { useState } from "react";
-import { Input } from "../../UA_Components/Input/Input";
 import { Button } from "../../UA_Components/Button/Button";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-	addAdminError,
-	addFields,
-	removeAdminError,
-	createNewCategory,
-	clearFields,
-	addNewCategoryFields,
-} from "../../../store/adminSlice";
-import { valueValidator } from "../../../utils/validator";
+import { createNewCategory } from "../../../store/adminSlice";
+import { useForm } from "react-hook-form";
 import { ModalAlert } from "../../AdditionalComponents/ModalAlert/ModalAlert";
 import styles from "./CreateCategory.module.scss";
 
 export const CreateCategory = ({}) => {
-	const [category, setCategory] = useState("");
-	const [picture, setPicture] = useState(null);
-	const [description, setDescription] = useState("");
-	const [descriptionError, setDescriptionError] = useState("");
-	const [showErr, setIsShowErr] = useState(false);
-
-	const [categoryError, setCategoryError] = useState("");
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const pic = useRef();
-	const filled = useRef(false);
 	const dispatch = useDispatch();
-	const { createCategory } = useSelector((state) => state.admin.fields);
-	const { isError, errMessage, errors, message, isLoading } = useSelector(
+	const { isError, errMessage, message, isLoading } = useSelector(
 		(state) => state.admin,
 	);
 
-	useEffect(() => {
-		const errors = {
-			category: true,
-			description: false,
-		};
-		const data = {
-			category: category,
-			description: description,
-		};
-		if (Object.keys(createCategory)[0]) {
-			setCategory(createCategory?.category || "");
-			setDescription(createCategory?.description || "");
-		} else {
-			dispatch(addFields({ createCategory: data }));
-			dispatch(addAdminError(errors));
-		}
-	}, []);
+	const {
+		register,
+		getValues,
+		reset,
+		formState: { errors, isValid, defaultValues },
+	} = useForm({ mode: "onBlur" });
 
-	const handlePicture = (e) => {
-		setPicture(e.target.files[0]);
-		if (category && description) filled.current = true;
-		else filled.current = false;
-	};
+	// useEffect(() => {
+	// 	const errors = {
+	// 		category: true,
+	// 		description: false,
+	// 	};
+	// 	const data = {
+	// 		category: category,
+	// 		description: description,
+	// 	};
+	// 	if (Object.keys(createCategory)[0]) {
+	// 		setCategory(createCategory?.category || "");
+	// 		setDescription(createCategory?.description || "");
+	// 	} else {
+	// 		dispatch(addFields({ createCategory: data }));
+	// 		dispatch(addAdminError(errors));
+	// 	}
+	// }, []);
 
-	const blurHandler = useCallback(
-		(e, onlyText = true, minValue = 3, maxValue = 40, empty = false) => {
-			setIsShowErr(false);
-			let obj = {};
-			// console.log(checkbox.current);
-			obj = valueValidator(e, onlyText, minValue, maxValue, empty);
-			if (Object.keys(obj)[0]) {
-				dispatch(addAdminError({ [e.target.name]: true }));
-			} else {
-				dispatch(removeAdminError({ [e.target.name]: false }));
-				dispatch(addNewCategoryFields({ [e.target.name]: e.target.value }));
-			}
-			category && description && picture
-				? (filled.current = true)
-				: (filled.current = false);
-			return obj;
-		},
-		[category, description, picture],
-	);
-
-	const handleCreateCategory = useCallback(
+	const handleCreate = useCallback(
 		async (e) => {
 			e.preventDefault();
-			if (Object.keys(errors)[0]) {
-				return setIsShowErr(true);
-			}
 			const formData = new FormData();
-			formData.append("category", category);
-			formData.append("description", description);
-			formData.append("picture", picture);
+			formData.append("category", getValues("category"));
+			formData.append("description", getValues("description"));
+			formData.append("picture", getValues("picture")[0]);
 
 			await dispatch(createNewCategory(formData)).then((res) => {
 				setIsModalOpen(true);
 				if (!res.error) {
-					setCategory("");
-					setDescription("");
-					dispatch(clearFields({ createCategory: {} }));
-					pic.current.value = "";
+					reset();
 				}
 			});
 		},
-		[category, description, picture],
+		[getValues],
 	);
+
 	return (
 		<div className={styles.createCategory}>
 			<h1 className={styles.title}>Нова категорія</h1>
-			<form
-			>
+			<form>
 				<div className={styles.container}>
 					<div className={styles.containerInputs}>
-						<Input
-							labelTitle={Object.keys(categoryError)[0] && showErr ? 
-								<span>Введіть назву <span style={{color: "red"}}>{Object.keys(categoryError)[0]}</span></span>
-								:"Введіть назву"
-							}
-							// labelTitle="Введіть назву"
-							style={{border:`${Object.keys(categoryError)[0] &&showErr&& "2px solid red"}`}}
-							className={styles.input}
-							name="category"
-							type="text"
-							placeholder="Назва категорії"
-							value={category}
-							onClick={() => setCategoryError({})}
-							onChange={(e) => setCategory(e.target.value)}
-							onBlur={(e) =>
-								setCategoryError(blurHandler(e, true, 3, 25, false))
-							}
-							onInput={(e) =>
-								setCategoryError(blurHandler(e, true, 3, 25, false))
-							}
-						>
-						
-						</Input>
-						<label style ={{color:`${!picture && showErr ?"red": ""}`}} className={styles.pictureInput}>
-							Виберіть зображення
+						<label>
+							Введіть назву
 							<input
-								ref={pic}
-								onChange={(e) => handlePicture(e)}
-								name="picture"
-								type="file"
+								{...register("category", {
+									required: "Треба заповнити поле",
+									minLength: {
+										value: 3,
+										message: "Назва повинна бути не менше 3 символів",
+									},
+									maxLength: {
+										value: 25,
+										message: "Назва повинна бути не більше 25 символів",
+									},
+								})}
+								className={styles.input}
+								placeholder="Назва категорії"
 							/>
 						</label>
+						<p className={styles.error}>
+							{errors?.category ? errors?.category?.message || "Error" : ""}
+						</p>
+
+						<label>
+							Виберіть основне зображення
+							<input
+								{...register("picture", {
+									required: "Треба вибрати зображення",
+								})}
+								id="pictureCreateGood"
+								type="file"
+								multiple={false}
+								accept="image/*"
+							/>
+						</label>
+						<p className={styles.error}>
+							{errors?.picture ? errors?.picture?.message || "Error" : ""}
+						</p>
 					</div>
-					<img className={styles.img} src={null} alt="" />
+					{/* <img className={styles.img} src={null} alt="" /> */}
 				</div>
+				<p className={styles.error}>
+					{errors?.description ? errors?.description?.message || "Error" : ""}
+				</p>
 				<label className={styles.description}>
-					{" "}
-					Опис: {Object.keys(descriptionError)[0] && showErr && (
-						<span style={{color: "red"}}>{Object.keys(descriptionError)[0]}</span>
-					)}
+					Опис категорії
 					<textarea
-						onClick={() => setDescriptionError({})}
-						style ={{border:`${Object.keys(descriptionError)[0] && showErr ?"solid 2px red": ""}`}}
-						value={description}
-						name="description"
+						{...register("description", {
+							required: "Треба заповнити поле",
+							minLength: {
+								value: 10,
+								message: "Опис категоріі повинен бути не менше 10 символів",
+							},
+							maxLength: {
+								value: 3000,
+								message: "Опис категоріі повинен бути не більше 3000 символів",
+							},
+						})}
 						placeholder="Опис категорії"
-						onChange={(e) => setDescription(e.target.value)}
-						onInput={(e) => {
-							setDescriptionError(blurHandler(e, false, 20, 300, false));
-						}}
-						onBlur={(e) =>
-							setDescriptionError(blurHandler(e, false, 20, 300, false))
-						}
 					/>
-				
 				</label>
 			</form>
 			<div className={styles.confirm}>
-				{filled.current && (
-					<Button onClick={handleCreateCategory}>Створити категорію</Button>
-				)}
+				<Button onClick={handleCreate} isDisableButton={!isValid}>
+					Створити категорію
+				</Button>
 			</div>
 			{isModalOpen &&
 				(isError ? (

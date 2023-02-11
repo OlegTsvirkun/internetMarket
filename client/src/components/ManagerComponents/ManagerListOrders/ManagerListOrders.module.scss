@@ -1,0 +1,26 @@
+.managerListOrders{
+    
+}
+ .orderItem:hover{}
+.orderItem:hover{
+    text-decoration: underline;
+    li{
+        
+        border-bottom: none;
+        color: var(--white-grey);
+    }
+    
+    
+}
+
+.orderItem{
+    margin: 10px ;
+    li{
+        color: var(--black-grey);
+
+        line-height: 1.3;
+        height: 100%;
+        border-bottom: 1px solid var(--grey);
+
+    }
+}

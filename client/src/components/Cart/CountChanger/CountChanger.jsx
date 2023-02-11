@@ -14,7 +14,7 @@ export const CountChanger = ({ count, articul, cart }) => {
 		return item === articul;
 	});
 	const handleDecrement = () => {
-		if (count >= 1) dispatch(decrementGood(articul));
+		if (count-1 >0) dispatch(decrementGood(articul));
 		else {
 			if (isItemImBasket) {
 				let objRemoved = Object.keys(cart).reduce((acc, item) => {

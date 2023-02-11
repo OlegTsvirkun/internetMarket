@@ -1,34 +1,80 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { BsCart, BsApple } from "react-icons/bs";
+import {  BsApple } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	ADMIN_ROUTE,
 	LOGIN_ROUTE,
 	MAIN_ROUTE,
+	MANAGER_ROUTE,
 	REGISTRATION_ROUTE,
 } from "../../../utils/constRoutes";
 import { changeAuth } from "../../../store/userSlice";
 import { ContentWrapper } from "../../UA_Components/ContentWrapper/ContentWrapper";
-import { Button } from "../../UA_Components/Button/Button";
 import styles from "./Header.module.scss";
-import { UserButton } from "../../UserComponents/UserButton/UserButton";
 import { UserMenu } from "../../UserComponents/UserMenu/UserMenu";
 import { useState } from "react";
 
 export const Header = ({}) => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	
-const [isUserMenu, setIsUserMenu] = useState(false);
+
+	const [isUserMenu, setIsUserMenu] = useState(false);
 	const location = useLocation();
 	const isLogin = location.pathname === LOGIN_ROUTE;
-	const { isAuth, role, isLoading } = useSelector((state) => state.user);
+	const { isAuth, role } = useSelector((state) => state.user);
 	const logOut = () => {
 		dispatch(changeAuth(false));
-		setIsUserMenu(false)
+		setIsUserMenu(false);
 		navigate(MAIN_ROUTE);
 	};
+	const AuthBtn = () => {
+		return !isLogin ? (
+			<Link to={LOGIN_ROUTE} className={styles.headerBtn}>
+				Авторизація
+			</Link>
+		) : (
+			<Link to={REGISTRATION_ROUTE} className={styles.headerBtn} >
+					Реєєстрація
+			</Link>
+		);
+	};
+	const Menu = () => {
+		return (
+			<div
+				onClick={() => setIsUserMenu(!isUserMenu)}
+				className={`${styles.headerBtn} ${styles.userCabinet}`}
+			>
+				MENU
+				{isUserMenu && (
+					<UserMenu
+						onClick={() => setIsUserMenu(false)}
+						logOutClick={logOut}
+						className={styles.userMenu}
+					/>
+				)}
+			</div>
+		);
+	};
+	const roleBtn = () =>{
+		return(
+			<div className={styles.buttonContainer}>
+				{role.includes("ADMIN") && (
+					<Link to={ADMIN_ROUTE}>
+						<div className={styles.headerBtn}>Адмін Панель</div>
+					</Link>
+				)}
+				{role.includes("MANAGER") && (
+					<Link to={MANAGER_ROUTE}>
+						<div className={styles.headerBtn}>Панель Менеджера</div>
+					</Link>
+				)}
+				{role.includes("USER") && (
+					Menu()
+				)}
+			</div>
+		)
+	}
 	return (
 		<div className={styles.header}>
 			<ContentWrapper className={styles.headerContainer}>
@@ -40,58 +86,14 @@ const [isUserMenu, setIsUserMenu] = useState(false);
 				<Link to="/" className={styles.item}>
 					<span className={styles.title}> MyApple Store</span>
 				</Link>
-				<div>{isAuth &&
-							<div className={styles.buttonContainer}>
-								{role.includes("ADMIN") && (
-									<Link to={ADMIN_ROUTE}>
-										<Button className={styles.adminBtn}>
-											Адмін Панель
-										</Button>
-									</Link>)}
-								</div>
-									}
-									</div>
+				<div>
+					{isAuth && roleBtn()}
+				</div>
 				{
-					<div className={styles.auth}>
-						{isAuth ? (
-							<div className={styles.buttonContainer}>
-								{/* {role.includes("ADMIN") && (
-									<Link to={ADMIN_ROUTE}>
-										<Button className={styles.adminBtn}>
-											Адмін Панель
-										</Button>
-									</Link>
-								)} */}
-								{/* <Link to="/">
-									<Button className={styles.adminBtn} onClick={logOut}>
-										Вийти
-									</Button>
-								</Link> */}
-								<div className={styles.userCabinetBtn} >
-									<UserButton onClick={()=>setIsUserMenu(!isUserMenu)}/> 
-								{isUserMenu && <UserMenu onClick={()=>setIsUserMenu(false)} logOutClick={logOut} className={styles.userMenu}/>}
-								</div>
-							</div>
-						) : !isLogin ? (
-							<Link to={LOGIN_ROUTE}>
-								<Button
-									className={styles.adminBtn}
-									onClick={() => navigate(LOGIN_ROUTE)}
-								>
-									Авторизація
-								</Button>
-							</Link>
-						) : (
-							<Link to={REGISTRATION_ROUTE}>
-								<Button
-									className={styles.adminBtn}
-									onClick={() => navigate(LOGIN_ROUTE)}
-								>
-									Реєєстрація
-								</Button>
-							</Link>
-						)}
-					</div>
+				isAuth
+				?
+					<div className={styles.headerBtn} onClick={logOut} >ВИЙТИ</div>
+				:  AuthBtn() 
 				}
 			</ContentWrapper>
 		</div>

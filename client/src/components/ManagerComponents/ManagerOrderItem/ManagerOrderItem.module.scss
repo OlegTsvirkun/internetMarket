@@ -1,0 +1,21 @@
+.managerOrderItem{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    
+}
+.containerOrderItem{
+    // flex: 1 1 60%;
+    width: 100%;
+}
+.selectStatus{
+border: 1px solid var(--black-grey);
+padding: 3px;
+margin: 20px 0px,
+
+}
+.statusSide{
+padding: 10px 20px;
+display: flex;
+flex-direction: column;
+}

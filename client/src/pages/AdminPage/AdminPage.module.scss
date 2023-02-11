@@ -1,23 +1,29 @@
 .adminPage{
     display: flex;
  
-    
+   
 }
 .buttonContainer{
-   flex: 0 0 25%;
+   flex: 0 0 250px;
    display: flex;
    flex-direction: column;
    align-items: flex-start;
    margin: 0 20px 0 0;
    border-right: 1px solid var(--grey-transparent);
-    
+   a.active{
+    text-decoration: none;
+    color: var(--blue);
 }
-
+}
+.button.active{
+    background-color:var(--orange-hover);
+   
+}
 .button{
-    margin:0 0 20px 0;
-    width: 200px;
-}
-.button {
+    // height: 30px;
+    padding: 10px;
+    width: 100%;
+    border-bottom: 1px solid var(--grey-transparent);
 }
 .spinner{
    display: flex;
@@ -27,6 +33,5 @@
    width: calc(100vh - 180px);
    svg{
           margin: 50% 0;
-    // transform: translateY(50%);
    }
 }

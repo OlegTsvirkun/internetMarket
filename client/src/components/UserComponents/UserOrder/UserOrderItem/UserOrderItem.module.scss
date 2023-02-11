@@ -1,6 +1,9 @@
 .userOrderItem{
     margin: 10px 0;
 }
+summary{
+    cursor: pointer;
+}
 .summary{
     padding: 0 5px;
     background-color: var(--white-grey-transparent);
@@ -9,7 +12,7 @@
 }
 .userOrdersTable{
     border:1px solid var(--black-grey);
-    width:50%;
+    // width:50%; //!
     margin-top: 10px;
 }
 .header{
@@ -23,7 +26,22 @@ padding: 5px 0;
 .headerEl{
 margin: 0 5px;
 }
-
+.userInfo{
+margin: 0 5px;
+font-size: 16px;
+}
+.tel:hover,.email:hover{
+    text-decoration: underline;
+    color:var(--blue)
+}
+.tel,.email{
+    margin-right: 40px;
+}
+.userContacts{
+display: flex;
+justify-content: start;
+padding: 5px 0;
+}
 .orderInfo{
     font-size: 14px;
     font-weight: 600;

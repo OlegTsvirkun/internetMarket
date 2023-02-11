@@ -7,15 +7,14 @@ import { ModalAlert } from "../../AdditionalComponents/ModalAlert/ModalAlert";
 import { useForm } from "react-hook-form";
 import { createNewGood } from "../../../store/adminSlice";
 
-export const CreateGood_ = ({}) => {
-	const dispatch = useDispatch(); 
+export const CreateGood = ({}) => {
+	const dispatch = useDispatch();
 	const {
 		register,
 		getValues,
 		reset,
 		formState: { errors, isValid, defaultValues },
 	} = useForm({ mode: "onBlur" });
-	console.log();
 
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -25,9 +24,6 @@ export const CreateGood_ = ({}) => {
 	const { isError, errMessage, message, isLoading } = useSelector(
 		(state) => state.admin,
 	);
-
-	// const pictureCreate = document.getElementById("pictureCreateGood");
-	// const imageCreate = document.getElementById("imagesCreateGood");
 	//! getMAin
 	useEffect(() => {
 		dispatch(getMain);
@@ -60,7 +56,7 @@ export const CreateGood_ = ({}) => {
 	return (
 		<div className={styles.createGood}>
 			<h1 className={styles.title}>Новий товар</h1>
-			<form >
+			<form>
 				<div className={styles.container}>
 					<div className={styles.containerInputs}>
 						<label>
@@ -92,7 +88,7 @@ export const CreateGood_ = ({}) => {
 								className={styles.name}
 								placeholder="Назва товару"
 							/>
-						</label>0
+						</label>
 
 						<p className={styles.error}>
 							{errors?.name ? errors?.name?.message || "Error" : ""}
@@ -178,20 +174,20 @@ export const CreateGood_ = ({}) => {
 					{errors?.description ? errors?.description?.message || "Error" : ""}
 				</p>
 				<label className={styles.description}>
-					Опис категорії
+					Опис товару:
 					<textarea
 						{...register("description", {
 							required: "Треба заповнити поле",
 							minLength: {
 								value: 10,
-								message: "Ціна товару повинна бути не менше 10 символів",
+								message: "Опис товару повинен бути не менше 10 символів",
 							},
 							maxLength: {
 								value: 3000,
-								message: "Ціна товару повинна бути не більше 3000 символів",
+								message: "Опис товару повинен бути не більше 3000 символів",
 							},
 						})}
-						placeholder="Опис категорії"
+						placeholder="Опис товару"
 					/>
 				</label>
 			</form>

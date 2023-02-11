@@ -8,6 +8,7 @@ import userSlice from "./userSlice";
 import adminSlice from "./adminSlice";
 import contactSlice from "./contactSlice";
 import userCabinetSlice from "./userCabinetSlice";
+import managerCabinetSlice from "./managerCabinetSlice";
 export const store = configureStore(({
     reducer: {
         main: mainReducer,
@@ -19,6 +20,7 @@ export const store = configureStore(({
         user: userSlice,
         admin: adminSlice,
         userCabinet: userCabinetSlice,
+        managerCabinet: managerCabinetSlice,
 
     }
 }))

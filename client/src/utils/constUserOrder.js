@@ -3,8 +3,21 @@ export const statusColor = {
 	"AWAITING PAYMENT": "orange",
 	PAID: "green",
 	CONFIRMED: "deepskyblue",
-	CANCELLED: "deeppink",
+	CANCELLED: "grey",
 	DELIVERING: "gold",
+	COMPLETED: "deeppink",
+	
+
+};
+export const statusTranslate = {
+	REGISTERED: "Зареєстровано",
+	"AWAITING PAYMENT": "Чекає на оплату",
+	PAID: "Оплачено",
+	CONFIRMED: "Підтверджено",
+	CANCELLED: "Відмінено",
+	DELIVERING: "Досталяється",
+	COMPLETED: "Завершено",
+
 };
 export const deliveryKeys = {
 	delivery: "Адресна доставка",

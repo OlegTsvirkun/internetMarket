@@ -10,7 +10,6 @@ export const MenuGoods = ({goods,className}) =>{
      <Link
      key={goods[good]._id}
      to={`good?id=${goods[good]._id}`}
-     onClick={''}
      >
      <li className={styles.menuGoods__item} key = {goods[good]._id} >{goods[good].name}</li>
      </Link>

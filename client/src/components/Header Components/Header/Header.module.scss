@@ -3,62 +3,76 @@
     height: 80px;
     align-items: center;
 }
-    .headerContainer {
-        display: grid;
-        grid-template-columns: 1fr 6fr 3fr 2fr;
-    }
-    .item {
-        display: flex;
-        /* width: 80vw; */
-
-        // color: white;
-        font-size: 26px;
-        text-decoration: none;
-        font-weight: 700;
-    }
-    .title {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        color: rgb(71, 71, 71);
-    }
-    .logo {
-        margin-right: 2rem;
-    }
-    .menu {
-        text-decoration: none;
-        color: rgb(71, 71, 71);
-    }
-    .auth {
-        text-align: right;
-    }
-
-    .logoIcon {
-        cursor: pointer;
-       
-    }
-    .basketIcon {
-        cursor: pointer;
-    }
-    .adminBtn{
-        // width: 50px;
-        // height: 15px;
-        // width: 50px;
-        // height: 15px;
-        // padding: 0;
-        // background-color: rgb(237, 237, 237);
-    }
-
-.buttonContainer{
+.headerContainer {
+    display: grid;
+    grid-template-columns: 1fr 6fr 1fr 1fr;
+    height: 100%;
+}
+.item {
     display: flex;
-    a{
-        margin-right:5px ;
+    align-items: center;
+    font-size: 26px;
+    text-decoration: none;
+    font-weight: 700;
+}
+.title {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: rgb(71, 71, 71);
+}
+.logo {
+    margin-right: 2rem;
+}
+// .menu {
+//     text-decoration: none;
+//     color: rgb(71, 71, 71);
+// }
+// .auth {
+//     text-align: right;
+// }
+
+// .logoIcon {
+//     cursor: pointer;
+// }
+// .basketIcon {
+//     cursor: pointer;
+// }
+// .adminBtn {
+//     background-color: var(--white-grey-transparent);
+//     color: var(--black-grey);
+//     height: 100%;
+// }
+
+.buttonContainer {
+    height: 100%;
+    display: flex;
+    a {
+        margin-right: 5px;
+    width: 100%;
+
     }
 }
-
-.userCabinetBtn{
-position: relative;
+.headerBtn{
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    color: var(--black-grey);
+    
+    // transition: all .2s;
 }
-.userMenu{
+.headerBtn:hover{
+    border-left:1.5px solid var(--grey-transparent);
+    border-right:1.5px solid var(--grey-transparent) ;
 
-} 
+}
+.userCabinet {
+    position: relative;
+}
+
+.userMenu {
+bottom:calc( -100% + 6px);
+}

@@ -14,7 +14,7 @@ import {
 import styles from "./SortMenu.module.scss";
 
 export const SortMenu = ({}) => {
-	const [search, setSearch] = useSearchParams();
+	const [search] = useSearchParams();
 	const url = useLocation();
 	const navigate = useNavigate();
 

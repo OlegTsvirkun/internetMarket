@@ -28,10 +28,11 @@ export const SubHeader = (
 	useEffect(() => {
 		dispatch(getMain());
 	}, [isCatMenuOpen]);
-	if (location.pathname == "/order" || location.pathname == "/finish-order" )
+	if (location.pathname == "/order" || location.pathname == "/finish-order" || location.pathname .split('/').includes('user') )
 		return <></>;
      
-	  if(location.pathname .split('/').includes('admin')) return  <div className={styles.caption}>ADMIN PANEL</div>
+	  if(location.pathname .split('/').includes('admin') ) return  <div className={styles.caption}>ADMIN PANEL</div>
+	  if(location.pathname .split('/').includes('manager') ) return  <div className={styles.caption}>MANAGER PANEL</div>
 	return (
 		<div className={styles.subHeader}>
 			<ContentWrapper className={styles.subHeader__container}>

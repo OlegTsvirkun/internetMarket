@@ -16,7 +16,7 @@ export const UserMenu = ({
 }) =>{
   return (
  <>
-    {/* <ModalBackground/> */}
+    <ModalBackground className={styles.bcg} onClick={onClick}/>
     <div className={`${styles.userMenu} ${className}`}>
     <ul className={styles.list}>
       {

@@ -220,7 +220,7 @@ useEffect(() => {
 							/>
 							<img
 								className={styles.imgMain}
-								src={process.env.REACT_APP_API_URL + _picture}
+								src={process.env.REACT_APP_API_URL + _picture }
 								alt=""
 							/>
 						</label>
