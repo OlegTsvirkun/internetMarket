@@ -43,6 +43,10 @@ export const orderSlice = createSlice({
         addOrderDeliveryData: (state, action) => {
             state.orderData.delivery = { ...state.orderData.delivery, ...action.payload }
         },
+        deleteOrderDeliveryData: (state, action) => {
+            state.orderData.delivery = {}
+        },
+        
         addOrderUserData: (state, action) => {
             state.orderData.user = { ...state.orderData.user, ...action.payload }
 
@@ -80,5 +84,5 @@ export const orderSlice = createSlice({
     }
 });
 
-export const { addError, removeError, addOrderDeliveryData, addOrderUserData,clearOrderSlice } = orderSlice.actions;
+export const { addError, removeError, addOrderDeliveryData, addOrderUserData,clearOrderSlice ,deleteOrderDeliveryData} = orderSlice.actions;
 export default orderSlice.reducer;

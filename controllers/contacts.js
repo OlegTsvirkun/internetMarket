@@ -3,13 +3,15 @@ const ApiErrors = require('../helpers/ApiErrors');
 const User = require('../models/user');
 const OrderDelivery = require('../models/orderDelivery');
 const Order = require('../models/order');
+const OrderCounter = require('../models/orderCounter');
 
 
 const getOfficeContact = async (req, res, next) => {
     try {
-        // await User.deleteMany({}).exec()
-        // await OrderDelivery.deleteMany({}).exec()
-        // await Order.deleteMany({}).exec()
+      
+        //   await OrderDelivery.deleteMany({})
+        //  await OrderCounter.create({count:0})
+        // await Order.deleteMany({})
         const contact = await ShopContact
             .find({ type: "mainOffice" })
             // .create({

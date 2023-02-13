@@ -15,6 +15,10 @@ export const GoodListUserOrder = ({
     console.log('Bad type of value. It should be Array');
 
     return <></>};
+  if(!goods.length){ 
+    console.log('goods.length',!goods.length);
+    
+    return <>У Вас ще немає жодного замовлення</>};
 	return (
 		<div className={`${styles.goodListUserOrder}  ${containerClassName}`}>
 			{goods?.map((good) => (

@@ -27,13 +27,14 @@ export const UserOrders = ({}) => {
 			<h1 className={styles.mainTitle}>Сторінка заказів:</h1>
 			{!Object.values(orderData)[0] ?
 			<FailPage message="Ще не було жодного заказу:" backTo = {false} /> :
-			Object.values(orderData).map((order,index) => {
+			(Object.values(orderData).map((order,index) => {
 				if (typeof order === "object")
 					return (
               <UserOrderItem  key={order.orderId+''+index} order={order} index = {index}/>
            
 					);
-			})}
+			}))
+			}
 		</div>
 	);
 };

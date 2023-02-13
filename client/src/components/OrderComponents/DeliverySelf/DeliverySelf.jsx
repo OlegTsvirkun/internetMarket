@@ -7,7 +7,7 @@ import { Spinner } from "../../UA_Components/Spinner/Spinner";
 import { OptionOrderCard } from "../OptionOrderCard/OptionOrderCard";
 import { AiOutlineCrown } from "react-icons/ai";
 import { HiOutlineOfficeBuilding } from "react-icons/hi";
-import { addOrderDeliveryData } from "../../../store/orderSlice";
+import { addOrderDeliveryData, deleteOrderDeliveryData } from "../../../store/orderSlice";
 import styles from "./DeliverySelf.module.scss";
 
 export const DeliverySelf = ({}) => {
@@ -17,8 +17,8 @@ export const DeliverySelf = ({}) => {
 	const [contacts, setContacts] = useState([]);
 	useEffect(() => {
 		dispatch(getSecondaryContact());
-		return () => {
-			dispatch(addOrderDeliveryData({ office: "", city: "" }));
+		return () => { 
+			dispatch(deleteOrderDeliveryData());
 		};
 	}, []);
 

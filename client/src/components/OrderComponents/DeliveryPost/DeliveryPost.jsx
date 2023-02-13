@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import {
 	addError,
 	addOrderDeliveryData,
+	deleteOrderDeliveryData,
 	removeError,
 } from "../../../store/orderSlice";
 
@@ -20,6 +21,12 @@ export const DeliveryPost = ({}) => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
+		return () => {
+			dispatch(deleteOrderDeliveryData());
+			dispatch(removeError("deliveryPost"));
+		};
+	}, []);
+	useEffect(() => {
 		if (isValid && !isValidating) {
 			dispatch(addOrderDeliveryData(watch()));
 			dispatch(removeError("deliveryPost"));
@@ -29,7 +36,6 @@ export const DeliveryPost = ({}) => {
 		return () => {
 			const subscription = watch((data) => data);
 			subscription.unsubscribe();
-			dispatch(removeError("deliveryPost"));
 		};
 	}, [isValidating]);
 

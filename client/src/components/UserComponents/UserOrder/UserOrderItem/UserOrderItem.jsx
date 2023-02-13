@@ -12,6 +12,8 @@ import { GoodListUserOrder } from "../GoodListUserOrder";
 import styles from "./UserOrderItem.module.scss";
 
 export const UserOrderItem = ({ order, index,containerClassName }) => {
+	console.log(order)
+	if(!Object.keys(order)[0]) return <>No data</>
 	return (
 		<details className={`${styles.userOrderItem } `} open={index == 0 ? true : false}>
 			<summary   >
@@ -54,10 +56,14 @@ export const UserOrderItem = ({ order, index,containerClassName }) => {
 					</section>
 					<section className={styles.userInfo}>
 						<div className={styles.title}>Замовник:</div>
-						<div>{`${order.userContacts.name} ${order.userContacts.firstname}` }</div>
+						<div>{`${order.userContacts?.name || ''} ${order.userContacts?.firstname || ''}` }</div>
 						<div className={styles.userContacts}>
-							<a href={`tel:${order.userContacts.tel}`} className={styles.tel}>Телефон: {`${order.userContacts.tel}`}</a>
-							<a href={`email:${order.userContacts.tel}`} className={styles.email}>email: {`${order.userContacts.email}`}</a>
+							<a href={`tel:${order.userContacts?.tel || 
+							''}`} className={styles.tel}>Телефон: {`${order.userContacts?.tel || 
+							''}`}</a>
+							<a href={`email:${order.userContacts?.tel || 
+							''}`} className={styles.email}>email: {`${order.userContacts?.email || 
+							''}`}</a>
 						</div>
 					</section>
 					<div className={styles.listTitile}>Список товарів:</div>
@@ -69,7 +75,7 @@ export const UserOrderItem = ({ order, index,containerClassName }) => {
 				</div>
 				<footer className={styles.footer}>
 					<section className={styles.delivery}>
-						{Object.keys(order.delivery).map((key) => {
+						{Object.keys(order?.delivery)[0] && Object.keys(order.delivery).map((key) => {
 							if (deliveryKeys[key]) {
 								if (
 									order.delivery[key] &&
@@ -77,9 +83,11 @@ export const UserOrderItem = ({ order, index,containerClassName }) => {
 									order.delivery[key] != 0
 								)
 									return (
+										<>
 										<p className={styles.deliveryEl} key={key}>
-											{deliveryKeys[key]}: {order.delivery[key]}
+											{deliveryKeys[key]}: {[order.delivery][key]}
 										</p>
+										</>
 									);
 							}
 						})}
@@ -94,7 +102,7 @@ export const UserOrderItem = ({ order, index,containerClassName }) => {
 									)
 										return (
 											<p className={styles.deliveryEl} key={key}>
-												{officeKeys[key]}: {order.delivery.office[key]}
+												{officeKeys[key]}: {[order.delivery.office][key]}
 											</p>
 										);
 								}

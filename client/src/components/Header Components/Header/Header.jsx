@@ -60,7 +60,7 @@ export const Header = ({}) => {
 		return(
 			<div className={styles.buttonContainer}>
 				{role.includes("ADMIN") && (
-					<Link to={ADMIN_ROUTE}>
+					<Link to={ADMIN_ROUTE} >
 						<div className={styles.headerBtn}>Адмін Панель</div>
 					</Link>
 				)}
@@ -78,7 +78,8 @@ export const Header = ({}) => {
 	return (
 		<div className={styles.header}>
 			<ContentWrapper className={styles.headerContainer}>
-				<Link to={MAIN_ROUTE} className={styles.item}>
+				<Link to={MAIN_ROUTE} className={styles.item} 
+				>
 					<div className={styles.logo}>
 						<BsApple size="35" color="rgb(71, 71, 71)" />
 					</div>

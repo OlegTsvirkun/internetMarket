@@ -9,7 +9,7 @@ const ShopContactSchema = new Schema({
     },
     name:{
         type:String,
-        required: false
+        required: false 
     },
     city:{
         type:String,

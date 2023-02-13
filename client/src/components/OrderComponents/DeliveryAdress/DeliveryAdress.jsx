@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import {
 	addError,
 	addOrderDeliveryData,
+	deleteOrderDeliveryData,
 	removeError,
 } from "../../../store/orderSlice";
 import { useForm } from "react-hook-form";
@@ -29,6 +30,8 @@ export const DeliveryAdress = ({}) => {
 			const subscription = watch((data) => data);
 			subscription.unsubscribe();
 			dispatch(removeError("deliveryAdress"));
+			// dispatch(deleteOrderDeliveryData());
+			
 		};
 	}, [isValidating]);
 

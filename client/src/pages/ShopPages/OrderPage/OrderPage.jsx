@@ -26,7 +26,6 @@ export const OrderPage = ({}) => {
 	const handleForm = async() => {
 		let orderedGoods = Object.keys(cart).map((item) => {
 			return Object.keys(cart[item]).reduce((acc,keys)=>{
-				console.log(keys,'>>keys!!');
 				
 				if(keys !='category' && keys !='description' ) 	acc[keys]=cart[item][keys]
 				
@@ -34,7 +33,6 @@ export const OrderPage = ({}) => {
 			},{}) 
 		
 		});
-		console.log(orderedGoods);
 		let orderItem = {
 			...orderData,
 			orderedGoods: [ ...orderedGoods ],
@@ -42,12 +40,9 @@ export const OrderPage = ({}) => {
 			
 		};
 		if(email) orderItem.login = email
-		console.log('orderItem>>',orderItem);
 		await dispatch(finishOrder(orderItem)).then((res) => {
-			console.log('res.error',res.error);
 			if (!res.error) {
 				navigate(FINISH_ORDER_ROUTE, { replace: true });
-				// dispatch(clearOrderSlice());
 				dispatch(clearCart());
 			}
 		});
