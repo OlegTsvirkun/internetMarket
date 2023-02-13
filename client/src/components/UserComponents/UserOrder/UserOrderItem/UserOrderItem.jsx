@@ -12,7 +12,7 @@ import { GoodListUserOrder } from "../GoodListUserOrder";
 import styles from "./UserOrderItem.module.scss";
 
 export const UserOrderItem = ({ order, index,containerClassName }) => {
-	console.log(order)
+	// console.log(order)
 	if(!Object.keys(order)[0]) return <>No data</>
 	return (
 		<details className={`${styles.userOrderItem } `} open={index == 0 ? true : false}>
@@ -83,11 +83,10 @@ export const UserOrderItem = ({ order, index,containerClassName }) => {
 									order.delivery[key] != 0
 								)
 									return (
-										<>
 										<p className={styles.deliveryEl} key={key}>
-											{deliveryKeys[key]}: {[order.delivery][key]}
+											{deliveryKeys[key]}: {order.delivery[key]}
 										</p>
-										</>
+										
 									);
 							}
 						})}
