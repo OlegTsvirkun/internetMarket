@@ -11,11 +11,11 @@
     border:1px solid rgb(71,71,71);
     border-top:none;
     // border-inline;
-    &__item:hover{
+    .item:hover{
         background-color: rgb(235, 235, 235);
 
     }
-    &__item{
+    .item{
         padding:5px 20px;
     color: rgb(71,71,71);
     font-weight: 300;
@@ -26,11 +26,20 @@
     }
 }
 
-// &__list{
+@media (max-width: 999px) {
+  
+}
+// @media (max-width: 759px) {
+// }
+// @media (max-width: 565px) {
+// }
+// @media (max-width: 450px) {
+// }
+// .list{
 //     background: rgb(219, 219, 219) ;
     
 // }
-// &__cat:hover{
+// .cat:hover{
 //     background-color: rgb(202, 202, 202);
 // }
 .menuGoods:hover{

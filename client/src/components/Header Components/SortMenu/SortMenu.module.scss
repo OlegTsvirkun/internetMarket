@@ -6,23 +6,22 @@
     width: 250px;
     z-index: 100;
     background-color:rgb(249, 249, 249) ;
-    &__list{
+}
+    .list{
         
         
     }
-    &__item{
+    .item{
         // padding: 0 5px;
         color: rgb(71,71,71);
         font-weight: 300;
         text-align: start;
-
-
     }
-    &__item:hover{
+    .item:hover{
         // background-color: rgb(235, 235, 235);
 
     }
-}
+
 .sortMenu a{
     // padding: 2px 7px;
     padding: 5px 20px;
@@ -33,5 +32,31 @@ align-items: center;
 }
 .sortMenu a:hover{
     background-color: rgb(235, 235, 235);
+}
 
+@media (max-width: 999px) {
+.sortMenu{
+    transform:translateX(calc(-100% + 55px));
+}
+}
+// @media (max-width: 759px) {
+// }
+// @media (max-width: 565px) {
+// }
+@media (max-width: 450px) {
+    .sortMenu{
+        position:absolute;
+        top:100%;
+        left:55px;
+        // transform: translateY(100%);
+        width: 100vw;
+        z-index: 100;
+        background-color:rgb(249, 249, 249) ;
+    }
+    .sortMenu a{
+        // padding: 0 5px;
+        font-weight: 400;
+        font-size: 32px;
+        margin: 10px 0;
+    }
 }

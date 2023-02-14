@@ -3,10 +3,11 @@
     font-size: 18px;
     justify-content : flex-end;
     margin-bottom: 20px;
-    &__title{
+}
+    .title{
         color:rgb(71,71,71)
     }
-    &__value{
+    .value{
        display: flex;
         position: relative;
         margin-left: 5px;
@@ -14,11 +15,11 @@
 
     }
  
-    &__item{
+    .item{
         // margin: 0 5px;
         
     }
-    &__list{
+    .list{
         // display: flex;
         position: absolute;
         font-weight: 300;
@@ -34,10 +35,10 @@
             padding-right: 10px;
         }
     }
-    &__valueItem:hover{
+    .valueItem:hover{
         color:orange;
     }
-    &__valueItem{
+    .valueItem{
         // width:100px;
         font-weight: 300;
         
@@ -47,18 +48,18 @@
         
         
     }
-    &__list.active span:first-child{
+    .list.active span:first-child{
         padding-left:10px;
 
     }
-    &__list.active span:last-child{
+    .list.active span:last-child{
         
 
             // padding: 7px 0 10px 7px;
             // background-color:rgb(179, 133, 133);
         
     }
-    &__list.active{
+    .list.active{
         overflow:visible;
         z-index: 100;
         // background:rgba(129, 35, 35, 0.582) ;
@@ -80,14 +81,26 @@
         }
         // height: auto;
     }
-    &__arrow:hover{
+    .arrow:hover{
         color:orange;
 
     }
-    &__arrow{
+    .arrow{
         margin: 0 10px;
         color:#2FB5FC;
         cursor: pointer;
     }
-}
 
+
+// @media (max-width: 999px) {
+// }
+@media (max-width: 759px) {
+    .limitCards{
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+}
+// @media (max-width: 565px) {
+// }
+// @media (max-width: 450px) {
+// }

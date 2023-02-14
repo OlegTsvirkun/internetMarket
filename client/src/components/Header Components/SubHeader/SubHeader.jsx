@@ -35,9 +35,10 @@ export const SubHeader = (
 	  if(location.pathname .split('/').includes('manager') ) return  <div className={styles.caption}>MANAGER PANEL</div>
 	return (
 		<div className={styles.subHeader}>
-			<ContentWrapper className={styles.subHeader__container}>
+			<ContentWrapper className={styles.container}>
 				<Button
-					className={styles.subHeader__buttonCat}
+					className={styles.buttonCat}
+					containerClassName={styles.container_buttonCat}
 					onClick={() => setisCatMenuOpen(!isCatMenuOpen)}
 				>
 					{isCatMenuOpen && (
@@ -57,14 +58,14 @@ export const SubHeader = (
 				<SearchBar containerClassName={styles.searchBar} />
 
 				{location.pathname !== "/" && location.pathname !== "/good" ? (
-					<Button
-						className={styles.subHeader__sortButton}
+					<div
+						className={styles.sortButton}
 						onClick={() => setIsSortOpen(!isSortOpen)}
 					>
 						<TbSortDescending size='35'/>
 						{isSortOpen && <ModalBackground onClick={() => setIsSortOpen(false)} />}
 						{isSortOpen && <SortMenu />}
-					</Button>
+					</div>
 				) : (
 					<div></div>
 				)}

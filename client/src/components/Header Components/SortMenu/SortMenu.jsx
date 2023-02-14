@@ -30,10 +30,10 @@ export const SortMenu = ({}) => {
 	};
 	return (
 		<div className={styles.sortMenu}>
-			<ul className={styles.sortMenu__list}>
+			<ul className={styles.list}>
 				<li>
 					<Link data-type="az" onClick={(e) => handleSort(e)}>
-						<div data-type="az" className={styles.sortMenu__item}>
+						<div data-type="az" className={styles.item}>
 						За алфавітом A-Z
 						</div>
 
@@ -44,7 +44,7 @@ export const SortMenu = ({}) => {
 					<Link data-type="za" onClick={(e) => handleSort(e)}>
 						<div
 							data-type="za"
-							className={styles.sortMenu__item}
+							className={styles.item}
 						>
 							За алфавітом Z-A
 						</div>
@@ -56,7 +56,7 @@ export const SortMenu = ({}) => {
 						data-type="cheap"
 						onClick={(e) => handleSort(e)}
 					>
-						<div data-type="cheap" className={styles.sortMenu__item}>
+						<div data-type="cheap" className={styles.item}>
 							Спочатку дешевші
 						</div>
 						<BsSortDownAlt data-type="cheap" />
@@ -66,7 +66,7 @@ export const SortMenu = ({}) => {
 					<Link data-type="expens" onClick={(e) => handleSort(e)}>
 						<div
 							data-type="expens"
-							className={styles.sortMenu__item}
+							className={styles.item}
 						>
 							Спочатку дорожчі
 						</div>

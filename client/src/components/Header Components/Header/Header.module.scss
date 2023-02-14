@@ -64,6 +64,7 @@
     
     // transition: all .2s;
 }
+
 .headerBtn:hover{
     border-left:1.5px solid var(--grey-transparent);
     border-right:1.5px solid var(--grey-transparent) ;
@@ -75,4 +76,32 @@
 
 .userMenu {
 bottom:calc( -100% + 6px);
+}
+
+
+@media (max-width: 759px) {
+    .header {
+        padding: 0 5px;
+        height: 70px;
+    }
+}
+@media (max-width: 565px) {
+    .header {
+        padding: 0 5px;
+        height: 50px;
+    }
+    .headerBtnExit{
+    display:none;
+    }
+    .headerBtn{
+    font-size: 20px;
+    }
+    .headerContainer {
+        grid-template-columns: 1fr 7fr 1fr;
+    }
+}
+@media (max-width: 450px) {
+    .item{
+justify-content: center;
+    }
 }

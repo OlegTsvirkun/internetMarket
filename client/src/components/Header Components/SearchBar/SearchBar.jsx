@@ -25,13 +25,18 @@ export const SearchBar = ({ containerClassName }) => {
 				onChange={onChange}
 				placeholder="ЩО ХОЧЕТЕ ЗНАЙТИ?"
 			/>
-			<Link to={`/search?q=${searchValue}`}>
+
+			<Link
+				className={styles.searchButtonContainer}
+				to={`/search?q=${searchValue}`}
+			>
 				<Button
+					containerClassName={styles.searchButtonContainer}
 					className={styles.searchButton}
 					isOrangeButton={true}
 					onClick={() => setSearchValue("")}
 				>
-					ПОШУК
+					<span>ПОШУК</span>
 				</Button>
 			</Link>
 		</form>

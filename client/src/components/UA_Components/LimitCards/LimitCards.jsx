@@ -21,18 +21,18 @@ export const LimitCards = ({ cardsLimit = 3, setCardsLimit, total, setCurrentPag
 
 	return (
 		<div className={styles.limitCards}>
-			<div className={styles.limitCards__title}>Показувати по:</div>
-			<div className={styles.limitCards__value}>
+			<div className={styles.title}>Показувати по:</div>
+			<div className={styles.value}>
 				<div
-					className={styles.limitCards__arrow}
+					className={styles.arrow}
 					onClick={() => (cardsLimit < 12 ? setCardsLimit(+cardsLimit + 3) : setCardsLimit(3))}
 				>
 					&#9650;
 				</div>
 			</div>
-			<div className={styles.limitCards__valueItem}>{cardsLimit} на сторінку</div>
+			<div className={styles.valueItem}>{cardsLimit} на сторінку</div>
 			<div
-				className={styles.limitCards__arrow}
+				className={styles.arrow}
 				onClick={() => (cardsLimit > 3 ? setCardsLimit(+cardsLimit - 3) : setCardsLimit(3))}
 			>
 				&#9660;

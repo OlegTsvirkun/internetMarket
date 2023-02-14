@@ -8,7 +8,7 @@ export const CartMenu = ({ totalPrice, cart}) => {
 	return (
 			<div className={styles.cartMenu}>
 				<div className={styles.goodList}>
-					{Object.keys(cart).length > 0 ? <CartItem /> : "Кошик порожній"}
+					{Object.keys(cart).length > 0 ? <CartItem /> :<p className={styles.message}> Кошик порожній</p>}
 				</div>
 				{Object.keys(cart).length > 0 ? (
 					<div className={styles.arrange}>

@@ -5,6 +5,28 @@
     margin: 50px 0;
 }
 
+// @media (max-width: 999px) {
 
+// }
+@media (max-width: 759px) {
+    .goodsGrid {
+        gap: 15px;
+        margin: 20px 0;
+    }
+}
 
+@media (max-width: 565px) {
+    .goodsGrid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin: 10px 0;
+    }
+}
 
+@media (max-width: 450px) {
+    .goodsGrid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin: 10px 0;
+    }
+}

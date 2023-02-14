@@ -11,7 +11,6 @@ import styles from "./GoodItem.module.scss";
 
 export const GoodItem = ({}) => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [modalImg, setModalImg] = useState("");
 	const { good, images, isLoading, isError, message } = useSelector(
 		(state) => state.good,
 	);
@@ -32,6 +31,8 @@ export const GoodItem = ({}) => {
 					<h3 className={styles.articul}>АРТИКУЛ: {good.articul} </h3>
 					{images.length > 0 && (
 						<Carousel
+						className={styles.carouselItem}
+
 							images={images}
 							onClick={(e) => {
 								// setModalImg(e.target.src);
@@ -75,8 +76,7 @@ export const GoodItem = ({}) => {
 							className={styles.carousel}
 							images={images}
 							onClick={(e) => {
-								// setModalImg(e.target.src);
-								// setIsModalOpen(true);
+							
 							}}
 						/>
 				

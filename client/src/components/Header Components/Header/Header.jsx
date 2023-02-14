@@ -93,7 +93,7 @@ export const Header = ({}) => {
 				{
 				isAuth
 				?
-					<div className={styles.headerBtn} onClick={logOut} >ВИЙТИ</div>
+					<div className={`${styles.headerBtn} ${styles.headerBtnExit}`} onClick={logOut} >ВИЙТИ</div>
 				:  AuthBtn() 
 				}
 			</ContentWrapper>

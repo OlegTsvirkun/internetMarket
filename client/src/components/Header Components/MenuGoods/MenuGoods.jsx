@@ -11,7 +11,7 @@ export const MenuGoods = ({goods,className}) =>{
      key={goods[good]._id}
      to={`good?id=${goods[good]._id}`}
      >
-     <li className={styles.menuGoods__item} key = {goods[good]._id} >{goods[good].name}</li>
+     <li className={styles.item} key = {goods[good]._id} >{goods[good].name}</li>
      </Link>
      ) }
     </ul>

@@ -16,33 +16,31 @@ export const Footer = ({}) => {
 	const {
 		mainContacts: { tel, email, scheduling, city, address },
 	} = useSelector((state) => state?.contacts);
-	if(!city) return <></>
+	if (!city) return <></>;
 	return (
 		<div className={styles.footer}>
-			<ContentWrapper className={styles.footer__container}>
-				<div className={styles.footer__mainInfo}>
-					<div className={styles.footer__workingHours}>
-					{scheduling &&	<ScheduleList schedule={scheduling}/>}
-						
+			<ContentWrapper className={styles.container}>
+				<div className={styles.mainInfo}>
+					<div className={styles.workingHours}>
+						{scheduling && <ScheduleList schedule={scheduling} />}
 					</div>
 
-					<div className={styles.footer__info}>
-						
-						{tel &&<TelList tel={tel} /> }
-					
-					</div>
-					<div className={styles.footer__address}>
+					<div className={styles.info}>{tel && <TelList tel={tel} />}</div>
+					<div className={styles.address}>
 						<div>
-							<span>e-mail:</span> <a  href={"mailto:"+email}>{email && email}</a>
+							<span>e-mail:</span>{" "}
+							<a href={"mailto:" + email}>{email && email}</a>
 						</div>
 						<div>
 							<span>Адреса:</span> {address && address}
 						</div>
 					</div>
 				</div>
-				<div className={styles.footer__genInfo}>
+				<div className={styles.genInfo}>
 					{" "}
-					© 2023 Інтернет-магазин «MyApp Store» Знак на товари і послуги MyApp Store використовується на підставі ліцензійного договору з правовласником знака
+					© 2023 Інтернет-магазин «MyApp Store» Знак на товари і послуги MyApp
+					Store використовується на підставі ліцензійного договору з
+					правовласником знака
 				</div>
 			</ContentWrapper>
 		</div>

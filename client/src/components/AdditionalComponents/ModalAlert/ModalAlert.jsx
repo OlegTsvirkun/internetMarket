@@ -17,7 +17,7 @@ export const ModalAlert = ({
 	frstBtnClick,
 	scndBtnClick,
 	closeClick,
-	bcgClick, 
+	bcgClick,
 	width = "auto",
 }) => {
 	useEffect(() => {
@@ -39,7 +39,9 @@ export const ModalAlert = ({
 			>
 				<div className={styles.title}>
 					<div></div>
-					<h3 style={{color:`${isErrorWindow? "red":""}`}} >{title || message}</h3>
+					<h3 style={{ color: `${isErrorWindow ? "red" : ""}` }}>
+						{title || message}
+					</h3>
 					<span onClick={closeClick}>
 						<BsX size="25" />
 					</span>
@@ -48,7 +50,12 @@ export const ModalAlert = ({
 					{children ? (
 						<div className={styles.children}>{children}</div>
 					) : (
-						<h3 style={{color:`${isErrorWindow? "red":""}`}} className={styles.message}>{message}</h3>
+						<h3
+							style={{ color: `${isErrorWindow ? "red" : ""}` }}
+							className={styles.message}
+						>
+							{message}
+						</h3>
 					)}
 					<div className={styles.btnContainer}>
 						{isFirst && (
@@ -60,7 +67,11 @@ export const ModalAlert = ({
 							</Button>
 						)}
 						{isSecond && (
-							<Button onClick={scndBtnClick} isAlertButton={isErrorWindow} className={styles.btn}>
+							<Button
+								onClick={scndBtnClick}
+								isAlertButton={isErrorWindow}
+								className={styles.btn}
+							>
 								{scndBtnTitle}
 							</Button>
 						)}
