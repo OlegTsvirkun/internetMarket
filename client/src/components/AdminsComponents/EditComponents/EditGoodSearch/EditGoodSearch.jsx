@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
 import { useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../../../UA_Components/Button/Button";
 import { Input } from "../../../UA_Components/Input/Input";
@@ -8,7 +7,7 @@ import styles from "./EditGoodSearch.module.scss";
 import {
 	searchingGoods,
 	searchingGoodsByArticul,
-} from "../../../../store/categorySlice";
+} from "../../../../store/slices/categorySlice";
 import { EDIT_LIST_ROUTE } from "../../../../utils/constRoutes";
 import { ModalAlert } from "../../../AdditionalComponents/ModalAlert/ModalAlert";
 

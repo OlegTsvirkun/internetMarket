@@ -4,10 +4,10 @@ import {
 	addError,
 	addOrderUserData,
 	removeError,
-} from "../../../store/orderSlice";
+} from "../../../store/slices/orderSlice";
 import { regEmail, regTel, regText } from "../../../utils/constValidPatterns";
 import { useForm } from "react-hook-form";
-import { getUserInfo } from "../../../store/userSlice";
+import { getUserInfo } from "../../../store/slices/userSlice";
 import userServices from "../../../store/services/userService";
 import { useDebounce } from "../../../hooks/useDebounce";
 import styles from "./OrderContacts.module.scss";

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useSearchParams } from "react-router-dom";
-import { getOrders } from "../../../store/managerCabinetSlice";
+import { getOrders } from "../../../store/slices/managerCabinetSlice";
 import { MANAGER_ORDER_ROUTE} from "../../../utils/constRoutes";
 import { statusColor, statusTranslate } from "../../../utils/constUserOrder";
 import styles from "./ManagerListOrders.module.scss";

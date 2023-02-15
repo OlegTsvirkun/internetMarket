@@ -7,7 +7,7 @@ import { FailPage } from "../../FailPage";
 import {
 	getCategory,
 	searchingGoods,
-} from "../../../store/categorySlice";
+} from "../../../store/slices/categorySlice";
 import { ContentWrapper } from "../../../components/UA_Components/ContentWrapper/ContentWrapper";
 import { Paginate } from "../../../components/UA_Components/Paginate/Paginate";
 import { LimitCards } from "../../../components/UA_Components/LimitCards/LimitCards";

@@ -7,7 +7,7 @@ import { ManagerOrderItem } from '../../components/ManagerComponents/ManagerOrde
 import { ManagerPanel } from '../../components/ManagerComponents/ManagerPanel';
 import { ContentWrapper } from '../../components/UA_Components/ContentWrapper/ContentWrapper';
 import { Spinner } from '../../components/UA_Components/Spinner/Spinner';
-import { getOrderStatuses } from '../../store/managerCabinetSlice';
+import { getOrderStatuses } from '../../store/slices/managerCabinetSlice';
 import { MANAGER_LIST_ROUTE } from '../../utils/constRoutes';
 import { FailPage } from '../FailPage';
 import styles from './ManagerPanelPage.module.scss';

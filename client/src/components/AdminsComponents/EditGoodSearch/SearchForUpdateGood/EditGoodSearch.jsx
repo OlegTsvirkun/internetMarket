@@ -9,7 +9,7 @@ import {
 	removeGood,
 	searchingGoods,
 	searchingGoodsByArticul,
-} from "../../../../store/categorySlice";
+} from "../../../../store/slices/categorySlice";
 import { priceFormating } from "../../../../utils/priceFormating";
 import { DeleteWithBtn } from "../../DeleteWithBtn/DeleteWithBtn";
 import services from "../../../../store/services/service";

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { loginUser, registerUser } from "../../../store/userSlice";
+import { loginUser, registerUser } from "../../../store/slices/userSlice";
 import {
 	LOGIN_ROUTE,
 	MAIN_ROUTE,

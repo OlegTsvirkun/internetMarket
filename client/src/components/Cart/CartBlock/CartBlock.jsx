@@ -6,7 +6,7 @@ import { BsCart } from "react-icons/bs";
 import styles from "./CartBlock.module.scss";
 import { CartMenu } from "../CartMenu";
 import { ItemsInCart } from "../ItemInCart/ItemInCart";
-import { openCartMenu } from "../../../store/cartSlice";
+import { openCartMenu } from "../../../store/slices/cartSlice";
 import { ModalAlert } from "../../AdditionalComponents/ModalAlert/ModalAlert";
 import { ORDER_ROUTE } from "../../../utils/constRoutes";
 

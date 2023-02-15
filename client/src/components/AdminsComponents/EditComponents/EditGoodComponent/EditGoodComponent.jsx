@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
-import { getGood } from '../../../../store/goodSlice';
+import { getGood } from '../../../../store/slices/goodSlice';
 import { EditGoodItem } from '../EditGoodItem/EditGoodItem';
 import styles from './EditGoodComponent.module.scss';
 

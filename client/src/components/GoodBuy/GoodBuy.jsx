@@ -1,5 +1,5 @@
 import React from "react";
-import { setInCart, removeFromCart } from "../../store/cartSlice";
+import { setInCart, removeFromCart } from "../../store/slices/cartSlice";
 import { Button } from "../UA_Components/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./GoodBuy.module.scss";

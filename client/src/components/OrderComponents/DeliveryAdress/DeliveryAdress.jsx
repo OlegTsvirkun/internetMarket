@@ -6,7 +6,7 @@ import {
 	addOrderDeliveryData,
 	deleteOrderDeliveryData,
 	removeError,
-} from "../../../store/orderSlice";
+} from "../../../store/slices/orderSlice";
 import { useForm } from "react-hook-form";
 import { regNum, regText } from "../../../utils/constValidPatterns";
 

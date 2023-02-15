@@ -6,10 +6,10 @@ import { ContentWrapper } from "../../../components/UA_Components/ContentWrapper
 import { OrderForm } from "../../../components/OrderComponents/OrderForm/OrderForm";
 import {  useNavigate } from "react-router-dom";
 import styles from "./OrderPage.module.scss";
-import { finishOrder } from "../../../store/orderSlice";
+import { finishOrder } from "../../../store/slices/orderSlice";
 import { priceFormating } from "../../../utils/priceFormating";
 import { FINISH_ORDER_ROUTE } from "../../../utils/constRoutes";
-import { clearCart } from "../../../store/cartSlice";
+import { clearCart } from "../../../store/slices/cartSlice";
 
 export const OrderPage = ({}) => {
 	const cart = useSelector((state) => state.cart.itemsInCart);

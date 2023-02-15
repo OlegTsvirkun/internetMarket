@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { priceFormating } from "../../../utils/priceFormating";
-import { removeFromCart } from "../../../store/cartSlice";
+import { removeFromCart } from "../../../store/slices/cartSlice";
 import { CountChanger } from "../CountChanger/CountChanger";
 import styles from "./CartTableItem.module.scss";
 

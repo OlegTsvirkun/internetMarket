@@ -6,7 +6,7 @@ import {
 	decrementGood,
 	incrementGood,
 	removeFromCart,
-} from "../../../store/cartSlice";
+} from "../../../store/slices/cartSlice";
 
 export const CountChanger = ({ count, articul, cart }) => {
 	const dispatch = useDispatch();

@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FailPage } from "../../../../pages/FailPage/Failpage";
-import { clearOrderData, getUserOrder } from "../../../../store/userCabinetSlice";
+import { clearOrderData, getUserOrder } from "../../../../store/slices/userCabinetSlice";
 import { Spinner } from "../../../UA_Components/Spinner/Spinner";
 import { UserOrderItem } from "../UserOrderItem/";
 import styles from "./UserOrders.module.scss";

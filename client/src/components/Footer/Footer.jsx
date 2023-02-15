@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getMainContact } from "../../store/contactSlice";
+import { getMainContact } from "../../store/slices/contactSlice";
 import { ScheduleList } from "../AdditionalComponents/ScheduleList/ScheduleList";
 import { TelList } from "../AdditionalComponents/TelList/TelList";
 import { ContentWrapper } from "../UA_Components/ContentWrapper/ContentWrapper";

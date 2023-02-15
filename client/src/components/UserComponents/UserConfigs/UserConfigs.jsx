@@ -7,7 +7,7 @@ import styles from "./UserConfigs.module.scss";
 import { Button } from "../../UA_Components/Button/Button";
 import { Spinner } from "../../UA_Components/Spinner/Spinner";
 import { useDispatch, useSelector } from "react-redux";
-import { changeAuth, getUserInfo } from "../../../store/userSlice";
+import { changeAuth, getUserInfo } from "../../../store/slices/userSlice";
 import userServices, {
 	changeUserData,
 } from "../../../store/services/userService";

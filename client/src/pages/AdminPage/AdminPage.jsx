@@ -4,7 +4,7 @@ import { Link, Route, Routes, useLocation } from "react-router-dom";
 import { Button } from "../../components/UA_Components/Button/Button";
 import { ContentWrapper } from "../../components/UA_Components/ContentWrapper/ContentWrapper";
 import { EditGoodSearch } from "../../components/AdminsComponents/EditComponents/EditGoodSearch/EditGoodSearch";
-import { cleanupCatSlice } from "../../store/categorySlice";
+import { cleanupCatSlice } from "../../store/slices/categorySlice";
 import {
 	CREATE_CATEGORY_ROUTE,
 	CREATE_GOOD_ROUTE,

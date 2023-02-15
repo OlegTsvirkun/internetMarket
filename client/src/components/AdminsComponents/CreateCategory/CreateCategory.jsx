@@ -1,9 +1,8 @@
 import React, { useCallback } from "react";
 import { useState } from "react";
 import { Button } from "../../UA_Components/Button/Button";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createNewCategory } from "../../../store/adminSlice";
+import { createNewCategory } from "../../../store/slices/adminSlice";
 import { useForm } from "react-hook-form";
 import { ModalAlert } from "../../AdditionalComponents/ModalAlert/ModalAlert";
 import styles from "./CreateCategory.module.scss";
@@ -21,24 +20,6 @@ export const CreateCategory = ({}) => {
 		reset,
 		formState: { errors, isValid, defaultValues },
 	} = useForm({ mode: "onBlur" });
-
-	// useEffect(() => {
-	// 	const errors = {
-	// 		category: true,
-	// 		description: false,
-	// 	};
-	// 	const data = {
-	// 		category: category,
-	// 		description: description,
-	// 	};
-	// 	if (Object.keys(createCategory)[0]) {
-	// 		setCategory(createCategory?.category || "");
-	// 		setDescription(createCategory?.description || "");
-	// 	} else {
-	// 		dispatch(addFields({ createCategory: data }));
-	// 		dispatch(addAdminError(errors));
-	// 	}
-	// }, []);
 
 	const handleCreate = useCallback(
 		async (e) => {

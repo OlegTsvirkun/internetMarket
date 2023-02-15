@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "../../UA_Components/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { getMain } from "../../../store/mainSlice";
+import { getMain } from "../../../store/slices/mainSlice";
 import styles from "./CreateGood.module.scss";
 import { ModalAlert } from "../../AdditionalComponents/ModalAlert/ModalAlert";
 import { useForm } from "react-hook-form";
-import { createNewGood } from "../../../store/adminSlice";
+import { createNewGood } from "../../../store/slices/adminSlice";
 
 export const CreateGood = ({}) => {
 	const dispatch = useDispatch();

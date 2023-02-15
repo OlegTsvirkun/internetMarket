@@ -5,8 +5,8 @@ import { useForm } from "react-hook-form";
 
 import { Button } from "../../../UA_Components/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { getMain } from "../../../../store/mainSlice";
-import { removeImage } from "../../../../store/goodSlice";
+import { getMain } from "../../../../store/slices/mainSlice";
+import { removeImage } from "../../../../store/slices/goodSlice";
 import styles from "./EditGoodItem.module.scss";
 import { DobleActionDelete } from "../DobleActionDelete/DobleActionDelete";
 import adminServices from "../../../../store/services/adminServices";
@@ -100,7 +100,6 @@ useEffect(() => {
 			.then((res) => {
 				if (!res.error) {
 					dispatch(removeImage(image));
-					console.log(res);
 				}
 			})
 			.catch((err) => {

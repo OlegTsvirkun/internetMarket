@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { removeGood } from '../../../../store/categorySlice';
+import { removeGood } from '../../../../store/slices/categorySlice';
 import adminServices from '../../../../store/services/adminServices';
 import { ADMIN_ROUTE, EDIT_GOOD_ROUTE, EDIT_ROUTE } from '../../../../utils/constRoutes';
 import { priceFormating } from '../../../../utils/priceFormating';

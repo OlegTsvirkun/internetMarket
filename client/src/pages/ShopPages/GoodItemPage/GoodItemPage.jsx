@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import {  useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getGood } from "../../../store/goodSlice";
+import { getGood } from "../../../store/slices/goodSlice";
 import { ContentWrapper } from "../../../components/UA_Components/ContentWrapper/ContentWrapper";
 import styles from "./GoodItemPage.module.scss";
 import { GoodItem } from "../../../components/GoodContent/GoodItem/GoodItem";

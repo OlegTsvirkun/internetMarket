@@ -5,7 +5,7 @@ import {
 	addOrderDeliveryData,
 	deleteOrderDeliveryData,
 	removeError,
-} from "../../../store/orderSlice";
+} from "../../../store/slices/orderSlice";
 
 import styles from "./DeliveryPost.module.scss";
 import { useForm } from "react-hook-form";

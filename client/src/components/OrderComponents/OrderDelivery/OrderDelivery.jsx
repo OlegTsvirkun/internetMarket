@@ -6,7 +6,7 @@ import { TfiShoppingCartFull } from "react-icons/tfi";
 import { DeliveryAdress } from "../DeliveryAdress/DeliveryAdress";
 import { DeliveryPost } from "../DeliveryPost/DeliveryPost";
 import { DeliverySelf } from "../DeliverySelf/DeliverySelf";
-import { addOrderDeliveryData } from "../../../store/orderSlice";
+import { addOrderDeliveryData } from "../../../store/slices/orderSlice";
 import { useDispatch } from "react-redux";
 
 export const OrderDelivery = ({ className }) => {

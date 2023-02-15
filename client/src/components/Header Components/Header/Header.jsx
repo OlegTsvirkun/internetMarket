@@ -9,7 +9,7 @@ import {
 	MANAGER_ROUTE,
 	REGISTRATION_ROUTE,
 } from "../../../utils/constRoutes";
-import { changeAuth } from "../../../store/userSlice";
+import { changeAuth } from "../../../store/slices/userSlice";
 import { ContentWrapper } from "../../UA_Components/ContentWrapper/ContentWrapper";
 import styles from "./Header.module.scss";
 import { UserMenu } from "../../UserComponents/UserMenu/UserMenu";

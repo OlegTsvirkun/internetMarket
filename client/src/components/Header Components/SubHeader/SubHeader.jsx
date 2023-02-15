@@ -10,7 +10,7 @@ import { TbSortDescending } from "react-icons/tb";
 import { CartBlock } from "../../Cart/CartBlock/CartBlock";
 import { ModalBackground } from "../../AdditionalComponents/ModalBackground/ModalBackground";
 import { MenuCatalog } from "../MenuCatalog/MenuCatalog";
-import { getMain } from "../../../store/mainSlice";
+import { getMain } from "../../../store/slices/mainSlice";
 import { SortMenu } from "../SortMenu/SortMenu";
 import styles from "./SubHeader.module.scss";
 

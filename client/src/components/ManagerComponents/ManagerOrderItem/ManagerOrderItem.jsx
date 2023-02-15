@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import { getOrder, setNewStatus } from "../../../store/managerCabinetSlice";
+import { getOrder, setNewStatus } from "../../../store/slices/managerCabinetSlice";
 import { statusColor, statusTranslate } from "../../../utils/constUserOrder";
 import { Button } from "../../UA_Components/Button/Button";
 import { UserOrderItem } from "../../UserComponents/UserOrder/UserOrderItem/UserOrderItem"

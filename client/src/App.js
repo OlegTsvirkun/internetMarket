@@ -13,7 +13,7 @@ import {  AdminPage } from "./pages/AdminPage/AdminPage";
 import { AuthPage } from "./pages/AuthPage/AuthPage";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { checkUser } from "./store/userSlice";
+import { checkUser } from "./store/slices/userSlice";
 import { ADMIN_ROUTE, CATEGORY_ROUTE, FINISH_ORDER_ROUTE, GOOD_ROUTE, LOGIN_ROUTE, MAIN_ROUTE, MANAGER_ROUTE, ORDER_ROUTE, REGISTRATION_ROUTE, SEARCH_ROUTE, USER_CABINET_ROUTE } from "./utils/constRoutes";
 import { GoodsPage } from "./pages/ShopPages/GoodsPage/GoodsPage";
 import { GoodItemPage } from "./pages/ShopPages/GoodItemPage/GoodItemPage";

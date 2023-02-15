@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getSecondaryContact } from "../../../store/contactSlice";
+import { getSecondaryContact } from "../../../store/slices/contactSlice";
 import { ContentWrapper } from "../../UA_Components/ContentWrapper/ContentWrapper";
 import { Spinner } from "../../UA_Components/Spinner/Spinner";
 import { OptionOrderCard } from "../OptionOrderCard/OptionOrderCard";
 import { AiOutlineCrown } from "react-icons/ai";
 import { HiOutlineOfficeBuilding } from "react-icons/hi";
-import { addOrderDeliveryData, deleteOrderDeliveryData } from "../../../store/orderSlice";
+import { addOrderDeliveryData, deleteOrderDeliveryData } from "../../../store/slices/orderSlice";
 import styles from "./DeliverySelf.module.scss";
 
 export const DeliverySelf = ({}) => {
