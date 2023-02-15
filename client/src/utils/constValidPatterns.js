@@ -3,4 +3,5 @@ export const regEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".
 export const regTel = /^\+?([0-9]{12})$/;
 
 export const  regText = /^[a-zA-ZА-Яа-яєЄііЇїГг\s'-]+$/;
+
 export const  regNum = /^\d+$/;
