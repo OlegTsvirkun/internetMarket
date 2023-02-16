@@ -9,7 +9,6 @@ import styles from "./ManagerListOrders.module.scss";
 export const ManagerListOrders = ({ orderList }) => {
 	const [searchParams] = useSearchParams();
 	const dispatch = useDispatch();
-	console.log(searchParams.get("status"));
 	const searchOrders = searchParams.get("status");
 	useEffect(() => {
 		if (searchOrders) dispatch(getOrders(searchOrders));

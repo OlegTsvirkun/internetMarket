@@ -28,6 +28,11 @@ export const OrderDelivery = ({ className }) => {
 			<p className={styles.title}>Виберіть спосіб доставки:</p>
 			<div className={styles.toggle}>
 				<OptionOrderCard
+				containerClassName={styles.cardContainer}
+				className={styles.cardItem}
+				titleClassName = {styles.cardTitile}
+				subtitleClassName = {styles.cardSubtitle}
+				iconClassName = {styles.iconItem}
 					icon={
 						<TbTruckDelivery
 							size="50"
@@ -51,6 +56,11 @@ export const OrderDelivery = ({ className }) => {
 				/>
 
 				<OptionOrderCard
+			containerClassName={styles.cardContainer}
+			className={styles.cardItem}
+			titleClassName = {styles.cardTitile}
+			subtitleClassName = {styles.cardSubtitle}
+			iconClassName = {styles.iconItem}
 					icon={<img src={process.env.REACT_APP_API_URL + "NP.svg"} />}
 					name="delivery"
 					id="deliveryPost"
@@ -67,6 +77,11 @@ export const OrderDelivery = ({ className }) => {
 					checked={deliveryPost}
 				/>
 				<OptionOrderCard
+			containerClassName={styles.cardContainer}
+			className={styles.cardItem}
+			titleClassName = {styles.cardTitile}
+			subtitleClassName = {styles.cardSubtitle}
+			iconClassName = {styles.iconItem}
 					icon={<TfiShoppingCartFull size="40" color="#2FB5FC" />}
 					name="delivery"
 					id="deliverySelf"

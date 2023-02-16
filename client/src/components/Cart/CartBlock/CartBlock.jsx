@@ -44,6 +44,7 @@ export const CartBlock = () => {
 			</div>
 			{isVisible && (
 				<ModalAlert
+				className={styles.modalWindow}
 					title="Кошик"
 					bcgClick={() => dispatch(openCartMenu(false))}
 					frstBtnTitle={

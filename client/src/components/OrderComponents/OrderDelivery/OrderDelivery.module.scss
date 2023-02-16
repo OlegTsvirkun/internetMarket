@@ -9,3 +9,37 @@
     padding: 10px 0;
     margin-bottom: 20px;
 }
+@media (max-width: 999px) {
+    .toggle {
+        flex-wrap: wrap;
+
+    }
+}
+@media (max-width: 759px) {
+}
+@media (max-width: 565px) {
+.toggle {
+    align-items:center;
+    justify-content: center;
+}
+.cardContainer{
+    height:100px;
+    width: 100px;
+    
+}
+.cardTitile,.iconItem{
+padding: 0px;
+margin:4px;
+}
+.cardItem{
+    // flex-direction: row;
+    align-items:center;
+    min-width: 0;
+    width:100%;
+    justify-content: space-between;
+}
+.cardSubtitle{
+    display: none;
+    height: 0;
+}
+}

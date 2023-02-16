@@ -11,7 +11,7 @@
     input::placeholder {
         color: rgb(109, 109, 109);
     }
-} 
+}
 .city {
     display: flex;
     flex-direction: column;
@@ -22,25 +22,32 @@
 .address {
     display: flex;
     align-items: flex-start;
-    label{
-    margin:0 10px 0 0px;
-
+    label {
+        margin: 0 10px 0 0px;
+    }
 }
-}
-.appartment{
-    
-    color:transparent;
+.appartment {
+    color: transparent;
 }
 .addressInput {
     width: 80px;
-
 }
-.containerInp{
-width: 30vw;
+.containerInp {
+    width: 30vw;
 }
 .error {
     margin-top: 5px;
     line-height: 1;
     height: 20px;
     color: red;
+}
+
+@media (max-width: 999px) {
+}
+@media (max-width: 759px) {
+    .containerInp {
+        width: 100%;
+    }
+}
+@media (max-width: 565px) {
 }

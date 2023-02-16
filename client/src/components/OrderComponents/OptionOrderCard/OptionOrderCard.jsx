@@ -14,6 +14,9 @@ export const OptionOrderCard = ({
 	value = "",
 	children,
 	className = "",
+	iconClassName='',
+	titleClassName='',
+	subtitleClassName='',
 	containerClassName = "",
 	borderColor = "",
 	checkedColor = "",
@@ -67,8 +70,8 @@ export const OptionOrderCard = ({
 						/>
 					)}
 				</span>
-				{title && <h4 className={styles.title}> {title}</h4>}
-				<div className={styles.deliveryPrice}>
+				{title && <h4 className={`${styles.title} ${titleClassName}`}> {title}</h4>}
+				<div className={`${styles.deliveryPrice} ${subtitleClassName}`}>
 					{deliveryPrice && (
 						<>
 							{subtitle}
@@ -77,7 +80,7 @@ export const OptionOrderCard = ({
 					)}
 					{children}
 				</div>
-				{icon && <div className={styles.icon}> {icon}</div>}
+				{icon && <div className={`${styles.icon} ${iconClassName}`}> {icon}</div>}
 			</label>
 		</div>
 	);

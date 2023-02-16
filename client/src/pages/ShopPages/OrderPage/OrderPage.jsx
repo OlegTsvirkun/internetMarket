@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "../../../components/UA_Components/Button/Button";
 import { CartItem } from "../../../components/Cart/CartItem";
@@ -15,6 +15,7 @@ export const OrderPage = ({}) => {
 	const cart = useSelector((state) => state.cart.itemsInCart);
 	const {email} = useSelector((state) => state.user);
 	const { isErrors, orderData } = useSelector((state) => state.order);
+	const [checked, setChecked] = useState(false)
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
@@ -57,7 +58,8 @@ export const OrderPage = ({}) => {
 				Загальна сума:{" "}
 				<span>{totalPrice ? priceFormating(totalPrice) : "0.0"} грн.</span>
 			</div>
-			{!Object.keys(isErrors)[0] && totalPrice > 0 && (
+			<label className={styles.checkTerms}>З умовами згоден:<input disabled={Object.keys(isErrors)[0]} type="checkbox" value={checked} onChange={()=>setChecked(!checked)} /></label>
+			{checked && totalPrice > 0 && (
 				<Button className={styles.checkout} onClick={handleForm}>
 					Оформити замовлення
 				</Button>

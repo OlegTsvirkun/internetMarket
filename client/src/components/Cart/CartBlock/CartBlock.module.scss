@@ -32,3 +32,23 @@ display: none;
   justify-content: center;
 }
 }
+
+
+
+@media (max-width: 999px) {
+  
+}
+@media (max-width: 759px) {
+  .modalWindow{
+  width: 100vw;
+
+  }
+}
+@media (max-width: 650px) {
+}
+@media (max-width: 450px) {
+  .modalWindow{
+    height: 100vh;
+    
+    }
+}

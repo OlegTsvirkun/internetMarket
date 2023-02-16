@@ -8,7 +8,7 @@ import {
 	removeFromCart,
 } from "../../../store/slices/cartSlice";
 
-export const CountChanger = ({ count, articul, cart }) => {
+export const CountChanger = ({ count, articul, cart ,className=''}) => {
 	const dispatch = useDispatch();
 	const isItemImBasket = Object.keys(cart).some((item) => {
 		return item === articul;
@@ -28,7 +28,7 @@ export const CountChanger = ({ count, articul, cart }) => {
 		}
 	};
 	return (
-		<div className={styles.countChanger}>
+		<div className={`${styles.countChanger} ${className}`}>
 			<Button
 				className={styles.button}
 				onClick={() => dispatch(incrementGood(articul))}

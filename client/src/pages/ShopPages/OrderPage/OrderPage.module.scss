@@ -1,4 +1,5 @@
-.orderPage {
+.container{
+
 }
 .title {
     font-size: 24px;
@@ -12,6 +13,8 @@
     display: flex;
     flex-direction: column;
     // align-items: center;
+    margin-bottom: 20px;
+    
 }
 .Subtitle {
     font-size: 21px;
@@ -30,4 +33,23 @@
 .checkout {
     text-transform: uppercase;
     width: 100%;
+    
+}
+.checkTerms{
+    font-size: 18px;
+    margin-bottom: 10px;
+input{
+margin-left: 20px;
+font-size:  20px;
+}
+}
+@media (max-width: 999px) {
+    .form {
+        padding: 5px;
+
+    }
+}
+@media (max-width: 759px) {
+}
+@media (max-width: 565px) {
 }

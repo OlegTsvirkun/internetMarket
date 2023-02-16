@@ -1,82 +1,90 @@
-.deliverySelf{
-margin:20px 0 10px;
+.deliverySelf {
+    margin: 20px 0 10px;
 }
-.deliverySelfTitle{
+.deliverySelfTitle {
     font-size: 21px;
     padding: 10px 0;
     margin-bottom: 20px;
 }
-.gridContent{
+.gridContent {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-.iconItem{
+.iconItem {
     position: absolute;
-    right:5px;
-    top:0;
+    right: 5px;
+    top: 0;
 }
-.containerCard{
+.containerCard {
     // border-color: rgba(255, 166, 0, 0.3);
-width:300px;
-height:100px;
+    width: 300px;
+    height: 100px;
     margin: 0 20px 20px 0px;
     display: block;
     grid-template-rows: 2fr 4fr;
     padding: 5px 20px;
     // margin: 10px ;
-
 }
-.headerContainer{
+.headerContainer {
     display: flex;
     width: 100%;
-    justify-content:space-between;
+    justify-content: space-between;
 }
-.infoContainer{
-text-align: start;
+.infoContainer {
+    text-align: start;
 }
-.cardsContainer{
+.cardsContainer {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
     text-align: center;
 }
-.card{
+.card {
     font-size: 18px;
     color: black;
     display: grid;
     grid-template-rows: 105px 1fr;
 }
-.containerLoader{
+.containerLoader {
     display: flex;
     justify-content: center;
-    align-items:center;
+    align-items: center;
 }
-.title{
+.title {
     font-size: 18px;
     // margin: 10px 0;
-
 }
-.info{
+.info {
     // margin-bottom: 10px;
-font-size: 20px;
-font-weight: 600;
-color:var(--blue)
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--blue);
 }
-.infoAddress{
-font-weight: 600;
-color:var(--blue);
+.infoAddress {
+    font-weight: 600;
+    color: var(--blue);
 
     font-size: 14px;
 }
-.titleName{
+.titleName {
     font-size: 16px;
     font-weight: 400;
     margin: 10px 0;
     // text-align: start;
 }
-.section{
+.section {
     margin-right: 20px;
 }
-.section:only-child{
+.section:only-child {
     margin-bottom: 5px;
+}
+
+@media (max-width: 999px) {
+    .orderForm {
+        padding: 5px;
+    }
+}
+@media (max-width: 759px) {
+}
+@media (max-width: 565px) {
 }

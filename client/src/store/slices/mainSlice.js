@@ -23,6 +23,8 @@ const mainSlice = createSlice({
     builder
     .addCase(getMain.pending,(state, action)=>{
       state.isLoading = true
+      state.isError = false
+
     })
     .addCase(getMain.fulfilled,(state, action)=>{
       state.isLoading = false
@@ -33,7 +35,7 @@ const mainSlice = createSlice({
     .addCase(getMain.rejected,(state, action)=>{
       state.isLoading = false
       state.isError = true
-      state.message = action.payload;
+      state.message = action.payload.message;
       state.goods = null
       state.categories = null
       state.images = null

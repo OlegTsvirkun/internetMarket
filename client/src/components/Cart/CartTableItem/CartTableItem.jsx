@@ -29,7 +29,7 @@ export const CartTableItem = ({ index, articul, count, price }) => {
 				</th>
 				<th>{name}</th>
 				<th>
-					<CountChanger count={count} articul={articul} cart={goods} />{" "}
+					<CountChanger count={count} articul={articul} cart={goods} className ={styles.CountChanger} />{" "}
 				</th>
 				<th>
 					{priceFormating(price * count)}

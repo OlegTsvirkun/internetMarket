@@ -6,7 +6,7 @@ import { OrderContacts } from "../OrderContacts/OrderContacts";
 export const OrderForm = ({ className }) => {
 	return (
 		<form  className={`${styles.orderForm} ${className}`}>
-			<div> <span
+			<div className={styles.notice} > <span
 					style={{
 						color: "red",
 					}}

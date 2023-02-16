@@ -9,7 +9,7 @@ const hostAuth = axios.create({
     baseURL: process.env.REACT_APP_API_URL
 })
 const interceptorAuth = config => {
-    config.headers.autorization = `Bearer ${localStorage.getItem('token')}`
+    config.headers.authorization = `Bearer ${localStorage.getItem('token')}`
     return config
 }
 hostAuth.interceptors.request.use(interceptorAuth)

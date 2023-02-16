@@ -42,3 +42,34 @@
     height: 20px;
     color: red;
 }
+
+@media (max-width: 999px) {
+  
+}
+@media (max-width: 759px) {
+    .title{
+        font-size: 21px;
+        padding: 5px 0;
+        margin-bottom: 5px;
+    }
+    .contacts{
+      
+        margin-top: 10px;
+        label{
+            width: 60vw;
+        }
+    }
+}
+@media (max-width: 565px) {
+    .orderContacts{
+        text-align: center;
+    }
+.contacts{
+    align-items:center;
+    label{
+        text-align: left;
+        width: 100%;
+    }
+}
+
+}

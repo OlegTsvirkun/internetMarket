@@ -18,7 +18,7 @@ export const ModalAlert = ({
 	scndBtnClick,
 	closeClick,
 	bcgClick,
-	width = "auto",
+	width ,
 }) => {
 	useEffect(() => {
 		document.body.style.overflow = "hidden";

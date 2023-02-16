@@ -17,7 +17,6 @@ app.use(express.static('images'))
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
 mongoose.set('strictQuery', false)  
 
-app.use(require('./routes/goodsRouter'))
 app.use(require('./routes/index')) 
 
 app.use(errorHandler)

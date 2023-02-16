@@ -26,8 +26,8 @@
 .itemWindow {
     border: 1px solid rgba(71, 71, 71, 0.4);
     min-width: 400px;
-    max-width: 80vw;
-    max-height: 90vh;
+    // width: 80vw;
+    // height: 90vh;
     background-color: white;
     grid-area: 2 / 2 / 3 / 3;
     padding: 0 0px 10px;
@@ -81,7 +81,7 @@
 }
 .children {
     flex: 1 1 80%;
-    font-size: 26px;
+    font-size: 18px;
 
 }
 .btn {
@@ -104,7 +104,7 @@
     }
     .itemWindow {
         width: 100vw;
-        height: 70vh;
+        // height: 70vh;
     }
     .title {
         font-size: 20px;
@@ -115,5 +115,10 @@
     }
     .message {
         font-size: 20px;
+    }
+    .children {
+        flex: 1 1 80%;
+        font-size: 26px;
+    
     }
 }

@@ -18,10 +18,9 @@ export const AuthComponent = ({}) => {
 	const navigate = useNavigate();
 	const [email, setEmail] = useState("user@user.ua");
 	const [password, setPassword] = useState("1234");
-	const [response, setResponse] = useState("");
 	const [isAlert, setIsAlert] = useState(false);
 	const isLogin = location.pathname === LOGIN_ROUTE;
-	const { isLoading, isAuth, isError, message } = useSelector(
+	const { message } = useSelector(
 		(state) => state.user,
 	);
 	const handleClick = async (e) => {
@@ -30,7 +29,6 @@ export const AuthComponent = ({}) => {
 			if (isLogin) {
 				dispatch(loginUser({ email, password })).then((res) => {
 					console.log(email);
-
 					if (!res.error) {
 						navigate(MAIN_ROUTE);
 					} else if (res.error) {
@@ -43,8 +41,6 @@ export const AuthComponent = ({}) => {
 					if (!res.error) {
 						navigate(MAIN_ROUTE);
 					} else if (res.error) {
-						// console.log("isError", res.error);
-
 						setIsAlert(true);
 					}
 				});

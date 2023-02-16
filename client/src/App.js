@@ -23,8 +23,7 @@ import { ManagerPanelPage } from "./pages/ManagerPanelPage/ManagerPanelPage";
 
 function App() {
   const cart = useSelector((state) => state.cart.itemsInCart);
-  const { isAuth, isLoading, role } = useSelector(state => state.user)
-  const [isAlert, setIsAlert] = useState(false);
+  const { isLoading, role } = useSelector(state => state.user)
   const isCartMounted = useRef(false);
 
 

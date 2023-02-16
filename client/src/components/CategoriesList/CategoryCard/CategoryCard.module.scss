@@ -117,9 +117,10 @@ padding-bottom: 60%;
     .goodsList {
         display: none;
     }
-  .name{
-    font-size: 20px;
-  }
+    .categoryCard:not(:last-child) {
+        border-bottom: 1px solid var(--grey-transparent);
+    }
+
 }
 
 
@@ -130,5 +131,5 @@ padding-bottom: 60%;
 // }
 // @media (max-width: 565px) {
 // }
-// @media (max-width: 450px) {
-// }
+@media (max-width: 450px) {
+}
