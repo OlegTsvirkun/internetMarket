@@ -39,7 +39,7 @@ const getSecondaryContacts = async (req, res, next) => {
             .then((contact) => {
                 return contact
             })
-        console.log(contacts);
+        // console.log(contacts);
         res.status(200).json([...contacts])
     } catch (error) {
         next(ApiErrors.forbidden(error.messege))

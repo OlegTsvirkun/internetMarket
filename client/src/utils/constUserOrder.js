@@ -6,9 +6,8 @@ export const statusColor = {
 	CANCELLED: "grey",
 	DELIVERING: "gold",
 	COMPLETED: "deeppink",
-	
-
 };
+
 export const statusTranslate = {
 	REGISTERED: "Зареєстровано",
 	"AWAITING PAYMENT": "Чекає на оплату",

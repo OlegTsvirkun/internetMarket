@@ -41,8 +41,11 @@ const createCategory = async (req, res, next) => {
 
     }
 }
+
 const createGood = async (req, res, next) => {
     try {
+        // console.log(req.body, '<<req.body')
+        // console.log(req.files, '<<req.files')
         const { name, articul, price, category, description } = req.body
         if (!name) next(ApiErrors.badRequest({ message: 'Не вказана назва' }))
         if (!articul) next(ApiErrors.badRequest({ message: 'Не вказан артикул' }))
@@ -126,6 +129,7 @@ const createGood = async (req, res, next) => {
         next(ApiErrors.badRequest(error.message))
     }
 }
+
 const updateGood = async (req, res, next) => {
     try {
         const { id } = req.body
@@ -224,6 +228,7 @@ const removeImage = async (req, res, next) => {
         next(ApiErrors.badRequest(error.message))
     }
 }
+
 const removeGood = async (req, res, next) => {
     try {
         const { id } = req.body

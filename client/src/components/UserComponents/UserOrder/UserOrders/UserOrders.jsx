@@ -20,12 +20,11 @@ export const UserOrders = ({}) => {
 			dispatch(clearOrderData());
 		};
 	}, [email]);
-	console.log(Object.values(orderData)[0]);
 	if (isLoading) return <div className={styles.spinner}><Spinner/> </div>;
 	return (
 		<div className={styles.userOrders}>
 			<h1 className={styles.mainTitle}>Сторінка заказів:</h1>
-			{!Object.values(orderData)[0] ?
+			{!orderData ?
 			<FailPage message="Ще не було жодного заказу:" backTo = {false} /> :
 			(Object.values(orderData).map((order,index) => {
 				if (typeof order === "object")

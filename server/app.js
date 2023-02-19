@@ -6,7 +6,7 @@ const fileUpload = require('express-fileupload');
 require('dotenv').config();
 const errorHandler = require('./middleware/ErrorHandlingMiddlware')
 const PORT = process.env.PORT || 5000;
-const bd = process.env.MONGO_URL_LOCAL
+const bd = process.env.MONGO_URL
 
 const app = express()
 app.use(express.urlencoded({ extended: false }))

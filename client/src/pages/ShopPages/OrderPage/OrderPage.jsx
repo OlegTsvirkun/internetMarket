@@ -58,7 +58,7 @@ export const OrderPage = ({}) => {
 				Загальна сума:{" "}
 				<span>{totalPrice ? priceFormating(totalPrice) : "0.0"} грн.</span>
 			</div>
-			<label className={styles.checkTerms}>З умовами згоден:<input disabled={Object.keys(isErrors)[0]} type="checkbox" value={checked} onChange={()=>setChecked(!checked)} /></label>
+			<label className={styles.checkTerms}>З умовами згоден:<input disabled={Object.keys(isErrors)[0]} type="checkbox" value={checked} onChange={()=>setChecked(!checked)} /> <span style={{color:'red'}}>**</span></label>
 			{checked && totalPrice > 0 && (
 				<Button className={styles.checkout} onClick={handleForm}>
 					Оформити замовлення

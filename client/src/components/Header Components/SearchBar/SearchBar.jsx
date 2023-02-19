@@ -10,8 +10,7 @@ export const SearchBar = ({ containerClassName }) => {
 
 	const onChange = (event) => {
 		setSearchValue(event.target.value);
-		if (event.target.value.length > 0) {
-		}
+		
 	};
 
 	return (

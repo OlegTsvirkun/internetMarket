@@ -10,14 +10,14 @@ export const Spinner = ( {
     visible = true,
     width = '80',
     height = '80',
-    wrapperClass='',
+    className='',
     wrapperStyle={},
     ariaLabel='blocks-loading',}) => {
   return (
     <svg
     width={width}
     height={height}
-    className={wrapperClass}
+    className={className}
     style={wrapperStyle}
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"

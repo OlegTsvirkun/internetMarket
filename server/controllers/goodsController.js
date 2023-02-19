@@ -121,10 +121,7 @@ const getGood = async (req, res, next) => {
     } catch (error) {
         console.log(error);
         return next(ApiErrors.badRequest({ message: 'Помилка: такого товару немає' }))
-
     }
-
-
 }
 
 const searchGood = async (req, res, next) => {

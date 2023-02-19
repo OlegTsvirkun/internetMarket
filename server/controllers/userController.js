@@ -17,13 +17,8 @@ const getUserOrders = async (req, res, next) => {
             .populate('userContacts',
                 { _id: 0 }
             )
-
         // await OrderStatus.create({value:'REGISTERED'})
-        // await OrderStatus.create({value:'AWAITING PAYMENT'})
-        // await OrderStatus.create({value:'PAID'})
-        // await OrderStatus.create({value:'CONFIRMED'})
-        // await OrderStatus.create({value:'COMPLETED'})
-        // await OrderStatus.create({value:'DELIVERING'})
+        
         res.json({ ...order, userId: login })
     } catch (error) {
         console.log(error);
@@ -41,7 +36,7 @@ const getUserInfo = async (req, res, next) => {
         next(ApiErrors.badRequest(error.message))
     }
 }
-const changegUserConfig = async (req, res, next) => {
+const changeUserConfig = async (req, res, next) => {
     try {
         const login = req.user.email
         const { email, tel, name, firstname } = req.body
@@ -79,5 +74,6 @@ const changegUserConfig = async (req, res, next) => {
 
 module.exports = {
     getUserOrders,
-    getUserInfo, changegUserConfig
+    getUserInfo, 
+    changeUserConfig
 }

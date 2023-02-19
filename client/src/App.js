@@ -1,5 +1,5 @@
-import { useRef, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import { useRef,  } from "react";
+import { BrowserRouter as Router, Routes, Route,  } from "react-router-dom";
 
 import { Header } from "./components/Header Components/Header";
 import { SubHeader } from "./components/Header Components/SubHeader/SubHeader";
@@ -70,8 +70,8 @@ function App() {
 
          { !isLoading &&  <Route path="*" element={<FailPage />} />}
           </Routes>
-          <Footer />
         </div>
+          <Footer />
 
       </Router>
       

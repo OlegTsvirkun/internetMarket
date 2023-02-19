@@ -1,0 +1,43 @@
+[{
+  "_id": {
+    "$oid": "63dc213bd120729914f8009f"
+  },
+  "value": "AWAITING PAYMENT",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63dc213bd120729914f800a1"
+  },
+  "value": "PAID",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63dc213bd120729914f800a3"
+  },
+  "value": "CONFIRMED",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63dc213bd120729914f800a7"
+  },
+  "value": "CANCELLED",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63dc26dd04df0639d9064f10"
+  },
+  "value": "DELIVERING",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63dd267b2a0abb3fe05d51fb"
+  },
+  "value": "COMPLETED",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63dd270e71f4d0a54cc48bf3"
+  },
+  "value": "REGISTERED",
+  "__v": 0
+}]

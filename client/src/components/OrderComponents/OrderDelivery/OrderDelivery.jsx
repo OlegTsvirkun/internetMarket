@@ -8,7 +8,7 @@ import { DeliveryPost } from "../DeliveryPost/DeliveryPost";
 import { DeliverySelf } from "../DeliverySelf/DeliverySelf";
 import { addOrderDeliveryData } from "../../../store/slices/orderSlice";
 import { useDispatch } from "react-redux";
-
+import post from '../../../img/NP.svg'
 export const OrderDelivery = ({ className }) => {
 	const [deliveryAdress, setDeliveryAdress] = useState(true);
 	const [deliveryPost, setDeliveryPost] = useState(false);
@@ -61,7 +61,7 @@ export const OrderDelivery = ({ className }) => {
 			titleClassName = {styles.cardTitile}
 			subtitleClassName = {styles.cardSubtitle}
 			iconClassName = {styles.iconItem}
-					icon={<img src={process.env.REACT_APP_API_URL + "NP.svg"} />}
+					icon={<img src={post} />}
 					name="delivery"
 					id="deliveryPost"
 					title="Доставка НП"

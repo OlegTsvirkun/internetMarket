@@ -16,19 +16,16 @@ export const AuthComponent = ({}) => {
 	const location = useLocation();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const [email, setEmail] = useState("user@user.ua");
-	const [password, setPassword] = useState("1234");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 	const [isAlert, setIsAlert] = useState(false);
 	const isLogin = location.pathname === LOGIN_ROUTE;
-	const { message } = useSelector(
-		(state) => state.user,
-	);
+	const { message } = useSelector((state) => state.user);
 	const handleClick = async (e) => {
 		e.preventDefault();
 		try {
 			if (isLogin) {
 				dispatch(loginUser({ email, password })).then((res) => {
-					console.log(email);
 					if (!res.error) {
 						navigate(MAIN_ROUTE);
 					} else if (res.error) {
@@ -37,7 +34,6 @@ export const AuthComponent = ({}) => {
 				});
 			} else {
 				dispatch(registerUser({ email, password })).then((res) => {
-					console.log(email);
 					if (!res.error) {
 						navigate(MAIN_ROUTE);
 					} else if (res.error) {
@@ -58,7 +54,9 @@ export const AuthComponent = ({}) => {
 				<label>
 					{" "}
 					<Input
-						autoComplete={email.toString()}
+						// autoComplete={'on'
+						// 	// email.toString()
+						// }
 						value={email}
 						type="email"
 						placeholder="Введіть вашу пошту..."
@@ -67,7 +65,7 @@ export const AuthComponent = ({}) => {
 				</label>
 				<label>
 					<Input
-						autoComplete={password.toString()}
+						// autoComplete={password.toString()}
 						value={password}
 						type="password"
 						placeholder="Введіть ваш пароль..."
@@ -79,8 +77,7 @@ export const AuthComponent = ({}) => {
 				{isLogin ? (
 					<>
 						<h3>
-							{" "}
-							Ще не зареєєстрован?{" "}
+							<span>Ще не зареєєстрован?</span>
 							<Link to={REGISTRATION_ROUTE}>Зареєструватися</Link>
 						</h3>
 

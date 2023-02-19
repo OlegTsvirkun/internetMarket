@@ -7,7 +7,7 @@ import orderSlice from "./slices/orderSlice";
 import userSlice from "./slices/userSlice";
 import adminSlice from "./slices/adminSlice";
 import contactSlice from "./slices/contactSlice";
-import userCabinetSlice from "./slices/contactSlice";
+import userCabinetSlice from "./slices/userCabinetSlice";
 import managerCabinetSlice from "./slices/managerCabinetSlice";
 export const store = configureStore(({
     reducer: {

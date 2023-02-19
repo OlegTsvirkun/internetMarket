@@ -24,84 +24,80 @@
 .logo {
     margin-right: 2rem;
 }
-// .menu {
-//     text-decoration: none;
-//     color: rgb(71, 71, 71);
-// }
-// .auth {
-//     text-align: right;
-// }
-
-// .logoIcon {
-//     cursor: pointer;
-// }
-// .basketIcon {
-//     cursor: pointer;
-// }
-// .adminBtn {
-//     background-color: var(--white-grey-transparent);
-//     color: var(--black-grey);
-//     height: 100%;
-// }
 
 .buttonContainer {
     height: 100%;
     display: flex;
     a {
         margin-right: 5px;
-    width: 100%;
-
+        width: 100%;
     }
 }
-.headerBtn{
+.headerBtn:hover {
+    background-color:var(--white-grey-transparent);
+}
+.headerBtn {
     cursor: pointer;
     height: 100%;
     width: 100%;
     display: flex;
-    align-items:center;
+    align-items: center;
     justify-content: center;
     color: var(--black-grey);
-    
+    transition: all .3s;
+
     // transition: all .2s;
 }
 
-.headerBtn:hover{
-    border-left:1.5px solid var(--grey-transparent);
-    border-right:1.5px solid var(--grey-transparent) ;
-
+.headerBtn:hover {
+    border-left: 1.5px solid var(--grey-transparent);
+    border-right: 1.5px solid var(--grey-transparent);
 }
 .userCabinet {
     position: relative;
 }
 
 .userMenu {
-bottom:calc( -100% + 6px);
-}
-
+    bottom: calc(-100% + 6px);
+} 
 
 @media (max-width: 759px) {
     .header {
         padding: 0 5px;
         height: 70px;
     }
+    .userMenu {
+        bottom: -73px ;
+    } 
 }
 @media (max-width: 565px) {
     .header {
         padding: 0 5px;
         height: 50px;
     }
-    .headerBtnExit{
-    display:none;
+    .headerBtnExit {
+        display: none;
     }
-    .headerBtn{
-    font-size: 20px;
+    .headerBtn {
+        font-size: 20px;
     }
+    .userMenu {
+        width: 70vw;
+        bottom: -85px ;
+        font-size: 18px;
+    } 
     .headerContainer {
-        grid-template-columns: 1fr 7fr 1fr;
+        grid-template-columns: 60px auto auto auto;
     }
 }
 @media (max-width: 450px) {
-    .item{
-justify-content: center;
+    .item {
+        justify-content: center;
+    }
+    .headerBtn {
+        font-size: 16px;
+    }
+    .title {
+        font-size: 20px;
     }
 }

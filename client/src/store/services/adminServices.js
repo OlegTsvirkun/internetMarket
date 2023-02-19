@@ -1,4 +1,4 @@
-import { host, hostAuth } from '../../axios'
+import {  hostAuth } from '../../axios'
 
 const removeImageData = async (imageData) => {
     const image = await hostAuth.post("/admin/remove-image", imageData);

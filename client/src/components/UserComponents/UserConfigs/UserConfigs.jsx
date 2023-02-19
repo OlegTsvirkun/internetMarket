@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { regEmail, regTel, regText } from "../../../utils/constValidPatterns";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
@@ -14,14 +14,15 @@ import userServices, {
 import { LOGIN_ROUTE, MAIN_ROUTE } from "../../../utils/constRoutes";
 import { sleep } from "../../../utils/sleep";
 import { ModalAlert } from "../../AdditionalComponents/ModalAlert/ModalAlert";
+import { useDebounce } from "../../../hooks/useDebounce";
 export const UserConfigs = ({}) => {
 	const { email, info } = useSelector((state) => state.user);
-	// const {name, firstname, tel}=useSelector(state => state.userCabinet.userContacts)
-	// console.log(email);
 	const dispatch = useDispatch();
+	const [isUserReg, setisUserReg] = useState(false);
+
 	const [isChecked, setIsChecked] = useState(false);
 	const [isModal, setIsModal] = useState(false);
-	const [response, setResponse] = useState("111111 111");
+	const [response, setResponse] = useState("");
 	const {
 		register,
 		setError,
@@ -29,6 +30,7 @@ export const UserConfigs = ({}) => {
 		setValue,
 		getValues,
 		formState: { errors, isValid },
+		clearErrors,
 	} = useForm({ mode: "onSubmit" });
 	const navigate = useNavigate();
 	useEffect(() => {
@@ -42,10 +44,58 @@ export const UserConfigs = ({}) => {
 
 		return () => {};
 	}, [info]);
+
 	const logOut = () => {
 		dispatch(changeAuth(false));
 		navigate(LOGIN_ROUTE);
 	};
+
+	const debounceEmail = useDebounce(getValues("email"), 1200);
+	const checkboxChange = (e)=>{
+		setIsChecked(!isChecked)
+		if(!e.target.checked)clearErrors('email')
+		console.log(errors)
+
+	}
+
+	const onChange = useMemo(async () => {
+		if (errors?.email?.type) return;
+		else {
+			await userServices
+				.isUserRegistered(debounceEmail)
+				.then((res) => {
+					if (res.isUserRegistered == true) {
+						// setisUserReg(true);
+						setError("email", {
+							types: "custom",
+							message: res?.message,
+						});
+					} 
+					// else setisUserReg(false);
+				})
+				.catch((err) => console.log(err));
+		}
+	}, [debounceEmail]);
+
+	const onBlur = async (e) => {
+		if (errors?.email?.type ) return;
+		else {
+			await userServices
+				.isUserRegistered(e.target.value)
+				.then((res) => {
+					if (res.isUserRegistered == true) {
+						// setisUserReg(true);
+						setError("email", {
+							types: "custom",
+							message: res?.message,
+						});
+					} 
+					// else setisUserReg(false);
+				})
+				.catch((err) => console.log(err));
+		}
+	};
+	
 	const onSubmit = async () => {
 		if (isValid) {
 			await changeUserData(getValues())
@@ -169,7 +219,9 @@ export const UserConfigs = ({}) => {
 									className={styles.checkboxItem}
 									type="checkbox"
 									checked={isChecked}
-									onChange={() => setIsChecked(!isChecked)}
+									onChange={(e)=>
+										checkboxChange(e)
+										}
 								/>
 								Змінити email:{" "}
 							</label>
@@ -185,8 +237,11 @@ export const UserConfigs = ({}) => {
 							placeholder="example@mail.com"
 							{...register("email", {
 								disabled: !isChecked,
+								onBlur: (e) => {
+									 onBlur(e) ;
+								},
 								onChange: () => {
-									console.log(errors);
+									onChange;
 								},
 								pattern: {
 									value: regEmail,

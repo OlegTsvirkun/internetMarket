@@ -10,7 +10,7 @@ import { DeleteWithBtn } from '../DeleteWithBtn/DeleteWithBtn';
 import styles from './EditListGoods.module.scss';
 
 export const EditListGoods = ({}) =>{
-	const { isLoading, goods } = useSelector((state) => state.category);
+	const {  goods } = useSelector((state) => state.category);
 	const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 	const navigate = useNavigate() 
 	const dispatch = useDispatch()
@@ -19,7 +19,6 @@ export const EditListGoods = ({}) =>{
 			.removeGood({ id: id })
 			.then((res) => {
 				if (!res.error) {
-					console.log(res, '111111');
 					dispatch(removeGood(id));
 					navigate(ADMIN_ROUTE+'/'+EDIT_ROUTE)
 				}

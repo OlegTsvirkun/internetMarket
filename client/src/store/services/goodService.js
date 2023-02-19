@@ -1,5 +1,4 @@
 import {host, hostAuth}  from '../../axios'
-// import axios from 'axios'
 const getMain = async () => {
     const main = await host.get('/');
     return main.data;

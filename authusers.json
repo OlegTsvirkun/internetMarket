@@ -1,0 +1,41 @@
+[{
+  "_id": {
+    "$oid": "63ca40de877efbbfb5d2211f"
+  },
+  "email": "admin@admin.ua",
+  "password": "$2a$05$LZWcJJtYLJSve3K2ytBCNe5d7/GSyn/1GTaXpuvGPHQRsRiUB5FFC",
+  "role": [
+    "ADMIN"
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63ca4505fc5beebdd4c06d76"
+  },
+  "email": "user009@user.ua",
+  "password": "$2a$05$YvO2TQuEaMj.n/0/RHTZdObF2ALS95U5WgC22GP2OiF4ba8vMpKuy",
+  "role": [
+    "USER"
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63dbc595a7e4d4a7e779be6d"
+  },
+  "email": "market.my.apple@gmail.com",
+  "password": "$2a$05$A65Ac1/aU2w1hRQpO1AqxO.bBWmMY65PAzTtVaBpq.74KrIY7kvo2",
+  "role": [
+    "MANAGER"
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63ea6c02ffdbb8004eb1d3b4"
+  },
+  "email": "user@user.ua",
+  "password": "$2a$05$HtHXeIAUbIoU3ViwST2QReStCB3z2xgfr08Hr20mIOsDbR8LIgUYq",
+  "role": [
+    "USER"
+  ],
+  "__v": 0
+}]

@@ -1,9 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import styles from "./FinishOrder.module.scss";
 import { ContentWrapper } from "../../../components/UA_Components/ContentWrapper/ContentWrapper";
 import { Button } from "../../../components/UA_Components/Button/Button";
 import { Link } from "react-router-dom";
+import manager from '../../../img/maneger-service.png'
+import styles from "./FinishOrder.module.scss";
 export const FinishOrder = ({}) => {
 	const { orderNumber, isLoading } = useSelector(
 		(state) => state.order?.orderNumber,
@@ -11,24 +12,24 @@ export const FinishOrder = ({}) => {
 	isLoading && <div>Загрузка</div>;
 	return (
 		<ContentWrapper className={styles.finishOrder}>
-			<h1 className={styles.finishOrder__title}>
+			<h1 className={styles.title}>
 				Дякуємо за покупку у нашому інтернет магазині MyApple Store.
 			</h1>
-			<div className={styles.finishOrder__block}>
+			<div className={styles.block}>
 				<img
-					className={styles.finishOrder__img}
-					src={process.env.REACT_APP_API_URL + "maneger-service.png"}
+					className={styles.img}
+					src={manager}
 					alt="maneger-service.png"
 				/>
-				<div className={styles.finishOrder__info}>
-					<p className={styles.finishOrder__orderNumber}>
+				<div className={styles.info}>
+					<p className={styles.orderNumber}>
 						Ваш номер заказу:<span>{orderNumber}</span>
 					</p>
 					<p>
 						У найближчий час нашменеджер зв'яжеться з Вами для уточнення
 						замовлення
 					</p>
-					<Button className={styles.finishOrder__button}>
+					<Button className={styles.button}>
 						<Link to="/">Перейти до головної </Link>
 					</Button>
 				</div>

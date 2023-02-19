@@ -6,11 +6,12 @@ import { createNewCategory } from "../../../store/slices/adminSlice";
 import { useForm } from "react-hook-form";
 import { ModalAlert } from "../../AdditionalComponents/ModalAlert/ModalAlert";
 import styles from "./CreateCategory.module.scss";
+import { getMain } from "../../../store/slices/mainSlice";
 
 export const CreateCategory = ({}) => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const dispatch = useDispatch();
-	const { isError, errMessage, message, isLoading } = useSelector(
+	const { isError, errMessage, message } = useSelector(
 		(state) => state.admin,
 	);
 
@@ -18,7 +19,7 @@ export const CreateCategory = ({}) => {
 		register,
 		getValues,
 		reset,
-		formState: { errors, isValid, defaultValues },
+		formState: { errors, isValid },
 	} = useForm({ mode: "onBlur" });
 
 	const handleCreate = useCallback(
@@ -33,6 +34,7 @@ export const CreateCategory = ({}) => {
 				setIsModalOpen(true);
 				if (!res.error) {
 					reset();
+					dispatch(getMain())
 				}
 			});
 		},

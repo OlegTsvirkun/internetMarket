@@ -13,15 +13,15 @@ export const CreateGood = ({}) => {
 		register,
 		getValues,
 		reset,
-		formState: { errors, isValid, defaultValues },
+		formState: { errors, isValid},
 	} = useForm({ mode: "onBlur" });
 
 	const [isOpen, setIsOpen] = useState(false);
 
-	const { categories, isLoading: catLoading } = useSelector(
+	const { categories } = useSelector(
 		(state) => state.main,
 	);
-	const { isError, errMessage, message, isLoading } = useSelector(
+	const { isError, errMessage, message} = useSelector(
 		(state) => state.admin,
 	);
 	//! getMAin
@@ -48,6 +48,8 @@ export const CreateGood = ({}) => {
 				setIsOpen(true);
 				if (!res.error) {
 					reset();
+					dispatch(getMain())
+
 				}
 			});
 		},

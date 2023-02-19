@@ -23,7 +23,6 @@ export const EditGoodItem = ({
 	id = "",
 }) => {
 	const dispatch = useDispatch();
-	const navigate = useNavigate()
 	const [response, setResponse] = useState("");
 	const [isOpen, setIsOpen] = useState(false);
 	const [isError, setIsError] = useState(false);
@@ -31,9 +30,8 @@ export const EditGoodItem = ({
 	const {
 		register,
 		getValues,
-		reset,
 		setValue,
-		formState: { errors, isValid, defaultValues },
+		formState: { errors, isValid},
 	} = useForm({ mode: "onBlur" });
 
 	const { categories } = useSelector((state) => state.main);

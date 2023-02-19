@@ -1,6 +1,6 @@
 const express = require('express');
 const { getGoods, getCategory,getGood, searchGood, sortGood, createGood, createCategory, searchGoodByArticul } = require('../controllers/goodsController');
-const { createOrder } = require('../controllers/orderController');
+const { createOrder } = require('../controllers/orderController'); 
 const router = express.Router();
 
 

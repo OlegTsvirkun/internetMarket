@@ -8,7 +8,7 @@ const {
  } = require('../controllers/authController')
 
  const {
-    getUserOrders,  getUserInfo, changegUserConfig,
+    getUserOrders,  getUserInfo, changeUserConfig,
     
  } = require('../controllers/userController');
 const { isUserRegistered } = require('../controllers/orderController');
@@ -16,11 +16,11 @@ const { isUserRegistered } = require('../controllers/orderController');
  
 router.post('/registration', userRegistration)
 router.post('/login', userLogin)
+router.get('/isUser',isUserRegistered)
 router.get('/auth',authMiddleware, userCheck)
 router.get('/cabinet/orders',authMiddleware,getUserOrders)
-router.get('/isUser',isUserRegistered)
 router.get('/info',authMiddleware,getUserInfo)
-router.post('/change-configs',authMiddleware,changegUserConfig)
+router.post('/change-configs',authMiddleware,changeUserConfig)
 
 
 module.exports = router

@@ -3,7 +3,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const AuthUser = require('../models/authUser');
 const AuthRole = require('../models/authRole');
-// require('dotenv').config();
 
 const generateJwt = (id, email, role) => {
     return jwt.sign({ id, email, role }, process.env.SECRET_KEY, { expiresIn: '24h' })
@@ -53,6 +52,7 @@ const userLogin = async (req, res, next) => {
 const userCheck = async (req, res, next) => {
     try {
         const token = generateJwt(req.user._id, req.user.email, req.user.role)
+        // console.log('token>>',token)
         return res.json({ token })
     } catch (error) {
         res.json({ messege: error })

@@ -15,7 +15,7 @@ export const Input = ({
 	id,
 	accept,
 	multiple=false,
-	autoComplete,
+	// autoComplete,
 	labelTitle='',
 	children,
 	style
@@ -24,7 +24,8 @@ export const Input = ({
 		<label className={`${styles.container} ${containerClassName}`}>
 			{labelTitle}
 			<input
-			autoComplete={autoComplete}
+			
+			// autoComplete={autoComplete}
 				type={type}
 				name={name}
 				className={`${styles.input} ${className}`}

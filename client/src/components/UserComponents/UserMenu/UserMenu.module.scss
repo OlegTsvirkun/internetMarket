@@ -1,9 +1,9 @@
 .userMenu {
     position: absolute;
     z-index: 100;
-    width: 20vw;
+    min-width: 150px;
     right: 0;
-    // bottom:-100%;
+    // bottom:-100%; 
     // transform: translateY(50%);
     border: 1px solid var(--black-grey-transparent);
 }

@@ -11,7 +11,7 @@ const {mailSender} = require('./mailSender');
 const isUserRegistered = async (req, res, next) => {
 
     try {
-        const { email, tel } = req.query
+        const { email } = req.query
         if (email) {
             await AuthUser.find({ email: email }).then(data => {
                 if (data.length) return res.json({ isUserRegistered: true, message: 'Користувач з таким email вже є. Авторизуйтеся.' })
