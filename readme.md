@@ -2,11 +2,14 @@
 <p>This is an single page appliction develeped on React.js framework. It has its own server and DB.</p>
 <p><b>Front-end </b>use ReduxToolkit, axios, react-router-dom features</p>
 <p> <b>Back-end</b> developed on node.js with using express framework and Mongoose for connecting to MongoDB. </p>
-
 <p>The application gives possiblity to order goods, with authentification and without it. Sending an email messages to
     user and manager after order. Manager has his own panel where he can handle orders and change statuses of them.
     Admin can correct goods information and add new items</p>
-The structure of application:
+<h2>Project deployment: 
+<li><a href='https://internet-market-frontend.vercel.app/' >https://internet-market-frontend.vercel.app/ - <b>FRONT-END</b></a ></li>
+<li><a href='https://internet-market-zeta.vercel.app/' >https://internet-market-zeta.vercel.app/ - <b>BACK-END</b></a ></li>
+</h2>
+<h2>The structure of application:</h2>
 <details>
     <summary>FRONT-END PAGES</summary>
     <ul>
@@ -25,7 +28,6 @@ The structure of application:
         <li> <a href="#feReq">DESCRIPTION OF REQUESTS</a> </li>
     </ul>
 </details>
-
 <details>
     <summary>REST BACK-END</summary>
     <ul>
