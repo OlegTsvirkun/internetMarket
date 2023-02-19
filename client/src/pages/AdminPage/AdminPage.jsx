@@ -17,7 +17,7 @@ import { CreateCategory } from "../../components/AdminsComponents/CreateCategory
 import { CreateGood } from "../../components/AdminsComponents/CreateGood";
 import { EditListGoods } from "../../components/AdminsComponents/EditComponents/EditListGoods/EditListGoods";
 import { ModalBackground } from "../../components/AdditionalComponents/ModalBackground/ModalBackground";
-import { FailPage } from "../FailPage";
+import { FailPage } from "../FailPage_";
 import { Spinner } from "../../components/UA_Components/Spinner/Spinner";
 import styles from "./AdminPage.module.scss";
 const ButtonsList = {

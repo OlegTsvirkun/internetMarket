@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { FailPage } from "../../../pages/FailPage/FailPage";
+import { FailPage } from "../../../pages/FailPage_/FailPage";
 import { priceFormating } from "../../../utils/priceFormating";
 import { GoodBuy } from "../../GoodBuy";
 import { ModalAlert } from "../../AdditionalComponents/ModalAlert/ModalAlert";
