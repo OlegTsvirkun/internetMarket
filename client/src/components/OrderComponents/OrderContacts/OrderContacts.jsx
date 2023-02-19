@@ -75,7 +75,7 @@ export const OrderContacts = ({ className }) => {
 				.catch((err) => console.log(err));
 		}
 	}, [debounceEmail, isAuth]);
-	
+
 	const onBlur = async (e) => {
 		if (errors?.email?.type || isAuth) return;
 		else {
@@ -209,12 +209,8 @@ export const OrderContacts = ({ className }) => {
 						type="email"
 						placeholder="example@mail.com"
 						{...register("email", {
-							onBlur: (e) => {
-								isAuth ? onBlur(e) : null;
-							},
-							onChange: () => {
-								!isAuth ? onChange : null;
-							},
+							onBlur: (e) => (isAuth ? onBlur(e) : null),
+							onChange: () => (!isAuth ? onChange : null),
 							pattern: {
 								value: regEmail,
 								message: "Некоректний e-mail",

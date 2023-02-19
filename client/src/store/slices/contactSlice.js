@@ -29,7 +29,7 @@ const contactSlice = createSlice({
     //? GET MAIN CONTACTS
     builder
       .addCase(getMainContact.pending, (state, action) => {
-        state.isLoading = true,
+        // state.isLoading = true,
         state.mainContacts = {}
 
       })
@@ -45,7 +45,7 @@ const contactSlice = createSlice({
       })
       //? SECONDARY_CONTACTS
       .addCase(getSecondaryContact.pending, (state, action) => {
-        state.isLoading = true,
+        // state.isLoading = true,
         state.secondaryContacts = []
 
       })

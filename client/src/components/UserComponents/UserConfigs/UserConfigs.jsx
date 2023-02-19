@@ -240,10 +240,8 @@ export const UserConfigs = ({}) => {
 								onBlur: (e) => {
 									 onBlur(e) ;
 								},
-								onChange: () => {
-									onChange;
-								},
-								pattern: {
+								onChange: () => onChange,
+									pattern: {
 									value: regEmail,
 									message: "Некоректний e-mail",
 								},
