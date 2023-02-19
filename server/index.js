@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cors())
 app.use(express.json());
 app.use(fileUpload({}));
-app.use(express.static('images'))
+app.use(express.static(__dirname + '/images/'))
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
 mongoose.set('strictQuery', false)  
 

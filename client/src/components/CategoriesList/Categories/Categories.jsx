@@ -9,11 +9,11 @@ export const Categories = () => {
 	const { categories, goods, images, isLoading } = useSelector(
 		(state) => state.main,
 	);
-	
+	// if(!categories)return<></>
 	// if(!Object.keys(categories)) return<></>
 	return (
 			<ContentWrapper className={styles.goodsGrid}>
-				{(isLoading || !Object.keys(categories))
+				{(isLoading || !categories)
 					? [...new Array(6)].map((item, i) => {
 							return (
 								<div key={i} className="Skeleton">
