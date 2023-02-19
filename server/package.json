@@ -7,8 +7,8 @@
     "node": "v18.x"
   },
   "scripts": {
-    "start": "node app.js",
-    "server": "nodemon app.js",
+    "start": "node index.js",
+    "server": "nodemon index.js",
     "client": "npm start --prefix ../client/",
     "dev": "concurrently \"npm run server\" \"npm run client\""
 
