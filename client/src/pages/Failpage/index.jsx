@@ -1,1 +1,1 @@
-export * from './Failpage'
+export * from './FailPage'

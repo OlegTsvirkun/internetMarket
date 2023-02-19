@@ -4,7 +4,7 @@ import { BiConfused } from "react-icons/bi";
 import { Button } from "../../components/UA_Components/Button/Button";
 import { Link } from "react-router-dom";
 import { BackNavigate } from "../../components/AdditionalComponents/BackNavigate/BackNavigate";
-import styles from './Failpage.module.scss'
+import styles from './FailPage.module.scss'
 
 export const FailPage = ({ message='', backTo=true }) => {
 	return (

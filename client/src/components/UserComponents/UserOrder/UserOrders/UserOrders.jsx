@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { FailPage } from "../../../../pages/FailPage/Failpage";
+import { FailPage } from "../../../../pages/FailPage/FailPage";
 import { clearOrderData, getUserOrder } from "../../../../store/slices/userCabinetSlice";
 import { Spinner } from "../../../UA_Components/Spinner/Spinner";
 import { UserOrderItem } from "../UserOrderItem/";

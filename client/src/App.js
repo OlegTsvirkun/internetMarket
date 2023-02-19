@@ -8,7 +8,7 @@ import { OrderPage } from "./pages/ShopPages/OrderPage/OrderPage";
 import './App.css';
 import { Footer } from "./components/Footer/Footer";
 import { FinishOrder } from "./pages/ShopPages/FinishOrder/FinishOrder";
-import { FailPage } from "./pages/FailPage/";
+import { FailPage } from "./pages/FailPage/FailPage";
 import {  AdminPage } from "./pages/AdminPage/AdminPage";
 import { AuthPage } from "./pages/AuthPage/AuthPage";
 import { useDispatch, useSelector } from "react-redux";
