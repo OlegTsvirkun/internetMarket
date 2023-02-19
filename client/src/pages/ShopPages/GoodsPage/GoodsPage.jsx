@@ -86,7 +86,7 @@ export const GoodsPage = ({}) => {
 	}, [currentPage, cardsLimit]);
 
 	// if (isLoading) return <div>Loading...</div>;
-	if (isError) return <FailPage message={message} />;
+	if (isError) return <FailPage message={message.message} />;
 	return (
 		<ContentWrapper>
 				<BackNavigate />

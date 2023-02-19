@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { BackNavigate } from "../../components/AdditionalComponents/BackNavigate/BackNavigate";
 import styles from './Failpage.module.scss'
 
-export const FailPage = ({ message, backTo=true }) => {
+export const FailPage = ({ message='', backTo=true }) => {
 	return (
 			<ContentWrapper className={styles.failpage}>
 			{!backTo &&	<BackNavigate />}
