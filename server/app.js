@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const routes =require('./routes/index')
 const fileUpload = require('express-fileupload');
 require('dotenv').config();
 const errorHandler = require('./middleware/ErrorHandlingMiddlware')
@@ -17,7 +18,7 @@ app.use(express.static('images'))
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
 mongoose.set('strictQuery', false)  
 
-app.use(require('./routes/index')) 
+app.use('/',routes) 
 
 app.use(errorHandler)
 
