@@ -16,7 +16,6 @@ The structure of application:
         <li> <a href="#orderPage">Order page</a> </li>
         <li> <a href="#authPage">Authorization and registration pages</a> </li>
         <li> <a href="#cabinets">CABINETS</a> </li>
-
     </ul>
 </details>
 <details>
