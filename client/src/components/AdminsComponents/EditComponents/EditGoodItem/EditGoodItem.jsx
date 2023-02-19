@@ -77,7 +77,7 @@ useEffect(() => {
 		await adminServices.updateGood(formData)
 			.then((res) => {
 				if (!res.error) {
-					setResponse(res);
+					setResponse(res.response);
 					setIsOpen(true);
 					setIsError(true)
 					console.log(res);
