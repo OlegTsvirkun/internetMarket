@@ -36,10 +36,6 @@ export const EditGoodItem = ({
 
 	const { categories } = useSelector((state) => state.main);
 
-	// const updateGood = async (goodData) => {
-	// 	const good = await hostAuth.post("/admin/update-good", goodData);
-	// 	return good.data;
-	// };
 useEffect(() => {
 	setValue('name',_name)
 	setValue('category',_category)
@@ -77,15 +73,15 @@ useEffect(() => {
 		await adminServices.updateGood(formData)
 			.then((res) => {
 				if (!res.error) {
-					setResponse(res.response);
+					setResponse(res);
+					setIsError(false);
 					setIsOpen(true);
-					setIsError(true)
-					console.log(res);
+					console.log('response:',res);
 				} else {
+					setIsError(true)
 					setResponse(res);
 					setIsOpen(true);
-					setIsError(false)
-					console.log(res);
+					console.log('responseErr:',res);
 
 
 				}
@@ -274,7 +270,7 @@ useEffect(() => {
 						}}
 						title="Оповіщення"
 						className={styles.message}
-						message= {response?.message || "!!!"} 
+						message= {response?.response || "!!!"} 
 					>
 					</ModalAlert>
 				))}
