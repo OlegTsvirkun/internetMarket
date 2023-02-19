@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
-import { FailPage } from "../../FailPage_";
+import { FailPage } from "../../FailPage";
 import {
 	getCategory,
 	searchingGoods,

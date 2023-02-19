@@ -9,7 +9,7 @@ import { ContentWrapper } from '../../components/UA_Components/ContentWrapper/Co
 import { Spinner } from '../../components/UA_Components/Spinner/Spinner';
 import { getOrderStatuses } from '../../store/slices/managerCabinetSlice';
 import { MANAGER_LIST_ROUTE } from '../../utils/constRoutes';
-import { FailPage } from '../FailPage_';
+import { FailPage } from '../FailPage';
 import styles from './ManagerPanelPage.module.scss';
 
 export const ManagerPanelPage = ({isLoading,role}) =>{
