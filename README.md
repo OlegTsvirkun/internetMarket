@@ -117,12 +117,12 @@ The structure of application:
 <p><b>User registration</b>: use unique email. Registering only one role USER.</p>
 <p><b>Authorization</b>:</p>
 <ul>
-    <li>USER role renders button MENU on Header, which helps to move into the user cabinet.</li>
-
-    <li>ADMIN role renders button ADMIN PANEL on Header, which helps to move into the Admin's cabinet.</li>
-
-    <li>MANAGER role renders button ADMIN PANEL on Header, which helps to move into the managers's cabinet.</li>
-
+    <li> USER role renders button MENU on Header, which helps to move into the user cabinet. 
+    </li>
+    <li> ADMIN role renders button ADMIN PANEL on Header, which helps to move into the Admin's cabinet. 
+    </li>
+    <li> MANAGER role renders button ADMIN PANEL on Header, which helps to move into the managers's cabinet. 
+    </li>
 </ul>
 
 <h2 align="center" id="cabinets">CABINETS </h2>
@@ -154,14 +154,9 @@ The structure of application:
     <li>
         <b>MANAGER panel</b> allows manager to see the list of orders by its status. Every button has own color of
         status.
-        By clicking
-        on specific button application shows appropriate orders that manager can handle. In the the order manager can
-        see
-        all
-        informatoin about order. After manager had contacted with client, he must chose new status in the select in
-        right
-        top
-        coner under subHeader.
+        By clicking on specific button application shows appropriate orders that manager can handle. In the the order manager can
+        see all informatoin about order. After manager had contacted with client, he must chose new status in the select in
+        right top coner under subHeader.
     </li>
 
 </ul>
@@ -235,11 +230,9 @@ check(),<b>'user/auth'</b>, type:GET, createAsyncThunk('CHECK_USER');
 <h3 align="center">PAGES:</h3>
 <h3 align="center">AdminPage <b>, '/admin'</b></h3>
 <h4> Components:</h4>
-
 <ul>
     <li>
         <h3>CreateCategory,</h3> 'admin/create-category'
-
 <pre>
 createCategory({
 category: String, require:true,
@@ -248,9 +241,7 @@ picture: image/File, require:true,
 }),
 </pre>
         <p>type POST, with auth ,createAsyncThunk('CREATE_CATEGORY')</p>
-
     </li>
-
     <li>
         <h3>CreateGood</h3>, 'admin/create-good'
 <pre>
@@ -266,7 +257,6 @@ images: [file/image], require:false,
 </pre>
         <p>type POST , with auth , createAsyncThunk('CREATE_GOOD')</p>
     </li>
-
     <li>
         <h3> EditGoodSearch</h3>, 'admin/edit',
         <ul>
@@ -281,7 +271,6 @@ images: [file/image], require:false,
             </li>
         </ul>
     </li>
-
     <li>
         <h3> EditListGoods</h3>, 'admin/edit-list'
         <ul>
@@ -352,7 +341,6 @@ password: String, require:true,
 
 
 <ul>
-
     <li>
         <h4>ManagerPanel,'manager/'</h4>
 <ul>
@@ -374,13 +362,11 @@ password: String, require:true,
     </li>
     <li>
         <h4>ManagerOrderItem,</h4>
-
         <ul>
             <li>
 <pre>getOrder(id:String)</pre>,
                 'manager/order?id=' , type: GET, with auth, createAsyncThunk('GET_ORDER')
             </li>
-
             <li>
 <pre>setNewStatus(status:String)</pre>,
                  '/manager/order/update-status' , type: POST, with auth,     createAsyncThunk('SET_NEW_STATUS')
@@ -391,8 +377,6 @@ password: String, require:true,
 
 <h2 align="center">Shop Pages:</h3>
     <h3 align="center">Home Page<b>'/', request from SubHeader</b></h3>
-
-
     <ul>
         <li>Categories:</li>
         <li>CategoryCard</li>
@@ -403,21 +387,15 @@ password: String, require:true,
         <li>'/cat/:id?page= &limit= ' , page of specific category;</li>
         <li>'/search?q= ' page of search;</li>
     </ul>
-
-
     <ul>
         <li>
 <pre>getCategory('/cat/:id?page= &limit= '), </pre>createAsyncThunk('GET_CATEGORY');
         </li>
-
-
         <li>
 <pre>searchingGoods('q= &page= &limit=' )</pre>, '/search?q= ', type: GET, createAsyncThunk('SEARCH_GOOD');
         </li>
     </ul>
-
     <h3 align="center">GoodItem Page<b>, '/good?id='</b></h3>
-
     <ul>
         <li>
 <pre>
@@ -426,10 +404,8 @@ getGood(id:String)
         </li>
         <li>
             GoodItem
-
         </li>
     </ul>
-
     <h3 align="center">Order Page<b>, '/order'</b></h3>
     <ul>
         <li>--CartItem</li>
@@ -445,9 +421,7 @@ getGood(id:String)
     </pre>
             ,'/user/isUser?email= ', type:GET,
         </li>
-    
-    
-        <li>
+           <li>
             ---OrderDelivery:
             <ul>
                 <li>----OptionOrderCard</li>
@@ -491,10 +465,7 @@ getGood(id:String)
         '/finish-order', type: POST, createAsyncThunk('FINISH_ORDER');
         </li>
     </ul>
-
-
     <h3 align="center">UserCabinet Page<b>'/order'</b></h3>
-
     <ul>
         <li>-userOrders: 'user/cabinet/orders'</li>
         <ul>
@@ -506,7 +477,6 @@ getGood(id:String)
         <li>
             <pre>isUserRegistered(email:String),'/user/isUser?email= ', type:GET;</pre>
         </li>
-
         <li>
 <pre>
 changeUserData({
@@ -519,17 +489,12 @@ email: String
              '/user/change-configs', type: POST
         </li>
     </ul>
-
-
     <h2 align="center">BACK-END: </h3>
-
-
         <h4>Server: Express;</h4>
         <h4>DB: MongoDB</h4>
         <h4>DB models '/server/models'</h4>
         <h4>
             Mongoose
-
         </h4>
         <h3 id="#beControllers" align="center">Controllers:</h3>
         <h3>-adminController: \ All routes require authentification (checkRole) \</h3>
@@ -588,7 +553,6 @@ picture: {file}, require: false;
 }
 </pre>
             </li>
-
             <li>
                 <h4>-- removeImage: delete image from good DB, and local disk memory</h4>
                 <b>route: </b>'/remove-image', type: POST
@@ -598,7 +562,6 @@ image: String, require: true
 }
 </pre>
             </li>
-
             <li>
                 <h4>-- removeGood: delete good from good DB, delete connected pictures from DB and local disk memory
                 </h4>
@@ -610,10 +573,7 @@ id: String, require: true
 </pre>
             </li>
         </ul>
-
         <h3>-authController: \ All routes require authentification (checkRole) \</h3>
-
-
         <ul>
             <li>
                 --userRegistration: register new user
@@ -650,7 +610,6 @@ id: String, require: true
             </li>
         </ul>
         <h3>-contactsController: \ get contacts and info about market offices \</h3>
-
         <ul>
             <li>
                 --getOfficeContact: get contacts and info about market's main office
@@ -662,7 +621,6 @@ id: String, require: true
             </li>
         </ul>
         <h3>-goodsController:</h3>
-
         <ul>
             <li>
                 --getCategory: get categories list,
@@ -697,7 +655,6 @@ id: String, require: true
     }
 </pre>                              
             </li>
-
         <li>
             --searchGood: search goods
             <b>route:</b> '/search', type: GET
@@ -720,7 +677,6 @@ id: String, require: true
 </pre>
         </li>
     </ul>
-
         <h3>-orderController:</h3>
         <li>
             --isUserRegistered
@@ -740,11 +696,9 @@ id: String, require: true
     }
 </pre>
         </li>
-
         <h3>-managerController: \ All routes require authentification (checkRole) \</h3>
         <ul>
-            
-            <li>
+                        <li>
                 --getOrderStatuses: Getting types of order statuses from DB
                 <b>route:</b> '/manager/', type: GET
             </li>
@@ -788,7 +742,6 @@ id: String, require: true
             route: '/cabinet/orders',
             type: GET , with auth;
        </li>
-
         <li>
             --getUserInfo: get user's information
             <b>route:</b>/user/info , type: GET, with auth;
@@ -798,7 +751,6 @@ id: String, require: true
     }
 </pre>
         </li>
-
         <li>
             --changeUserConfig: change user's info
             <b>route:</b> /user/change-configs , type: GET, with auth;
@@ -808,7 +760,6 @@ id: String, require: true
     }
 </pre>
         </li>
-
         <h2 id="#beMiddleware" align="center">Middlewares:</h2 >
         <ul align="start">
             <li>-authMiddleware: check front-end's and back-end's tokens. if they match athotification is true.</li>
